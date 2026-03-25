@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mokimo — Design Engineering Consultancy</title>
+  <meta name="description" content="Mechanical, electronic, and software engineering consultancy. We bring careful thinking to complex problems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-base: #F5F0EB;
+      --color-text: #2C2C2C;
+      --color-text-muted: #6B6560;
+      --color-accent: #7D8B75;
+      --color-accent-deep: #5E6B57;
+      --color-sand: #C4B5A0;
+      --color-sand-light: #D9CFBF;
+      --color-warm-brown: #8A7E6E;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Source Sans 3', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 4rem;
+      --space-xl: 6rem;
+      --space-2xl: 9rem;
+
+      --max-width: 900px;
+      --side-padding: clamp(1.5rem, 5vw, 3rem);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 1.0625rem;
+      line-height: 1.7;
+      color: var(--color-text);
+      background-color: var(--color-base);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* --- Header --- */
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: var(--space-sm) var(--side-padding);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .site-header.scrolled {
+      background-color: rgba(245, 240, 235, 0.95);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .wordmark {
+      font-family: var(--font-display);
+      font-size: 1.6rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      color: var(--color-text);
+      text-decoration: none;
+      text-transform: lowercase;
+    }
+
+    .site-nav {
+      display: flex;
+      gap: var(--space-md);
+      list-style: none;
+    }
+
+    .site-nav a {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.3s ease;
+    }
+
+    .site-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--color-accent);
+      transition: width 0.3s ease;
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible {
+      color: var(--color-accent-deep);
+    }
+
+    .site-nav a:hover::after,
+    .site-nav a:focus-visible::after {
+      width: 100%;
+    }
+
+    /* --- Content Wrapper --- */
+
+    .content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 var(--side-padding);
+    }
+
+    /* --- Sections --- */
+
+    section {
+      padding-top: var(--space-xl);
+      padding-bottom: var(--space-xl);
+    }
+
+    /* --- Hero --- */
+
+    .hero {
+      padding-top: calc(var(--space-2xl) + 3rem);
+      padding-bottom: var(--space-2xl);
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(2.8rem, 6vw, 4.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: 0.02em;
+      color: var(--color-text);
+      margin-bottom: var(--space-md);
+    }
+
+    .hero-subtitle {
+      font-family: var(--font-body);
+      font-size: clamp(1.05rem, 2vw, 1.2rem);
+      font-weight: 300;
+      line-height: 1.7;
+      color: var(--color-text-muted);
+      max-width: 540px;
+    }
+
+    /* --- Philosophy --- */
+
+    .philosophy {
+      border-top: 1px solid var(--color-sand-light);
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--color-warm-brown);
+      text-transform: uppercase;
+      margin-bottom: var(--space-lg);
+    }
+
+    .principles {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .principle {
+      padding-left: var(--space-md);
+    }
+
+    .principle-name {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      color: var(--color-accent);
+      margin-bottom: var(--space-xs);
+    }
+
+    .principle-text {
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      color: var(--color-text);
+      max-width: 600px;
+    }
+
+    /* --- Decorative Rule --- */
+
+    .rule {
+      width: 40px;
+      height: 1px;
+      background-color: var(--color-sand);
+      border: none;
+      margin: var(--space-xl) 0;
+    }
+
+    /* --- Services --- */
+
+    .services {
+      border-top: 1px solid var(--color-sand-light);
+    }
+
+    .services-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .service-item {
+      padding-left: var(--space-md);
+    }
+
+    .service-name {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--color-text);
+      margin-bottom: 0.35rem;
+    }
+
+    .service-desc {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--color-text-muted);
+      max-width: 560px;
+    }
+
+    /* --- Contact --- */
+
+    .contact {
+      border-top: 1px solid var(--color-sand-light);
+    }
+
+    .contact-heading {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      letter-spacing: 0.02em;
+      margin-bottom: var(--space-sm);
+    }
+
+    .contact-sub {
+      color: var(--color-text-muted);
+      font-weight: 300;
+      margin-bottom: var(--space-lg);
+    }
+
+    .email-link {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--color-accent);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color 0.3s ease;
+    }
+
+    .email-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--color-accent-deep);
+      transition: width 0.3s ease;
+    }
+
+    .email-link:hover,
+    .email-link:focus-visible {
+      color: var(--color-accent-deep);
+    }
+
+    .email-link:hover::after,
+    .email-link:focus-visible::after {
+      width: 100%;
+    }
+
+    .contact-form {
+      margin-top: var(--space-lg);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-sm);
+      max-width: 480px;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+
+    .form-field label {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--color-warm-brown);
+    }
+
+    .form-field input,
+    .form-field textarea {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      color: var(--color-text);
+      background: transparent;
+      border: 1px solid var(--color-sand);
+      border-radius: 0;
+      padding: 0.75rem;
+      transition: border-color 0.3s ease;
+      outline: none;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--color-accent);
+    }
+
+    .form-field textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    .form-submit {
+      align-self: flex-start;
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      color: var(--color-base);
+      background-color: var(--color-text);
+      border: none;
+      padding: 0.8rem 2rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-top: var(--space-xs);
+    }
+
+    .form-submit:hover,
+    .form-submit:focus-visible {
+      background-color: var(--color-accent-deep);
+    }
+
+    /* --- Footer --- */
+
+    .site-footer {
+      padding: var(--space-lg) var(--side-padding) var(--space-md);
+      text-align: center;
+    }
+
+    .footer-text {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--color-warm-brown);
+    }
+
+    .footer-text a {
+      color: var(--color-warm-brown);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-text a:hover {
+      color: var(--color-accent);
+    }
+
+    /* --- Reveal Animations --- */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* --- Responsive --- */
+
+    @media (max-width: 640px) {
+      .site-header {
+        padding: 0.75rem var(--side-padding);
+      }
+
+      .site-nav {
+        gap: var(--space-sm);
+      }
+
+      .site-nav a {
+        font-size: 0.75rem;
+      }
+
+      .wordmark {
+        font-size: 1.35rem;
+      }
+
+      .hero {
+        min-height: 60vh;
+        padding-top: calc(var(--space-xl) + 2rem);
+        padding-bottom: var(--space-xl);
+      }
+
+      section {
+        padding-top: var(--space-lg);
+        padding-bottom: var(--space-lg);
+      }
+
+      .principle,
+      .service-item {
+        padding-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <a href="#" class="wordmark">mokimo</a>
+    <nav>
+      <ul class="site-nav" role="list">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="content">
+
+      <section class="hero" aria-label="Introduction">
+        <h1 class="hero-title reveal">Design engineering,<br>considered.</h1>
+        <p class="hero-subtitle reveal">Mechanical, electronic, and software engineering consultancy. We bring careful thinking to complex problems.</p>
+      </section>
+
+      <section id="about" class="philosophy" aria-label="Our approach">
+        <span class="section-label reveal">Approach</span>
+        <div class="principles">
+          <div class="principle reveal">
+            <div class="principle-name">Clarity first</div>
+            <p class="principle-text">We start by understanding the problem completely before reaching for solutions. Good engineering begins with good questions.</p>
+          </div>
+          <div class="principle reveal">
+            <div class="principle-name">Considered detail</div>
+            <p class="principle-text">Every decision — from component selection to system architecture — is made deliberately. We don't move fast and break things; we move carefully and build things that last.</p>
+          </div>
+          <div class="principle reveal">
+            <div class="principle-name">Whole-system thinking</div>
+            <p class="principle-text">Mechanical, electronic, and software disciplines inform each other. We work across boundaries because real problems don't respect them.</p>
+          </div>
+        </div>
+        <hr class="rule reveal">
+      </section>
+
+      <section id="services" class="services" aria-label="Services">
+        <span class="section-label reveal">Services</span>
+        <div class="services-list">
+          <div class="service-item reveal">
+            <div class="service-name">Mechanical Engineering</div>
+            <p class="service-desc">Product design, mechanism development, and structural analysis — from concept sketches through to production-ready outputs.</p>
+          </div>
+          <div class="service-item reveal">
+            <div class="service-name">Electronics &amp; Embedded Systems</div>
+            <p class="service-desc">Circuit design, PCB layout, firmware development, and sensor integration for connected products and instrumentation.</p>
+          </div>
+          <div class="service-item reveal">
+            <div class="service-name">Software Development</div>
+            <p class="service-desc">Desktop, web, and systems software built with the same rigour we apply to physical engineering. Clean architecture, tested thoroughly.</p>
+          </div>
+          <div class="service-item reveal">
+            <div class="service-name">Business Analysis &amp; Process Design</div>
+            <p class="service-desc">Mapping workflows, identifying bottlenecks, and designing systems that let organisations work the way they actually need to.</p>
+          </div>
+          <div class="service-item reveal">
+            <div class="service-name">Production &amp; Automation Systems</div>
+            <p class="service-desc">Manufacturing process design, test rig development, and automation that bridges the gap between prototype and production.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="contact" aria-label="Contact">
+        <h2 class="contact-heading reveal">Let's talk about<br>your project.</h2>
+        <p class="contact-sub reveal">We'd enjoy hearing what you're working on.</p>
+        <a href="mailto:hello@mokimo.co.uk" class="email-link reveal">hello@mokimo.co.uk</a>
+
+        <form class="contact-form" aria-label="Contact form" onsubmit="return false;">
+          <div class="form-field reveal">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name">
+          </div>
+          <div class="form-field reveal">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email">
+          </div>
+          <div class="form-field reveal">
+            <label for="message">Message</label>
+            <textarea id="message" name="message"></textarea>
+          </div>
+          <button type="submit" class="form-submit reveal">Send</button>
+        </form>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
+  </footer>
+
+  <script>
+    // Sticky header background on scroll
+    const header = document.querySelector('.site-header');
+    const onScroll = () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+
+    // Intersection Observer for reveal animations
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          // Stagger siblings within the same parent
+          const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
+          const index = siblings.indexOf(entry.target);
+          const delay = index * 120;
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, delay);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

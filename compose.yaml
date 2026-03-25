@@ -1,0 +1,13 @@
+services:
+  mokimo-website:
+    image: nginx:alpine
+    container_name: mokimo-website
+    restart: unless-stopped
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - business
+
+networks:
+  business:
+    external: true
