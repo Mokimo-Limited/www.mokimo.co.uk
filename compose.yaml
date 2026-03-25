@@ -1,3 +1,5 @@
+name: mokimo-website
+
 services:
   mokimo-website:
     image: nginx:alpine
