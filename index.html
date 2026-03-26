@@ -7,7 +7,7 @@
   <meta name="description" content="Mechanical, electronic, and software engineering consultancy. We bring careful thinking to complex problems.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after {
       margin: 0;
@@ -18,7 +18,7 @@
     :root {
       --color-base: #F5F0EB;
       --color-text: #2C2C2C;
-      --color-text-muted: #6B6560;
+      --color-text-muted: #5C5650;
       --color-accent: #7D8B75;
       --color-accent-deep: #5E6B57;
       --color-sand: #C4B5A0;
@@ -171,6 +171,23 @@
       max-width: 540px;
     }
 
+    .wordmark-group {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .wordmark-mark {
+      opacity: 0.65;
+      display: flex;
+      align-items: center;
+    }
+
+    .wordmark-mark svg {
+      width: 24px;
+      height: 24px;
+    }
+
     /* --- Philosophy --- */
 
     .philosophy {
@@ -180,7 +197,7 @@
     .section-label {
       font-family: var(--font-mono);
       font-size: 0.75rem;
-      font-weight: 400;
+      font-weight: 300;
       letter-spacing: 0.1em;
       color: var(--color-warm-brown);
       text-transform: uppercase;
@@ -199,28 +216,19 @@
 
     .principle-name {
       font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: 400;
+      font-size: 0.85rem;
+      font-weight: 700;
       letter-spacing: 0.06em;
-      color: var(--color-accent);
+      color: var(--color-text-muted);
       margin-bottom: var(--space-xs);
     }
 
     .principle-text {
-      font-size: 1.0625rem;
+      font-size: 1rem;
       line-height: 1.75;
-      color: var(--color-text);
+      font-weight: 400;
+      color: var(--color-text-muted);
       max-width: 600px;
-    }
-
-    /* --- Decorative Rule --- */
-
-    .rule {
-      width: 40px;
-      height: 1px;
-      background-color: var(--color-sand);
-      border: none;
-      margin: var(--space-xl) 0;
     }
 
     /* --- Services --- */
@@ -241,16 +249,17 @@
 
     .service-name {
       font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 400;
+      font-size: 0.9rem;
+      font-weight: 700;
       letter-spacing: 0.04em;
-      color: var(--color-text);
-      margin-bottom: 0.35rem;
+      color: var(--color-text-muted);
+      margin-bottom: 0.5rem;
     }
 
     .service-desc {
       font-size: 1rem;
       line-height: 1.7;
+      font-weight: 400;
       color: var(--color-text-muted);
       max-width: 560px;
     }
@@ -307,68 +316,17 @@
       width: 100%;
     }
 
-    .contact-form {
-      margin-top: var(--space-lg);
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-sm);
-      max-width: 480px;
+    .contact-email-block {
+      margin-top: var(--space-md);
     }
 
-    .form-field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
-    }
-
-    .form-field label {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 300;
-      letter-spacing: 0.06em;
-      color: var(--color-warm-brown);
-    }
-
-    .form-field input,
-    .form-field textarea {
-      font-family: var(--font-body);
-      font-size: 1rem;
-      color: var(--color-text);
-      background: transparent;
-      border: 1px solid var(--color-sand);
-      border-radius: 0;
-      padding: 0.75rem;
-      transition: border-color 0.3s ease;
-      outline: none;
-    }
-
-    .form-field input:focus,
-    .form-field textarea:focus {
-      border-color: var(--color-accent);
-    }
-
-    .form-field textarea {
-      resize: vertical;
-      min-height: 120px;
-    }
-
-    .form-submit {
-      align-self: flex-start;
+    .contact-location {
       font-family: var(--font-mono);
       font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      color: var(--color-base);
-      background-color: var(--color-text);
-      border: none;
-      padding: 0.8rem 2rem;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-      margin-top: var(--space-xs);
-    }
-
-    .form-submit:hover,
-    .form-submit:focus-visible {
-      background-color: var(--color-accent-deep);
+      font-weight: 300;
+      color: var(--color-text-muted);
+      letter-spacing: 0.05em;
+      margin-top: var(--space-sm);
     }
 
     /* --- Footer --- */
@@ -449,7 +407,14 @@
 <body>
 
   <header class="site-header" role="banner">
-    <a href="#" class="wordmark">mokimo</a>
+    <div class="wordmark-group">
+      <a href="#" class="wordmark">mokimo</a>
+      <span class="wordmark-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </div>
     <nav>
       <ul class="site-nav" role="list">
         <li><a href="#about">About</a></li>
@@ -483,7 +448,6 @@
             <p class="principle-text">Mechanical, electronic, and software disciplines inform each other. We work across boundaries because real problems don't respect them.</p>
           </div>
         </div>
-        <hr class="rule reveal">
       </section>
 
       <section id="services" class="services" aria-label="Services">
@@ -491,54 +455,40 @@
         <div class="services-list">
           <div class="service-item reveal">
             <div class="service-name">Mechanical Engineering</div>
-            <p class="service-desc">Product design, mechanism development, and structural analysis — from concept sketches through to production-ready outputs.</p>
+            <p class="service-desc">Product design, mechanism development, and structural analysis — from concept sketches through to production-ready outputs. We work in CAD, FEA, and at the bench, and we know when each is the right tool.</p>
           </div>
           <div class="service-item reveal">
             <div class="service-name">Electronics &amp; Embedded Systems</div>
-            <p class="service-desc">Circuit design, PCB layout, firmware development, and sensor integration for connected products and instrumentation.</p>
+            <p class="service-desc">Circuit design, PCB layout, firmware development, and sensor integration for connected products and instrumentation. From proof-of-concept breadboards to production-qualified assemblies.</p>
           </div>
           <div class="service-item reveal">
             <div class="service-name">Software Development</div>
-            <p class="service-desc">Desktop, web, and systems software built with the same rigour we apply to physical engineering. Clean architecture, tested thoroughly.</p>
+            <p class="service-desc">Desktop, web, and systems software built with the same rigour we apply to physical engineering. Clean architecture, tested thoroughly, designed to be maintained by the people who come after us.</p>
           </div>
           <div class="service-item reveal">
             <div class="service-name">Business Analysis &amp; Process Design</div>
-            <p class="service-desc">Mapping workflows, identifying bottlenecks, and designing systems that let organisations work the way they actually need to.</p>
+            <p class="service-desc">Mapping workflows, identifying bottlenecks, and designing systems that let organisations work the way they actually need to. We translate between engineering teams and the rest of the business.</p>
           </div>
           <div class="service-item reveal">
             <div class="service-name">Production &amp; Automation Systems</div>
-            <p class="service-desc">Manufacturing process design, test rig development, and automation that bridges the gap between prototype and production.</p>
+            <p class="service-desc">Manufacturing process design, test rig development, and automation that bridges the gap between prototype and production. Getting something working once is easy; getting it working a thousand times takes engineering.</p>
           </div>
         </div>
       </section>
 
       <section id="contact" class="contact" aria-label="Contact">
         <h2 class="contact-heading reveal">Let's talk about<br>your project.</h2>
-        <p class="contact-sub reveal">We'd enjoy hearing what you're working on.</p>
-        <a href="mailto:hello@mokimo.co.uk" class="email-link reveal">hello@mokimo.co.uk</a>
-
-        <form class="contact-form" aria-label="Contact form" onsubmit="return false;">
-          <div class="form-field reveal">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" autocomplete="name">
-          </div>
-          <div class="form-field reveal">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" autocomplete="email">
-          </div>
-          <div class="form-field reveal">
-            <label for="message">Message</label>
-            <textarea id="message" name="message"></textarea>
-          </div>
-          <button type="submit" class="form-submit reveal">Send</button>
-        </form>
+        <p class="contact-sub reveal">We'd love to hear what you're working on. Tell us what you're trying to solve and we'll let you know if we can help.</p>
+        <div class="contact-email-block reveal">
+          <a href="mailto:hello@mokimo.co.uk" class="email-link">hello@mokimo.co.uk</a>
+        </div>
       </section>
 
     </div>
   </main>
 
   <footer class="site-footer">
-    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
+    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Sheffield, UK &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
   </footer>
 
   <script>
