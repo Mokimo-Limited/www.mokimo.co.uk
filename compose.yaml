@@ -9,3 +9,8 @@ services:
       - .:/usr/share/nginx/html:ro
     networks:
       - business
+
+networks:
+  business:
+    external: true
+    name: business
