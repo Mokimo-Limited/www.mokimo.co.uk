@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Mokimo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Source+Sans+3:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --color-base: #F5F0EB;
+      --color-text: #2C2C2C;
+      --color-text-muted: #5C5650;
+      --color-accent: #7D8B75;
+      --color-accent-deep: #5E6B57;
+      --color-sand: #C4B5A0;
+      --color-sand-light: #D9CFBF;
+      --color-warm-brown: #8A7E6E;
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Source Sans 3', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 2rem;
+      --space-lg: 4rem;
+      --space-xl: 6rem;
+
+      --max-width: 720px;
+      --side-padding: clamp(1.5rem, 5vw, 3rem);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      font-weight: 400;
+      background: var(--color-base);
+      color: var(--color-text);
+      line-height: 1.7;
+    }
+
+    /* --- Header --- */
+
+    .page-header {
+      padding: var(--space-md) var(--side-padding);
+      border-bottom: 1px solid var(--color-sand-light);
+    }
+
+    .page-header-inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .wordmark {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--color-text);
+      text-decoration: none;
+    }
+
+    .back-link {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: color 0.3s ease;
+    }
+
+    .back-link:hover { color: var(--color-accent); }
+
+    /* --- Page title area --- */
+
+    .page-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: var(--space-lg) var(--side-padding) var(--space-xl);
+    }
+
+    .page-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      color: var(--color-text);
+      margin-bottom: var(--space-xs);
+    }
+
+    .page-meta {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-md);
+    }
+
+    .controller-note {
+      font-size: 0.9rem;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--color-sand-light);
+    }
+
+    .controller-note strong {
+      color: var(--color-text);
+    }
+
+    /* --- Tabs --- */
+
+    .tab-bar {
+      display: flex;
+      gap: 0;
+      margin-bottom: var(--space-lg);
+      border-bottom: 1px solid var(--color-sand);
+    }
+
+    .tab-btn {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 0.6rem 1.4rem 0.6rem 0;
+      margin-bottom: -1px;
+      cursor: pointer;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .tab-btn:hover { color: var(--color-text); }
+
+    .tab-btn.active {
+      color: var(--color-text);
+      border-bottom-color: var(--color-accent-deep);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* --- WIP banner --- */
+
+    .wip-banner {
+      background: var(--color-sand-light);
+      border-left: 3px solid var(--color-sand);
+      padding: 0.9rem 1.2rem;
+      margin-bottom: var(--space-lg);
+      border-radius: 0 2px 2px 0;
+    }
+
+    .wip-banner p {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.04em;
+      color: var(--color-text-muted);
+      margin: 0;
+    }
+
+    .wip-banner p + p { margin-top: 0.4em; }
+
+    /* --- Policy sections --- */
+
+    .policy-section {
+      margin-bottom: var(--space-lg);
+    }
+
+    .policy-section h2 {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      color: var(--color-text);
+      margin-bottom: var(--space-sm);
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--color-sand-light);
+    }
+
+    .policy-section p {
+      font-size: 0.95rem;
+      color: var(--color-text);
+      margin-bottom: 0.8em;
+    }
+
+    .policy-section p:last-child { margin-bottom: 0; }
+
+    .policy-section ul {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 0.8em;
+    }
+
+    .policy-section ul li {
+      font-size: 0.95rem;
+      color: var(--color-text);
+      padding: 0.25em 0 0.25em 1.2em;
+      position: relative;
+    }
+
+    .policy-section ul li::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--color-sand);
+    }
+
+    /* --- Data table --- */
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: var(--space-sm);
+      font-size: 0.88rem;
+    }
+
+    .data-table th {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      text-align: left;
+      padding: 0.5rem 1rem 0.5rem 0;
+      border-bottom: 1px solid var(--color-sand);
+    }
+
+    .data-table td {
+      vertical-align: top;
+      padding: 0.7rem 1rem 0.7rem 0;
+      border-bottom: 1px solid var(--color-sand-light);
+      color: var(--color-text);
+      line-height: 1.5;
+    }
+
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .data-table small { color: var(--color-text-muted); }
+
+    /* --- Links --- */
+
+    a {
+      color: var(--color-accent-deep);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: var(--color-accent);
+      text-decoration: underline;
+    }
+
+    /* --- Footer --- */
+
+    .site-footer {
+      padding: var(--space-lg) var(--side-padding) var(--space-md);
+      text-align: center;
+    }
+
+    .footer-text {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--color-warm-brown);
+    }
+
+    .footer-text a {
+      color: var(--color-warm-brown);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .footer-text a:hover { color: var(--color-accent); }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="page-header-inner">
+      <a href="/" class="wordmark">Mokimo</a>
+      <a href="/" class="back-link">&#8592; Back</a>
+    </div>
+  </header>
+
+  <main class="page-content">
+
+    <h1 class="page-title">Privacy Policy</h1>
+    <p class="page-meta">Last updated: April 2026</p>
+
+    <p class="controller-note">
+      <strong>Data controller:</strong> Mokimo Ltd &mdash; Company No. 17139363, registered in England and Wales.<br>
+      <strong>Contact:</strong> <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a>
+    </p>
+
+    <div class="tab-bar" role="tablist">
+      <button class="tab-btn active" role="tab" aria-selected="true"  aria-controls="tab-website"  id="btn-website">Website visitors</button>
+      <button class="tab-btn"        role="tab" aria-selected="false" aria-controls="tab-clients"  id="btn-clients">Clients &amp; enquiries</button>
+    </div>
+
+    <!-- ===================== TAB 1: WEBSITE VISITORS ===================== -->
+    <div class="tab-panel active" id="tab-website" role="tabpanel" aria-labelledby="btn-website">
+
+      <div class="policy-section">
+        <h2>1. What data we collect and why</h2>
+        <p>Two categories of personal data are processed when you visit this website:</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>Data collected</th>
+              <th>Purpose</th>
+              <th>Legal basis</th>
+              <th>Retention</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Server logs</strong><br><small>Generated automatically on every page request</small></td>
+              <td>IP address, browser and device type, page requested, timestamp, HTTP status code</td>
+              <td>Maintaining security and diagnosing technical issues</td>
+              <td>Legitimate interests (Article&nbsp;6(1)(f)) &mdash; operating a secure, functioning website</td>
+              <td>90 days, then automatically deleted</td>
+            </tr>
+            <tr>
+              <td><strong>Font requests</strong><br><small>When your browser loads typefaces from Google&rsquo;s CDN</small></td>
+              <td>IP address (processed by Google LLC to serve the font file)</td>
+              <td>Rendering the page correctly</td>
+              <td>Legitimate interests (Article&nbsp;6(1)(f)) &mdash; delivering a functioning, legible website</td>
+              <td>Per Google&rsquo;s own retention policy</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="margin-top:1rem">This website does not use cookies, tracking pixels, or analytics tools, and does not collect special categories of personal data.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>2. Website hosting</h2>
+        <p>This website is currently served from a privately-operated server based in the United Kingdom. All server log data remains within the UK. We may migrate hosting to GitHub Pages (Microsoft / GitHub, Inc.) in the future; this notice will be updated before any such change takes effect.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>3. Third-party processors</h2>
+        <p><strong>Google LLC (Google Fonts)</strong> &mdash; typefaces are loaded from <code>fonts.googleapis.com</code>. Google acts as a data processor under its own <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">privacy terms</a>. Font requests may involve transferring your IP address to Google servers in the United States; Google LLC participates in the UK&ndash;US Data Bridge.</p>
+        <p>No other third parties receive personal data arising from your visit to this website.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>4. Your rights</h2>
+        <p>Under the UK GDPR and Data Protection Act 2018, you have the right to:</p>
+        <ul>
+          <li><strong>Access</strong> &mdash; request a copy of the personal data we hold about you</li>
+          <li><strong>Rectification</strong> &mdash; ask us to correct inaccurate data</li>
+          <li><strong>Erasure</strong> &mdash; ask us to delete your personal data in certain circumstances</li>
+          <li><strong>Restriction</strong> &mdash; ask us to limit how we use your data</li>
+          <li><strong>Object</strong> &mdash; object to processing based on legitimate interests</li>
+        </ul>
+        <p>To exercise any of these rights, email <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a>. We will respond within one month.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>5. Right to complain</h2>
+        <p>Should you have concerns about how we handle your personal data, you have the right to lodge a complaint with the <strong>Information Commissioner&rsquo;s Office (ICO)</strong>:</p>
+        <ul>
+          <li>Website: <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a></li>
+          <li>Telephone: 0303 123 1113</li>
+        </ul>
+        <p>We would welcome the opportunity to address any concern directly before you contact the ICO.</p>
+      </div>
+
+    </div><!-- /tab-website -->
+
+    <!-- ===================== TAB 2: CLIENTS & ENQUIRIES ===================== -->
+    <div class="tab-panel" id="tab-clients" role="tabpanel" aria-labelledby="btn-clients">
+
+      <div class="wip-banner">
+        <p>This notice is currently in draft.</p>
+        <p>We are establishing formal Data Processing Agreements with all relevant service providers and completing our internal data processing register. This notice will be updated once that work is finalised. For any specific queries in the meantime, please contact us at <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a>.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>1. Scope</h2>
+        <p>This section covers personal data processed in the course of business enquiries, client engagements, and the internal workflows that support them &mdash; distinct from data arising solely from visiting our website.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>2. Third-party processors</h2>
+        <p>The following external providers process personal data on our behalf:</p>
+
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Provider</th>
+              <th>Data processed</th>
+              <th>Purpose</th>
+              <th>Legal basis</th>
+              <th>Retention</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Microsoft Corporation</strong><br><small>Microsoft&nbsp;365 email service</small></td>
+              <td>Name, email address, message content</td>
+              <td>Receiving and responding to business enquiries; performing client engagements</td>
+              <td>Legitimate interests (Article&nbsp;6(1)(f)); contract performance (Article&nbsp;6(1)(b)) where an engagement follows</td>
+              <td>2 years from last contact, then deleted</td>
+            </tr>
+            <tr>
+              <td><strong>OpenRouter Inc.</strong><br><small>AI inference routing</small></td>
+              <td>Data submitted for AI-assisted processing, pre-filtered to remove sensitive information</td>
+              <td>Supporting internal workflows and client deliverables</td>
+              <td>Legitimate interests (Article&nbsp;6(1)(f)) &mdash; delivering efficient, accurate client work</td>
+              <td>Not retained by inference providers (Zero Data Retention enforced); OpenRouter&rsquo;s own standard terms apply</td>
+            </tr>
+            <tr>
+              <td><strong>Apollo.io, Inc.</strong><br><small>Contact data enrichment</small></td>
+              <td>Name, business email address, job title, company name</td>
+              <td>Populating contact records prior to first outreach with prospective clients</td>
+              <td>Legitimate interests (Article&nbsp;6(1)(f)) &mdash; identifying and approaching potential clients</td>
+              <td>2 years from last contact, then deleted</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="margin-top:1rem">Microsoft applies appropriate safeguards for transfers outside the UK (Standard Contractual Clauses / UK IDTA). OpenRouter enforces Zero Data Retention with all downstream inference providers, meaning submitted data is not stored or used for model training. Apollo.io data is sourced from publicly available records; as it is not collected directly from you, Article&nbsp;14 of the UK GDPR applies &mdash; we disclose our data source at the point of first contact, and you may object to this processing at any time by contacting <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a>.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>3. Internal processing infrastructure</h2>
+        <p>Personal data may also be processed by the following self-hosted systems, which operate entirely on UK-based infrastructure and involve no third-party data transfer:</p>
+        <ul>
+          <li><strong>n8n</strong> &mdash; our workflow automation platform</li>
+          <li><strong>Local AI pre-filter</strong> &mdash; a locally-run language model that identifies and redacts particularly sensitive information (such as identity document numbers or financial data) before any data is passed to external services</li>
+        </ul>
+      </div>
+
+      <div class="policy-section">
+        <h2>4. Automated decision-making</h2>
+        <p>Where automated tools inform decisions about individuals, a human reviews the output before any action is taken. We do not make solely automated decisions that produce legal or similarly significant effects.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>5. Your rights</h2>
+        <p>Under the UK GDPR and Data Protection Act 2018, you have the right to:</p>
+        <ul>
+          <li><strong>Access</strong> &mdash; request a copy of the personal data we hold about you</li>
+          <li><strong>Rectification</strong> &mdash; ask us to correct inaccurate data</li>
+          <li><strong>Erasure</strong> &mdash; ask us to delete your personal data in certain circumstances</li>
+          <li><strong>Restriction</strong> &mdash; ask us to limit how we use your data</li>
+          <li><strong>Portability</strong> &mdash; receive your data in a structured, machine-readable format</li>
+          <li><strong>Object</strong> &mdash; object to processing based on legitimate interests</li>
+        </ul>
+        <p>To exercise any of these rights, email <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a>. We will respond within one month.</p>
+      </div>
+
+      <div class="policy-section">
+        <h2>6. Right to complain</h2>
+        <p>Should you have concerns about how we handle your personal data, you have the right to lodge a complaint with the <strong>Information Commissioner&rsquo;s Office (ICO)</strong>:</p>
+        <ul>
+          <li>Website: <a href="https://ico.org.uk" target="_blank" rel="noopener">ico.org.uk</a></li>
+          <li>Telephone: 0303 123 1113</li>
+        </ul>
+        <p>We would welcome the opportunity to address any concern directly before you contact the ICO.</p>
+      </div>
+
+    </div><!-- /tab-clients -->
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Registered in England and Wales &middot; Company No. 17139363</p>
+    <p class="footer-text" style="margin-top:0.4em"><a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a> &middot; <a href="/privacy/">Privacy Policy</a></p>
+  </footer>
+
+  <script>
+    const btns = document.querySelectorAll('.tab-btn');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    btns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        btns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
+        panels.forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        document.getElementById(btn.getAttribute('aria-controls')).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
