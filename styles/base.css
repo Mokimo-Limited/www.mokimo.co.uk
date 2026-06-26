@@ -1,0 +1,80 @@
+/* === Mokimo — Base Stylesheet ===
+   Shared across all pages.
+   Edit here to change fonts, colours, or spacing tokens site-wide. */
+
+/* --- Reset --- */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Design tokens --- */
+
+:root {
+  --color-base: #F5F0EB;
+  --color-text: #2C2C2C;
+  --color-text-muted: #5C5650;
+  --color-accent: #7D8B75;
+  --color-accent-deep: #5E6B57;
+  --color-sand: #C4B5A0;
+  --color-sand-light: #D9CFBF;
+  --color-warm-brown: #8A7E6E;
+
+  --font-display: 'Quicksand', -apple-system, sans-serif;
+  --font-body: 'Quicksand', -apple-system, sans-serif;
+  --font-heading: 'DM Sans', -apple-system, sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  --space-2xl: 9rem;
+
+  --side-padding: clamp(1.5rem, 5vw, 3rem);
+}
+
+/* --- Base --- */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  background-color: var(--color-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* --- Footer --- */
+
+.site-footer {
+  padding: var(--space-lg) var(--side-padding) var(--space-md);
+  text-align: center;
+}
+
+.footer-text {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--color-warm-brown);
+}
+
+.footer-text a {
+  color: var(--color-warm-brown);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-text a:hover {
+  color: var(--color-accent);
+}

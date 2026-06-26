@@ -7,53 +7,11 @@
   <meta name="description" content="Mechanical, electronic, and firmware engineering consultancy. We bring careful thinking to complex problems.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/base.css">
   <style>
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     :root {
-      --color-base: #F5F0EB;
-      --color-text: #2C2C2C;
-      --color-text-muted: #5C5650;
-      --color-accent: #7D8B75;
-      --color-accent-deep: #5E6B57;
-      --color-sand: #C4B5A0;
-      --color-sand-light: #D9CFBF;
-      --color-warm-brown: #8A7E6E;
-
-      --font-display: 'Cormorant Garamond', Georgia, serif;
-      --font-body: 'Source Sans 3', -apple-system, sans-serif;
-      --font-mono: 'JetBrains Mono', 'Courier New', monospace;
-
-      --space-xs: 0.5rem;
-      --space-sm: 1rem;
-      --space-md: 2rem;
-      --space-lg: 4rem;
-      --space-xl: 6rem;
-      --space-2xl: 9rem;
-
       --max-width: 900px;
-      --side-padding: clamp(1.5rem, 5vw, 3rem);
-    }
-
-    html {
-      scroll-behavior: smooth;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    body {
-      font-family: var(--font-body);
-      font-weight: 400;
-      font-size: 1.0625rem;
-      line-height: 1.7;
-      color: var(--color-text);
-      background-color: var(--color-base);
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
     }
 
     /* --- Header --- */
@@ -94,9 +52,9 @@
     }
 
     .site-nav a {
-      font-family: var(--font-mono);
-      font-size: 0.8rem;
-      font-weight: 300;
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
       letter-spacing: 0.06em;
       color: var(--color-text-muted);
       text-decoration: none;
@@ -155,7 +113,7 @@
     .hero-title {
       font-family: var(--font-display);
       font-size: clamp(2.8rem, 6vw, 4.2rem);
-      font-weight: 400;
+      font-weight: 300;
       line-height: 1.15;
       letter-spacing: 0.02em;
       color: var(--color-text);
@@ -195,9 +153,9 @@
     }
 
     .section-label {
-      font-family: var(--font-mono);
+      font-family: var(--font-heading);
       font-size: 0.75rem;
-      font-weight: 300;
+      font-weight: 400;
       letter-spacing: 0.1em;
       color: var(--color-warm-brown);
       text-transform: uppercase;
@@ -215,10 +173,10 @@
     }
 
     .principle-name {
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
+      font-family: var(--font-heading);
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
       color: var(--color-text-muted);
       margin-bottom: var(--space-xs);
     }
@@ -248,10 +206,10 @@
     }
 
     .service-name {
-      font-family: var(--font-mono);
+      font-family: var(--font-heading);
       font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      font-weight: 600;
+      letter-spacing: 0.01em;
       color: var(--color-text-muted);
       margin-bottom: 0.5rem;
     }
@@ -286,34 +244,21 @@
     }
 
     .email-link {
-      font-family: var(--font-mono);
-      font-size: 0.95rem;
-      color: var(--color-accent);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--color-accent-deep);
       text-decoration: none;
-      position: relative;
-      padding-bottom: 2px;
-      transition: color 0.3s ease;
-    }
-
-    .email-link::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background-color: var(--color-accent-deep);
-      transition: width 0.3s ease;
+      display: inline-block;
+      border: 1.5px solid var(--color-accent);
+      padding: 0.55em 1.3em;
+      transition: border-color 0.3s ease, color 0.3s ease;
     }
 
     .email-link:hover,
     .email-link:focus-visible {
-      color: var(--color-accent-deep);
-    }
-
-    .email-link:hover::after,
-    .email-link:focus-visible::after {
-      width: 100%;
+      border-color: var(--color-accent-deep);
+      color: var(--color-text);
     }
 
     .contact-email-block {
@@ -321,37 +266,12 @@
     }
 
     .contact-location {
-      font-family: var(--font-mono);
+      font-family: var(--font-body);
       font-size: 0.8rem;
       font-weight: 300;
       color: var(--color-text-muted);
       letter-spacing: 0.05em;
       margin-top: var(--space-sm);
-    }
-
-    /* --- Footer --- */
-
-    .site-footer {
-      padding: var(--space-lg) var(--side-padding) var(--space-md);
-      text-align: center;
-    }
-
-    .footer-text {
-      font-family: var(--font-mono);
-      font-size: 0.75rem;
-      font-weight: 300;
-      letter-spacing: 0.04em;
-      color: var(--color-warm-brown);
-    }
-
-    .footer-text a {
-      color: var(--color-warm-brown);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    .footer-text a:hover {
-      color: var(--color-accent);
     }
 
     /* --- Reveal Animations --- */
