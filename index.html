@@ -243,7 +243,14 @@
       margin-bottom: var(--space-lg);
     }
 
-    .email-link {
+    .contact-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+    }
+
+    .contact-link {
       font-family: var(--font-body);
       font-size: 0.9rem;
       font-weight: 500;
@@ -255,14 +262,10 @@
       transition: border-color 0.3s ease, color 0.3s ease;
     }
 
-    .email-link:hover,
-    .email-link:focus-visible {
+    .contact-link:hover,
+    .contact-link:focus-visible {
       border-color: var(--color-accent-deep);
       color: var(--color-text);
-    }
-
-    .contact-email-block {
-      margin-top: var(--space-md);
     }
 
     .contact-location {
@@ -399,8 +402,9 @@
       <section id="contact" class="contact" aria-label="Contact">
         <h2 class="contact-heading reveal">Let's talk about<br>your project.</h2>
         <p class="contact-sub reveal">We'd love to hear what you're working on. Tell us what you're trying to solve and we'll let you know if we can help.</p>
-        <div class="contact-email-block reveal">
-          <a href="mailto:hello@mokimo.co.uk" class="email-link">hello@mokimo.co.uk</a>
+        <div class="contact-actions reveal">
+          <a href="mailto:hello@mokimo.co.uk" class="contact-link">hello@mokimo.co.uk</a>
+          <a href="https://dash.mokimo.co.uk/book_appointment" class="contact-link">Book a call</a>
         </div>
       </section>
 
