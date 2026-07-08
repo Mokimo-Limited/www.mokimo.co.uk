@@ -16,6 +16,31 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.mokimo.co.uk/examples/mechanical/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.mokimo.co.uk/examples/electronics/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.mokimo.co.uk/examples/firmware/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.mokimo.co.uk/examples/production/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.mokimo.co.uk/examples/process/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://www.mokimo.co.uk/privacy/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
