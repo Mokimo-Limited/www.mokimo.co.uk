@@ -354,7 +354,7 @@ body {
 .page-content {
   max-width: 720px;
   margin: 0 auto;
-  padding: var(--space-lg) var(--side-padding) var(--space-xl);
+  padding: calc(var(--space-lg) + 3.5rem) var(--side-padding) var(--space-xl);
 }
 
 .page-title {

@@ -107,11 +107,24 @@
 </head>
 <body>
 
-  <header class="page-header">
-    <div class="page-header-inner">
-      <a href="/" class="wordmark">Mokimo</a>
-      <a href="/" class="back-link">&#8592; Home</a>
+  <header class="site-header" role="banner">
+    <div class="wordmark-group">
+      <a href="/" class="wordmark">mokimo</a>
+      <span class="wordmark-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+        </svg>
+      </span>
     </div>
+    <nav>
+      <ul class="site-nav" role="list">
+        <li><a href="/about/">About</a></li>
+        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/examples/">Examples</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main class="page-content">
@@ -173,6 +186,13 @@
     <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
     <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
   </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
 
 </body>
 </html>
