@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Examples — Mokimo</title>
+  <meta name="description" content="Examples of Mokimo's engineering work — mechanical design, electronics, and firmware, drawn from personal, academic, and professional projects.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/base.css">
+  <style>
+    .examples-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: var(--space-lg) var(--side-padding) var(--space-xl);
+    }
+
+    .examples-intro {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--color-text-muted);
+      max-width: 640px;
+      margin-bottom: var(--space-lg);
+    }
+
+    .section-label {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      color: var(--color-warm-brown);
+      text-transform: uppercase;
+      margin-bottom: var(--space-md);
+    }
+
+    /* --- Case studies --- */
+
+    .case-study {
+      margin-bottom: var(--space-2xl);
+      padding-bottom: var(--space-xl);
+      border-bottom: 1px solid var(--color-sand-light);
+    }
+
+    .case-study:last-of-type {
+      border-bottom: none;
+    }
+
+    .case-study-meta {
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-warm-brown);
+      margin-bottom: 0.6rem;
+    }
+
+    .case-study-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.1rem);
+      font-weight: 400;
+      letter-spacing: 0.01em;
+      color: var(--color-text);
+      margin-bottom: var(--space-md);
+      max-width: 640px;
+    }
+
+    .case-study-body {
+      max-width: 640px;
+      margin-bottom: var(--space-md);
+    }
+
+    .case-study-step {
+      margin-bottom: 1.1rem;
+    }
+
+    .case-study-step-name {
+      font-family: var(--font-heading);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-accent-deep);
+      margin-bottom: 0.3rem;
+    }
+
+    .case-study-step p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--color-text-muted);
+    }
+
+    .case-study-media {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: var(--space-md);
+    }
+
+    .case-study-media figure {
+      margin: 0;
+    }
+
+    .case-study-media img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .case-study-media figcaption {
+      font-size: 0.78rem;
+      color: var(--color-text-muted);
+      margin-top: 0.5rem;
+      line-height: 1.5;
+    }
+
+    /* --- Gallery --- */
+
+    .gallery-section {
+      margin-top: var(--space-xl);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: var(--space-md) var(--space-sm);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 190px;
+      object-fit: cover;
+      border-radius: 2px;
+      display: block;
+    }
+
+    .gallery-caption {
+      font-size: 0.82rem;
+      color: var(--color-text-muted);
+      margin-top: 0.55rem;
+      line-height: 1.5;
+    }
+
+    .page-cta {
+      margin-top: var(--space-2xl);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    @media (max-width: 640px) {
+      .case-study-media img,
+      .gallery-item img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="page-header">
+    <div class="page-header-inner">
+      <a href="/" class="wordmark">Mokimo</a>
+      <a href="/" class="back-link">&#8592; Home</a>
+    </div>
+  </header>
+
+  <main class="examples-content">
+
+    <h1 class="page-title">Examples of our work</h1>
+    <p class="page-meta">A closer look at the kind of engineering we do</p>
+
+    <div class="draft-note" style="margin-top: var(--space-md);">
+      <strong>Working draft.</strong> This page shows the kind of visual case-study content we're planning to add — a mix of project photography and short write-ups. Image selection, cropping, and captions are still being finalised, and some items may be swapped or removed before this goes live.
+    </div>
+
+    <p class="examples-intro">Mokimo is a new company, so the work below draws on the engineering experience behind it — personal projects and academic work, as well as professional practice — shown here to give a genuine sense of how we think and build, rather than a list of client references. Details have been generalised where appropriate.</p>
+
+    <span class="section-label">Featured</span>
+
+    <article class="case-study">
+      <p class="case-study-meta">Mechanical design &middot; For a university engineering department</p>
+      <h2 class="case-study-title">Strain-wave gear demonstrator</h2>
+      <div class="case-study-body">
+        <div class="case-study-step">
+          <div class="case-study-step-name">Problem</div>
+          <p>A university engineering department needed a physical demonstrator to teach strain-wave ("harmonic") gear reduction — a mechanism that's usually explained with diagrams and is hard to build real intuition for on paper.</p>
+        </div>
+        <div class="case-study-step">
+          <div class="case-study-step-name">Approach</div>
+          <p>Designed and 3D-printed a working strain-wave gearbox with a visible flex-spline and a dial showing the reduction ratio in real time, then paired it with a simple motor and driver so students could see the mechanism turning under load rather than just reading about it.</p>
+        </div>
+        <div class="case-study-step">
+          <div class="case-study-step-name">Outcome</div>
+          <p>Delivered a working demonstrator with a 53.5:1 reduction ratio, built end-to-end from design through to the finished model — later reused as a reference point for other compact drivetrain work.</p>
+        </div>
+      </div>
+      <div class="case-study-media">
+        <figure>
+          <img src="/images/examples/harmonic-drive-demonstrator.jpg" alt="3D-printed strain-wave gear demonstrator with a reduction-ratio dial" loading="lazy">
+          <figcaption>The finished demonstrator, showing the reduction-ratio dial.</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/examples/motor-driver-test-setup.jpg" alt="Motor and driver electronics being bench-tested" loading="lazy">
+          <figcaption>Bench-testing the motor and driver before final assembly.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <article class="case-study">
+      <p class="case-study-meta">Mechanical, electronic &amp; firmware &middot; Personal project</p>
+      <h2 class="case-study-title">Bikestow: an automated storage mechanism</h2>
+      <div class="case-study-body">
+        <div class="case-study-step">
+          <div class="case-study-step-name">Problem</div>
+          <p>A cramped storage space made for a good excuse to explore what a small, fully custom automation project looks like end-to-end — mechanism, electronics, and control, not just one discipline in isolation.</p>
+        </div>
+        <div class="case-study-step">
+          <div class="case-study-step-name">Approach</div>
+          <p>Built a CNC gantry mechanism from machined aluminium brackets and lead-screw hardware, designed a custom controller PCB to drive the motors, and hand-assembled and soldered the electronics before wiring the system together for testing.</p>
+        </div>
+        <div class="case-study-step">
+          <div class="case-study-step-name">Outcome</div>
+          <p>A working prototype that moved from sketch to a functioning automated mechanism — covering mechanical design and fabrication, PCB design, and the firmware to tie it together. The kind of whole-system project Mokimo is built around.</p>
+        </div>
+      </div>
+      <div class="case-study-media">
+        <figure>
+          <img src="/images/examples/bikestow-cnc-gantry.jpg" alt="Custom CNC gantry mechanism during assembly" loading="lazy">
+          <figcaption>The gantry mechanism during assembly.</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/examples/bikestow-lead-nuts.jpg" alt="Machined aluminium brackets with lead-screw nut inserts" loading="lazy">
+          <figcaption>Machined mounting brackets with lead-screw nuts.</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/examples/bikestow-soldering.jpg" alt="Hand-soldering a custom controller PCB" loading="lazy">
+          <figcaption>Hand-soldering the controller board.</figcaption>
+        </figure>
+        <figure>
+          <img src="/images/examples/bikestow-component-layout.jpg" alt="Drive electronics laid out before wiring" loading="lazy">
+          <figcaption>Laying out drive electronics before wiring.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <section class="gallery-section">
+      <span class="section-label">More from the workshop</span>
+      <div class="gallery-grid">
+
+        <div class="gallery-item">
+          <img src="/images/examples/sensor-readhead-assembly.jpg" alt="Custom sensor readhead assembly on a linear motion platform" loading="lazy">
+          <p class="gallery-caption">Custom sensor readhead assembly integrated onto a linear motion platform.</p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="/images/examples/cnc-machined-components.jpg" alt="CNC-machined components from a mechanical assembly" loading="lazy">
+          <p class="gallery-caption">Complex CNC-machined components from a multi-part mechanical assembly.</p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="/images/examples/functional-test-rig.jpg" alt="Functional test rig for a rotating mechanical assembly" loading="lazy">
+          <p class="gallery-caption">A functional test rig used to validate a rotating mechanical assembly under load.</p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="/images/examples/fluidics-fittings-selection.jpg" alt="Fittings and hose for a fluidics subsystem" loading="lazy">
+          <p class="gallery-caption">Selecting fittings and hose for a high-pressure fluidics subsystem.</p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="/images/examples/machined-bracket-coupling.jpg" alt="Machined aluminium and brass components" loading="lazy">
+          <p class="gallery-caption">Precision-machined aluminium and brass components, ready for assembly.</p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="/images/examples/3d-printed-drive-housing.jpg" alt="3D-printed drive housing with a stepper motor" loading="lazy">
+          <p class="gallery-caption">A custom 3D-printed drive housing integrated with a stepper motor actuator.</p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="/images/examples/gear-train-components.jpg" alt="Custom gear-train components" loading="lazy">
+          <p class="gallery-caption">Custom gear-train components prior to final assembly.</p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="/images/examples/disassembled-actuator-modules.jpg" alt="Disassembled actuator modules showing internal gearing" loading="lazy">
+          <p class="gallery-caption">Modular actuator assemblies shown with housings, gearing, and electronics.</p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="/images/examples/pcb-bringup-wireless-module.jpg" alt="Populated prototype PCB with a wireless microcontroller module" loading="lazy">
+          <p class="gallery-caption">A populated prototype PCB with a wireless microcontroller module, during bring-up.</p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="/images/examples/lcd-module-integration.jpg" alt="Display module integrated on a custom embedded controller board" loading="lazy">
+          <p class="gallery-caption">Display integration on a custom embedded controller board.</p>
+        </div>
+
+        <div class="gallery-item">
+          <img src="/images/examples/technical-drawing-detail.jpg" alt="Dimensioned engineering drawing detail" loading="lazy">
+          <p class="gallery-caption">Dimensioned drawing detail for a precision-turned component.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="page-cta">
+      <a href="https://dash.mokimo.co.uk/book_appointment" class="contact-link contact-link--primary">Book a call</a>
+      <a href="/#contact" class="contact-link">Tell us about your project</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
+    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
+    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
+  </footer>
+
+</body>
+</html>

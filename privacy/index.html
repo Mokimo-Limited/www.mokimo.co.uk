@@ -268,6 +268,7 @@
 
       <div class="policy-section">
         <h2>1. Data Collection and Processing</h2>
+        <p>This tab covers personal data processed when you <strong>browse this website</strong> as a visitor — page requests, technical logs, and anything you submit through the contact form. If you are a client, prospective client, or otherwise in direct contact with Mokimo Ltd about a project, the wider processing described in the <strong>Clients &amp; enquiries</strong> tab also applies to you.</p>
         <p>We process limited personal data when you visit our website to ensure its security, stability, and correct presentation.</p>
 
         <table class="data-table">
@@ -350,7 +351,7 @@
 
       <div class="policy-section">
         <h2>1. Scope of Processing</h2>
-        <p>This section applies to personal data processed during business development, client engagements, and related administrative workflows. This is distinct from the data collected during general website browsing. Use of this website is also governed by our <a href="/terms/">Terms of Service</a>.</p>
+        <p>This tab applies to personal data processed during business development, enquiries, and client engagements — for example, if you contact us about a project, become a client, or are a contact at a supplier or partner organisation. This is distinct from, and in addition to, the general website-browsing data described in the <strong>Website visitors</strong> tab. Use of this website is also governed by our <a href="/terms/">Terms of Service</a>.</p>
       </div>
 
       <div class="policy-section">
@@ -368,14 +369,14 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>Microsoft Corporation</strong><br><small>Microsoft 365 &amp; Graph</small></td>
-              <td>Email communications, calendar scheduling, and document storage for business operations. Our email-processing service receives notifications via Microsoft Graph.</td>
+              <td><strong>Microsoft Corporation</strong><br><small>Microsoft 365, Exchange Online &amp; SharePoint</small></td>
+              <td>Email communications, calendar scheduling, and document storage (including SharePoint) for business operations. Our internal services receive notifications and read/write business documents via Microsoft Graph.</td>
               <td>Contractual necessity (Art.&nbsp;6(1)(b)) and Legitimate interests (Art.&nbsp;6(1)(f)).</td>
               <td>2 years post-engagement, or as required for legal and accounting purposes.</td>
             </tr>
             <tr>
               <td><strong>OpenRouter Inc.</strong><br><small>AI inference routing</small></td>
-              <td>Routing of prompts to language models for internal email classification, analysis, and workflow assistance. Sensitive content is filtered before transmission where possible.</td>
+              <td>Routing of prompts to language models for internal email classification, analysis, and workflow assistance. Depending on routing configuration, the underlying model may be provided by a range of AI labs; OpenRouter is our direct processor in each case. Sensitive content is filtered before transmission where possible.</td>
               <td>Legitimate interests (Art.&nbsp;6(1)(f)) &mdash; operating efficient internal workflows.</td>
               <td>Zero Data Retention (ZDR) enforced on supported models.</td>
             </tr>
@@ -386,6 +387,18 @@
               <td>2 years from last contact.</td>
             </tr>
             <tr>
+              <td><strong>Brave Software, Inc.</strong><br><small>Web search API</small></td>
+              <td>Automated web lookups to identify an unfamiliar sender's company or verify publicly available details (e.g. a company website) during enquiry triage. Only limited identifiers are sent (such as a name or company).</td>
+              <td>Legitimate interests (Art.&nbsp;6(1)(f)) &mdash; accurately identifying business correspondents.</td>
+              <td>Not retained by us beyond the processing session; subject to Brave's own policy.</td>
+            </tr>
+            <tr>
+              <td><strong>Revolut Ltd</strong><br><small>Business banking &amp; payments</small></td>
+              <td>Processing of business bank transactions, invoicing, and payment reconciliation, including counterparty names and payment references.</td>
+              <td>Contractual necessity (Art.&nbsp;6(1)(b)) and Legal obligation (Art.&nbsp;6(1)(c)) &mdash; accounting records.</td>
+              <td>7 years, in line with UK statutory accounting requirements.</td>
+            </tr>
+            <tr>
               <td><strong>Self-hosted ERP (Frappe/ERPNext)</strong><br><small>UK private infrastructure</small></td>
               <td>CRM records, communications, appointments, contracts, and project documentation.</td>
               <td>Contractual necessity (Art.&nbsp;6(1)(b)) and Legitimate interests (Art.&nbsp;6(1)(f)).</td>
@@ -394,12 +407,12 @@
           </tbody>
         </table>
 
-        <p style="margin-top:1rem">Data transfers to providers outside the UK are protected by Standard Contractual Clauses (SCCs), the UK International Data Transfer Agreement (IDTA), or equivalent mechanisms. We enforce Zero Data Retention policies where possible for AI-assisted processing. Formal Data Processing Agreements with subprocessors are maintained as part of our compliance programme.</p>
+        <p style="margin-top:1rem">Data transfers to providers outside the UK are protected by Standard Contractual Clauses (SCCs), the UK International Data Transfer Agreement (IDTA), or equivalent mechanisms. We enforce Zero Data Retention policies where possible for AI-assisted processing. Formal Data Processing Agreements with subprocessors are maintained as part of our compliance programme. AI inference for internal workflows is also partly handled by our own self-hosted models running on private infrastructure, which are not third-party processing.</p>
       </div>
 
       <div class="policy-section">
         <h2>3. Internal Data Management</h2>
-        <p>We use self-hosted systems (ERPNext on private UK infrastructure) for CRM, workflow automation, and document management. An internal email-processing service classifies inbound and outbound mail via Microsoft Graph and may use AI-assisted tools (routed through OpenRouter) to enrich records. Automated filtering is applied to reduce transmission of sensitive content to external inference providers.</p>
+        <p>We use self-hosted systems (ERPNext on private UK infrastructure) for CRM, workflow automation, and document management. An internal email-processing service classifies inbound and outbound mail via Microsoft Graph, reconciles business banking via Revolut, and may use AI-assisted tools (routed through OpenRouter, or run on our own self-hosted models) to enrich records. Automated filtering is applied to reduce transmission of sensitive content to external inference providers.</p>
       </div>
 
       <div class="policy-section">
@@ -423,7 +436,7 @@
 
   <footer class="site-footer">
     <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
-    <p class="footer-text footer-links">Registered office: The Workstation, 15 Paternoster Row, Sheffield S1 2BX &middot; Registered in England and Wales</p>
+    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
     <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
   </footer>
 

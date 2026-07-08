@@ -2,6 +2,18 @@
    Shared across all pages.
    Edit here to change fonts, colours, or spacing tokens site-wide. */
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* --- Reset --- */
 
 *, *::before, *::after {
@@ -81,6 +93,19 @@ body {
 
 .footer-links {
   margin-top: 0.4em;
+}
+
+.footer-address {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.footer-address svg {
+  width: 0.85em;
+  height: 0.85em;
+  flex-shrink: 0;
+  color: var(--color-accent);
 }
 
 /* --- Shared layout (header, CTAs, forms) --- */
@@ -265,6 +290,18 @@ body {
   color: var(--color-text-muted);
   margin-top: var(--space-xs);
   line-height: 1.6;
+}
+
+.contact-form-note a {
+  color: var(--color-accent-deep);
+  text-decoration: underline;
+  text-decoration-color: var(--color-sand);
+  transition: color 0.3s ease;
+}
+
+.contact-form-note a:hover,
+.contact-form-note a:focus-visible {
+  color: var(--color-accent);
 }
 
 .contact-form-status {
