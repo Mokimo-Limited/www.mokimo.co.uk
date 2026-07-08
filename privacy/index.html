@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — Mokimo</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -249,10 +250,11 @@
   <main class="page-content">
 
     <h1 class="page-title">Privacy Policy</h1>
-    <p class="page-meta">Last updated: April 2026</p>
+    <p class="page-meta">Last updated: July 2026</p>
 
     <p class="controller-note">
       <strong>Data controller:</strong> Mokimo Ltd &mdash; Company No. 17139363, registered in England and Wales.<br>
+      <strong>Registered office:</strong> The Workstation, 15 Paternoster Row, Sheffield S1 2BX<br>
       <strong>Contact:</strong> <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a>
     </p>
 
@@ -287,6 +289,13 @@
               <td>90 days.</td>
             </tr>
             <tr>
+              <td><strong>Contact enquiries</strong><br><small>Website contact form or email</small></td>
+              <td>Name, email address, company (optional), and message content.</td>
+              <td>Responding to business enquiries and assessing potential engagements.</td>
+              <td>Legitimate interests (Art.&nbsp;6(1)(f) GDPR) &mdash; operating a consultancy and responding to prospective clients. Consent is not required where you initiate contact.</td>
+              <td>2 years from last contact, unless a client relationship is established.</td>
+            </tr>
+            <tr>
               <td><strong>Content Delivery</strong><br><small>External asset requests (Google Fonts)</small></td>
               <td>IP address (processed by the CDN provider to deliver font files).</td>
               <td>Consistent and legible rendering of website typography.</td>
@@ -296,16 +305,17 @@
           </tbody>
         </table>
 
-        <p style="margin-top:1rem">This website does not utilize cookies, tracking pixels, or third-party analytics suites. We do not collect special categories of personal data through this website.</p>
+        <p style="margin-top:1rem">This website does not use cookies, tracking pixels, or third-party analytics suites for visitor measurement. Contact form submissions open your email client locally; no message content is stored by this website unless you send the email.</p>
       </div>
 
       <div class="policy-section">
         <h2>2. Data Hosting and Location</h2>
-        <p>Our website is hosted on infrastructure located within the United Kingdom. All server-side logs are stored and processed within this jurisdiction. Should we transition to alternative hosting providers, this policy will be updated to reflect the relevant data transfer safeguards.</p>
+        <p>Our website is hosted on <strong>GitHub Pages</strong> infrastructure. Server-side technical logs may be processed by GitHub in connection with delivery and security. Our primary business systems (CRM, email processing, and document management) run on private, UK-based infrastructure.</p>
       </div>
 
       <div class="policy-section">
         <h2>3. Third-Party Processors</h2>
+        <p><strong>GitHub, Inc. (GitHub Pages)</strong>: Hosts the static website files. May process IP addresses and request metadata for content delivery. See GitHub&rsquo;s <a href="https://docs.github.com/en/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">Privacy Statement</a>.</p>
         <p><strong>Google LLC (Google Fonts)</strong>: We load typefaces from <code>fonts.googleapis.com</code>. Google acts as a data processor. This may involve the transfer of your IP address to servers in the United States. Such transfers are governed by the UK&ndash;US Data Bridge and Google&rsquo;s <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Privacy Policy</a>.</p>
         <p>No other third parties are granted access to personal data arising from your use of this website.</p>
       </div>
@@ -335,16 +345,12 @@
     </div><!-- /tab-website -->
 
     <!-- ===================== TAB 2: CLIENTS & ENQUIRIES ===================== -->
+    <!-- LEGAL REVIEW: clients tab processor list and retention periods should be confirmed with counsel. -->
     <div class="tab-panel" id="tab-clients" role="tabpanel" aria-labelledby="btn-clients">
-
-      <div class="wip-banner">
-        <p>Notice Status: Draft / Under Review</p>
-        <p>We are currently finalizing formal Data Processing Agreements and internal registers. This section will be updated upon completion. For urgent inquiries, please contact <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a>.</p>
-      </div>
 
       <div class="policy-section">
         <h2>1. Scope of Processing</h2>
-        <p>This section applies to personal data processed during business development, client engagements, and related administrative workflows. This is distinct from the data collected during general website browsing.</p>
+        <p>This section applies to personal data processed during business development, client engagements, and related administrative workflows. This is distinct from the data collected during general website browsing. Use of this website is also governed by our <a href="/terms/">Terms of Service</a>.</p>
       </div>
 
       <div class="policy-section">
@@ -362,32 +368,38 @@
           </thead>
           <tbody>
             <tr>
-              <td><strong>Microsoft Corporation</strong><br><small>Business Productivity Suite</small></td>
-              <td>Management of email communications, calendar scheduling, and project documentation.</td>
+              <td><strong>Microsoft Corporation</strong><br><small>Microsoft 365 &amp; Graph</small></td>
+              <td>Email communications, calendar scheduling, and document storage for business operations. Our email-processing service receives notifications via Microsoft Graph.</td>
               <td>Contractual necessity (Art.&nbsp;6(1)(b)) and Legitimate interests (Art.&nbsp;6(1)(f)).</td>
-              <td>2 years post-engagement.</td>
+              <td>2 years post-engagement, or as required for legal and accounting purposes.</td>
             </tr>
             <tr>
-              <td><strong>OpenRouter Inc.</strong><br><small>AI Integration Services</small></td>
-              <td>Processing of data for internal analysis and deliverable optimization.</td>
-              <td>Legitimate interests (Art.&nbsp;6(1)(f)) &mdash; enhancing service efficiency and quality.</td>
-              <td>Zero Data Retention (ZDR) enforced.</td>
+              <td><strong>OpenRouter Inc.</strong><br><small>AI inference routing</small></td>
+              <td>Routing of prompts to language models for internal email classification, analysis, and workflow assistance. Sensitive content is filtered before transmission where possible.</td>
+              <td>Legitimate interests (Art.&nbsp;6(1)(f)) &mdash; operating efficient internal workflows.</td>
+              <td>Zero Data Retention (ZDR) enforced on supported models.</td>
             </tr>
             <tr>
-              <td><strong>Apollo.io, Inc.</strong><br><small>Business Intelligence</small></td>
+              <td><strong>Apollo.io, Inc.</strong><br><small>Business intelligence</small></td>
               <td>Sourcing of professional contact information for outbound business development.</td>
               <td>Legitimate interests (Art.&nbsp;6(1)(f)) &mdash; identifying potential commercial partners.</td>
               <td>2 years from last contact.</td>
             </tr>
+            <tr>
+              <td><strong>Self-hosted ERP (Frappe/ERPNext)</strong><br><small>UK private infrastructure</small></td>
+              <td>CRM records, communications, appointments, contracts, and project documentation.</td>
+              <td>Contractual necessity (Art.&nbsp;6(1)(b)) and Legitimate interests (Art.&nbsp;6(1)(f)).</td>
+              <td>Duration of client relationship plus statutory retention periods.</td>
+            </tr>
           </tbody>
         </table>
 
-        <p style="margin-top:1rem">Data transfers to providers outside the UK are protected by Standard Contractual Clauses (SCCs) or the UK International Data Transfer Agreement (IDTA). We enforce Zero Data Retention policies where possible for AI-assisted processing to ensure data is not used for model training.</p>
+        <p style="margin-top:1rem">Data transfers to providers outside the UK are protected by Standard Contractual Clauses (SCCs), the UK International Data Transfer Agreement (IDTA), or equivalent mechanisms. We enforce Zero Data Retention policies where possible for AI-assisted processing. Formal Data Processing Agreements with subprocessors are maintained as part of our compliance programme.</p>
       </div>
 
       <div class="policy-section">
         <h2>3. Internal Data Management</h2>
-        <p>We utilize internal systems for workflow automation and data pre-processing. These systems are hosted on private, UK-based infrastructure. We implement automated filtering to redact sensitive information before any data is transmitted to external inferencing service providers.</p>
+        <p>We use self-hosted systems (ERPNext on private UK infrastructure) for CRM, workflow automation, and document management. An internal email-processing service classifies inbound and outbound mail via Microsoft Graph and may use AI-assisted tools (routed through OpenRouter) to enrich records. Automated filtering is applied to reduce transmission of sensitive content to external inference providers.</p>
       </div>
 
       <div class="policy-section">
@@ -410,8 +422,9 @@
   </main>
 
   <footer class="site-footer">
-    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Registered in England and Wales &middot; Company No. 17139363</p>
-    <p class="footer-text" style="margin-top:0.4em"><a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a> &middot; <a href="/privacy/">Privacy Policy</a></p>
+    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
+    <p class="footer-text footer-links">Registered office: The Workstation, 15 Paternoster Row, Sheffield S1 2BX &middot; Registered in England and Wales</p>
+    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
   </footer>
 
   <script>

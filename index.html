@@ -5,94 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mokimo — Design Engineering Consultancy</title>
   <meta name="description" content="Mechanical, electronic, and firmware engineering consultancy. We bring careful thinking to complex problems.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://www.mokimo.co.uk/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/base.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Mokimo Ltd",
+    "alternateName": "Mokimo",
+    "url": "https://www.mokimo.co.uk",
+    "logo": "https://www.mokimo.co.uk/favicon.svg",
+    "description": "Mechanical, electronic, and firmware engineering consultancy. We bring careful thinking to complex problems.",
+    "email": "hello@mokimo.co.uk",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "The Workstation, 15 Paternoster Row",
+      "addressLocality": "Sheffield",
+      "postalCode": "S1 2BX",
+      "addressCountry": "GB"
+    },
+    "areaServed": "GB",
+    "sameAs": [
+      "https://www.linkedin.com/company/mokimo-ltd/"
+    ],
+    "foundingDate": "2026",
+    "priceRange": "$$"
+  }
+  </script>
   <style>
     :root {
       --max-width: 900px;
     }
-
-    /* --- Header --- */
-
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 100;
-      padding: var(--space-sm) var(--side-padding);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background-color 0.4s ease, box-shadow 0.4s ease;
-    }
-
-    .site-header.scrolled {
-      background-color: rgba(245, 240, 235, 0.95);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-    }
-
-    .wordmark {
-      font-family: var(--font-display);
-      font-size: 1.6rem;
-      font-weight: 500;
-      letter-spacing: 0.12em;
-      color: var(--color-text);
-      text-decoration: none;
-      text-transform: lowercase;
-    }
-
-    .site-nav {
-      display: flex;
-      gap: var(--space-md);
-      list-style: none;
-    }
-
-    .site-nav a {
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      color: var(--color-text-muted);
-      text-decoration: none;
-      position: relative;
-      padding-bottom: 2px;
-      transition: color 0.3s ease;
-    }
-
-    .site-nav a::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 0;
-      height: 1px;
-      background-color: var(--color-accent);
-      transition: width 0.3s ease;
-    }
-
-    .site-nav a:hover,
-    .site-nav a:focus-visible {
-      color: var(--color-accent-deep);
-    }
-
-    .site-nav a:hover::after,
-    .site-nav a:focus-visible::after {
-      width: 100%;
-    }
-
-    /* --- Content Wrapper --- */
-
-    .content {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 var(--side-padding);
-    }
-
-    /* --- Sections --- */
 
     section {
       padding-top: var(--space-xl);
@@ -127,23 +74,6 @@
       line-height: 1.7;
       color: var(--color-text-muted);
       max-width: 540px;
-    }
-
-    .wordmark-group {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .wordmark-mark {
-      opacity: 0.65;
-      display: flex;
-      align-items: center;
-    }
-
-    .wordmark-mark svg {
-      width: 24px;
-      height: 24px;
     }
 
     /* --- Philosophy --- */
@@ -248,33 +178,17 @@
       flex-wrap: wrap;
       gap: var(--space-sm);
       margin-top: var(--space-md);
+      margin-bottom: var(--space-lg);
     }
 
-    .contact-link {
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      font-weight: 500;
-      color: var(--color-accent-deep);
-      text-decoration: none;
-      display: inline-block;
-      border: 1.5px solid var(--color-accent);
-      padding: 0.55em 1.3em;
-      transition: border-color 0.3s ease, color 0.3s ease;
-    }
-
-    .contact-link:hover,
-    .contact-link:focus-visible {
-      border-color: var(--color-accent-deep);
-      color: var(--color-text);
-    }
-
-    .contact-location {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 300;
-      color: var(--color-text-muted);
-      letter-spacing: 0.05em;
-      margin-top: var(--space-sm);
+    .contact-divider {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-warm-brown);
+      margin-bottom: var(--space-sm);
     }
 
     /* --- Reveal Animations --- */
@@ -293,22 +207,6 @@
     /* --- Responsive --- */
 
     @media (max-width: 640px) {
-      .site-header {
-        padding: 0.75rem var(--side-padding);
-      }
-
-      .site-nav {
-        gap: var(--space-sm);
-      }
-
-      .site-nav a {
-        font-size: 0.75rem;
-      }
-
-      .wordmark {
-        font-size: 1.35rem;
-      }
-
       .hero {
         min-height: 60vh;
         padding-top: calc(var(--space-xl) + 2rem);
@@ -331,7 +229,7 @@
 
   <header class="site-header" role="banner">
     <div class="wordmark-group">
-      <a href="#" class="wordmark">mokimo</a>
+      <a href="/" class="wordmark">mokimo</a>
       <span class="wordmark-mark" aria-hidden="true">
         <svg viewBox="0 0 24 24" fill="none">
           <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
@@ -340,7 +238,8 @@
     </div>
     <nav>
       <ul class="site-nav" role="list">
-        <li><a href="#about">About</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="#approach">Approach</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
@@ -353,9 +252,13 @@
       <section class="hero" aria-label="Introduction">
         <h1 class="hero-title reveal">Design engineering,<br>considered.</h1>
         <p class="hero-subtitle reveal">Mechanical, electronic, and firmware engineering consultancy. We bring careful thinking to complex problems.</p>
+        <div class="hero-cta reveal">
+          <a href="https://dash.mokimo.co.uk/book_appointment" class="contact-link contact-link--primary">Book a call</a>
+          <a href="#contact" class="contact-link">Tell us about your project</a>
+        </div>
       </section>
 
-      <section id="about" class="philosophy" aria-label="Our approach">
+      <section id="approach" class="philosophy" aria-label="Our approach">
         <span class="section-label reveal">Approach</span>
         <div class="principles">
           <div class="principle reveal">
@@ -403,48 +306,99 @@
         <h2 class="contact-heading reveal">Let's talk about<br>your project.</h2>
         <p class="contact-sub reveal">We'd love to hear what you're working on. Tell us what you're trying to solve and we'll let you know if we can help.</p>
         <div class="contact-actions reveal">
+          <a href="https://dash.mokimo.co.uk/book_appointment" class="contact-link contact-link--primary">Book a call</a>
           <a href="mailto:hello@mokimo.co.uk" class="contact-link">hello@mokimo.co.uk</a>
-          <a href="https://dash.mokimo.co.uk/book_appointment" class="contact-link">Book a call</a>
         </div>
+
+        <p class="contact-divider reveal">Or send a message</p>
+
+        <!--
+          Contact form integration options (for future deploy):
+          1. ERPNext Web Form — create a Web Form in Desk, publish at dash.mokimo.co.uk/contact.
+             Pros: leads land in CRM, no third party. Cons: cross-origin POST from mokimo.co.uk
+             needs CORS config or iframe embed; requires ERPNext deploy.
+          2. Guest API endpoint — @frappe.whitelist(allow_guest=True) method that creates a Lead.
+             Pros: native CRM integration, themed control. Cons: needs backend deploy + CORS.
+          3. Third-party form service (Formspree, etc.) — quickest external option.
+          Current draft uses mailto composition — works without deploy, adequate for low volume.
+        -->
+        <form class="contact-form reveal" id="contact-form" novalidate>
+          <div class="field">
+            <label for="contact-name">Name</label>
+            <input type="text" id="contact-name" name="name" required autocomplete="name">
+          </div>
+          <div class="field">
+            <label for="contact-email">Email</label>
+            <input type="email" id="contact-email" name="email" required autocomplete="email">
+          </div>
+          <div class="field">
+            <label for="contact-company">Company <span style="font-weight:300;text-transform:none;letter-spacing:0">(optional)</span></label>
+            <input type="text" id="contact-company" name="company" autocomplete="organization">
+          </div>
+          <div class="field">
+            <label for="contact-message">Message</label>
+            <textarea id="contact-message" name="message" required></textarea>
+          </div>
+          <button type="submit" class="contact-link">Send message</button>
+          <p class="contact-form-note">Opens your email client with a pre-filled message to hello@mokimo.co.uk. Prefer a call? <a href="https://dash.mokimo.co.uk/book_appointment">Book one directly</a>.</p>
+          <p class="contact-form-status" id="contact-form-status" role="status"></p>
+        </form>
       </section>
 
     </div>
   </main>
 
   <footer class="site-footer">
-    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a> </p>
-    <p class="footer-text" style="margin-top:0.4em"> Registered in England and Wales &middot; <a href="/privacy/">Privacy Policy</a></p>
+    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
+    <p class="footer-text footer-links">Registered office: The Workstation, 15 Paternoster Row, Sheffield S1 2BX &middot; Registered in England and Wales</p>
+    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
   </footer>
 
   <script>
-    // Sticky header background on scroll
     const header = document.querySelector('.site-header');
-    const onScroll = () => {
+    window.addEventListener('scroll', () => {
       header.classList.toggle('scrolled', window.scrollY > 40);
-    };
-    window.addEventListener('scroll', onScroll, { passive: true });
+    }, { passive: true });
 
-    // Intersection Observer for reveal animations
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          // Stagger siblings within the same parent
           const siblings = Array.from(entry.target.parentElement.querySelectorAll('.reveal'));
           const index = siblings.indexOf(entry.target);
-          const delay = index * 120;
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, delay);
+          setTimeout(() => entry.target.classList.add('visible'), index * 120);
           observer.unobserve(entry.target);
         }
       });
-    }, {
-      threshold: 0.15,
-      rootMargin: '0px 0px -40px 0px'
-    });
-
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(el => observer.observe(el));
+
+    document.getElementById('contact-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('contact-name').value.trim();
+      const email = document.getElementById('contact-email').value.trim();
+      const company = document.getElementById('contact-company').value.trim();
+      const message = document.getElementById('contact-message').value.trim();
+      const status = document.getElementById('contact-form-status');
+
+      if (!name || !email || !message) {
+        status.textContent = 'Please fill in your name, email, and message.';
+        status.classList.add('visible');
+        return;
+      }
+
+      const subject = encodeURIComponent('Enquiry from ' + name + (company ? ' (' + company + ')' : ''));
+      const body = encodeURIComponent(
+        'Name: ' + name + '\n' +
+        'Email: ' + email + '\n' +
+        (company ? 'Company: ' + company + '\n' : '') +
+        '\n' + message
+      );
+
+      window.location.href = 'mailto:hello@mokimo.co.uk?subject=' + subject + '&body=' + body;
+      status.textContent = 'If your email client did not open, please email hello@mokimo.co.uk directly.';
+      status.classList.add('visible');
+    });
   </script>
 
 </body>
