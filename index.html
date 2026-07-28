@@ -36,196 +36,8 @@
     "priceRange": "$$"
   }
   </script>
-  <style>
-    :root {
-      --max-width: 900px;
-    }
-
-    section {
-      padding-top: var(--space-xl);
-      padding-bottom: var(--space-xl);
-    }
-
-    /* --- Hero --- */
-
-    .hero {
-      padding-top: calc(var(--space-2xl) + 3rem);
-      padding-bottom: var(--space-2xl);
-      min-height: 70vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(2.8rem, 6vw, 4.2rem);
-      font-weight: 300;
-      line-height: 1.15;
-      letter-spacing: 0.02em;
-      color: var(--color-text);
-      margin-bottom: var(--space-md);
-    }
-
-    .hero-subtitle {
-      font-family: var(--font-body);
-      font-size: clamp(1.05rem, 2vw, 1.2rem);
-      font-weight: 300;
-      line-height: 1.7;
-      color: var(--color-text-muted);
-      max-width: 540px;
-    }
-
-    /* --- Philosophy --- */
-
-    .philosophy {
-      border-top: 1px solid var(--color-sand-light);
-    }
-
-    .section-label {
-      font-family: var(--font-heading);
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.1em;
-      color: var(--color-warm-brown);
-      text-transform: uppercase;
-      margin-bottom: var(--space-xl);
-    }
-
-    .principles {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-xl);
-    }
-
-    .principle {
-      padding-left: var(--space-md);
-    }
-
-    .principle-name {
-      font-family: var(--font-heading);
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-xs);
-    }
-
-    .principle-text {
-      font-size: 1rem;
-      line-height: 1.75;
-      font-weight: 400;
-      color: var(--color-text-muted);
-      max-width: 600px;
-    }
-
-    /* --- Services --- */
-
-    .services {
-      border-top: 1px solid var(--color-sand-light);
-    }
-
-    .services-list {
-      display: flex;
-      flex-direction: column;
-      gap: var(--space-lg);
-    }
-
-    .service-item {
-      padding-left: var(--space-md);
-    }
-
-    .service-name {
-      font-family: var(--font-heading);
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.01em;
-      color: var(--color-text-muted);
-      margin-bottom: 0.5rem;
-    }
-
-    .service-desc {
-      font-size: 1rem;
-      line-height: 1.7;
-      font-weight: 400;
-      color: var(--color-text-muted);
-      max-width: 560px;
-    }
-
-    /* --- Contact --- */
-
-    .contact {
-      border-top: 1px solid var(--color-sand-light);
-    }
-
-    .contact-heading {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 4vw, 2.8rem);
-      font-weight: 400;
-      line-height: 1.2;
-      letter-spacing: 0.02em;
-      margin-bottom: var(--space-sm);
-    }
-
-    .contact-sub {
-      color: var(--color-text-muted);
-      font-weight: 300;
-      margin-bottom: var(--space-lg);
-    }
-
-    .contact-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--space-sm);
-      margin-top: var(--space-md);
-      margin-bottom: var(--space-lg);
-    }
-
-    .contact-divider {
-      font-family: var(--font-heading);
-      font-size: 0.75rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--color-warm-brown);
-      margin-bottom: var(--space-sm);
-    }
-
-    /* --- Reveal Animations --- */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* --- Responsive --- */
-
-    @media (max-width: 640px) {
-      .hero {
-        min-height: 60vh;
-        padding-top: calc(var(--space-xl) + 2rem);
-        padding-bottom: var(--space-xl);
-      }
-
-      section {
-        padding-top: var(--space-lg);
-        padding-bottom: var(--space-lg);
-      }
-
-      .principle,
-      .service-item {
-        padding-left: 0;
-      }
-    }
-  </style>
 </head>
-<body>
+<body class="home-page">
 
   <header class="site-header" role="banner">
     <div class="wordmark-group">
@@ -236,13 +48,12 @@
         </svg>
       </span>
     </div>
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul class="site-nav" role="list">
         <li><a href="/about/">About</a></li>
-        <li><a href="#approach">Approach</a></li>
+        <li><a href="/approach/">Approach</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="/examples/">Examples</a></li>
-        <li><a href="/writing/">Writing</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -255,55 +66,56 @@
         <h1 class="hero-title reveal">Design engineering,<br>considered.</h1>
         <p class="hero-subtitle reveal">Mechanical, electronic, and firmware engineering consultancy. We bring careful thinking to complex problems.</p>
         <div class="hero-cta reveal">
-          <a href="https://dash.mokimo.co.uk/book_appointment" class="contact-link contact-link--primary">Book a call</a>
-          <a href="#contact" class="contact-link">Tell us about your project</a>
+          <a href="https://dash.mokimo.co.uk/book_appointment" class="button button--primary">Book a call</a>
+          <a href="#contact" class="button button--secondary">Tell us about your project</a>
         </div>
       </section>
 
-      <section id="approach" class="philosophy" aria-label="Our approach">
-        <span class="section-label reveal">Approach</span>
+      <section class="philosophy" aria-labelledby="approach-heading">
+        <h2 class="section-label reveal" id="approach-heading">Approach</h2>
         <div class="principles">
           <div class="principle reveal">
-            <div class="principle-name">Clarity first</div>
-            <p class="principle-text">We start by understanding the problem completely before reaching for solutions. Good engineering begins with good questions.</p>
+            <h3 class="principle-name">Define the problem</h3>
+            <p class="principle-text">Establish the outcome, constraints, assumptions, and acceptance criteria before committing significant effort to a solution.</p>
           </div>
           <div class="principle reveal">
-            <div class="principle-name">Considered detail</div>
-            <p class="principle-text">Every decision — from component selection to system architecture — is made deliberately. We don't 'move fast and break things'; we move carefully and build things that last.</p>
+            <h3 class="principle-name">Work across interfaces</h3>
+            <p class="principle-text">Mechanical, electronic, firmware, and production decisions are developed together, with regular technical review.</p>
           </div>
           <div class="principle reveal">
-            <div class="principle-name">Whole-system thinking</div>
-            <p class="principle-text">Mechanical, electronic, and software disciplines inform each other. We work across boundaries because real problems don't respect them.</p>
+            <h3 class="principle-name">Leave useful records</h3>
+            <p class="principle-text">Important decisions, design outputs, and verification evidence are documented so the work remains usable after handover.</p>
           </div>
         </div>
+        <p class="approach-more reveal"><a class="text-link" href="/approach/">Read about our approach</a></p>
       </section>
 
       <section id="services" class="services" aria-label="Services">
         <span class="section-label reveal">Services</span>
         <div class="services-list">
           <div class="service-item reveal">
-            <div class="service-name">Mechanical Engineering</div>
-            <p class="service-desc">Product design, mechanism development, and structural analysis — from concept sketches through to production-ready outputs, designed around how the part will actually be made. We work in CAD, FEA, and at the bench, and we know when each is the right tool.</p>
+            <h3 class="service-name">Mechanical Engineering</h3>
+            <p class="service-desc">Product design, mechanism development, materials, tolerance analysis, and production drawings—from early concepts through to parts designed around their intended manufacturing process.</p>
             <p class="service-more"><a href="/examples/mechanical/">See examples</a></p>
           </div>
           <div class="service-item reveal">
-            <div class="service-name">Electronics &amp; Embedded Systems</div>
-            <p class="service-desc">Circuit design, PCB layout, and sensor integration for connected products and instrumentation. From proof-of-concept breadboards through to boards laid out for a clean, repeatable build.</p>
+            <h3 class="service-name">Electronics &amp; Embedded Systems</h3>
+            <p class="service-desc">Circuit design, PCB layout, sensor integration, and bench bring-up for connected products, instrumentation, and electromechanical systems.</p>
             <p class="service-more"><a href="/examples/electronics/">See examples</a></p>
           </div>
           <div class="service-item reveal">
-            <div class="service-name">Firmware Development</div>
-            <p class="service-desc">Firmware for microcontrollers and connected hardware, plus the supporting software; control interfaces, configuration tools, and dashboards. From the silicon, to the screen.</p>
+            <h3 class="service-name">Firmware Development</h3>
+            <p class="service-desc">Microcontroller firmware, device control, sensor handling, communications, and the supporting tools needed to configure and test embedded hardware.</p>
             <p class="service-more"><a href="/examples/firmware/">See examples</a></p>
           </div>
           <div class="service-item reveal">
-            <div class="service-name">Requirements, Systems &amp; Process Design</div>
-            <p class="service-desc">Mapping workflows and designing systems that let organisations work the way they need to — and, just as importantly, getting the requirements right at the start. Clear requirements and explicit interfaces are what stop a project quietly drifting away from the problem.</p>
+            <h3 class="service-name">Requirements, Systems &amp; Process Design</h3>
+            <p class="service-desc">Requirements development, interface definition, workflow mapping, and technical documentation to establish a clear basis for design and verification.</p>
             <p class="service-more"><a href="/examples/process/">See examples</a></p>
           </div>
           <div class="service-item reveal">
-            <div class="service-name">Production &amp; Automation Systems</div>
-            <p class="service-desc">Manufacturing process design, test rig development, and automation that bridges the gap between prototype and production. Getting something working once is easy; getting it working a thousand times takes engineering.</p>
+            <h3 class="service-name">Production &amp; Automation Systems</h3>
+            <p class="service-desc">Test rigs, jigs, fixtures, assembly tooling, and automation for repeatable manufacture and validation.</p>
             <p class="service-more"><a href="/examples/production/">See examples</a></p>
           </div>
         </div>
@@ -313,15 +125,9 @@
         <h2 class="contact-heading reveal">Let's talk about<br>your project.</h2>
         <p class="contact-sub reveal">We'd love to hear what you're working on. Tell us what you're trying to solve and we'll let you know if we can help.</p>
         <div class="contact-actions reveal">
-          <a href="https://dash.mokimo.co.uk/book_appointment" class="contact-link contact-link--primary">Book a call</a>
-          <a href="mailto:hello@mokimo.co.uk" class="contact-link">hello@mokimo.co.uk</a>
+          <a href="https://dash.mokimo.co.uk/book_appointment" class="button button--primary">Book a call</a>
+          <a href="mailto:hello@mokimo.co.uk" class="button button--secondary">hello@mokimo.co.uk</a>
         </div>
-
-        <!--
-          A proper contact form wants a real backend (ERPNext guest endpoint or web
-          form) so submissions post server-side and land in the CRM. Until that's
-          wired up, the email address and booking link are the better experience.
-        -->
       </section>
 
     </div>

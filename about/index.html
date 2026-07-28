@@ -10,102 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/base.css">
-  <style>
-  .team-member {
-    margin-bottom: var(--space-lg);
-    padding-left: var(--space-md);
-  }
-
-  .team-name {
-    font-family: var(--font-heading);
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--color-text-muted);
-    margin-bottom: 0.35rem;
-  }
-
-  .team-role {
-    font-size: 0.8rem;
-    font-weight: 300;
-    letter-spacing: 0.05em;
-    color: var(--color-warm-brown);
-    margin-bottom: var(--space-xs);
-  }
-
-  .team-bio {
-    font-size: 0.95rem;
-    line-height: 1.75;
-    color: var(--color-text-muted);
-    max-width: 600px;
-  }
-
-  .photo-placeholder {
-    width: 100%;
-    max-width: 200px;
-    aspect-ratio: 1;
-    background: var(--color-sand-light);
-    border: 1px dashed var(--color-sand);
-    margin-bottom: var(--space-sm);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.7rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-warm-brown);
-  }
-
-  .section-label {
-    font-family: var(--font-heading);
-    font-size: 0.75rem;
-    font-weight: 400;
-    letter-spacing: 0.1em;
-    color: var(--color-warm-brown);
-    text-transform: uppercase;
-    margin-bottom: var(--space-md);
-  }
-
-  .page-tagline {
-    font-size: 1rem;
-  }
-
-  .intro-lead {
-    font-size: 1.05rem;
-    line-height: 1.75;
-    color: var(--color-text-muted);
-    margin-bottom: var(--space-lg);
-    max-width: 600px;
-  }
-
-  .engagement-step {
-    margin-bottom: var(--space-md);
-    padding-left: var(--space-md);
-  }
-
-  .engagement-step-name {
-    font-family: var(--font-heading);
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--color-text-muted);
-    margin-bottom: 0.35rem;
-  }
-
-  .engagement-step p {
-    font-size: 0.95rem;
-    line-height: 1.7;
-    color: var(--color-text-muted);
-    max-width: 600px;
-  }
-
-  .page-cta {
-    margin-top: var(--space-lg);
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-sm);
-  }
-  </style>
 </head>
-<body>
+<body class="about-page">
 
   <header class="site-header" role="banner">
     <div class="wordmark-group">
@@ -116,13 +22,12 @@
         </svg>
       </span>
     </div>
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul class="site-nav" role="list">
-        <li><a href="/about/">About</a></li>
-        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/about/" aria-current="page">About</a></li>
+        <li><a href="/approach/">Approach</a></li>
         <li><a href="/#services">Services</a></li>
         <li><a href="/examples/">Examples</a></li>
-        <li><a href="/writing/">Writing</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
@@ -151,12 +56,12 @@
       <p class="team-bio">Handles sales, operations, and the parts of running a consultancy that have nothing to do with engineering. Luke's background is commercial rather than technical, built over a career in a different industry — but the fundamentals carry across directly: understanding what a client actually needs, being straightforward about what's realistic, and keeping a project moving when it gets complicated.</p>
     </div>
 
-    <div class="policy-section" style="margin-top: var(--space-xl); padding-top: var(--space-lg); border-top: 1px solid var(--color-sand-light);">
+    <section class="client-process">
       <h2>How we work with clients</h2>
 
       <div class="engagement-step">
         <div class="engagement-step-name">1. Discovery call</div>
-        <p>A short conversation to understand what you are trying to achieve, your constraints, and whether we are a reasonable fit. No obligation, no pitch deck. <a href="https://dash.mokimo.co.uk/book_appointment">Book a call</a> or <a href="/#contact">send a message</a>.</p>
+        <p>A short conversation to understand what you are trying to achieve, your constraints, and whether we are a reasonable fit. <a href="https://dash.mokimo.co.uk/book_appointment">Book a call</a> or <a href="mailto:hello@mokimo.co.uk">email us</a>.</p>
       </div>
 
       <div class="engagement-step">
@@ -173,11 +78,11 @@
         <div class="engagement-step-name">4. Handover</div>
         <p>Outputs are transferred with appropriate documentation. We aim to leave you able to continue without us, unless ongoing support is part of the agreement.</p>
       </div>
-    </div>
+    </section>
 
-    <div class="page-cta">
-      <a href="https://dash.mokimo.co.uk/book_appointment" class="contact-link contact-link--primary">Book a call</a>
-      <a href="/#contact" class="contact-link">Tell us about your project</a>
+    <div class="page-actions">
+      <a href="https://dash.mokimo.co.uk/book_appointment" class="button button--primary">Book a call</a>
+      <a href="mailto:hello@mokimo.co.uk" class="button button--secondary">Email us</a>
     </div>
 
   </main>

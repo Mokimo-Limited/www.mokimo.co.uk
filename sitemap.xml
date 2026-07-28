@@ -11,6 +11,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://www.mokimo.co.uk/approach/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.mokimo.co.uk/examples/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -53,16 +58,6 @@
   <url>
     <loc>https://www.mokimo.co.uk/examples/projects/rotating-assembly-test-rig/</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://www.mokimo.co.uk/writing/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://www.mokimo.co.uk/writing/what-makes-a-good-requirement/</loc>
-    <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>

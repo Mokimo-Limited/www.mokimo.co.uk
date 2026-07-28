@@ -22,13 +22,12 @@
         </svg>
       </span>
     </div>
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul class="site-nav" role="list">
         <li><a href="/about/">About</a></li>
-        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/approach/">Approach</a></li>
         <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/">Examples</a></li>
-        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/examples/" aria-current="page">Examples</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
@@ -39,8 +38,8 @@
     <p class="examples-breadcrumb"><a href="/examples/">Examples</a> / Strain-wave gear demonstrator</p>
     <div class="project-header">
       <h1 class="page-title">Strain-wave gear demonstrator</h1>
-      <p class="page-meta">Teaching rig for a university engineering department</p>
-      <p class="project-lead">Strain-wave — or "harmonic" — gearing is usually taught with diagrams, which makes it difficult to build any real intuition for how the flex-spline actually produces its reduction. This is the same mechanism, made large enough and slow enough to watch.</p>
+      <p class="page-meta">University teaching project</p>
+      <p class="project-lead">A working strain-wave gearbox developed to make the flex-spline motion and reduction ratio visible during teaching.</p>
       <div class="tag-list">
         <a class="tag" href="/examples/mechanical/">Mechanical</a>
         <a class="tag" href="/examples/electronics/">Electronics</a>
@@ -58,32 +57,24 @@
       </figure>
     </div>
 
-    <!-- Sections below are a structural first pass — expand each with the real
-         detail, numbers, and outcomes when you have a moment. -->
-
-    <section class="project-section" style="margin-top: var(--space-xl);">
-      <h2>The brief</h2>
-      <p>A university engineering department needed a physical demonstrator for teaching strain-wave gear reduction: something a room full of students could gather round, turn by hand or under power, and immediately see the relationship between input and output.</p>
+    <section class="project-section project-section--first">
+      <h2>Objective</h2>
+      <p>Provide a physical teaching aid that allowed students to observe the deformation of the flex-spline and the relationship between input and output, rather than relying on diagrams alone.</p>
     </section>
 
     <section class="project-section">
       <h2>Approach</h2>
-      <p>Designed and 3D-printed a working strain-wave gearbox with a deliberately visible flex-spline, paired with a dial that reads out the reduction in real time. Being able to print the parts meant the geometry could be iterated cheaply until the mechanism ran cleanly and looked legible in motion — which, for a teaching aid, matters as much as the engineering underneath it.</p>
+      <p>The gearbox was designed with an exposed flex-spline and a dial that shows the reduction ratio as the mechanism turns. Additive manufacture allowed the geometry to be iterated and kept the internal motion visible. A motor and driver were integrated after bench testing.</p>
     </section>
 
     <section class="project-section">
       <h2>Outcome</h2>
-      <p>A working demonstrator with a 53.5:1 reduction ratio, taken end to end from design through to a finished, usable model, and paired with a motor and driver so it can be run under power rather than only turned by hand.</p>
+      <p>A complete motor-driven demonstrator with a 53.5:1 reduction ratio, suitable for hands-on teaching and observation under power.</p>
     </section>
 
-    <section class="gallery-section" data-projects-section>
-      <span class="section-label">Related work</span>
-      <div class="project-grid" data-projects="all" data-exclude="strain-wave-demonstrator"></div>
-    </section>
-
-    <div class="page-cta">
-      <a href="/examples/" class="contact-link">All examples</a>
-      <a href="/#contact" class="contact-link">Tell us about your project</a>
+    <div class="page-actions">
+      <a href="/examples/" class="button button--secondary">All examples</a>
+      <a href="mailto:hello@mokimo.co.uk" class="button button--secondary">Email us</a>
     </div>
 
   </main>
@@ -94,7 +85,6 @@
     <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
   </footer>
 
-  <script src="/scripts/projects.js"></script>
   <script>
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', () => {

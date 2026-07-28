@@ -22,13 +22,12 @@
         </svg>
       </span>
     </div>
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul class="site-nav" role="list">
         <li><a href="/about/">About</a></li>
-        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/approach/">Approach</a></li>
         <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/">Examples</a></li>
-        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/examples/" aria-current="page">Examples</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
@@ -40,29 +39,53 @@
     <h1 class="page-title">Electronics &amp; embedded systems</h1>
     <p class="page-meta">Circuit design, PCB layout, and sensor integration</p>
 
-    <p class="examples-intro">The electronics in a product rarely sit on their own: they have to fit inside something, drive something, and be told what to do. Most of our electronics work happens alongside mechanical and firmware design on the same project, which is usually where the interesting constraints turn up.</p>
+    <p class="examples-intro">Circuit and PCB development for embedded and electromechanical systems, with attention to physical integration, bring-up, and the firmware that will run on the hardware.</p>
 
-    <section class="gallery-section" data-projects-section style="margin-top: 0;">
-      <span class="section-label">Projects</span>
-      <div class="project-grid" data-projects="electronics"></div>
-      <noscript>
-        <div class="policy-section">
-          <ul>
-            <li><a href="/examples/projects/bikestow/">Bikestow — automated post-op machining centre</a></li>
-            <li><a href="/examples/projects/strain-wave-demonstrator/">Strain-wave gear demonstrator</a></li>
-          </ul>
-        </div>
-      </noscript>
+    <section class="project-section-list">
+      <h2 class="section-label">Relevant case studies</h2>
+      <div class="project-grid">
+        <article class="project-card">
+          <a class="project-card-image" href="/examples/projects/bikestow/" aria-label="View the Bikestow project">
+            <img src="/images/examples/bikestow-soldering.jpg" alt="Bikestow controller board being assembled" loading="lazy">
+          </a>
+          <div class="project-card-body">
+            <p class="project-card-context">Personal project</p>
+            <h3 class="project-card-title"><a href="/examples/projects/bikestow/">Bikestow</a></h3>
+            <p class="project-card-subtitle">Controller and machine integration</p>
+            <p class="project-card-summary">Controller electronics, motor-drive integration, sensing, and wiring for an automated machining system.</p>
+            <div class="tag-list" aria-label="Disciplines">
+              <a class="tag" href="/examples/mechanical/">Mechanical</a>
+              <span class="tag tag--current">Electronics</span>
+              <a class="tag" href="/examples/firmware/">Firmware</a>
+              <a class="tag" href="/examples/production/">Production</a>
+            </div>
+            <a class="project-card-link" href="/examples/projects/bikestow/">View case study</a>
+          </div>
+        </article>
+        <article class="project-card">
+          <a class="project-card-image" href="/examples/projects/strain-wave-demonstrator/" aria-label="View the strain-wave gear demonstrator project">
+            <img src="/images/examples/motor-driver-test-setup.jpg" alt="Motor and driver electronics on a test bench" loading="lazy">
+          </a>
+          <div class="project-card-body">
+            <p class="project-card-context">University teaching project</p>
+            <h3 class="project-card-title"><a href="/examples/projects/strain-wave-demonstrator/">Strain-wave gear demonstrator</a></h3>
+            <p class="project-card-subtitle">Motor and driver integration</p>
+            <p class="project-card-summary">Motor-drive hardware integrated with a physical teaching demonstrator and checked on the bench before final assembly.</p>
+            <div class="tag-list" aria-label="Disciplines">
+              <a class="tag" href="/examples/mechanical/">Mechanical</a>
+              <span class="tag tag--current">Electronics</span>
+            </div>
+            <a class="project-card-link" href="/examples/projects/strain-wave-demonstrator/">View case study</a>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <!-- Worth a read-through: the section below is deliberately general. Add
-         specifics (parts, buses, tools, what was measured) as you're happy to
-         put your name to them. -->
-    <div class="prose-section">
-      <h2>How we work</h2>
-      <p>Schematic and PCB design, sensor and motor integration, and the bench work that follows: bringing a board up, finding out where it disagrees with the datasheet, and getting it to a state where the firmware can be trusted to be the thing under test.</p>
-      <p>Because we also do the mechanical and firmware sides, we tend to design boards with their eventual home in mind — connector placement that suits the harness rather than the layout, mounting that the enclosure can actually achieve, and test points where a person with a probe can reach them.</p>
-    </div>
+    <section class="prose-section">
+      <h2>Scope</h2>
+      <p>Work can cover schematic design, PCB layout, component selection, sensor and actuator integration, prototyping, assembly, and structured bring-up. For electromechanical products, board shape, mounting, connectors, cable routing, access, and thermal constraints are considered with the enclosure rather than after it.</p>
+      <p>Where appropriate, we can develop the supporting firmware alongside the electronics so hardware behaviour can be tested during bring-up and integration.</p>
+    </section>
 
     <section class="gallery-section">
       <span class="section-label">From the bench</span>
@@ -99,7 +122,6 @@
     <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
   </footer>
 
-  <script src="/scripts/projects.js"></script>
   <script>
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', () => {

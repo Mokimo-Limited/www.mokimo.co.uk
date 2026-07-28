@@ -22,13 +22,12 @@
         </svg>
       </span>
     </div>
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul class="site-nav" role="list">
         <li><a href="/about/">About</a></li>
-        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/approach/">Approach</a></li>
         <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/">Examples</a></li>
-        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/examples/" aria-current="page">Examples</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
@@ -40,27 +39,37 @@
     <h1 class="page-title">Firmware development</h1>
     <p class="page-meta">Microcontroller firmware, control, and interfaces</p>
 
-    <p class="examples-intro">Firmware is where a pile of parts becomes a machine — motion, sensing, and the interface a person actually touches, all having to agree with each other. We write it for hardware we've usually had a hand in designing, which makes the awkward questions easier to answer.</p>
+    <p class="examples-intro">Firmware for microcontrollers and connected hardware, including device control, sensing, communications, and the tools needed to configure and test the system.</p>
 
-    <section class="gallery-section" data-projects-section style="margin-top: 0;">
-      <span class="section-label">Projects</span>
-      <div class="project-grid" data-projects="firmware"></div>
-      <noscript>
-        <div class="policy-section">
-          <ul>
-            <li><a href="/examples/projects/bikestow/">Bikestow — automated post-op machining centre</a></li>
-          </ul>
-        </div>
-      </noscript>
+    <section class="project-section-list">
+      <h2 class="section-label">Relevant case studies</h2>
+      <div class="project-grid project-grid--compact">
+        <article class="project-card">
+          <a class="project-card-image" href="/examples/projects/bikestow/" aria-label="View the Bikestow project">
+            <img src="/images/examples/bikestow-component-layout.jpg" alt="Bikestow drive electronics laid out before integration" loading="lazy">
+          </a>
+          <div class="project-card-body">
+            <p class="project-card-context">Personal project</p>
+            <h3 class="project-card-title"><a href="/examples/projects/bikestow/">Bikestow</a></h3>
+            <p class="project-card-subtitle">Motion control and machine sequencing</p>
+            <p class="project-card-summary">Firmware coordinating the motion system, limit sensing, component detection, machining sequence, and operator controls.</p>
+            <div class="tag-list" aria-label="Disciplines">
+              <a class="tag" href="/examples/mechanical/">Mechanical</a>
+              <a class="tag" href="/examples/electronics/">Electronics</a>
+              <span class="tag tag--current">Firmware</span>
+              <a class="tag" href="/examples/production/">Production</a>
+            </div>
+            <a class="project-card-link" href="/examples/projects/bikestow/">View case study</a>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <!-- As with electronics: kept general on purpose. Add languages, targets,
-         and specifics when you're happy to stand behind them publicly. -->
-    <div class="prose-section">
-      <h2>How we work</h2>
-      <p>Microcontroller firmware for motion control, sensor handling, and operator interfaces, plus the supporting software that tends to come with it — configuration tools, test harnesses, and dashboards for the people who have to live with the machine.</p>
-      <p>Working across the electronics and mechanical design as well means the firmware can be written against the real system rather than an assumption about it, and that a problem can be solved wherever it is cheapest to solve — sometimes in code, sometimes with a different sensor, sometimes with a bracket.</p>
-    </div>
+    <section class="prose-section">
+      <h2>Scope</h2>
+      <p>Work can include peripheral drivers, sensor acquisition, motion and actuator control, state machines, fault handling, wired and wireless communications, device configuration, and test utilities.</p>
+      <p>Developing firmware alongside the electronics and mechanical system makes it possible to resolve integration issues in the appropriate discipline, rather than compensating for every problem in software.</p>
+    </section>
 
     <section class="gallery-section">
       <span class="section-label">Embedded integration</span>
@@ -93,7 +102,6 @@
     <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
   </footer>
 
-  <script src="/scripts/projects.js"></script>
   <script>
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', () => {

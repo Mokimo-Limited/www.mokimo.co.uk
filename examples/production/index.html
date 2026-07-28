@@ -22,13 +22,12 @@
         </svg>
       </span>
     </div>
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul class="site-nav" role="list">
         <li><a href="/about/">About</a></li>
-        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/approach/">Approach</a></li>
         <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/">Examples</a></li>
-        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/examples/" aria-current="page">Examples</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
@@ -40,26 +39,53 @@
     <h1 class="page-title">Production &amp; automation systems</h1>
     <p class="page-meta">Test rigs, fixtures, and repeatable builds</p>
 
-    <p class="examples-intro">Getting something to work once is a design problem. Getting it to work the hundredth time, built by someone who wasn't there for the first, is a production problem — and it needs its own engineering.</p>
+    <p class="examples-intro">Engineering for repeatable assembly and test, including production tooling, fixtures, functional test rigs, and automation.</p>
 
-    <section class="gallery-section" data-projects-section style="margin-top: 0;">
-      <span class="section-label">Projects</span>
-      <div class="project-grid" data-projects="production"></div>
-      <noscript>
-        <div class="policy-section">
-          <ul>
-            <li><a href="/examples/projects/rotating-assembly-test-rig/">Rotating assembly test rig</a></li>
-            <li><a href="/examples/projects/bikestow/">Bikestow — automated post-op machining centre</a></li>
-          </ul>
-        </div>
-      </noscript>
+    <section class="project-section-list">
+      <h2 class="section-label">Relevant case studies</h2>
+      <div class="project-grid">
+        <article class="project-card">
+          <a class="project-card-image" href="/examples/projects/bikestow/" aria-label="View the Bikestow project">
+            <img src="/images/examples/bikestow-cnc-gantry.jpg" alt="Bikestow gantry mechanism during assembly" loading="lazy">
+          </a>
+          <div class="project-card-body">
+            <p class="project-card-context">Personal project</p>
+            <h3 class="project-card-title"><a href="/examples/projects/bikestow/">Bikestow</a></h3>
+            <p class="project-card-subtitle">Automated post-operation machining centre</p>
+            <p class="project-card-summary">A component buffer, automatic detection, and controlled machining sequence developed to run consecutive cycles without manual loading between parts.</p>
+            <div class="tag-list" aria-label="Disciplines">
+              <a class="tag" href="/examples/mechanical/">Mechanical</a>
+              <a class="tag" href="/examples/electronics/">Electronics</a>
+              <a class="tag" href="/examples/firmware/">Firmware</a>
+              <span class="tag tag--current">Production</span>
+            </div>
+            <a class="project-card-link" href="/examples/projects/bikestow/">View case study</a>
+          </div>
+        </article>
+        <article class="project-card">
+          <a class="project-card-image" href="/examples/projects/rotating-assembly-test-rig/" aria-label="View the rotating assembly test rig project">
+            <img src="/images/examples/functional-test-rig.jpg" alt="Functional test rig for a rotating assembly" loading="lazy">
+          </a>
+          <div class="project-card-body">
+            <p class="project-card-context">Test and validation</p>
+            <h3 class="project-card-title"><a href="/examples/projects/rotating-assembly-test-rig/">Rotating assembly test rig</a></h3>
+            <p class="project-card-subtitle">Repeatable testing under load</p>
+            <p class="project-card-summary">A dedicated rig developed to exercise an assembly under controlled conditions and replace inconsistent manual checks.</p>
+            <div class="tag-list" aria-label="Disciplines">
+              <a class="tag" href="/examples/mechanical/">Mechanical</a>
+              <span class="tag tag--current">Production</span>
+            </div>
+            <a class="project-card-link" href="/examples/projects/rotating-assembly-test-rig/">View case study</a>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <div class="prose-section">
-      <h2>What this usually involves</h2>
-      <p>Test rigs and functional validation, so that a claim about a product is backed by a measurement taken the same way every time. Jigs and fixtures, so that assembly doesn't depend on the patience of whoever is doing it. Automation where the volume justifies it, and a deliberate decision not to automate where it doesn't.</p>
-      <p>The mechanical domain has no equivalent of the accessible assembly services that exist for PCBs, so the question of who builds a product — and with what — has to be answered as part of designing it. We think about that early, alongside the tolerance analysis and drawings that let an external fab house or assembler build to the same standard you would.</p>
-    </div>
+    <section class="prose-section">
+      <h2>Scope</h2>
+      <p>Work can include assembly jigs and fixtures, functional test rigs, inspection aids, process definition, tolerance analysis, build documentation, and targeted automation. The aim is to make the expected result repeatable and measurable without adding unnecessary complexity.</p>
+      <p>Production needs are considered alongside the product design: who will assemble it, how critical features will be controlled, what must be inspected or tested, and which information a supplier or operator needs.</p>
+    </section>
 
     <section class="gallery-section">
       <span class="section-label">Build and integration</span>
@@ -92,7 +118,6 @@
     <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
   </footer>
 
-  <script src="/scripts/projects.js"></script>
   <script>
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', () => {

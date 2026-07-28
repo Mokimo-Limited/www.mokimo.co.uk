@@ -22,13 +22,12 @@
         </svg>
       </span>
     </div>
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul class="site-nav" role="list">
         <li><a href="/about/">About</a></li>
-        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/approach/">Approach</a></li>
         <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/">Examples</a></li>
-        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/examples/" aria-current="page">Examples</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
@@ -40,45 +39,100 @@
     <h1 class="page-title">Mechanical engineering</h1>
     <p class="page-meta">Mechanisms, structures, and parts designed to be made</p>
 
-    <p class="examples-intro">Mechanical design that has to survive contact with the real world: mechanisms that keep moving, structures that carry their load, and parts that can actually be manufactured at the quantity you need them.</p>
+    <p class="examples-intro">Mechanical design for products, mechanisms, test equipment, and production tooling—from early concepts through to detailed parts, assemblies, and manufacturing documentation.</p>
 
-    <section class="gallery-section" data-projects-section style="margin-top: 0;">
-      <span class="section-label">Projects</span>
-      <div class="project-grid" data-projects="mechanical"></div>
-      <noscript>
-        <div class="policy-section">
-          <ul>
-            <li><a href="/examples/projects/bikestow/">Bikestow — automated post-op machining centre</a></li>
-            <li><a href="/examples/projects/strain-wave-demonstrator/">Strain-wave gear demonstrator</a></li>
-            <li><a href="/examples/projects/rotating-assembly-test-rig/">Rotating assembly test rig</a></li>
-          </ul>
-        </div>
-      </noscript>
+    <section class="project-section-list">
+      <h2 class="section-label">Relevant case studies</h2>
+      <div class="project-grid">
+        <article class="project-card">
+          <a class="project-card-image" href="/examples/projects/bikestow/" aria-label="View the Bikestow project">
+            <img src="/images/examples/bikestow-cnc-gantry.jpg" alt="Bikestow gantry mechanism during assembly" loading="lazy">
+          </a>
+          <div class="project-card-body">
+            <p class="project-card-context">Personal project</p>
+            <h3 class="project-card-title"><a href="/examples/projects/bikestow/">Bikestow</a></h3>
+            <p class="project-card-subtitle">Automated post-operation machining centre</p>
+            <p class="project-card-summary">A compact lead-screw gantry, component buffer, and machining fixture developed as one integrated system.</p>
+            <div class="tag-list" aria-label="Disciplines">
+              <span class="tag tag--current">Mechanical</span>
+              <a class="tag" href="/examples/electronics/">Electronics</a>
+              <a class="tag" href="/examples/firmware/">Firmware</a>
+              <a class="tag" href="/examples/production/">Production</a>
+            </div>
+            <a class="project-card-link" href="/examples/projects/bikestow/">View case study</a>
+          </div>
+        </article>
+        <article class="project-card">
+          <a class="project-card-image" href="/examples/projects/strain-wave-demonstrator/" aria-label="View the strain-wave gear demonstrator project">
+            <img src="/images/examples/harmonic-drive-demonstrator.jpg" alt="Strain-wave gear demonstrator with reduction-ratio dial" loading="lazy">
+          </a>
+          <div class="project-card-body">
+            <p class="project-card-context">University teaching project</p>
+            <h3 class="project-card-title"><a href="/examples/projects/strain-wave-demonstrator/">Strain-wave gear demonstrator</a></h3>
+            <p class="project-card-subtitle">A working model for engineering teaching</p>
+            <p class="project-card-summary">A visible, motor-driven gearbox designed to demonstrate the mechanism and its 53.5:1 reduction ratio.</p>
+            <div class="tag-list" aria-label="Disciplines">
+              <span class="tag tag--current">Mechanical</span>
+              <a class="tag" href="/examples/electronics/">Electronics</a>
+            </div>
+            <a class="project-card-link" href="/examples/projects/strain-wave-demonstrator/">View case study</a>
+          </div>
+        </article>
+        <article class="project-card">
+          <a class="project-card-image" href="/examples/projects/rotating-assembly-test-rig/" aria-label="View the rotating assembly test rig project">
+            <img src="/images/examples/functional-test-rig.jpg" alt="Functional test rig for a rotating assembly" loading="lazy">
+          </a>
+          <div class="project-card-body">
+            <p class="project-card-context">Test and validation</p>
+            <h3 class="project-card-title"><a href="/examples/projects/rotating-assembly-test-rig/">Rotating assembly test rig</a></h3>
+            <p class="project-card-subtitle">Repeatable testing under load</p>
+            <p class="project-card-summary">A dedicated mechanical rig developed to replace inconsistent manual checks with controlled test conditions.</p>
+            <div class="tag-list" aria-label="Disciplines">
+              <span class="tag tag--current">Mechanical</span>
+              <a class="tag" href="/examples/production/">Production</a>
+            </div>
+            <a class="project-card-link" href="/examples/projects/rotating-assembly-test-rig/">View case study</a>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <div class="prose-section">
-      <h2>Beyond the obvious</h2>
-      <p>Ask most people what mechanical engineering covers and you'll hear mechanisms, hinges, and linkages. That is part of it, and we're glad to work on it — but the discipline reaches a good deal further, and it tends to be the less obvious parts that decide whether a product survives being used.</p>
+    <section class="prose-section">
+      <h2>Mechanical scope</h2>
+      <p>Alongside mechanisms, structures, and enclosures, we can support the less visible decisions that determine whether a design assembles correctly and performs consistently.</p>
+      <div class="capability-grid">
+        <article class="capability-item">
+          <h3>Motion and mechanisms</h3>
+          <p>Linkages, hinges, linear motion, motors, bearings, gears, and the supporting structures around them.</p>
+        </article>
+        <article class="capability-item">
+          <h3>Materials and finishes</h3>
+          <p>Selection against mechanical, thermal, environmental, manufacturing, cost, and appearance requirements.</p>
+        </article>
+        <article class="capability-item">
+          <h3>Fluidics and sealing</h3>
+          <p>Fluid and pneumatic routing, seals, ingress protection, bonded assemblies, and compact packaging.</p>
+        </article>
+        <article class="capability-item">
+          <h3>Drawings and tolerances</h3>
+          <p>Part and assembly drawings, tolerance analysis, sheet-metal detailing, and GD&amp;T to ASME Y14.5.</p>
+        </article>
+        <article class="capability-item">
+          <h3>Electromechanical integration</h3>
+          <p>Enclosures, board mounting, connector access, cable routing, sensors, actuators, and ECAD–MCAD coordination.</p>
+        </article>
+        <article class="capability-item">
+          <h3>Supplier support</h3>
+          <p>Manufacturing documentation and technical communication with machining, moulding, sheet-metal, and prototyping suppliers.</p>
+        </article>
+      </div>
+    </section>
 
-      <h3>Materials and finishes</h3>
-      <p>Choosing a material means balancing cost, weight, manufacturability, thermal behaviour, appearance, and corrosion resistance, usually all at once and usually with something having to give. Science and medical work adds its own constraints on top — biocompatibility, and resistance to solvents, salts, and pH. Surface finish belongs in the same conversation: media blasting, anodising, passivation, brushed metal, and paint all change how a part behaves in service, not only how it looks on a desk.</p>
-
-      <h3>Sealing, fluidics, and small spaces</h3>
-      <p>Fluidics, pneumatics, and sealing tend to arrive as a set, and they get harder as the space around them shrinks. Ingress protection in a compact assembly often means moving away from fasteners altogether, towards bonded, adhesive, or ultrasonically welded joints — and sometimes towards holding awkward materials like glass and ceramics without cracking them.</p>
-
-      <h3>Where mechanical meets electronics</h3>
-      <p>Motors, bearings, and gears sit right on the boundary between the two disciplines, and so does any enclosure that has to be built around a board rather than the other way round. That includes multi-board and flex-rigid assemblies, where a little mechanical prototyping to confirm the fit is considerably cheaper than a second spin of the boards.</p>
-
-      <h3>Drawings and documentation</h3>
-      <p>Engineering drawings for parts and assemblies, including sheet-metal work and GD&amp;T to ASME Y14.5. GD&amp;T has a reputation for being intimidating, but it is the most direct way of controlling the features that genuinely matter to you — and of avoiding paying for precision in the places where it doesn't.</p>
-    </div>
-
-    <div class="prose-section">
-      <h2>Designing for how it will be made</h2>
-      <p>A design isn't finished until it can be made repeatably, and the right answer changes with quantity. Injection moulding, machining, sheet metal, and 3D printing each come with their own design rules, and a part drawn for one is rarely a good part in another. Moulding in particular becomes viable at lower volumes than people often expect, and opens up geometry the other processes can't reach — but it also commits you to tooling, which is why we would rather prove a moulded design with prototype parts first than discover the problem after the tool is cut.</p>
-      <p>Quantity brings a second set of questions that are easy to overlook, because they sit around the product rather than inside it: the jigs and fixtures needed to build it, who is doing the assembly, and how tolerances stack up across a batch rather than in a single careful prototype. Tolerance analysis and proper production drawings exist to answer those questions on paper, before the field answers them for you — a part that was fine in prototype and slightly different in volume, or a screw tightened to the wrong torque, will find you eventually.</p>
-      <p>We're happy to advise on manufacturing routes and suppliers for moulding, machining, and prototyping, and to produce the drawing packs an external fab house needs to build against.</p>
-    </div>
+    <section class="prose-section">
+      <h2>Design for manufacture</h2>
+      <p>Manufacturing method affects geometry, material, tolerances, surface finish, and cost. We consider those constraints early, whether the intended process is machining, sheet metal, additive manufacture, or injection moulding. For moulded parts, that includes features such as draft, wall thickness, parting lines, fastening strategy, and how the design will be checked before tooling is released.</p>
+      <p>Moving beyond a first prototype also requires attention to tolerance stack-up, assembly sequence, fixtures, tightening requirements, inspection, and the information supplied to manufacturers. We can develop those outputs with the product rather than treating them as a separate exercise at the end.</p>
+    </section>
 
     <section class="gallery-section">
       <span class="section-label">From the workshop</span>
@@ -123,7 +177,6 @@
     <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
   </footer>
 
-  <script src="/scripts/projects.js"></script>
   <script>
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', () => {

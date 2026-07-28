@@ -22,13 +22,12 @@
         </svg>
       </span>
     </div>
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul class="site-nav" role="list">
         <li><a href="/about/">About</a></li>
-        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/approach/">Approach</a></li>
         <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/">Examples</a></li>
-        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/examples/" aria-current="page">Examples</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
@@ -39,8 +38,8 @@
     <p class="examples-breadcrumb"><a href="/examples/">Examples</a> / Rotating assembly test rig</p>
     <div class="project-header">
       <h1 class="page-title">Rotating assembly test rig</h1>
-      <p class="page-meta">Repeatable validation under load</p>
-      <p class="project-lead">Ad-hoc bench testing tells you whether something worked once. A rig tells you whether it works every time, and gives you a number when it doesn't.</p>
+      <p class="page-meta">Test and validation project</p>
+      <p class="project-lead">A dedicated functional test rig developed to exercise a rotating assembly under controlled load and replace inconsistent manual checks.</p>
       <div class="tag-list">
         <a class="tag" href="/examples/production/">Production</a>
         <a class="tag" href="/examples/mechanical/">Mechanical</a>
@@ -54,32 +53,24 @@
       </figure>
     </div>
 
-    <!-- Sections below are a structural first pass — expand each with the real
-         detail, numbers, and outcomes when you have a moment. -->
-
-    <section class="project-section" style="margin-top: var(--space-xl);">
-      <h2>The problem</h2>
-      <p>A rotating mechanical assembly needed to be validated under load before it could be signed off. Testing it by hand on the bench gave inconsistent results that were difficult to compare between units, which made it impossible to say with any confidence whether a change had improved anything.</p>
+    <section class="project-section project-section--first">
+      <h2>Objective</h2>
+      <p>Establish a consistent method for assessing the assembly under load. Previous manual checks varied between tests and did not produce directly comparable results.</p>
     </section>
 
     <section class="project-section">
       <h2>Approach</h2>
-      <p>Built a dedicated functional test rig to drive the assembly through its operating envelope in a controlled, repeatable way. Fixturing the assembly properly and applying load deliberately turns intermittent, hard-to-reproduce behaviour into something visible and measurable — which is usually the difference between chasing a fault and fixing one.</p>
+      <p>The rig located and drove the assembly in a repeatable configuration, applied controlled test conditions, and made the relevant behaviour observable and measurable across repeated runs.</p>
     </section>
 
     <section class="project-section">
       <h2>Outcome</h2>
-      <p>Failure modes became measurable rather than anecdotal, and the assembly could be assessed against the same test conditions each time it was changed.</p>
+      <p>The assembly could be assessed against the same conditions after each design change, improving comparison between tests and making failure modes easier to reproduce.</p>
     </section>
 
-    <section class="gallery-section" data-projects-section>
-      <span class="section-label">Related work</span>
-      <div class="project-grid" data-projects="all" data-exclude="rotating-assembly-test-rig"></div>
-    </section>
-
-    <div class="page-cta">
-      <a href="/examples/" class="contact-link">All examples</a>
-      <a href="/#contact" class="contact-link">Tell us about your project</a>
+    <div class="page-actions">
+      <a href="/examples/" class="button button--secondary">All examples</a>
+      <a href="mailto:hello@mokimo.co.uk" class="button button--secondary">Email us</a>
     </div>
 
   </main>
@@ -90,7 +81,6 @@
     <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
   </footer>
 
-  <script src="/scripts/projects.js"></script>
   <script>
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', () => {

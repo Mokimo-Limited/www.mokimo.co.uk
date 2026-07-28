@@ -22,13 +22,12 @@
         </svg>
       </span>
     </div>
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul class="site-nav" role="list">
         <li><a href="/about/">About</a></li>
-        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/approach/">Approach</a></li>
         <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/">Examples</a></li>
-        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/examples/" aria-current="page">Examples</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
@@ -39,8 +38,8 @@
     <p class="examples-breadcrumb"><a href="/examples/">Examples</a> / Bikestow</p>
     <div class="project-header">
       <h1 class="page-title">Bikestow</h1>
-      <p class="page-meta">Automated post-op machining centre</p>
-      <p class="project-lead">A machining centre built to handle post-operation work on its own: components are loaded into a storage buffer at the front, detected automatically as they arrive at the machine, and processed one after another without an operator stood over it.</p>
+      <p class="page-meta">Personal project &middot; Automated post-operation machining centre</p>
+      <p class="project-lead">A machining centre with a front-mounted component buffer and automatic part detection, developed to run consecutive post-operation cycles without manual loading between parts.</p>
       <div class="tag-list">
         <a class="tag" href="/examples/mechanical/">Mechanical</a>
         <a class="tag" href="/examples/electronics/">Electronics</a>
@@ -60,27 +59,24 @@
       </figure>
     </div>
 
-    <!-- Sections below are a structural first pass — expand each with the real
-         detail, numbers, and outcomes when you have a moment. -->
-
-    <section class="project-section" style="margin-top: var(--space-xl);">
-      <h2>The problem</h2>
-      <p>Post-operation machining is repetitive by nature, and the limiting factor usually isn't the cutting — it's the loading. A machine that needs a part placed in it by hand can only run for as long as someone is stood next to it, which makes small batches expensive in attention rather than in time.</p>
+    <section class="project-section project-section--first">
+      <h2>Objective</h2>
+      <p>Reduce the operator time required for repetitive post-operation machining. The machine needed to accept a batch of components, identify when each part reached the working position, complete the machining cycle, and continue to the next component.</p>
     </section>
 
     <section class="project-section">
-      <h2>How it works</h2>
-      <p>Components are stacked into a buffer at the front of the machine. The controller detects each one as it arrives in position, runs the machining cycle, and moves on to the next, so the machine keeps working through the buffer without intervention or a restart between parts.</p>
+      <h2>System design</h2>
+      <p>Components are loaded into a buffer at the front of the machine. The control system detects each component, positions it for machining, runs the cycle, and advances the next part. Mechanical, electronic, and firmware development were handled as one integrated system.</p>
     </section>
 
     <section class="project-section">
       <h2>Mechanical design</h2>
-      <p>The motion system is a compact gantry built from machined aluminium brackets on lead-screw drives, sized to fit an awkward footprint and to tolerate being cycled repeatedly rather than run once for a demonstration.</p>
+      <p>The motion system uses a compact lead-screw gantry with machined aluminium brackets, designed around the available space and repeated cycling. The buffer, transfer path, workholding, and drive arrangement were developed together.</p>
     </section>
 
     <section class="project-section">
       <h2>Electronics and firmware</h2>
-      <p>A custom controller board drives the motors, hand-assembled and brought up on the bench before being integrated with the mechanism. The firmware ties the pieces together — coordinating motion, reading the detection and limit sensors, and handling the operator interface — so that the mechanical, electrical, and software sides behave as one machine rather than three subsystems sharing a frame.</p>
+      <p>A custom controller board and motor-drive electronics were assembled and brought up before integration with the mechanism. The firmware coordinates motion, limit sensing, component detection, cycle sequencing, and operator controls.</p>
     </section>
 
     <div class="case-study-media">
@@ -94,14 +90,9 @@
       </figure>
     </div>
 
-    <section class="gallery-section" data-projects-section>
-      <span class="section-label">Related work</span>
-      <div class="project-grid" data-projects="all" data-exclude="bikestow"></div>
-    </section>
-
-    <div class="page-cta">
-      <a href="/examples/" class="contact-link">All examples</a>
-      <a href="/#contact" class="contact-link">Tell us about your project</a>
+    <div class="page-actions">
+      <a href="/examples/" class="button button--secondary">All examples</a>
+      <a href="mailto:hello@mokimo.co.uk" class="button button--secondary">Email us</a>
     </div>
 
   </main>
@@ -112,7 +103,6 @@
     <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
   </footer>
 
-  <script src="/scripts/projects.js"></script>
   <script>
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', () => {
