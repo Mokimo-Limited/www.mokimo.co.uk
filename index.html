@@ -242,6 +242,7 @@
         <li><a href="#approach">Approach</a></li>
         <li><a href="#services">Services</a></li>
         <li><a href="/examples/">Examples</a></li>
+        <li><a href="/writing/">Writing</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -282,12 +283,12 @@
         <div class="services-list">
           <div class="service-item reveal">
             <div class="service-name">Mechanical Engineering</div>
-            <p class="service-desc">Product design, mechanism development, and structural analysis — from concept sketches through to production-ready outputs at volumes from one-off up to tens of thousands. We work in CAD, FEA, and at the bench, and we know when each is the right tool.</p>
+            <p class="service-desc">Product design, mechanism development, and structural analysis — from concept sketches through to production-ready outputs, designed around how the part will actually be made. We work in CAD, FEA, and at the bench, and we know when each is the right tool.</p>
             <p class="service-more"><a href="/examples/mechanical/">See examples</a></p>
           </div>
           <div class="service-item reveal">
             <div class="service-name">Electronics &amp; Embedded Systems</div>
-            <p class="service-desc">Circuit design, PCB layout, and sensor integration for connected products and instrumentation. From proof-of-concept breadboards to production-qualified assemblies.</p>
+            <p class="service-desc">Circuit design, PCB layout, and sensor integration for connected products and instrumentation. From proof-of-concept breadboards through to boards laid out for a clean, repeatable build.</p>
             <p class="service-more"><a href="/examples/electronics/">See examples</a></p>
           </div>
           <div class="service-item reveal">
@@ -297,7 +298,7 @@
           </div>
           <div class="service-item reveal">
             <div class="service-name">Requirements, Systems &amp; Process Design</div>
-            <p class="service-desc">Mapping workflows and designing systems that let organisations work the way they need to — and, just as importantly, getting requirements and systems engineering right from the start, drawing on experience in standards-driven environments including ISO 13485.</p>
+            <p class="service-desc">Mapping workflows and designing systems that let organisations work the way they need to — and, just as importantly, getting the requirements right at the start. Clear requirements and explicit interfaces are what stop a project quietly drifting away from the problem.</p>
             <p class="service-more"><a href="/examples/process/">See examples</a></p>
           </div>
           <div class="service-item reveal">
@@ -316,39 +317,11 @@
           <a href="mailto:hello@mokimo.co.uk" class="contact-link">hello@mokimo.co.uk</a>
         </div>
 
-        <p class="contact-divider reveal">Or send a message</p>
-
         <!--
-          Contact form integration options (for future deploy):
-          1. ERPNext Web Form — create a Web Form in Desk, publish at dash.mokimo.co.uk/contact.
-             Pros: leads land in CRM, no third party. Cons: cross-origin POST from mokimo.co.uk
-             needs CORS config or iframe embed; requires ERPNext deploy.
-          2. Guest API endpoint — @frappe.whitelist(allow_guest=True) method that creates a Lead.
-             Pros: native CRM integration, themed control. Cons: needs backend deploy + CORS.
-          3. Third-party form service (Formspree, etc.) — quickest external option.
-          Current draft uses mailto composition — works without deploy, adequate for low volume.
+          A proper contact form wants a real backend (ERPNext guest endpoint or web
+          form) so submissions post server-side and land in the CRM. Until that's
+          wired up, the email address and booking link are the better experience.
         -->
-        <form class="contact-form reveal" id="contact-form" novalidate>
-          <div class="field">
-            <label for="contact-name">Name</label>
-            <input type="text" id="contact-name" name="name" required autocomplete="name">
-          </div>
-          <div class="field">
-            <label for="contact-email">Email</label>
-            <input type="email" id="contact-email" name="email" required autocomplete="email">
-          </div>
-          <div class="field">
-            <label for="contact-company">Company <span style="font-weight:300;text-transform:none;letter-spacing:0">(optional)</span></label>
-            <input type="text" id="contact-company" name="company" autocomplete="organization">
-          </div>
-          <div class="field">
-            <label for="contact-message">Message</label>
-            <textarea id="contact-message" name="message" required></textarea>
-          </div>
-          <button type="submit" class="contact-link">Send message</button>
-          <p class="contact-form-note">Opens your email client with a pre-filled message to hello@mokimo.co.uk. Prefer a call? <a href="https://dash.mokimo.co.uk/book_appointment">Book one directly</a>.</p>
-          <p class="contact-form-status" id="contact-form-status" role="status"></p>
-        </form>
       </section>
 
     </div>
@@ -378,33 +351,6 @@
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
     reveals.forEach(el => observer.observe(el));
-
-    document.getElementById('contact-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('contact-name').value.trim();
-      const email = document.getElementById('contact-email').value.trim();
-      const company = document.getElementById('contact-company').value.trim();
-      const message = document.getElementById('contact-message').value.trim();
-      const status = document.getElementById('contact-form-status');
-
-      if (!name || !email || !message) {
-        status.textContent = 'Please fill in your name, email, and message.';
-        status.classList.add('visible');
-        return;
-      }
-
-      const subject = encodeURIComponent('Enquiry from ' + name + (company ? ' (' + company + ')' : ''));
-      const body = encodeURIComponent(
-        'Name: ' + name + '\n' +
-        'Email: ' + email + '\n' +
-        (company ? 'Company: ' + company + '\n' : '') +
-        '\n' + message
-      );
-
-      window.location.href = 'mailto:hello@mokimo.co.uk?subject=' + subject + '&body=' + body;
-      status.textContent = 'If your email client did not open, please email hello@mokimo.co.uk directly.';
-      status.classList.add('visible');
-    });
   </script>
 
 </body>

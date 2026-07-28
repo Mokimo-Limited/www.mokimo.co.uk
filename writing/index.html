@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Writing — Mokimo</title>
+  <meta name="description" content="Notes on design engineering from Mokimo — requirements, systems thinking, manufacturing, and the parts of engineering practice that don't photograph well.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://www.mokimo.co.uk/writing/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/base.css">
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wordmark-group">
+      <a href="/" class="wordmark">mokimo</a>
+      <span class="wordmark-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </div>
+    <nav>
+      <ul class="site-nav" role="list">
+        <li><a href="/about/">About</a></li>
+        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/examples/">Examples</a></li>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-content">
+
+    <h1 class="page-title">Writing</h1>
+    <p class="page-meta">Notes on engineering practice</p>
+
+    <p class="examples-intro">Some of the work we care most about — requirements, interfaces, and the reasoning behind a design decision — doesn't show up in a photograph. This is where we write about it instead.</p>
+
+    <!-- Add a new post by copying one .post-item block and creating its page
+         under /writing/<slug>/. Newest first. -->
+    <div class="post-list">
+      <article class="post-item">
+        <p class="post-item-meta"><time datetime="2026-07-28">28 July 2026</time> &middot; Requirements</p>
+        <h2 class="post-item-title"><a href="/writing/what-makes-a-good-requirement/">What makes a good requirement</a></h2>
+        <p class="post-item-excerpt">Requirements are the least glamorous document on a project and the one most likely to decide how it goes. A look at what separates a requirement you can build against from one that only sounds like it means something.</p>
+      </article>
+    </div>
+
+    <div class="page-cta">
+      <a href="https://dash.mokimo.co.uk/book_appointment" class="contact-link contact-link--primary">Book a call</a>
+      <a href="/examples/" class="contact-link">See our work</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
+    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
+    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

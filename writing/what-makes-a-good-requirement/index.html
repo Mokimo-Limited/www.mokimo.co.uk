@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What makes a good requirement — Mokimo</title>
+  <meta name="description" content="What separates a requirement you can build against from one that only sounds like it means something — testability, hidden design decisions, conditions on numbers, and ownership.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://www.mokimo.co.uk/writing/what-makes-a-good-requirement/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/base.css">
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wordmark-group">
+      <a href="/" class="wordmark">mokimo</a>
+      <span class="wordmark-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </div>
+    <nav>
+      <ul class="site-nav" role="list">
+        <li><a href="/about/">About</a></li>
+        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/examples/">Examples</a></li>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="page-content">
+
+    <p class="examples-breadcrumb"><a href="/writing/">Writing</a> / What makes a good requirement</p>
+
+    <article class="article">
+      <h1 class="page-title">What makes a good requirement</h1>
+      <p class="article-meta"><time datetime="2026-07-28">28 July 2026</time> &middot; Requirements</p>
+
+      <p class="article-lead">Requirements are the least glamorous document on a project, and the one most likely to decide how it goes.</p>
+
+      <h2>Most projects don't fail at the engineering</h2>
+      <p>When something goes badly wrong late on, it's tempting to look for the moment the engineering failed. Usually there isn't one. More often the engineering was perfectly sound and aimed slightly to the left of the actual problem — everybody read the same sentence, pictured something a little different, and nobody found out until there was hardware on a bench and a deadline in the way.</p>
+      <p>That divergence is cheapest to catch in a document and most expensive to catch in a tool, a mould, or a field failure. Which is the whole argument for taking requirements seriously: not process for its own sake, but the recognition that a paragraph is a much cheaper place to be wrong than a production run.</p>
+
+      <h2>A requirement is a promise someone can check</h2>
+      <p>Compare two lines that could appear in the same document:</p>
+      <blockquote>The enclosure shall be robust.</blockquote>
+      <blockquote>The enclosure shall survive a 1&nbsp;m drop onto concrete on any face, with no loss of function and no loss of sealing.</blockquote>
+      <p>The first is a hope. The second tells the designer what to aim at, tells whoever is doing the testing what to set up, and tells both of them in advance what counts as a pass. If you can't describe the test, you don't have a requirement yet — you have an intention, and it's worth labelling it as one until it can be pinned down properly.</p>
+
+      <h2>Watch for solutions wearing requirement clothing</h2>
+      <p>"The housing shall be die-cast aluminium" looks like a requirement, but it's a decision. It might well be the right decision — and yet written that way it quietly rules out every alternative before anyone has weighed them, and it conceals the reason it was chosen. Was it the thermal path? Stiffness? EMC? The fact that a suitable tool already exists?</p>
+      <p>Write the reason down as the requirement and let the material be a design decision made against it. If the constraint genuinely is fixed — existing tooling, a house style, a shelf full of parts you've already bought — then say so, and mark it as a constraint. What matters is that the reader can tell which lines are boundaries and which are choices someone has already made on their behalf.</p>
+
+      <h2>Numbers need conditions</h2>
+      <p>"Operates at 5&nbsp;V" isn't quite a requirement either. Within what tolerance, across what temperature range, measured at which point, and for how long? A number without conditions attached will be comfortably met on a warm bench in July and missed in a cold warehouse in January.</p>
+      <p>Anything with a lifetime attached deserves the same treatment: how many cycles, under what load, and what does the end of life actually look like? A part that stops working is easy to spot. A part that drifts slowly out of specification, while continuing to appear to work, is the one that generates the difficult phone calls.</p>
+
+      <h2>Say who cares, and what it costs to miss</h2>
+      <p>Every requirement should have someone who would object if it were dropped. If nobody can be named, it's usually inherited text that has survived from an older document by momentum alone, and it will either be ignored or — worse — obeyed at some expense that nobody intended to pay.</p>
+      <p>It's just as useful to record what happens if a requirement isn't met. Some are safety or legal obligations and aren't negotiable at any price. Others cost you a feature, a market, or a slice of margin. Grading them honestly at the outset is what makes sensible trade-offs possible later, when something has to give — and something usually does.</p>
+
+      <h2>Write down the things everyone already knows</h2>
+      <p>The shared assumptions are the ones that bite, precisely because nobody thought them worth stating:</p>
+      <ul>
+        <li>Who assembles this, with what tools, and how would they know they'd done it wrong?</li>
+        <li>What will it be cleaned with, and by someone in a hurry?</li>
+        <li>Is anyone expected to open it — for service, for a battery, out of curiosity?</li>
+        <li>What else is in the box, the rack, or the room with it?</li>
+      </ul>
+      <p>A specification that describes the product but not the world it has to survive is only half written. The other half is usually discovered later, by the product.</p>
+
+      <h2>Requirements are allowed to change</h2>
+      <p>None of this argues for treating a requirement set as a stone tablet. Things are learned; suppliers disappear; the market moves. The point of writing requirements down is not to freeze a project but to make change visible — so it gets argued on its merits, with its consequences followed through, instead of being quietly absorbed by whoever first noticed the conflict.</p>
+      <p>Nor does any of it demand heavyweight process. For a small product, two pages of clear, testable statements with an owner against each will do far more good than a hundred-row spreadsheet nobody reads. The measure of a requirement set isn't its length. It's whether two engineers, handed it separately, would build the same thing.</p>
+
+      <p>If there's a specification on your desk and you're not sure whether it's ready to design against, that tends to be a good conversation to have early rather than late. It's a fair part of <a href="/examples/process/">what we do</a>.</p>
+    </article>
+
+    <div class="page-cta">
+      <a href="https://dash.mokimo.co.uk/book_appointment" class="contact-link contact-link--primary">Book a call</a>
+      <a href="/writing/" class="contact-link">More writing</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
+    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
+    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
+  </footer>
+
+  <script>
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

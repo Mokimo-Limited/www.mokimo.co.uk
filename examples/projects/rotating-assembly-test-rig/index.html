@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rotating assembly test rig — Mokimo</title>
+  <meta name="description" content="A functional test rig built to exercise a rotating mechanical assembly under load, turning ad-hoc bench checks into repeatable measurements — by Mokimo.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/base.css">
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wordmark-group">
+      <a href="/" class="wordmark">mokimo</a>
+      <span class="wordmark-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </div>
+    <nav>
+      <ul class="site-nav" role="list">
+        <li><a href="/about/">About</a></li>
+        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/examples/">Examples</a></li>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="examples-content">
+
+    <p class="examples-breadcrumb"><a href="/examples/">Examples</a> / Rotating assembly test rig</p>
+    <div class="project-header">
+      <h1 class="page-title">Rotating assembly test rig</h1>
+      <p class="page-meta">Repeatable validation under load</p>
+      <p class="project-lead">Ad-hoc bench testing tells you whether something worked once. A rig tells you whether it works every time, and gives you a number when it doesn't.</p>
+      <div class="tag-list">
+        <a class="tag" href="/examples/production/">Production</a>
+        <a class="tag" href="/examples/mechanical/">Mechanical</a>
+      </div>
+    </div>
+
+    <div class="case-study-media">
+      <figure>
+        <img src="/images/examples/functional-test-rig.jpg" alt="Functional test rig for a rotating mechanical assembly" loading="lazy">
+        <figcaption>The rig used to exercise a rotating assembly under load.</figcaption>
+      </figure>
+    </div>
+
+    <!-- Sections below are a structural first pass — expand each with the real
+         detail, numbers, and outcomes when you have a moment. -->
+
+    <section class="project-section" style="margin-top: var(--space-xl);">
+      <h2>The problem</h2>
+      <p>A rotating mechanical assembly needed to be validated under load before it could be signed off. Testing it by hand on the bench gave inconsistent results that were difficult to compare between units, which made it impossible to say with any confidence whether a change had improved anything.</p>
+    </section>
+
+    <section class="project-section">
+      <h2>Approach</h2>
+      <p>Built a dedicated functional test rig to drive the assembly through its operating envelope in a controlled, repeatable way. Fixturing the assembly properly and applying load deliberately turns intermittent, hard-to-reproduce behaviour into something visible and measurable — which is usually the difference between chasing a fault and fixing one.</p>
+    </section>
+
+    <section class="project-section">
+      <h2>Outcome</h2>
+      <p>Failure modes became measurable rather than anecdotal, and the assembly could be assessed against the same test conditions each time it was changed.</p>
+    </section>
+
+    <section class="gallery-section" data-projects-section>
+      <span class="section-label">Related work</span>
+      <div class="project-grid" data-projects="all" data-exclude="rotating-assembly-test-rig"></div>
+    </section>
+
+    <div class="page-cta">
+      <a href="/examples/" class="contact-link">All examples</a>
+      <a href="/#contact" class="contact-link">Tell us about your project</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
+    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
+    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
+  </footer>
+
+  <script src="/scripts/projects.js"></script>
+  <script>
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>

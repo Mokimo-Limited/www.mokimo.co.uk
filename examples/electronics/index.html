@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electronics examples — Mokimo</title>
-  <meta name="description" content="Electronics and embedded systems examples — PCB design, sensor integration, and bench bring-up from Mokimo.">
+  <title>Electronics &amp; embedded systems — Mokimo</title>
+  <meta name="description" content="Electronics and embedded systems at Mokimo — circuit design, PCB layout, sensor and motor integration, and bench bring-up alongside mechanical and firmware work.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -28,6 +28,7 @@
         <li><a href="/#approach">Approach</a></li>
         <li><a href="/#services">Services</a></li>
         <li><a href="/examples/">Examples</a></li>
+        <li><a href="/writing/">Writing</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
@@ -39,59 +40,48 @@
     <h1 class="page-title">Electronics &amp; embedded systems</h1>
     <p class="page-meta">Circuit design, PCB layout, and sensor integration</p>
 
-    <article class="case-study">
-      <p class="case-study-meta">Personal project &middot; <a href="/examples/mechanical/">Mechanical</a> &middot; <a href="/examples/firmware/">Firmware</a></p>
-      <h2 class="case-study-title">Bikestow: controller and drive electronics</h2>
-      <div class="case-study-body">
-        <div class="case-study-step">
-          <div class="case-study-step-name">Electronics scope</div>
-          <p>Designed a custom controller PCB to drive the gantry motors, hand-assembled and soldered the board, then laid out and wired the drive electronics on the bench before integrating with the mechanism.</p>
-        </div>
-      </div>
-      <div class="case-study-media">
-        <figure>
-          <img src="/images/examples/bikestow-soldering.jpg" alt="Hand-soldering a custom controller PCB" loading="lazy">
-          <figcaption>Hand-soldering the controller board.</figcaption>
-        </figure>
-        <figure>
-          <img src="/images/examples/bikestow-component-layout.jpg" alt="Drive electronics laid out before wiring" loading="lazy">
-          <figcaption>Laying out drive electronics before wiring.</figcaption>
-        </figure>
-      </div>
-    </article>
+    <p class="examples-intro">The electronics in a product rarely sit on their own: they have to fit inside something, drive something, and be told what to do. Most of our electronics work happens alongside mechanical and firmware design on the same project, which is usually where the interesting constraints turn up.</p>
 
-    <article class="case-study">
-      <p class="case-study-meta">Motor control &middot; Teaching demonstrator</p>
-      <h2 class="case-study-title">Strain-wave gear: motor and driver bring-up</h2>
-      <div class="case-study-body">
-        <p>Bench-tested the motor and driver electronics before pairing them with the mechanical demonstrator — validating torque and control behaviour under load before final assembly.</p>
-      </div>
-      <div class="case-study-media">
-        <figure>
-          <img src="/images/examples/motor-driver-test-setup.jpg" alt="Motor and driver electronics being bench-tested" loading="lazy">
-          <figcaption>Motor and driver on the bench before final assembly.</figcaption>
-        </figure>
-      </div>
-    </article>
+    <section class="gallery-section" data-projects-section style="margin-top: 0;">
+      <span class="section-label">Projects</span>
+      <div class="project-grid" data-projects="electronics"></div>
+      <noscript>
+        <div class="policy-section">
+          <ul>
+            <li><a href="/examples/projects/bikestow/">Bikestow — automated post-op machining centre</a></li>
+            <li><a href="/examples/projects/strain-wave-demonstrator/">Strain-wave gear demonstrator</a></li>
+          </ul>
+        </div>
+      </noscript>
+    </section>
+
+    <!-- Worth a read-through: the section below is deliberately general. Add
+         specifics (parts, buses, tools, what was measured) as you're happy to
+         put your name to them. -->
+    <div class="prose-section">
+      <h2>How we work</h2>
+      <p>Schematic and PCB design, sensor and motor integration, and the bench work that follows: bringing a board up, finding out where it disagrees with the datasheet, and getting it to a state where the firmware can be trusted to be the thing under test.</p>
+      <p>Because we also do the mechanical and firmware sides, we tend to design boards with their eventual home in mind — connector placement that suits the harness rather than the layout, mounting that the enclosure can actually achieve, and test points where a person with a probe can reach them.</p>
+    </div>
 
     <section class="gallery-section">
-      <span class="section-label">From the workshop</span>
+      <span class="section-label">From the bench</span>
       <div class="gallery-grid">
         <div class="gallery-item">
           <img src="/images/examples/pcb-bringup-wireless-module.jpg" alt="Populated prototype PCB with a wireless microcontroller module" loading="lazy">
-          <p class="gallery-caption">Prototype PCB with a wireless microcontroller module, during bring-up.</p>
+          <p class="gallery-caption">Prototype board with a wireless microcontroller module, mid bring-up.</p>
         </div>
         <div class="gallery-item">
           <img src="/images/examples/lcd-module-integration.jpg" alt="Display module integrated on a custom embedded controller board" loading="lazy">
-          <p class="gallery-caption">Display integration on a custom embedded controller board.</p>
+          <p class="gallery-caption">Display module wired to a custom controller board.</p>
         </div>
         <div class="gallery-item">
           <img src="/images/examples/sensor-readhead-assembly.jpg" alt="Custom sensor readhead assembly on a linear motion platform" loading="lazy">
-          <p class="gallery-caption">Custom sensor readhead integrated onto a linear motion platform.</p>
+          <p class="gallery-caption">Sensor readhead mounted to a linear motion platform.</p>
         </div>
         <div class="gallery-item">
-          <img src="/images/examples/disassembled-actuator-modules.jpg" alt="Disassembled actuator modules showing internal gearing" loading="lazy">
-          <p class="gallery-caption">Modular actuator assemblies — housings, gearing, and electronics.</p>
+          <img src="/images/examples/motor-driver-test-setup.jpg" alt="Motor and driver electronics on the bench" loading="lazy">
+          <p class="gallery-caption">Motor and driver electronics set up on the bench.</p>
         </div>
       </div>
     </section>
@@ -109,6 +99,7 @@
     <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
   </footer>
 
+  <script src="/scripts/projects.js"></script>
   <script>
     const header = document.querySelector('.site-header');
     window.addEventListener('scroll', () => {

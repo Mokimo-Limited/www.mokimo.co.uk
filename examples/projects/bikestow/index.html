@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bikestow: automated post-op machining centre — Mokimo</title>
+  <meta name="description" content="A post-operation machining centre with a storage buffer and automatic component detection, allowing continuous unattended running — mechanical, electronics, and firmware design by Mokimo.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/base.css">
+</head>
+<body>
+
+  <header class="site-header" role="banner">
+    <div class="wordmark-group">
+      <a href="/" class="wordmark">mokimo</a>
+      <span class="wordmark-mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </div>
+    <nav>
+      <ul class="site-nav" role="list">
+        <li><a href="/about/">About</a></li>
+        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/#services">Services</a></li>
+        <li><a href="/examples/">Examples</a></li>
+        <li><a href="/writing/">Writing</a></li>
+        <li><a href="/#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="examples-content">
+
+    <p class="examples-breadcrumb"><a href="/examples/">Examples</a> / Bikestow</p>
+    <div class="project-header">
+      <h1 class="page-title">Bikestow</h1>
+      <p class="page-meta">Automated post-op machining centre</p>
+      <p class="project-lead">A machining centre built to handle post-operation work on its own: components are loaded into a storage buffer at the front, detected automatically as they arrive at the machine, and processed one after another without an operator stood over it.</p>
+      <div class="tag-list">
+        <a class="tag" href="/examples/mechanical/">Mechanical</a>
+        <a class="tag" href="/examples/electronics/">Electronics</a>
+        <a class="tag" href="/examples/firmware/">Firmware</a>
+        <a class="tag" href="/examples/production/">Production</a>
+      </div>
+    </div>
+
+    <div class="case-study-media">
+      <figure>
+        <img src="/images/examples/bikestow-cnc-gantry.jpg" alt="Custom CNC gantry mechanism during assembly" loading="lazy">
+        <figcaption>The gantry mechanism during assembly.</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/examples/bikestow-lead-nuts.jpg" alt="Machined aluminium brackets with lead-screw nut inserts" loading="lazy">
+        <figcaption>Machined mounting brackets with lead-screw nuts.</figcaption>
+      </figure>
+    </div>
+
+    <!-- Sections below are a structural first pass — expand each with the real
+         detail, numbers, and outcomes when you have a moment. -->
+
+    <section class="project-section" style="margin-top: var(--space-xl);">
+      <h2>The problem</h2>
+      <p>Post-operation machining is repetitive by nature, and the limiting factor usually isn't the cutting — it's the loading. A machine that needs a part placed in it by hand can only run for as long as someone is stood next to it, which makes small batches expensive in attention rather than in time.</p>
+    </section>
+
+    <section class="project-section">
+      <h2>How it works</h2>
+      <p>Components are stacked into a buffer at the front of the machine. The controller detects each one as it arrives in position, runs the machining cycle, and moves on to the next, so the machine keeps working through the buffer without intervention or a restart between parts.</p>
+    </section>
+
+    <section class="project-section">
+      <h2>Mechanical design</h2>
+      <p>The motion system is a compact gantry built from machined aluminium brackets on lead-screw drives, sized to fit an awkward footprint and to tolerate being cycled repeatedly rather than run once for a demonstration.</p>
+    </section>
+
+    <section class="project-section">
+      <h2>Electronics and firmware</h2>
+      <p>A custom controller board drives the motors, hand-assembled and brought up on the bench before being integrated with the mechanism. The firmware ties the pieces together — coordinating motion, reading the detection and limit sensors, and handling the operator interface — so that the mechanical, electrical, and software sides behave as one machine rather than three subsystems sharing a frame.</p>
+    </section>
+
+    <div class="case-study-media">
+      <figure>
+        <img src="/images/examples/bikestow-soldering.jpg" alt="Hand-soldering a custom controller PCB" loading="lazy">
+        <figcaption>Hand-soldering the controller board.</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/examples/bikestow-component-layout.jpg" alt="Drive electronics laid out before wiring" loading="lazy">
+        <figcaption>Laying out the drive electronics before wiring.</figcaption>
+      </figure>
+    </div>
+
+    <section class="gallery-section" data-projects-section>
+      <span class="section-label">Related work</span>
+      <div class="project-grid" data-projects="all" data-exclude="bikestow"></div>
+    </section>
+
+    <div class="page-cta">
+      <a href="/examples/" class="contact-link">All examples</a>
+      <a href="/#contact" class="contact-link">Tell us about your project</a>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
+    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
+    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
+  </footer>
+
+  <script src="/scripts/projects.js"></script>
+  <script>
+    const header = document.querySelector('.site-header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+  </script>
+
+</body>
+</html>
