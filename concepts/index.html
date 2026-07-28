@@ -5,173 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mokimo — Mark Concepts</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="robots" content="noindex, nofollow">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/base.css">
-  <style>
-
-    .page {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 3rem clamp(1.5rem, 5vw, 3rem) 6rem;
-    }
-
-    header {
-      margin-bottom: 4rem;
-    }
-
-    header h1 {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 1.8rem;
-      letter-spacing: 0.06em;
-      margin-bottom: 0.5rem;
-    }
-
-    header p {
-      color: var(--color-text-muted);
-      font-size: 0.95rem;
-      max-width: 600px;
-      line-height: 1.7;
-    }
-
-    header a {
-      color: var(--color-accent-deep);
-      text-decoration: none;
-      border-bottom: 1px solid var(--color-sand);
-      transition: border-color 0.3s;
-    }
-
-    header a:hover {
-      border-color: var(--color-accent-deep);
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 3rem;
-    }
-
-    .concept {
-      background: white;
-      border-radius: 8px;
-      padding: 2.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-      transition: box-shadow 0.3s;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-    }
-
-    .concept:hover {
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
-    }
-
-    .mark-display {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 2rem 0;
-    }
-
-    .mark-display svg {
-      width: 48px;
-      height: 48px;
-      color: var(--color-text);
-    }
-
-    .mark-with-text {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    .mark-with-text svg {
-      width: 28px;
-      height: 28px;
-      color: var(--color-text);
-      opacity: 0.65;
-    }
-
-    .mark-with-text span {
-      font-family: var(--font-display);
-      font-weight: 400;
-      font-size: 1.6rem;
-      letter-spacing: 0.08em;
-      color: var(--color-text);
-    }
-
-    .concept-label {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 400;
-      letter-spacing: 0.08em;
-      color: var(--color-warm-brown);
-      text-transform: uppercase;
-    }
-
-    .concept-desc {
-      font-size: 0.85rem;
-      color: var(--color-text-muted);
-      text-align: center;
-      line-height: 1.6;
-    }
-
-    .divider {
-      grid-column: 1 / -1;
-      border: none;
-      border-top: 1px solid var(--color-sand-light);
-      margin: 1rem 0;
-    }
-
-    .section-title {
-      grid-column: 1 / -1;
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      font-weight: 300;
-      letter-spacing: 0.1em;
-      color: var(--color-warm-brown);
-      text-transform: uppercase;
-      margin-top: 1rem;
-    }
-
-    /* Dark variant preview */
-    .on-dark {
-      background: var(--color-text);
-    }
-
-    .on-dark .mark-display svg {
-      color: var(--color-base);
-    }
-
-    .on-dark .mark-with-text svg {
-      color: var(--color-base);
-      opacity: 1;
-    }
-
-    .on-dark .mark-with-text span {
-      color: var(--color-base);
-    }
-
-    @media (max-width: 680px) {
-      .grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-    }
-  </style>
 </head>
-<body>
-  <div class="page">
-    <header>
+<body class="concepts-page">
+  <div class="concepts-layout">
+    <header class="concepts-header">
       <h1>Mark Concepts</h1>
       <p>Exploring geometric marks to sit alongside the Mokimo wordmark. Looking for something that feels like a maker's mark — quiet, precise, and distinctly not corporate. <a href="/">Back to site</a></p>
     </header>
 
-    <div class="grid">
+    <div class="concept-grid">
 
       <!-- Current -->
       <div class="section-title">Current</div>
@@ -405,7 +252,7 @@
           </svg>
           <span>Mokimo</span>
         </div>
-        <div class="concept-label" style="color: var(--color-sand);">A — Open circle on dark</div>
+        <div class="concept-label concept-label--dark">A — Open circle on dark</div>
       </div>
 
       <div class="concept on-dark">
@@ -415,7 +262,7 @@
           </svg>
           <span>Mokimo</span>
         </div>
-        <div class="concept-label" style="color: var(--color-sand);">G — Arc on dark</div>
+        <div class="concept-label concept-label--dark">G — Arc on dark</div>
       </div>
 
       <div class="concept on-dark">
@@ -425,7 +272,7 @@
           </svg>
           <span>Mokimo</span>
         </div>
-        <div class="concept-label" style="color: var(--color-sand);">H — Gate on dark</div>
+        <div class="concept-label concept-label--dark">H — Gate on dark</div>
       </div>
 
     </div>

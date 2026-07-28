@@ -6,6 +6,7 @@
   <title>About — Mokimo</title>
   <meta name="description" content="Who we are — a small design engineering consultancy based in Sheffield, working carefully across mechanical, electronic, and firmware disciplines.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://www.mokimo.co.uk/about/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -43,14 +44,12 @@
     <span class="section-label">People</span>
 
     <div class="team-member">
-      <div class="photo-placeholder" aria-hidden="true">Photo coming soon</div>
       <div class="team-name">Founder</div>
       <div class="team-role">Engineering</div>
       <p class="team-bio">Around three years' experience in professional engineering, spanning product development and systems work across mechanical, electronic, and firmware disciplines. That time surfaced the ceilings that tend to come with larger organisations — slower decisions, diluted ownership, and distance between the person doing the work and the person who understands it best. Mokimo exists to work the other way: closer to the problem, with a preference for an honest scope over a confident guess.</p>
     </div>
 
     <div class="team-member">
-      <div class="photo-placeholder" aria-hidden="true">Photo coming soon</div>
       <div class="team-name">Luke</div>
       <div class="team-role">Sales &amp; operations</div>
       <p class="team-bio">Handles sales, operations, and the parts of running a consultancy that have nothing to do with engineering. Luke's background is commercial rather than technical, built over a career in a different industry — but the fundamentals carry across directly: understanding what a client actually needs, being straightforward about what's realistic, and keeping a project moving when it gets complicated.</p>
@@ -93,12 +92,7 @@
     <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
   </footer>
 
-  <script>
-    const header = document.querySelector('.site-header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
-  </script>
+  <script src="/scripts/site.js"></script>
 
 </body>
 </html>

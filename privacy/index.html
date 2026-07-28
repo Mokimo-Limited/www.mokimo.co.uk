@@ -5,197 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Privacy Policy — Mokimo</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://www.mokimo.co.uk/privacy/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/base.css">
-  <style>
-    :root {
-      --max-width: 720px;
-    }
-
-    /* --- Page title area --- */
-
-    .page-title {
-      font-family: var(--font-display);
-      font-size: clamp(2rem, 5vw, 2.8rem);
-      font-weight: 400;
-      letter-spacing: 0.02em;
-      color: var(--color-text);
-      margin-bottom: var(--space-xs);
-    }
-
-    .page-meta {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 300;
-      letter-spacing: 0.06em;
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-md);
-    }
-
-    .controller-note {
-      font-size: 0.9rem;
-      color: var(--color-text-muted);
-      margin-bottom: var(--space-lg);
-      padding-bottom: var(--space-lg);
-      border-bottom: 1px solid var(--color-sand-light);
-    }
-
-    .controller-note strong {
-      color: var(--color-text);
-    }
-
-    /* --- Tabs --- */
-
-    .tab-bar {
-      display: flex;
-      gap: 0;
-      margin-bottom: var(--space-lg);
-      border-bottom: 1px solid var(--color-sand);
-    }
-
-    .tab-btn {
-      font-family: var(--font-body);
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.07em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      background: none;
-      border: none;
-      border-bottom: 2px solid transparent;
-      padding: 0.6rem 1.4rem 0.6rem 0;
-      margin-bottom: -1px;
-      cursor: pointer;
-      transition: color 0.2s ease, border-color 0.2s ease;
-    }
-
-    .tab-btn:hover { color: var(--color-text); }
-
-    .tab-btn.active {
-      color: var(--color-text);
-      border-bottom-color: var(--color-accent-deep);
-    }
-
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
-
-    /* --- WIP banner --- */
-
-    .wip-banner {
-      background: var(--color-sand-light);
-      border-left: 3px solid var(--color-sand);
-      padding: 0.9rem 1.2rem;
-      margin-bottom: var(--space-lg);
-      border-radius: 0 2px 2px 0;
-    }
-
-    .wip-banner p {
-      font-family: var(--font-body);
-      font-size: 0.72rem;
-      font-weight: 400;
-      letter-spacing: 0.04em;
-      color: var(--color-text-muted);
-      margin: 0;
-    }
-
-    .wip-banner p + p { margin-top: 0.4em; }
-
-    /* --- Policy sections --- */
-
-    .policy-section {
-      margin-bottom: var(--space-lg);
-    }
-
-    .policy-section h2 {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 500;
-      letter-spacing: 0.03em;
-      color: var(--color-text);
-      margin-bottom: var(--space-sm);
-      padding-bottom: 0.4rem;
-      border-bottom: 1px solid var(--color-sand-light);
-    }
-
-    .policy-section p {
-      font-size: 0.95rem;
-      color: var(--color-text);
-      margin-bottom: 0.8em;
-    }
-
-    .policy-section p:last-child { margin-bottom: 0; }
-
-    .policy-section ul {
-      list-style: none;
-      padding: 0;
-      margin-bottom: 0.8em;
-    }
-
-    .policy-section ul li {
-      font-size: 0.95rem;
-      color: var(--color-text);
-      padding: 0.25em 0 0.25em 1.2em;
-      position: relative;
-    }
-
-    .policy-section ul li::before {
-      content: '—';
-      position: absolute;
-      left: 0;
-      color: var(--color-sand);
-    }
-
-    /* --- Data table --- */
-
-    .data-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: var(--space-sm);
-      font-size: 0.88rem;
-    }
-
-    .data-table th {
-      font-family: var(--font-body);
-      font-size: 0.65rem;
-      font-weight: 400;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--color-text-muted);
-      text-align: left;
-      padding: 0.5rem 1rem 0.5rem 0;
-      border-bottom: 1px solid var(--color-sand);
-    }
-
-    .data-table td {
-      vertical-align: top;
-      padding: 0.7rem 1rem 0.7rem 0;
-      border-bottom: 1px solid var(--color-sand-light);
-      color: var(--color-text);
-      line-height: 1.5;
-    }
-
-    .data-table tr:last-child td { border-bottom: none; }
-
-    .data-table small { color: var(--color-text-muted); }
-
-    /* --- Links --- */
-
-    a {
-      color: var(--color-accent-deep);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    a:hover {
-      color: var(--color-accent);
-      text-decoration: underline;
-    }
-
-  </style>
 </head>
-<body>
+<body class="privacy-page">
 
   <header class="site-header" role="banner">
     <div class="wordmark-group">
@@ -206,13 +22,12 @@
         </svg>
       </span>
     </div>
-    <nav>
+    <nav aria-label="Primary navigation">
       <ul class="site-nav" role="list">
         <li><a href="/about/">About</a></li>
-        <li><a href="/#approach">Approach</a></li>
+        <li><a href="/approach/">Approach</a></li>
         <li><a href="/#services">Services</a></li>
         <li><a href="/examples/">Examples</a></li>
-        <li><a href="/writing/">Writing</a></li>
         <li><a href="/#contact">Contact</a></li>
       </ul>
     </nav>
@@ -277,7 +92,7 @@
           </tbody>
         </table>
 
-        <p style="margin-top:1rem">This website does not use cookies, tracking pixels, or third-party analytics suites for visitor measurement. Contact form submissions open your email client locally; no message content is stored by this website unless you send the email.</p>
+        <p class="legal-note">This website does not use cookies, tracking pixels, or third-party analytics suites for visitor measurement. If you email us or book a call, the information you provide is handled as described in the relevant sections of this policy.</p>
       </div>
 
       <div class="policy-section">
@@ -378,7 +193,7 @@
           </tbody>
         </table>
 
-        <p style="margin-top:1rem">Data transfers to providers outside the UK are protected by Standard Contractual Clauses (SCCs), the UK International Data Transfer Agreement (IDTA), or equivalent mechanisms. We enforce Zero Data Retention policies where possible for AI-assisted processing. Formal Data Processing Agreements with subprocessors are maintained as part of our compliance programme. AI inference for internal workflows is also partly handled by our own self-hosted models running on private infrastructure, which are not third-party processing.</p>
+        <p class="legal-note">Data transfers to providers outside the UK are protected by Standard Contractual Clauses (SCCs), the UK International Data Transfer Agreement (IDTA), or equivalent mechanisms. We enforce Zero Data Retention policies where possible for AI-assisted processing. Formal Data Processing Agreements with subprocessors are maintained as part of our compliance programme. AI inference for internal workflows is also partly handled by our own self-hosted models running on private infrastructure, which are not third-party processing.</p>
       </div>
 
       <div class="policy-section">
@@ -411,12 +226,8 @@
     <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
   </footer>
 
+  <script src="/scripts/site.js"></script>
   <script>
-    const header = document.querySelector('.site-header');
-    window.addEventListener('scroll', () => {
-      header.classList.toggle('scrolled', window.scrollY > 40);
-    }, { passive: true });
-
     const btns = document.querySelectorAll('.tab-btn');
     const panels = document.querySelectorAll('.tab-panel');
 
