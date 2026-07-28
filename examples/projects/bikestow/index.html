@@ -40,7 +40,7 @@
     <div class="project-header">
       <h1 class="page-title">Bikestow</h1>
       <p class="page-meta">Personal project &middot; Automated post-operation machining centre</p>
-      <p class="project-lead">A machining centre with a front-mounted component buffer and automatic part detection, developed to run consecutive post-operation cycles without manual loading between parts.</p>
+      <p class="project-lead">An automated post-operation machining centre featuring a front-mounted component buffer and automatic part detection, designed for continuous, unattended production runs.</p>
       <div class="tag-list">
         <a class="tag" href="/examples/mechanical/">Mechanical</a>
         <a class="tag" href="/examples/electronics/">Electronics</a>
@@ -62,22 +62,22 @@
 
     <section class="project-section project-section--first">
       <h2>Objective</h2>
-      <p>Reduce the operator time required for repetitive post-operation machining. The machine needed to accept a batch of components, identify when each part reached the working position, complete the machining cycle, and continue to the next component.</p>
+      <p>Eliminate manual component loading between post-operation machining cycles. The machine needed to hold a batch of parts in a buffer, detect each component automatically, cycle the machining gantry, and advance to the next part without operator intervention.</p>
     </section>
 
     <section class="project-section">
       <h2>System design</h2>
-      <p>Components are loaded into a buffer at the front of the machine. The control system detects each component, positions it for machining, runs the cycle, and advances the next part. Mechanical, electronic, and firmware development were handled as one integrated system.</p>
+      <p>Components are loaded into an integrated front buffer. Custom controller electronics detect part presence, trigger the lead-screw gantry sequence, and manage component indexing. Mechanical layout, power electronics, and firmware sequencing were developed concurrently as a unified machine.</p>
     </section>
 
     <section class="project-section">
       <h2>Mechanical design</h2>
-      <p>The motion system uses a compact lead-screw gantry with machined aluminium brackets, designed around the available space and repeated cycling. The buffer, transfer path, workholding, and drive arrangement were developed together.</p>
+      <p>The motion platform uses a compact, lead-screw driven gantry with custom machined aluminium bearing mounts and nut blocks, optimized for high duty cycles within a tight footprint. Workholding, chip shedding, and drive mechanics were designed together.</p>
     </section>
 
     <section class="project-section">
       <h2>Electronics and firmware</h2>
-      <p>A custom controller board and motor-drive electronics were assembled and brought up before integration with the mechanism. The firmware coordinates motion, limit sensing, component detection, cycle sequencing, and operator controls.</p>
+      <p>A custom controller board handles motor drive, limit sensing, and sensor inputs. Microcontroller firmware manages the motion profile, part detection logic, safety interlocks, and machine status display.</p>
     </section>
 
     <div class="project-media">
