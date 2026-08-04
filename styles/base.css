@@ -224,17 +224,14 @@ body {
   color: var(--color-text);
 }
 
-.button--primary,
-.contact-link--primary {
+.button--primary {
   background-color: var(--color-accent-deep);
   border-color: var(--color-accent-deep);
   color: var(--color-base);
 }
 
 .button--primary:hover,
-.button--primary:focus-visible,
-.contact-link--primary:hover,
-.contact-link--primary:focus-visible {
+.button--primary:focus-visible {
   background-color: var(--color-accent);
   border-color: var(--color-accent);
   color: var(--color-base);
@@ -244,21 +241,43 @@ body {
   background: transparent;
 }
 
-.hero-cta {
+.action-row {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-sm);
+}
+
+.action-row--large {
   margin-top: var(--space-lg);
 }
 
-.page-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  margin-top: var(--space-lg);
+.action-row--medium {
+  margin-top: var(--space-md);
 }
 
-.text-link,
+.action-row--extra-large {
+  margin-top: var(--space-2xl);
+}
+
+.text-link {
+  color: var(--color-accent-deep);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.3s ease;
+}
+
+.text-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
 .client-process a,
 .policy-section a {
   color: var(--color-accent-deep);
@@ -278,11 +297,12 @@ body {
   text-decoration-color: var(--color-accent);
 }
 
-/* --- Home page --- */
-
-.home-page .content {
-  max-width: 900px;
+.text-link:hover::after,
+.text-link:focus-visible::after {
+  width: 100%;
 }
+
+/* --- Home page --- */
 
 .home-page [id] {
   scroll-margin-top: 6rem;
@@ -330,13 +350,6 @@ body {
 .services-list {
   display: flex;
   flex-direction: column;
-}
-
-.principles {
-  gap: var(--space-lg);
-}
-
-.services-list {
   gap: var(--space-lg);
 }
 
@@ -383,12 +396,7 @@ body {
   font-weight: 300;
 }
 
-.contact-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-  margin-top: var(--space-md);
-}
+
 
 .reveal {
   opacity: 0;
@@ -515,28 +523,42 @@ body {
   padding-left: var(--space-md);
 }
 
+.team-heading {
+  margin-bottom: 0.2rem;
+}
+
 .team-name {
   font-family: var(--font-heading);
   font-size: 0.9rem;
   font-weight: 600;
   color: var(--color-text);
-  margin-bottom: 0.2rem;
 }
 
 .team-role {
-  margin-bottom: var(--space-xs);
   font-size: 0.8rem;
   font-weight: 400;
   letter-spacing: 0.05em;
   color: var(--color-warm-brown);
 }
 
-.team-bio {
-  max-width: 620px;
-  font-size: 0.95rem;
-  line-height: 1.75;
-  color: var(--color-text-muted);
+.team-links {
+  margin-bottom: var(--space-xs);
+  font-size: 0.8rem;
 }
+
+.team-links .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.team-link-icon {
+  width: 0.95em;
+  height: 0.95em;
+  flex: 0 0 auto;
+}
+
+
 
 .client-process {
   margin-top: var(--space-xl);
@@ -944,7 +966,6 @@ body {
   color: var(--color-accent);
 }
 
-.examples-categories,
 .discipline-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -966,7 +987,6 @@ body {
   border-color: var(--color-accent);
 }
 
-.examples-category-name,
 .examples-category-title {
   font-family: var(--font-heading);
   font-size: 0.9rem;
@@ -1077,12 +1097,7 @@ body {
   line-height: 1.5;
 }
 
-.page-cta {
-  margin-top: var(--space-2xl);
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-sm);
-}
+
 
 /* --- Project cards --- */
 
@@ -1369,22 +1384,12 @@ a.tag:focus-visible {
   margin-top: 0.75rem;
 }
 
-.service-more a {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--color-accent-deep);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: color 0.3s ease, border-color 0.3s ease;
+.link-arrow {
+  font-weight: 300;
 }
 
-.service-more a:hover,
-.service-more a:focus-visible {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
-}
+
+
 
 @media (max-width: 640px) {
   .home-page main section {
