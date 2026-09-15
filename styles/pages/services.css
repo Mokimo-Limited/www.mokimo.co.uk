@@ -1,0 +1,104 @@
+/* === Outcome-led services page === */
+
+.page-intro--services {
+  max-width: 780px;
+}
+
+.page-eyebrow,
+.offer-situation {
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  line-height: 1.55;
+  text-transform: uppercase;
+  color: var(--color-accent-deep);
+}
+
+.offer-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--color-sand);
+  border-left: 1px solid var(--color-sand);
+}
+
+.offer-card {
+  padding: var(--space-md);
+  border-right: 1px solid var(--color-sand);
+  border-bottom: 1px solid var(--color-sand);
+}
+
+.offer-card h2 {
+  margin-bottom: var(--space-sm);
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.offer-card > p:not(.offer-situation) {
+  color: var(--color-text-muted);
+}
+
+.offer-card h3 {
+  margin: var(--space-md) 0 0.55rem;
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.offer-card ul {
+  padding-left: 1.1rem;
+  color: var(--color-text-muted);
+}
+
+.offer-card li {
+  margin-bottom: 0.3rem;
+  font-size: 0.92rem;
+}
+
+.offer-acceptance {
+  margin-top: var(--space-md);
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-sand-light);
+  font-size: 0.9rem;
+}
+
+.boundary-grid,
+.start-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-lg);
+}
+
+.start-grid article {
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-sand);
+}
+
+.start-grid h2 {
+  margin-bottom: 0.45rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.start-grid p {
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 700px) {
+  .offer-grid,
+  .boundary-grid,
+  .start-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .boundary-grid,
+  .start-grid {
+    gap: var(--space-md);
+  }
+}
