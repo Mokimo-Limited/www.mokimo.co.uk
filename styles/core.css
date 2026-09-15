@@ -30,11 +30,14 @@
   --color-base: #FAFAF9;
   --color-text: #181B1F;
   --color-text-muted: #565D66;
+  --color-text-muted-invert: #A0A7B0;
   --color-accent: #2E5E8C;
   --color-accent-deep: #234A70;
   --color-sand: #D8DADD;
   --color-sand-light: #E8EAEC;
   --color-warm-brown: #6E747C;
+
+  --content-width: 1160px;
 
   --font-display: 'IBM Plex Sans', -apple-system, sans-serif;
   --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
@@ -102,46 +105,122 @@ main p a:not(.button):not(.text-link):focus-visible,
 	text-decoration-color: var(--color-accent);
 }
 
-/* --- Footer --- */
+/* --- Footer (drawing title-block layout) --- */
 
 .site-footer {
-  padding: var(--space-lg) var(--side-padding) var(--space-md);
-  text-align: center;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: var(--space-xl) var(--side-padding) var(--space-lg);
 }
 
-.footer-text {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  font-weight: 400;
+.footer-title-block {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr);
+  border: 1px solid var(--color-sand);
+}
+
+.footer-cell {
+  padding: var(--space-sm) var(--space-md);
+}
+
+.footer-cell + .footer-cell {
+  border-left: 1px solid var(--color-sand);
+}
+
+.footer-wordmark {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  color: var(--color-text);
+}
+
+.footer-note {
+  margin-top: 0.35rem;
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+}
+
+.footer-cell-label {
+  margin-bottom: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-warm-brown);
+}
+
+.footer-cell-body {
+  font-size: 0.8rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+.footer-cell-body a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-sand);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.footer-cell-body a:hover,
+.footer-cell-body a:focus-visible {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.footer-legal {
+  margin-top: var(--space-sm);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
   letter-spacing: 0.04em;
   color: var(--color-warm-brown);
 }
 
-.footer-text a {
+.footer-legal a {
   color: var(--color-warm-brown);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.15s ease;
 }
 
-.footer-text a:hover {
+.footer-legal a:hover,
+.footer-legal a:focus-visible {
   color: var(--color-accent);
 }
 
-.footer-links {
-  margin-top: 0.4em;
+@media (max-width: 880px) {
+  .footer-title-block {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer-cell + .footer-cell {
+    border-left: 0;
+  }
+
+  .footer-cell:nth-child(even) {
+    border-left: 1px solid var(--color-sand);
+  }
+
+  .footer-cell:nth-child(n + 3) {
+    border-top: 1px solid var(--color-sand);
+  }
 }
 
-.footer-address {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35em;
-}
+@media (max-width: 520px) {
+  .footer-title-block {
+    grid-template-columns: 1fr;
+  }
 
-.footer-address svg {
-  width: 0.85em;
-  height: 0.85em;
-  flex-shrink: 0;
-  color: var(--color-accent);
+  .footer-cell:nth-child(even) {
+    border-left: 0;
+  }
+
+  .footer-cell + .footer-cell {
+    border-top: 1px solid var(--color-sand);
+  }
 }
 
 /* --- Shared layout (header, CTAs, forms) --- */
@@ -215,7 +294,7 @@ main p a:not(.button):not(.text-link):focus-visible,
 }
 
 .content {
-  max-width: 900px;
+  max-width: var(--content-width);
   margin: 0 auto;
   padding: 0 var(--side-padding);
 }
@@ -228,8 +307,8 @@ main p a:not(.button):not(.text-link):focus-visible,
   color: var(--color-accent-deep);
   text-decoration: none;
   display: inline-block;
-  border: 1.5px solid var(--color-accent);
-  padding: 0.55em 1.3em;
+  border: 1px solid var(--color-accent);
+  padding: 0.6em 1.35em;
   transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
 }
 
@@ -284,9 +363,10 @@ main p a:not(.button):not(.text-link):focus-visible,
 
 .page-title {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 2.8rem);
-  font-weight: 400;
-  letter-spacing: 0.02em;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: 500;
+  letter-spacing: -0.012em;
+  line-height: 1.1;
   color: var(--color-text);
   margin-bottom: var(--space-xs);
 }

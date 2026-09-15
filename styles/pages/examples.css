@@ -2,7 +2,7 @@
 /* --- Examples pages --- */
 
 .examples-content {
-  max-width: 1000px;
+  max-width: var(--content-width);
   margin: 0 auto;
   padding: calc(var(--space-lg) + 3.5rem) var(--side-padding) var(--space-xl);
 }
@@ -31,7 +31,7 @@
 
 .banner-code {
   width: 100%;
-  max-width: 1000px;
+  max-width: var(--content-width);
   margin: 0 auto;
   padding: 0 var(--side-padding);
   font-family: var(--font-mono);
@@ -59,7 +59,7 @@
 
 .banner-sketch {
   width: 100%;
-  max-width: 1000px;
+  max-width: var(--content-width);
   margin: 0 auto;
   padding: 0 var(--side-padding);
   display: flex;
@@ -84,7 +84,7 @@
 }
 
 .examples-banner-content {
-  max-width: 1000px;
+  max-width: var(--content-width);
   margin: 0 auto;
   padding: 1.5rem var(--side-padding) 0;
   border-left: 3px solid var(--color-accent);

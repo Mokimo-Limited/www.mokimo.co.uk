@@ -2,13 +2,13 @@
 /* --- Legal / secondary pages --- */
 
 .page-content {
-  max-width: 720px;
+  max-width: 760px;
   margin: 0 auto;
   padding: calc(var(--space-lg) + 3.5rem) var(--side-padding) var(--space-xl);
 }
 
 .page-content--wide {
-  max-width: 920px;
+  max-width: 1080px;
 }
 
 .page-intro {

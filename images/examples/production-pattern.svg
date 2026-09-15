@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 170" width="800" height="170">
-  <rect x="0" y="0" width="800" height="170" fill="#D9CFBF"/>
-  <g fill="none" stroke="#7D8B75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
+  <rect x="0" y="0" width="800" height="170" fill="#E8EAEC"/>
+  <g fill="none" stroke="#9AA6B4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.7">
     <line x1="40" y1="122" x2="760" y2="122"/>
     <line x1="40" y1="122" x2="40" y2="144"/>
     <line x1="400" y1="122" x2="400" y2="144"/>
@@ -15,7 +15,7 @@
     <path d="M 700 18 A 22 22 0 1 1 679 33"/>
     <path d="M 672 26 L 679 33 L 686 28"/>
   </g>
-  <g fill="#5E6B57" opacity="0.7">
+  <g fill="#7C8A9A" opacity="0.7">
     <circle cx="107" cy="103" r="2.6"/>
     <circle cx="247" cy="103" r="2.6"/>
     <circle cx="387" cy="103" r="2.6"/>
