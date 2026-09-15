@@ -27,18 +27,19 @@
 /* --- Design tokens --- */
 
 :root {
-  --color-base: #F5F0EB;
-  --color-text: #2C2C2C;
-  --color-text-muted: #5C5650;
-  --color-accent: #7D8B75;
-  --color-accent-deep: #5E6B57;
-  --color-sand: #C4B5A0;
-  --color-sand-light: #D9CFBF;
-  --color-warm-brown: #8A7E6E;
+  --color-base: #FAFAF9;
+  --color-text: #181B1F;
+  --color-text-muted: #565D66;
+  --color-accent: #2E5E8C;
+  --color-accent-deep: #234A70;
+  --color-sand: #D8DADD;
+  --color-sand-light: #E8EAEC;
+  --color-warm-brown: #6E747C;
 
-  --font-display: 'Quicksand', -apple-system, sans-serif;
-  --font-body: 'Quicksand', -apple-system, sans-serif;
-  --font-heading: 'DM Sans', -apple-system, sans-serif;
+  --font-display: 'IBM Plex Sans', -apple-system, sans-serif;
+  --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+  --font-heading: 'IBM Plex Sans', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace;
 
   --space-xs: 0.5rem;
   --space-sm: 1rem;
@@ -75,10 +76,11 @@ main p a:not(.button):not(.text-link),
 .examples-category-link,
 .project-card-link {
 	color: var(--color-accent-deep);
-	text-decoration: none;
-	position: relative;
-	padding-bottom: 2px;
-	transition: color 0.3s ease;
+	text-decoration: underline;
+	text-decoration-thickness: 1px;
+	text-decoration-color: var(--color-sand);
+	text-underline-offset: 3px;
+	transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
 
 main p a:not(.button):not(.text-link):visited,
@@ -88,29 +90,16 @@ main p a:not(.button):not(.text-link):visited,
 	color: var(--color-accent-deep);
 }
 
-main p a:not(.button):not(.text-link)::after,
-.text-link::after,
-.examples-category-link::after,
-.project-card-link::after {
-	content: '';
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	width: 0;
-	height: 1px;
-	background-color: var(--color-accent);
-	transition: width 0.3s ease;
-}
-
-main p a:not(.button):not(.text-link):hover::after,
-main p a:not(.button):not(.text-link):focus-visible::after,
-.text-link:hover::after,
-.text-link:focus-visible::after,
-.examples-category-link:hover::after,
-.examples-category-link:focus-visible::after,
-.project-card-link:hover::after,
-.project-card-link:focus-visible::after {
-	width: 100%;
+main p a:not(.button):not(.text-link):hover,
+main p a:not(.button):not(.text-link):focus-visible,
+.text-link:hover,
+.text-link:focus-visible,
+.examples-category-link:hover,
+.examples-category-link:focus-visible,
+.project-card-link:hover,
+.project-card-link:focus-visible {
+	color: var(--color-text);
+	text-decoration-color: var(--color-accent);
 }
 
 /* --- Footer --- */
@@ -167,24 +156,8 @@ main p a:not(.button):not(.text-link):focus-visible::after,
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: background-color 0.4s ease, box-shadow 0.4s ease;
-}
-
-.site-header.scrolled {
-  background-color: rgba(245, 240, 235, 0.95);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-/* Keep the fixed header legible above the examples-page banners */
-.electronics-page .site-header,
-.firmware-page .site-header,
-.production-page .site-header,
-.process-page .site-header {
-  background-color: rgba(245, 240, 235, 0.92);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 3px 16px rgba(30, 28, 26, 0.18);
+  background-color: var(--color-base);
+  border-bottom: 1px solid var(--color-sand-light);
 }
 
 .wordmark {
@@ -227,32 +200,18 @@ main p a:not(.button):not(.text-link):focus-visible::after,
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
   text-decoration: none;
-  position: relative;
   padding-bottom: 2px;
-  transition: color 0.3s ease;
-}
-
-.site-nav a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background-color: var(--color-accent);
-  transition: width 0.3s ease;
+  transition: color 0.15s ease;
 }
 
 .site-nav a:hover,
-.site-nav a:focus-visible,
-.site-nav a[aria-current='page'] {
-  color: var(--color-accent-deep);
+.site-nav a:focus-visible {
+  color: var(--color-text);
 }
 
-.site-nav a:hover::after,
-.site-nav a:focus-visible::after,
-.site-nav a[aria-current='page']::after {
-  width: 100%;
+.site-nav a[aria-current='page'] {
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-accent);
 }
 
 .content {
@@ -333,17 +292,17 @@ main p a:not(.button):not(.text-link):focus-visible::after,
 }
 
 .page-meta {
-  font-family: var(--font-body);
+  font-family: var(--font-mono);
   font-size: 0.7rem;
-  font-weight: 300;
+  font-weight: 400;
   letter-spacing: 0.06em;
   color: var(--color-text-muted);
   margin-bottom: var(--space-md);
 }
 
 .section-label {
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   font-weight: 400;
   letter-spacing: 0.1em;
   color: var(--color-warm-brown);

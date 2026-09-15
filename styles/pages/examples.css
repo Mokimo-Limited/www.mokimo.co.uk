@@ -34,7 +34,7 @@
   max-width: 1000px;
   margin: 0 auto;
   padding: 0 var(--side-padding);
-  font-family: ui-monospace, 'SFMono-Regular', Consolas, Menlo, monospace;
+  font-family: var(--font-mono);
   font-size: 0.78rem;
   line-height: 1.65;
   color: var(--color-text-muted);
@@ -69,19 +69,13 @@
 }
 
 .banner-sketch-note {
-  font-family: 'Caveat', cursive;
-  font-size: 1.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   line-height: 1;
   color: var(--color-warm-brown);
   white-space: nowrap;
-}
-
-.banner-sketch-note:nth-child(3n+1) {
-  transform: rotate(-1.5deg);
-}
-
-.banner-sketch-note:nth-child(3n+2) {
-  transform: rotate(1deg);
 }
 
 .banner-sketch-note .strike {
@@ -214,8 +208,7 @@
   margin: 0;
   overflow: hidden;
   border: 1px solid var(--color-sand-light);
-  background-color: #FBF8F4;
-  box-shadow: 0 0.7rem 1.8rem rgba(44, 44, 44, 0.1);
+  background-color: var(--color-base);
 }
 
 .project-media img {
@@ -258,8 +251,7 @@
 .gallery-item {
   overflow: hidden;
   border: 1px solid var(--color-sand-light);
-  background-color: #FBF8F4;
-  box-shadow: 0 0.45rem 1.2rem rgba(44, 44, 44, 0.08);
+  background-color: var(--color-base);
 }
 
 .gallery-caption {
@@ -289,13 +281,12 @@
   flex-direction: column;
   border: 1px solid var(--color-sand-light);
   color: inherit;
-  transition: border-color 0.25s ease, transform 0.25s ease;
+  transition: border-color 0.15s ease;
 }
 
 .project-card:hover,
 .project-card:focus-within {
   border-color: var(--color-accent);
-  transform: translateY(-2px);
 }
 
 .project-card-image {
@@ -390,7 +381,7 @@
   color: var(--color-warm-brown);
   border: 1px solid var(--color-sand-light);
   padding: 0.25em 0.7em;
-  border-radius: 100px;
+  border-radius: 2px;
   white-space: nowrap;
 }
 
