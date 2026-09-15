@@ -1,5 +1,4 @@
-/* === Legal / secondary pages (shared by privacy + terms) === */
-/* --- Legal / secondary pages --- */
+/* === Shared inner-page styles (about, approach, services, contact, privacy, terms) === */
 
 .page-content {
   max-width: 760px;
@@ -16,18 +15,11 @@
   margin-bottom: var(--space-xl);
 }
 
-.page-lead,
-.intro-lead {
+.page-lead {
   max-width: 660px;
   font-size: 1.08rem;
   line-height: 1.8;
   color: var(--color-text-muted);
-}
-
-.page-tagline {
-  font-size: 0.95rem;
-  font-weight: 400;
-  letter-spacing: 0.02em;
 }
 
 .content-section {
@@ -42,6 +34,42 @@
 .section-copy {
   max-width: 660px;
   color: var(--color-text-muted);
+}
+
+.section-copy + .section-copy {
+  margin-top: var(--space-sm);
+}
+
+.start-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-lg);
+}
+
+.start-grid article {
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-sand-light);
+}
+
+.start-grid h2 {
+  margin-bottom: 0.45rem;
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.start-grid p {
+  font-size: 0.94rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 700px) {
+  .start-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
 }
 
 /* Shared with approach.css originally; used by privacy/terms policy-section content. */

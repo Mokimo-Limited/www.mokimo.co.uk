@@ -1,18 +1,9 @@
 /* === About page === */
-/* --- About page --- */
-
-.about-page .intro-lead {
-  margin-bottom: var(--space-lg);
-}
 
 .about-positioning {
   margin-bottom: var(--space-lg);
   padding-top: var(--space-md);
   border-top: 1px solid var(--color-sand-light);
-}
-
-.about-positioning .section-copy + .section-copy {
-  margin-top: var(--space-sm);
 }
 
 .about-row {

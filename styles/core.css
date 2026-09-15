@@ -105,7 +105,7 @@ main p a:not(.button):not(.text-link):focus-visible,
 	text-decoration-color: var(--color-accent);
 }
 
-/* --- Footer (drawing title-block layout, dark band to page end) --- */
+/* --- Footer (dark band to page end) --- */
 
 .site-footer {
   background-color: var(--color-text);
@@ -117,15 +117,8 @@ main p a:not(.button):not(.text-link):focus-visible,
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr);
-  border: 1px solid rgba(250, 250, 249, 0.22);
-}
-
-.footer-cell {
-  padding: var(--space-sm) var(--space-md);
-}
-
-.footer-cell + .footer-cell {
-  border-left: 1px solid rgba(250, 250, 249, 0.22);
+  column-gap: var(--space-lg);
+  align-items: start;
 }
 
 .footer-wordmark {
@@ -146,12 +139,9 @@ main p a:not(.button):not(.text-link):focus-visible,
 
 .footer-cell-label {
   margin-bottom: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-muted-invert);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-base);
 }
 
 .footer-cell-body {
@@ -175,7 +165,9 @@ main p a:not(.button):not(.text-link):focus-visible,
 
 .footer-legal {
   max-width: calc(var(--content-width) - 2 * var(--side-padding));
-  margin: var(--space-sm) auto 0;
+  margin: var(--space-lg) auto 0;
+  padding-top: var(--space-sm);
+  border-top: 1px solid rgba(250, 250, 249, 0.16);
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.04em;
@@ -196,32 +188,14 @@ main p a:not(.button):not(.text-link):focus-visible,
 @media (max-width: 880px) {
   .footer-title-block {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .footer-cell + .footer-cell {
-    border-left: 0;
-  }
-
-  .footer-cell:nth-child(even) {
-    border-left: 1px solid rgba(250, 250, 249, 0.22);
-  }
-
-  .footer-cell:nth-child(n + 3) {
-    border-top: 1px solid rgba(250, 250, 249, 0.22);
+    row-gap: var(--space-lg);
   }
 }
 
 @media (max-width: 520px) {
   .footer-title-block {
     grid-template-columns: 1fr;
-  }
-
-  .footer-cell:nth-child(even) {
-    border-left: 0;
-  }
-
-  .footer-cell + .footer-cell {
-    border-top: 1px solid rgba(250, 250, 249, 0.22);
+    row-gap: var(--space-md);
   }
 }
 
