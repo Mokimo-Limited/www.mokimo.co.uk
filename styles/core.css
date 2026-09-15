@@ -105,18 +105,19 @@ main p a:not(.button):not(.text-link):focus-visible,
 	text-decoration-color: var(--color-accent);
 }
 
-/* --- Footer (drawing title-block layout) --- */
+/* --- Footer (drawing title-block layout, dark band to page end) --- */
 
 .site-footer {
-  max-width: var(--content-width);
-  margin: 0 auto;
+  background-color: var(--color-text);
   padding: var(--space-xl) var(--side-padding) var(--space-lg);
 }
 
 .footer-title-block {
+  max-width: calc(var(--content-width) - 2 * var(--side-padding));
+  margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr);
-  border: 1px solid var(--color-sand);
+  border: 1px solid rgba(250, 250, 249, 0.22);
 }
 
 .footer-cell {
@@ -124,7 +125,7 @@ main p a:not(.button):not(.text-link):focus-visible,
 }
 
 .footer-cell + .footer-cell {
-  border-left: 1px solid var(--color-sand);
+  border-left: 1px solid rgba(250, 250, 249, 0.22);
 }
 
 .footer-wordmark {
@@ -133,14 +134,14 @@ main p a:not(.button):not(.text-link):focus-visible,
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: lowercase;
-  color: var(--color-text);
+  color: var(--color-base);
 }
 
 .footer-note {
   margin-top: 0.35rem;
   font-size: 0.78rem;
   line-height: 1.6;
-  color: var(--color-text-muted);
+  color: var(--color-text-muted-invert);
 }
 
 .footer-cell-label {
@@ -150,45 +151,46 @@ main p a:not(.button):not(.text-link):focus-visible,
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-warm-brown);
+  color: var(--color-text-muted-invert);
 }
 
 .footer-cell-body {
   font-size: 0.8rem;
   line-height: 1.8;
-  color: var(--color-text-muted);
+  color: var(--color-text-muted-invert);
 }
 
 .footer-cell-body a {
-  color: var(--color-text-muted);
+  color: var(--color-text-muted-invert);
   text-decoration: none;
-  border-bottom: 1px solid var(--color-sand);
+  border-bottom: 1px solid rgba(250, 250, 249, 0.3);
   transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 .footer-cell-body a:hover,
 .footer-cell-body a:focus-visible {
-  color: var(--color-accent);
-  border-color: var(--color-accent);
+  color: var(--color-base);
+  border-color: var(--color-base);
 }
 
 .footer-legal {
-  margin-top: var(--space-sm);
+  max-width: calc(var(--content-width) - 2 * var(--side-padding));
+  margin: var(--space-sm) auto 0;
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.04em;
-  color: var(--color-warm-brown);
+  color: var(--color-text-muted-invert);
 }
 
 .footer-legal a {
-  color: var(--color-warm-brown);
+  color: var(--color-text-muted-invert);
   text-decoration: none;
   transition: color 0.15s ease;
 }
 
 .footer-legal a:hover,
 .footer-legal a:focus-visible {
-  color: var(--color-accent);
+  color: var(--color-base);
 }
 
 @media (max-width: 880px) {
@@ -201,11 +203,11 @@ main p a:not(.button):not(.text-link):focus-visible,
   }
 
   .footer-cell:nth-child(even) {
-    border-left: 1px solid var(--color-sand);
+    border-left: 1px solid rgba(250, 250, 249, 0.22);
   }
 
   .footer-cell:nth-child(n + 3) {
-    border-top: 1px solid var(--color-sand);
+    border-top: 1px solid rgba(250, 250, 249, 0.22);
   }
 }
 
@@ -219,7 +221,7 @@ main p a:not(.button):not(.text-link):focus-visible,
   }
 
   .footer-cell + .footer-cell {
-    border-top: 1px solid var(--color-sand);
+    border-top: 1px solid rgba(250, 250, 249, 0.22);
   }
 }
 
