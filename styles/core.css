@@ -391,6 +391,51 @@ main p a:not(.button):not(.text-link):focus-visible,
   margin-bottom: var(--space-sm);
 }
 
+/* --- Shared figure grids (inner pages) --- */
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+}
+
+.media-grid figure {
+  margin: 0;
+  border: 1px solid var(--color-sand);
+  background-color: var(--color-base);
+}
+
+.media-grid img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.media-grid figcaption {
+  padding: 0.85rem 1rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+}
+
+.media-grid figcaption span {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--color-accent-deep);
+}
+
+@media (max-width: 640px) {
+  .media-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 640px) {
   .home-page main section {
     padding-top: var(--space-lg);
