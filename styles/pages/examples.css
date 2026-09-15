@@ -108,16 +108,6 @@
   padding-top: var(--space-md);
 }
 
-.examples-section-heading {
-  font-family: var(--font-heading);
-  font-size: 0.7rem;
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-accent-deep);
-  margin-bottom: 0.75rem;
-}
-
 .examples-intro {
   font-size: 1.05rem;
   line-height: 1.75;
