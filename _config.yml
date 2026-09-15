@@ -1,0 +1,9 @@
+title: Mokimo
+description: Mechanical, electronic, and firmware engineering consultancy.
+url: "https://www.mokimo.co.uk"
+
+# Plain HTML source pages already carry their own front matter; no Markdown
+# processing, permalink rewriting, or plugins are needed.
+markdown: kramdown
+exclude:
+  - README.md

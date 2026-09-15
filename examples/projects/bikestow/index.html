@@ -1,52 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bikestow: automated post-op machining centre — Mokimo</title>
-  <meta name="description" content="A post-operation machining centre with a storage buffer and automatic component detection, allowing continuous unattended running — mechanical, electronics, and firmware design by Mokimo.">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://www.mokimo.co.uk/examples/projects/bikestow/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/base.css">
-</head>
-<body>
-
-  <header class="site-header" role="banner">
-    <div class="wordmark-group">
-      <a href="/" class="wordmark">mokimo</a>
-      <span class="wordmark-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
-        </svg>
-      </span>
-    </div>
-    <nav aria-label="Primary navigation">
-      <ul class="site-nav" role="list">
-        <li><a href="/about/">About</a></li>
-        <li><a href="/approach/">Approach</a></li>
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/" aria-current="page">Examples</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+---
+layout: default
+title: "Bikestow Automation Cell — Mokimo"
+description: "An automated post-operation machining centre that finishes CNC-routed bike rack components — vacuum hold-down, automatic tray identification, and pneumatic actuation, engineered by Mokimo."
+nav: examples
+extra_css:
+  - examples
+---
 
   <main class="examples-content">
 
-    <p class="examples-breadcrumb"><a href="/examples/">Examples</a> / Bikestow</p>
+    <p class="examples-breadcrumb"><a href="/examples/">Examples</a> / Bikestow Automation Cell</p>
     <div class="project-header">
-      <h1 class="page-title">Bikestow</h1>
-      <p class="page-meta">Personal project &middot; Automated post-operation machining centre</p>
-      <p class="project-lead">An automated post-operation machining centre featuring a front-mounted component buffer and automatic part detection, designed for continuous, unattended production runs.</p>
+      <h1 class="page-title">Bikestow Automation Cell</h1>
+      <p class="page-meta">Client project &middot; Automated post-operation machining centre</p>
+      <p class="project-lead">An automated machining centre that finishes CNC-routed bike rack components — chamfering the reverse face and removing the mousebite tabs left by the primary cutting operation, without operator intervention between parts.</p>
       <div class="tag-list">
         <a class="tag" href="/examples/mechanical/">Mechanical</a>
         <a class="tag" href="/examples/electronics/">Electronics</a>
         <a class="tag" href="/examples/firmware/">Firmware</a>
         <a class="tag" href="/examples/production/">Production</a>
       </div>
+    </div>
+
+    <div class="project-media">
+      <figure>
+        <img src="/images/examples/bikestow-automation-cell-cad.png" alt="CAD render of the full Bikestow automation cell, showing enclosure, gantry, and control panel" loading="lazy">
+        <figcaption>The full cell — enclosure, gantry, and control panel.</figcaption>
+      </figure>
+    </div>
+
+    <div class="project-narrative">
+      <p>The client's bike rack components are CNC-routed from sheet stock. That process can only chamfer one face of each part — the cutter approaches from above — and leaves small uncut "mousebite" tabs holding each part within the surrounding sheet until it's broken free. Finishing the reverse face and clearing those tabs was being done by hand, on a router table: slow, repetitive work that keeps an operator's hands close to a spinning cutter for the length of a shift.</p>
+      <p>Mokimo was commissioned to remove that step from the manufacturing process entirely. At its core, Bikestow is a wood router riding an aluminium-extrusion gantry, driven by stepper motors and leadscrews, running the finishing operation autonomously. The more significant engineering is in what surrounds it: how parts are held, how the machine identifies what it's holding, and how it keeps itself fed.</p>
     </div>
 
     <div class="project-media">
@@ -60,25 +45,10 @@
       </figure>
     </div>
 
-    <section class="project-section project-section--first">
-      <h2>Objective</h2>
-      <p>Eliminate manual component loading between post-operation machining cycles. The machine needed to hold a batch of parts in a buffer, detect each component automatically, cycle the machining gantry, and advance to the next part without operator intervention.</p>
-    </section>
-
-    <section class="project-section">
-      <h2>System design</h2>
-      <p>Components are loaded into an integrated front buffer. Custom controller electronics detect part presence, trigger the lead-screw gantry sequence, and manage component indexing. Mechanical layout, power electronics, and firmware sequencing were developed concurrently as a unified machine.</p>
-    </section>
-
-    <section class="project-section">
-      <h2>Mechanical design</h2>
-      <p>The motion platform uses a compact, lead-screw driven gantry with custom machined aluminium bearing mounts and nut blocks, optimized for high duty cycles within a tight footprint. Workholding, chip shedding, and drive mechanics were designed together.</p>
-    </section>
-
-    <section class="project-section">
-      <h2>Electronics and firmware</h2>
-      <p>A custom controller board handles motor drive, limit sensing, and sensor inputs. Microcontroller firmware manages the motion profile, part detection logic, safety interlocks, and machine status display.</p>
-    </section>
+    <div class="project-narrative">
+      <p>Hold-down is provided by a Henry vacuum cleaner rather than a dedicated vacuum pump — a deliberately pragmatic choice, selected after comparing hold-down pressure across several off-the-shelf units. It clamps each part flat during machining, leaving the entire top perimeter clear for the router rather than obstructing it with mechanical clamps, and counteracts warping in the plywood stock that would otherwise produce inconsistent chamfer depth along longer or flatter parts. The same airflow clears sawdust the on-toolhead dust shoe misses.</p>
+      <p>Parts are fed through a six-tray magazine, each tray identified by a hall-effect sensor reading a simple magnet array — chosen over optical or mechanical switches, which don't tolerate a dust-heavy environment well. This lets the machine automatically select the correct toolpath from a library of fifteen, matching whatever's loaded without operator input, and makes it effectively impossible to run the wrong programme against a tray. Trays can be swapped as they complete, letting the cell run close to continuously across a full production batch.</p>
+    </div>
 
     <div class="project-media">
       <figure>
@@ -91,20 +61,14 @@
       </figure>
     </div>
 
+    <div class="project-narrative">
+      <p>Latches, the movable vacuum bed, and tray alignment are all pneumatically actuated, drawing on the workshop's existing compressed air supply — more robust and faster-acting than the linear steppers or solenoids that would otherwise be required, and more compact.</p>
+      <p>The cell has been delivered and commissioned in the client's workshop, where it is already producing strong preliminary results. Further integration work is planned to bring it to full production readiness.</p>
+    </div>
+
     <div class="action-row action-row--large">
       <a href="/examples/" class="button button--secondary">All examples</a>
       <a href="mailto:hello@mokimo.co.uk" class="button button--secondary">Email us</a>
     </div>
 
   </main>
-
-  <footer class="site-footer">
-    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
-    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
-    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
-  </footer>
-
-  <script src="/scripts/site.js"></script>
-
-</body>
-</html>

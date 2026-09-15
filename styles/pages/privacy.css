@@ -1,0 +1,92 @@
+/* === Privacy page === */
+/* --- Privacy page --- */
+
+.controller-note {
+  margin-bottom: var(--space-lg);
+  padding-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-sand-light);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.controller-note strong {
+  color: var(--color-text);
+}
+
+.tab-bar {
+  display: flex;
+  margin-bottom: var(--space-lg);
+  border-bottom: 1px solid var(--color-sand);
+}
+
+.tab-btn {
+  padding: 0.6rem 1.4rem 0.6rem 0;
+  margin-bottom: -1px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: none;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: var(--color-text);
+}
+
+.tab-btn.active {
+  color: var(--color-text);
+  border-bottom-color: var(--color-accent-deep);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+.data-table {
+  width: 100%;
+  margin-top: var(--space-sm);
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.data-table th {
+  padding: 0.5rem 1rem 0.5rem 0;
+  border-bottom: 1px solid var(--color-sand);
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-align: left;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.data-table td {
+  padding: 0.7rem 1rem 0.7rem 0;
+  border-bottom: 1px solid var(--color-sand-light);
+  vertical-align: top;
+  line-height: 1.5;
+  color: var(--color-text);
+}
+
+.data-table tr:last-child td {
+  border-bottom: 0;
+}
+
+.data-table small {
+  color: var(--color-text-muted);
+}
+
+.legal-note {
+  margin-top: var(--space-sm);
+}

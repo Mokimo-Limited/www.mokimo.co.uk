@@ -1,0 +1,43 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  <meta name="description" content="{{ page.description }}">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <script>document.documentElement.classList.add('js');</script>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600{% if page.extra_font %}&family={{ page.extra_font }}{% endif %}&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/core.css">
+  {% for sheet in page.extra_css %}<link rel="stylesheet" href="/styles/pages/{{ sheet }}.css">
+  {% endfor -%}
+  {% if page.noindex %}<meta name="robots" content="noindex, nofollow">
+  {% endif -%}
+  {% if page.url == "/" %}<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Mokimo Ltd",
+    "alternateName": "Mokimo",
+    "url": "https://www.mokimo.co.uk",
+    "logo": "https://www.mokimo.co.uk/favicon.svg",
+    "description": "Mechanical, electronic, and firmware engineering consultancy. We bring careful thinking to complex problems.",
+    "email": "hello@mokimo.co.uk",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "The Workstation, 15 Paternoster Row",
+      "addressLocality": "Sheffield",
+      "postalCode": "S1 2BX",
+      "addressCountry": "GB"
+    },
+    "areaServed": "GB",
+    "sameAs": [
+      "https://www.linkedin.com/company/mokimo-ltd/"
+    ],
+    "foundingDate": "2026",
+    "priceRange": "$$"
+  }
+  </script>
+  {% endif -%}
+</head>

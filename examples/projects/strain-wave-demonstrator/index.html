@@ -1,46 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Strain-wave gear demonstrator — Mokimo</title>
-  <meta name="description" content="A working strain-wave gear demonstrator with a live reduction-ratio dial, designed and built for teaching use — mechanical design by Mokimo.">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://www.mokimo.co.uk/examples/projects/strain-wave-demonstrator/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/base.css">
-</head>
-<body>
-
-  <header class="site-header" role="banner">
-    <div class="wordmark-group">
-      <a href="/" class="wordmark">mokimo</a>
-      <span class="wordmark-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
-        </svg>
-      </span>
-    </div>
-    <nav aria-label="Primary navigation">
-      <ul class="site-nav" role="list">
-        <li><a href="/about/">About</a></li>
-        <li><a href="/approach/">Approach</a></li>
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/" aria-current="page">Examples</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+---
+layout: default
+title: "Strain-wave gear demonstrator — Mokimo"
+description: "A working strain-wave gear demonstrator with a live reduction-ratio dial — from MATLAB flexspline modelling through several generations of physical prototype — mechanical design by Mokimo."
+nav: examples
+extra_css:
+  - examples
+  - examples-crops
+---
 
   <main class="examples-content">
 
     <p class="examples-breadcrumb"><a href="/examples/">Examples</a> / Strain-wave gear demonstrator</p>
     <div class="project-header">
       <h1 class="page-title">Strain-wave gear demonstrator</h1>
-      <p class="page-meta">University teaching project</p>
-      <p class="project-lead">A working 53.5:1 strain-wave gear demonstrator with an exposed flex-spline and live reduction dial, engineered as a physical teaching aid.</p>
+      <p class="page-meta">Personal project &middot; University teaching commission</p>
+      <p class="project-lead">A working 53.5:1 strain-wave gear demonstrator with an exposed flex-spline and live reduction dial — one output of a longer personal exploration into strain-wave gearing, from early MATLAB modelling through several generations of physical prototype.</p>
       <div class="tag-list">
         <a class="tag" href="/examples/mechanical/">Mechanical</a>
         <a class="tag" href="/examples/electronics/">Electronics</a>
@@ -49,7 +23,28 @@
 
     <div class="project-media">
       <figure>
-        <img src="/images/examples/harmonic-drive-demonstrator.jpg" alt="3D-printed strain-wave gear demonstrator with a reduction-ratio dial" loading="lazy">
+        <img src="/images/examples/harmonic-drive-matlab-simulation.png" alt="MATLAB simulation of flexspline deflection through a full rotation" loading="lazy">
+        <figcaption>Flexspline deflection modelled in MATLAB before any prototype was built.</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/examples/photo-placeholder.svg" alt="Placeholder for an early two-roller wave generator prototype" loading="lazy">
+        <figcaption>An early two-roller wave generator, the common hobbyist approach — it overstressed the spline and failed quickly. (Photo coming soon.)</figcaption>
+      </figure>
+      <figure>
+        <img src="/images/examples/photo-placeholder.svg" alt="Placeholder for an elliptical wave generator and bearing test prototype" loading="lazy">
+        <figcaption>The elliptical wave generator that replaced it, with thin-section bearings pressed onto the ellipse. (Photo coming soon.)</figcaption>
+      </figure>
+    </div>
+
+    <div class="project-narrative">
+      <p>Before committing to a physical prototype, flexspline deformation was modeled in MATLAB — working through how the wave generator drives continuous elliptical deflection through the spline wall, and how that deflection carries into the meshing behaviour with the circular spline. That modeling shaped decisions on wall thickness and tooth profile well before any material was cut or printed.</p>
+      <p>The first physical iteration used a simple two-roller wave generator, the approach most hobbyist strain-wave projects reach for — it overstressed the flex-spline and failed almost immediately. Moving to a proper elliptical wave generator, with thin-section bearings pressed directly onto the ellipse, did much better: the bearing shields fatigued quickly, but the races have held up well since. From there, the next step was working out proper strain-wave tooth geometry rather than relying on simple involute teeth, which aren't strictly correct for how a flex-spline meshes.</p>
+      <p>That's roughly where the project stalled. Fine strain-wave tooth geometry pushes FDM printing to its limits — the anisotropy and inhomogeneity in printed parts becomes a real problem at that scale — and the obvious next step, SLA-printed Iglidur resin, was more than the project's budget could justify at the time.</p>
+    </div>
+
+    <div class="project-media">
+      <figure>
+        <img class="crop-top" src="/images/examples/harmonic-drive-demonstrator.jpg" alt="3D-printed strain-wave gear demonstrator with a reduction-ratio dial" loading="lazy">
         <figcaption>The finished demonstrator, showing the reduction-ratio dial.</figcaption>
       </figure>
       <figure>
@@ -58,20 +53,11 @@
       </figure>
     </div>
 
-    <section class="project-section project-section--first">
-      <h2>Objective</h2>
-      <p>Provide a clear, physical demonstration of strain-wave (harmonic) gearing for engineering students, making the continuous deformation of the flex-spline and the resulting speed reduction visible in real time.</p>
-    </section>
-
-    <section class="project-section">
-      <h2>Approach</h2>
-      <p>The gearbox was designed with an open housing and high-contrast components to highlight internal motion. A coaxial dial indicates output rotation relative to the input shaft. Additive manufacturing enabled rapid iteration of tooth profiles and flex-spline geometry before integrating motor drive electronics.</p>
-    </section>
-
-    <section class="project-section">
-      <h2>Outcome</h2>
-      <p>A self-contained, motor-driven teaching model operating at a 53.5:1 reduction ratio, allowing immediate observation of flex-spline mechanics under power.</p>
-    </section>
+    <div class="project-narrative">
+      <p>Strain-wave gearing is compact and high-ratio, which makes it a good teaching example — but the mechanism that makes it work, a flexible spline deforming continuously as it meshes with a rigid internal gear, is normally hidden inside a sealed housing. This demonstrator puts that mechanism on display: an open housing and high-contrast components make the flex-spline's motion visible while it's running, and a coaxial dial shows the output rotation relative to the input shaft in real time.</p>
+      <p>Additive manufacturing made it practical to iterate quickly on tooth profiles and flex-spline geometry before settling on a design and integrating the motor drive electronics. The result is a self-contained, motor-driven teaching model running at a 53.5:1 reduction ratio, letting students watch strain-wave mechanics happen under power rather than working it out from a diagram.</p>
+      <p>The work also considered whether the flex-spline could be injection moulded in a high-performance polymer such as PEEK. The projected cost and development effort made commercialisation impractical at the time, but the exploration led to university interest and ultimately to this teaching demonstrator.</p>
+    </div>
 
     <div class="action-row action-row--large">
       <a href="/examples/" class="button button--secondary">All examples</a>
@@ -79,14 +65,3 @@
     </div>
 
   </main>
-
-  <footer class="site-footer">
-    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
-    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
-    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
-  </footer>
-
-  <script src="/scripts/site.js"></script>
-
-</body>
-</html>

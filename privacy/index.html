@@ -1,37 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — Mokimo</title>
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://www.mokimo.co.uk/privacy/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/base.css">
-</head>
-<body class="privacy-page">
-
-  <header class="site-header" role="banner">
-    <div class="wordmark-group">
-      <a href="/" class="wordmark">mokimo</a>
-      <span class="wordmark-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
-        </svg>
-      </span>
-    </div>
-    <nav aria-label="Primary navigation">
-      <ul class="site-nav" role="list">
-        <li><a href="/about/">About</a></li>
-        <li><a href="/approach/">Approach</a></li>
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/">Examples</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+---
+layout: default
+title: "Privacy Policy — Mokimo"
+description: "How Mokimo collects, uses, and protects personal data."
+body_class: privacy-page
+extra_css:
+  - legal
+  - privacy
+---
 
   <main class="page-content">
 
@@ -219,28 +194,3 @@
     </div><!-- /tab-clients -->
 
   </main>
-
-  <footer class="site-footer">
-    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
-    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
-    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
-  </footer>
-
-  <script src="/scripts/site.js"></script>
-  <script>
-    const btns = document.querySelectorAll('.tab-btn');
-    const panels = document.querySelectorAll('.tab-panel');
-
-    btns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        btns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
-        panels.forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-        btn.setAttribute('aria-selected', 'true');
-        document.getElementById(btn.getAttribute('aria-controls')).classList.add('active');
-      });
-    });
-  </script>
-
-</body>
-</html>

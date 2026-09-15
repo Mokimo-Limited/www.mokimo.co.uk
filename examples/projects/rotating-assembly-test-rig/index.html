@@ -1,73 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rotating assembly test rig — Mokimo</title>
-  <meta name="description" content="A functional test rig built to exercise a rotating mechanical assembly under load, turning ad-hoc bench checks into repeatable measurements — by Mokimo.">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://www.mokimo.co.uk/examples/projects/rotating-assembly-test-rig/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/base.css">
-</head>
-<body>
-
-  <header class="site-header" role="banner">
-    <div class="wordmark-group">
-      <a href="/" class="wordmark">mokimo</a>
-      <span class="wordmark-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
-        </svg>
-      </span>
-    </div>
-    <nav aria-label="Primary navigation">
-      <ul class="site-nav" role="list">
-        <li><a href="/about/">About</a></li>
-        <li><a href="/approach/">Approach</a></li>
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/" aria-current="page">Examples</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+---
+layout: default
+title: "Rotating assembly test rig — Mokimo"
+description: "A stepper motor speed-torque characterisation rig, built to explore how small steppers behave at higher-than-normal supply voltages — by Mokimo."
+nav: examples
+extra_css:
+  - examples
+---
 
   <main class="examples-content">
 
     <p class="examples-breadcrumb"><a href="/examples/">Examples</a> / Rotating assembly test rig</p>
     <div class="project-header">
       <h1 class="page-title">Rotating assembly test rig</h1>
-      <p class="page-meta">Test and validation project</p>
-      <p class="project-lead">A functional test rig designed to exercise a rotating mechanical assembly under controlled load, replacing ad-hoc manual testing with repeatable measurements.</p>
+      <p class="page-meta">Personal project &middot; Test and validation</p>
+      <p class="project-lead">A rig built to characterise stepper motor speed-torque behaviour — voltage, current, and microstepping configuration all move the curve far more than the single reference plot most datasheets publish suggests.</p>
       <div class="tag-list">
-        <a class="tag" href="/examples/production/">Production</a>
         <a class="tag" href="/examples/mechanical/">Mechanical</a>
+        <a class="tag" href="/examples/electronics/">Electronics</a>
+        <a class="tag" href="/examples/production/">Production</a>
       </div>
     </div>
 
     <div class="project-media">
       <figure>
         <img src="/images/examples/functional-test-rig.jpg" alt="Functional test rig for a rotating mechanical assembly" loading="lazy">
-        <figcaption>The rig used to exercise a rotating assembly under load.</figcaption>
+        <figcaption>The rig used to exercise a NEMA17 stepper under controlled load.</figcaption>
       </figure>
     </div>
 
-    <section class="project-section project-section--first">
-      <h2>Objective</h2>
-      <p>Establish a standardized test procedure for evaluating rotating assemblies under operational torque and speed. Previous manual checks produced variable results and could not reliably catch subtle assembly defects.</p>
-    </section>
-
-    <section class="project-section">
-      <h2>Approach</h2>
-      <p>The rig secures the assembly in precision alignment, drives it through a pre-programmed duty cycle under controlled resistance, and monitors mechanical feedback to detect drag, eccentricity, or binding.</p>
-    </section>
-
-    <section class="project-section">
-      <h2>Outcome</h2>
-      <p>Turns subjective operator feedback into consistent, quantitative test data, enabling rapid verification after design modifications and clear identification of failure modes.</p>
-    </section>
+    <div class="project-narrative">
+      <p>Motor datasheets tend to give, at best, a single reference speed-torque curve — not much use once supply voltage, current setpoint, or microstepping configuration start moving away from that one reference point. This rig measures it properly: a NEMA17 motor sits on a rotating mount constrained by a load cell, with a bicycle brake disc and caliper providing a controllable load. Measuring the reaction torque on the stationary mount sidesteps the slip rings or wireless telemetry that measuring in the rotating frame would otherwise need.</p>
+      <p>Built from FDM-printed parts, a hobby-grade strain gauge, and an Arduino Nano, it reproduced a motor's datasheet curve almost exactly under the same reference conditions — a good sign the measurement approach itself is sound. The brake caliper turned out to be a fairly blunt instrument, closer to on/off than proportional, which is arguably what you'd expect trying to modulate bicycle braking hardware against a NEMA17's torque — but it was enough to get useful preliminary results. Motorising the braking system, to run automated sweeps across a wide range of conditions and drivers, is the planned next step.</p>
+      <p>The real interest behind the rig is a gap most people don't test: how small steppers behave at higher-than-normal supply voltages. Steppers have a reputation for being a poor choice at both high speed and high efficiency, but that reputation softens considerably in applications — like small robotics — where low duty cycle and low absolute power draw make a modest efficiency hit easy to live with. Driven by a good sine-wave driver, a stepper isn't so different in principle from a very high pole-count BLDC or AC servo, and the 300&ndash;1000rpm range in between the two motor types' classical operating regions is genuinely useful for robotics: low enough reduction to keep efficiency high, backlash low, and noise down, without needing a direct-drive stepper large enough to deliver the torque outright.</p>
+      <p>Almost nobody runs small steppers &mdash; say, a NEMA17 on a 72V rail &mdash; at these higher voltages, likely in part because low-current, high-voltage drivers for that scale of motor are hard to find, and the lack of demand for them probably doesn't help supply. This rig exists to actually characterise that region, and find out whether there's a good reason nobody's using it, or whether it's simply been overlooked.</p>
+    </div>
 
     <div class="action-row action-row--large">
       <a href="/examples/" class="button button--secondary">All examples</a>
@@ -75,14 +41,3 @@
     </div>
 
   </main>
-
-  <footer class="site-footer">
-    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
-    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
-    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
-  </footer>
-
-  <script src="/scripts/site.js"></script>
-
-</body>
-</html>

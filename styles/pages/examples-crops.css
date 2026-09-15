@@ -1,0 +1,12 @@
+
+/* Page-specific image crop overrides for individual photos — not general utilities. */
+
+.project-media img.crop-pcb-detail {
+  object-position: 100% 78%;
+}
+
+.project-card-image img.crop-top,
+.project-media img.crop-top,
+.gallery-item img.crop-top {
+  object-position: 50% 12%;
+}

@@ -1,38 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Examples — Mokimo</title>
-  <meta name="description" content="Examples of Mokimo's engineering work — projects, plus a breakdown by discipline across mechanical, electronics, firmware, production, and requirements.">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://www.mokimo.co.uk/examples/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/base.css">
-</head>
-<body>
-
-  <header class="site-header" role="banner">
-    <div class="wordmark-group">
-      <a href="/" class="wordmark">mokimo</a>
-      <span class="wordmark-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
-        </svg>
-      </span>
-    </div>
-    <nav aria-label="Primary navigation">
-      <ul class="site-nav" role="list">
-        <li><a href="/about/">About</a></li>
-        <li><a href="/approach/">Approach</a></li>
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/" aria-current="page">Examples</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+---
+layout: default
+title: "Examples — Mokimo"
+description: "Examples of Mokimo's engineering work — projects, plus a breakdown by discipline across mechanical, electronics, firmware, production, and requirements."
+nav: examples
+extra_css:
+  - examples
+  - examples-crops
+---
 
   <main class="examples-content">
 
@@ -49,7 +23,7 @@
             <img src="/images/examples/bikestow-cnc-gantry.jpg" alt="Bikestow gantry mechanism during assembly" loading="lazy">
           </a>
           <div class="project-card-body">
-            <p class="project-card-context">Personal project</p>
+            <p class="project-card-context">Client project</p>
             <h3 class="project-card-title"><a href="/examples/projects/bikestow/">Bikestow</a></h3>
             <p class="project-card-subtitle">Automated post-operation machining centre</p>
             <p class="project-card-summary">An automated machining centre with a component buffer and automatic part detection, developed to run continuous post-operation cycles without manual intervention between parts.</p>
@@ -65,7 +39,7 @@
 
         <article class="project-card">
           <a class="project-card-image" href="/examples/projects/strain-wave-demonstrator/" aria-label="View the strain-wave gear demonstrator project">
-            <img src="/images/examples/harmonic-drive-demonstrator.jpg" alt="Strain-wave gear demonstrator with reduction-ratio dial" loading="lazy">
+            <img class="crop-top" src="/images/examples/harmonic-drive-demonstrator.jpg" alt="Strain-wave gear demonstrator with reduction-ratio dial" loading="lazy">
           </a>
           <div class="project-card-body">
             <p class="project-card-context">University teaching project</p>
@@ -85,15 +59,80 @@
             <img src="/images/examples/functional-test-rig.jpg" alt="Functional test rig for a rotating assembly" loading="lazy">
           </a>
           <div class="project-card-body">
-            <p class="project-card-context">Test and validation</p>
+            <p class="project-card-context">Personal project</p>
             <h3 class="project-card-title"><a href="/examples/projects/rotating-assembly-test-rig/">Rotating assembly test rig</a></h3>
-            <p class="project-card-subtitle">Repeatable testing under load</p>
-            <p class="project-card-summary">A functional test rig designed to exercise a rotating assembly under controlled mechanical load, turning ad-hoc bench testing into repeatable measurements.</p>
+            <p class="project-card-subtitle">Stepper motor speed-torque characterisation</p>
+            <p class="project-card-summary">A rig built to characterise stepper motor speed-torque behaviour across supply voltage, current, and microstepping configuration.</p>
             <div class="tag-list" aria-label="Disciplines">
               <a class="tag" href="/examples/mechanical/">Mechanical</a>
+              <a class="tag" href="/examples/electronics/">Electronics</a>
               <a class="tag" href="/examples/production/">Production</a>
             </div>
             <a class="project-card-link" href="/examples/projects/rotating-assembly-test-rig/">View case study</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <a class="project-card-image" href="/examples/projects/cycloidal-gearbox/" aria-label="View the cycloidal gearbox prototypes project">
+            <img src="/images/examples/3d-printed-drive-housing.jpg" alt="3D-printed cycloidal drive housing with a stepper motor" loading="lazy">
+          </a>
+          <div class="project-card-body">
+            <p class="project-card-context">Personal project</p>
+            <h3 class="project-card-title"><a href="/examples/projects/cycloidal-gearbox/">Cycloidal gearbox prototypes</a></h3>
+            <p class="project-card-subtitle">3D-printed and machined reduction drives</p>
+            <p class="project-card-summary">Prototypes of a compact cycloidal reduction drive, built while developing a robotic arm, exploring 3D-printed and machined versions of the mechanism.</p>
+            <div class="tag-list" aria-label="Disciplines">
+              <a class="tag" href="/examples/mechanical/">Mechanical</a>
+            </div>
+            <a class="project-card-link" href="/examples/projects/cycloidal-gearbox/">View case study</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <a class="project-card-image" href="/examples/projects/vintage-motorcycle-cad/" aria-label="View the 1970s motorcycle CAD recreation project">
+            <img src="/images/examples/cnc-machined-components.jpg" alt="Machined engine casing components on a cutting mat" loading="lazy">
+          </a>
+          <div class="project-card-body">
+            <p class="project-card-context">Client project</p>
+            <h3 class="project-card-title"><a href="/examples/projects/vintage-motorcycle-cad/">1970s motorcycle CAD recreation</a></h3>
+            <p class="project-card-subtitle">Reverse-engineered from reference and measurement</p>
+            <p class="project-card-summary">CAD models of 1970s motorcycle components rebuilt from reference and measurement, with a handful machined to verify the models against the originals.</p>
+            <div class="tag-list" aria-label="Disciplines">
+              <a class="tag" href="/examples/mechanical/">Mechanical</a>
+            </div>
+            <a class="project-card-link" href="/examples/projects/vintage-motorcycle-cad/">View case study</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <a class="project-card-image" href="/examples/projects/sendspin-speaker/" aria-label="View the SendSpin speaker project">
+            <img class="crop-pcb-detail" src="/images/examples/IMG_20260728_172002.jpg" alt="PCB layout and 3D board render for the SendSpin speaker on a monitor" loading="lazy">
+          </a>
+          <div class="project-card-body">
+            <p class="project-card-context">Personal project &middot; In progress</p>
+            <h3 class="project-card-title"><a href="/examples/projects/sendspin-speaker/">SendSpin speaker</a></h3>
+            <p class="project-card-subtitle">Custom PCB, moving into assembly</p>
+            <p class="project-card-summary">A HomeAssistant-synced Bluetooth speaker on a custom PCB — schematic and layout are done, with assembly and build photos to follow.</p>
+            <div class="tag-list" aria-label="Disciplines">
+              <a class="tag" href="/examples/electronics/">Electronics</a>
+            </div>
+            <a class="project-card-link" href="/examples/projects/sendspin-speaker/">View case study</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <a class="project-card-image" href="/examples/projects/esp32-datalogger/" aria-label="View the auto-ranging datalogger concept">
+            <img src="/images/examples/esp32-datalogger-board.jpg" alt="Populated ESP32-WROOM-32 datalogger PCB" loading="lazy">
+          </a>
+          <div class="project-card-body">
+            <p class="project-card-context">Personal project &middot; Concept</p>
+            <h3 class="project-card-title"><a href="/examples/projects/esp32-datalogger/">Auto-ranging datalogger concept</a></h3>
+            <p class="project-card-subtitle">Parked as a concept</p>
+            <p class="project-card-summary">An ESP32-based current/voltage datalogger, exploring auto-ranging across a wide measurement span — never taken to completion.</p>
+            <div class="tag-list" aria-label="Disciplines">
+              <a class="tag" href="/examples/electronics/">Electronics</a>
+            </div>
+            <a class="project-card-link" href="/examples/projects/esp32-datalogger/">View case study</a>
           </div>
         </article>
       </div>
@@ -136,14 +175,3 @@
     </div>
 
   </main>
-
-  <footer class="site-footer">
-    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
-    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
-    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
-  </footer>
-
-  <script src="/scripts/site.js"></script>
-
-</body>
-</html>

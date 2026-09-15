@@ -1,45 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About — Mokimo</title>
-  <meta name="description" content="Who we are — a small design engineering consultancy based in Sheffield, working carefully across mechanical, electronic, and firmware disciplines.">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://www.mokimo.co.uk/about/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/base.css">
-</head>
-<body class="about-page">
-
-  <header class="site-header" role="banner">
-    <div class="wordmark-group">
-      <a href="/" class="wordmark">mokimo</a>
-      <span class="wordmark-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
-        </svg>
-      </span>
-    </div>
-    <nav aria-label="Primary navigation">
-      <ul class="site-nav" role="list">
-        <li><a href="/about/" aria-current="page">About</a></li>
-        <li><a href="/approach/">Approach</a></li>
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/">Examples</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+---
+layout: default
+title: "About — Mokimo"
+description: "Who we are — a small design engineering consultancy based in Sheffield, working carefully across mechanical, electronic, and firmware disciplines."
+body_class: about-page
+nav: about
+extra_css:
+  - legal
+  - about
+---
 
   <main class="page-content">
 
     <h1 class="page-title">Who we are</h1>
-    <p class=" page-tagline">A small consultancy; deliberately so</p>
+    <p class="page-meta page-tagline">A small consultancy - deliberately so.</p>
 
-    <p class="intro-lead">Mokimo is a design engineering consultancy based in Sheffield, working across mechanical, electronic, and firmware disciplines. We take the time to understand a problem completely before proposing a solution.</p>
+    <p class="intro-lead">Mokimo is a small engineering design firm based in Sheffield, working across mechanical, electronic, and firmware disciplines. We take the time to understand a problem completely before proposing a solution.</p>
 
     <span class="section-label">People</span>
 
@@ -48,15 +23,13 @@
         <span class="team-name">Tom Green</span>
         <span class="team-role">&middot; Engineering</span>
       </div>
+      <p class="section-copy">Tom studied Mechanical Engineering at Loughborough University while developing practical experience in electronics and firmware. After three years working on scientific equipment, medical devices and consumer products, he co-founded Mokimo. His work spans mechanical, electronic and software design, particularly where problems cross disciplinary boundaries. These experiences shaped Mokimo’s pragmatic, client-led approach: understand what needs to be achieved first, then design the most appropriate route to a practical solution.</p>
       <div class="team-links">
         <a class="text-link" href="https://www.linkedin.com/in/tom-jgreen/" target="_blank" rel="noopener noreferrer">
-          <svg class="team-link-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor" d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V8.99h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29zM5.32 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM3.54 20.45H7.1V8.99H3.54v11.46zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
-          </svg>
+          <span class="team-link-icon" aria-hidden="true"></span>
           LinkedIn
         </a>
       </div>
-      <p class="section-copy">Engineering at Mokimo spans product design, electromechanical systems, and firmware across multidisciplinary hardware projects. Seeing how larger organizations often introduce slow decision cycles and distance between technical execution and decision-makers led directly to founding Mokimo — working closer to the problem, with an honest scope and a preference for careful thinking over quick assumptions.</p>
     </div>
 
     <div class="team-member">
@@ -64,40 +37,17 @@
         <span class="team-name">Luke Foster</span>
         <span class="team-role">&middot; Sales &amp; operations</span>
       </div>
+      <p class="section-copy">Luke leads business development, sales and outreach at Mokimo, alongside the administration and coordination that keep the business moving. His background is in sales and marketing within the medical device industry, where he helped scale the UK branch of an international company. He brings a people-focused approach to Mokimo, helping clients communicate what they need and ensuring conversations turn into clear, productive projects.</p>
       <div class="team-links">
         <a class="text-link" href="https://www.linkedin.com/in/luke-foster-6b483b234/" target="_blank" rel="noopener noreferrer">
-          <svg class="team-link-icon" viewBox="0 0 24 24" aria-hidden="true">
-            <path fill="currentColor" d="M20.45 20.45h-3.56v-5.58c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.68H9.34V8.99h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.29zM5.32 7.43a2.07 2.07 0 1 1 0-4.14 2.07 2.07 0 0 1 0 4.14zM3.54 20.45H7.1V8.99H3.54v11.46zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/>
-          </svg>
+          <span class="team-link-icon" aria-hidden="true"></span>
           LinkedIn
         </a>
       </div>
-      <p class="section-copy">Handles sales, operations, and the practical side of running a consultancy that sits outside engineering. Luke's background is commercial rather than technical, with experience built across fast-moving industries — but the principles carry directly: understanding what a client actually needs, being straightforward about what is achievable, and keeping projects moving smoothly when challenges arise.</p>
     </div>
 
-    <section class="client-process">
-      <h2>How we work with our clients</h2>
+    <p class="section-copy">We work closely with clients from early discovery through to documented handover, tailoring each engagement to the problem at hand. See our <a href="/approach/">approach</a> for more about how we work.</p>
 
-      <div class="engagement-step">
-        <div class="engagement-step-name">1. Discovery call</div>
-        <p>A short conversation to understand what you are trying to achieve, your constraints, and whether we are a good fit. <a href="https://dash.mokimo.co.uk/book_appointment">Book a call</a> or <a href="mailto:hello@mokimo.co.uk">email us</a>.</p>
-      </div>
-
-      <div class="engagement-step">
-        <div class="engagement-step-name">2. Scoping</div>
-        <p>If there is a strong fit, we define the problem statement, deliverables, timeline, and commercial terms. We are happy to execute a mutual NDA prior to detailed technical discussions.</p>
-      </div>
-
-      <div class="engagement-step">
-        <div class="engagement-step-name">3. Delivery</div>
-        <p>Work is delivered as a fixed-scope project or on a retainer basis, depending on what best suits the engagement. We communicate regularly, document design choices, and raise potential risks early rather than optimistically.</p>
-      </div>
-
-      <div class="engagement-step">
-        <div class="engagement-step-name">4. Handover</div>
-        <p>Outputs are transferred with complete documentation and CAD/source files. We aim to leave your team fully equipped to proceed independently, unless ongoing support is part of the agreement.</p>
-      </div>
-    </section>
 
     <div class="action-row action-row--large">
       <a href="https://dash.mokimo.co.uk/book_appointment" class="button button--primary">Book a call</a>
@@ -105,14 +55,3 @@
     </div>
 
   </main>
-
-  <footer class="site-footer">
-    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
-    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
-    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
-  </footer>
-
-  <script src="/scripts/site.js"></script>
-
-</body>
-</html>

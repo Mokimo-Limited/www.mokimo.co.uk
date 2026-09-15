@@ -1,0 +1,153 @@
+/* === Home page === */
+/* --- Home page --- */
+
+.home-page [id] {
+  scroll-margin-top: 6rem;
+}
+
+.home-page main section {
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
+}
+
+.hero {
+  min-height: 70vh;
+  padding-top: calc(var(--space-2xl) + 3rem);
+  padding-bottom: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 6vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+}
+
+.hero-subtitle {
+  max-width: 560px;
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+}
+
+.philosophy,
+.services,
+.contact {
+  border-top: 1px solid var(--color-sand-light);
+}
+
+.principles,
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.principle,
+.service-item {
+  padding-left: var(--space-md);
+}
+
+.principle-name,
+.service-name {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--color-text);
+  margin-bottom: 0.45rem;
+}
+
+.principle-text,
+.service-desc {
+  max-width: 620px;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--color-text-muted);
+}
+
+.approach-more,
+.services-more {
+  margin-top: var(--space-md);
+  padding-left: var(--space-md);
+}
+
+.service-page-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.service-page-item {
+  padding-left: var(--space-md);
+}
+
+.service-page-list--disciplines {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: var(--space-md);
+}
+
+.service-page-list--disciplines .service-more {
+  margin-top: auto;
+}
+
+.service-page-list--formats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.service-page-list--formats .service-page-item {
+  padding-left: var(--space-sm);
+  border-left: 1px solid var(--color-sand);
+}
+
+
+
+.contact-heading {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  margin-bottom: var(--space-sm);
+}
+
+.contact-sub {
+  max-width: 600px;
+  color: var(--color-text-muted);
+  font-weight: 300;
+}
+
+
+
+.service-more {
+  margin-top: 0.75rem;
+}
+
+.link-arrow {
+  font-weight: 300;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .js .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

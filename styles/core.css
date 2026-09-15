@@ -1,0 +1,423 @@
+/* === Mokimo — Core styles === */
+/* Reset, design tokens, base typography, footer, and shared layout (header/nav/buttons). Loaded on every page. */
+/* === Mokimo — Base Stylesheet ===
+   Shared across all pages.
+   Edit here to change fonts, colours, or spacing tokens site-wide. */
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* --- Reset --- */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Design tokens --- */
+
+:root {
+  --color-base: #F5F0EB;
+  --color-text: #2C2C2C;
+  --color-text-muted: #5C5650;
+  --color-accent: #7D8B75;
+  --color-accent-deep: #5E6B57;
+  --color-sand: #C4B5A0;
+  --color-sand-light: #D9CFBF;
+  --color-warm-brown: #8A7E6E;
+
+  --font-display: 'Quicksand', -apple-system, sans-serif;
+  --font-body: 'Quicksand', -apple-system, sans-serif;
+  --font-heading: 'DM Sans', -apple-system, sans-serif;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+  --space-2xl: 9rem;
+
+  --side-padding: clamp(1.5rem, 5vw, 3rem);
+}
+
+/* --- Base --- */
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: var(--color-text);
+  background-color: var(--color-base);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Shared inline and action links. Navigation, tags, buttons, and footer links
+   intentionally use their own context-specific treatments. */
+main p a:not(.button):not(.text-link),
+.text-link,
+.examples-category-link,
+.project-card-link {
+	color: var(--color-accent-deep);
+	text-decoration: none;
+	position: relative;
+	padding-bottom: 2px;
+	transition: color 0.3s ease;
+}
+
+main p a:not(.button):not(.text-link):visited,
+.text-link:visited,
+.examples-category-link:visited,
+.project-card-link:visited {
+	color: var(--color-accent-deep);
+}
+
+main p a:not(.button):not(.text-link)::after,
+.text-link::after,
+.examples-category-link::after,
+.project-card-link::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 1px;
+	background-color: var(--color-accent);
+	transition: width 0.3s ease;
+}
+
+main p a:not(.button):not(.text-link):hover::after,
+main p a:not(.button):not(.text-link):focus-visible::after,
+.text-link:hover::after,
+.text-link:focus-visible::after,
+.examples-category-link:hover::after,
+.examples-category-link:focus-visible::after,
+.project-card-link:hover::after,
+.project-card-link:focus-visible::after {
+	width: 100%;
+}
+
+/* --- Footer --- */
+
+.site-footer {
+  padding: var(--space-lg) var(--side-padding) var(--space-md);
+  text-align: center;
+}
+
+.footer-text {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: var(--color-warm-brown);
+}
+
+.footer-text a {
+  color: var(--color-warm-brown);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-text a:hover {
+  color: var(--color-accent);
+}
+
+.footer-links {
+  margin-top: 0.4em;
+}
+
+.footer-address {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35em;
+}
+
+.footer-address svg {
+  width: 0.85em;
+  height: 0.85em;
+  flex-shrink: 0;
+  color: var(--color-accent);
+}
+
+/* --- Shared layout (header, CTAs, forms) --- */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: var(--space-sm) var(--side-padding);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.site-header.scrolled {
+  background-color: rgba(245, 240, 235, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Keep the fixed header legible above the examples-page banners */
+.electronics-page .site-header,
+.firmware-page .site-header,
+.production-page .site-header,
+.process-page .site-header {
+  background-color: rgba(245, 240, 235, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 3px 16px rgba(30, 28, 26, 0.18);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--color-text);
+  text-decoration: none;
+  text-transform: lowercase;
+}
+
+.wordmark-group {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.wordmark-mark {
+  opacity: 0.65;
+  display: flex;
+  align-items: center;
+}
+
+.wordmark-mark svg {
+  width: 24px;
+  height: 24px;
+}
+
+.site-nav {
+  display: flex;
+  gap: var(--space-md);
+  list-style: none;
+}
+
+.site-nav a {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.3s ease;
+}
+
+.site-nav a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-accent);
+  transition: width 0.3s ease;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible,
+.site-nav a[aria-current='page'] {
+  color: var(--color-accent-deep);
+}
+
+.site-nav a:hover::after,
+.site-nav a:focus-visible::after,
+.site-nav a[aria-current='page']::after {
+  width: 100%;
+}
+
+.content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 var(--side-padding);
+}
+
+.button,
+.contact-link {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-accent-deep);
+  text-decoration: none;
+  display: inline-block;
+  border: 1.5px solid var(--color-accent);
+  padding: 0.55em 1.3em;
+  transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+.button:hover,
+.button:focus-visible,
+.contact-link:hover,
+.contact-link:focus-visible {
+  border-color: var(--color-accent-deep);
+  color: var(--color-text);
+}
+
+.button--primary {
+  background-color: var(--color-accent-deep);
+  border-color: var(--color-accent-deep);
+  color: var(--color-base);
+}
+
+.button--primary:hover,
+.button--primary:focus-visible {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-base);
+}
+
+.button--secondary {
+  background: transparent;
+}
+
+.action-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.action-row--large {
+  margin-top: var(--space-lg);
+}
+
+.action-row--medium {
+  margin-top: var(--space-md);
+}
+
+.page-actions {
+  margin-top: var(--space-md);
+}
+
+.action-row--extra-large {
+  margin-top: var(--space-2xl);
+}
+
+/* --- Shared page heading/label utilities (used across most page types) --- */
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+.page-meta {
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+}
+
+.section-label {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--color-warm-brown);
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .home-page main section {
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-lg);
+  }
+
+  .hero {
+    min-height: 60vh;
+    padding-top: calc(var(--space-xl) + 2rem);
+    padding-bottom: var(--space-xl);
+  }
+
+  .principle,
+  .service-item,
+  .approach-more,
+  .services-more,
+  .service-page-item,
+  .team-member {
+    padding-left: 0;
+  }
+
+  .principle-grid,
+  .service-page-list--disciplines,
+  .service-page-list--formats {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .site-header {
+    padding: 0.75rem var(--side-padding);
+  }
+
+  .site-nav {
+    gap: 0.45rem 0.9rem;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 19rem;
+  }
+
+  .site-nav a {
+    font-size: 0.75rem;
+  }
+
+  .wordmark {
+    font-size: 1.35rem;
+  }
+}
+
+@media (max-width: 520px) {
+  .site-header {
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .site-header nav {
+    width: 100%;
+    margin-top: 0.35rem;
+  }
+
+  .site-nav {
+    max-width: none;
+    justify-content: flex-start;
+  }
+
+  .site-nav a {
+    font-size: 0.7rem;
+  }
+}

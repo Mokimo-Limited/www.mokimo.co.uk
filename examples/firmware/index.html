@@ -1,44 +1,48 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Firmware development — Mokimo</title>
-  <meta name="description" content="Firmware development at Mokimo — microcontroller firmware, motion and sensor control, display integration, and the software that sits around embedded hardware.">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://www.mokimo.co.uk/examples/firmware/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/base.css">
-</head>
-<body>
+---
+layout: default
+title: "Firmware development — Mokimo"
+description: "Firmware development at Mokimo — microcontroller firmware, motion and sensor control, display integration, and the software that sits around embedded hardware."
+body_class: firmware-page
+nav: examples
+extra_css:
+  - examples
+---
 
-  <header class="site-header" role="banner">
-    <div class="wordmark-group">
-      <a href="/" class="wordmark">mokimo</a>
-      <span class="wordmark-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
-        </svg>
-      </span>
+  <div class="examples-banner">
+    <div class="examples-banner--code">
+      <pre class="banner-code"><code><span class="tok-macro">#include</span> "driver/gpio.h"
+<span class="tok-macro">#include</span> "freertos/FreeRTOS.h"
+<span class="tok-macro">#include</span> "freertos/task.h"
+
+<span class="tok-macro">#define</span> MOTOR_EN_PIN   GPIO_NUM_18
+<span class="tok-macro">#define</span> ENCODER_A_PIN  GPIO_NUM_34
+
+<span class="tok-kw">static</span> <span class="tok-kw">void</span> motor_task(<span class="tok-kw">void</span> *arg)
+{
+    gpio_set_direction(MOTOR_EN_PIN, GPIO_MODE_OUTPUT);
+    gpio_set_direction(ENCODER_A_PIN, GPIO_MODE_INPUT);
+
+    <span class="tok-kw">while</span> (1) {
+        <span class="tok-com">// PID loop keeps wheel speed locked to setpoint</span>
+        int32_t ticks = encoder_read_ticks();
+        pid_update(&amp;loop, ticks, DT_MS);
+        vTaskDelay(pdMS_TO_TICKS(10));
+    }
+}
+
+<span class="tok-kw">void</span> app_main(<span class="tok-kw">void</span>)
+{
+    xTaskCreate(motor_task, "motor_task", 4096, NULL, 5, NULL);
+}</code></pre>
     </div>
-    <nav aria-label="Primary navigation">
-      <ul class="site-nav" role="list">
-        <li><a href="/about/">About</a></li>
-        <li><a href="/approach/">Approach</a></li>
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/" aria-current="page">Examples</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="examples-content">
-
+  </div>
+  <div class="examples-banner-content">
     <p class="examples-breadcrumb"><a href="/examples/">Examples</a> / Firmware</p>
     <h1 class="page-title">Firmware development</h1>
     <p class="page-meta">Microcontroller firmware, control, and interfaces</p>
+  </div>
+
+  <main class="examples-content">
 
     <p class="examples-intro">Microcontroller firmware and embedded software for connected hardware and control systems — from low-level peripheral drivers to state machines, sensor processing, and desktop test utilities.</p>
 
@@ -50,7 +54,7 @@
             <img src="/images/examples/bikestow-component-layout.jpg" alt="Bikestow drive electronics laid out before integration" loading="lazy">
           </a>
           <div class="project-card-body">
-            <p class="project-card-context">Personal project</p>
+            <p class="project-card-context">Client project</p>
             <h3 class="project-card-title"><a href="/examples/projects/bikestow/">Bikestow</a></h3>
             <p class="project-card-subtitle">Motion control and machine sequencing</p>
             <p class="project-card-summary">Firmware coordinating the motion system, limit sensing, component detection, machining sequence, and operator controls.</p>
@@ -96,14 +100,3 @@
     </div>
 
   </main>
-
-  <footer class="site-footer">
-    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
-    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
-    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
-  </footer>
-
-  <script src="/scripts/site.js"></script>
-
-</body>
-</html>

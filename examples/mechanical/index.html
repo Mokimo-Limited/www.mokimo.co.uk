@@ -1,38 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mechanical engineering — Mokimo</title>
-  <meta name="description" content="Mechanical engineering at Mokimo — mechanisms, structures, materials and finishes, sealing, drawings and GD&amp;T, and designing parts around how they will be made.">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://www.mokimo.co.uk/examples/mechanical/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/base.css">
-</head>
-<body>
-
-  <header class="site-header" role="banner">
-    <div class="wordmark-group">
-      <a href="/" class="wordmark">mokimo</a>
-      <span class="wordmark-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
-        </svg>
-      </span>
-    </div>
-    <nav aria-label="Primary navigation">
-      <ul class="site-nav" role="list">
-        <li><a href="/about/">About</a></li>
-        <li><a href="/approach/">Approach</a></li>
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/" aria-current="page">Examples</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+---
+layout: default
+title: "Mechanical engineering — Mokimo"
+description: "Mechanical engineering at Mokimo — mechanisms, structures, materials and finishes, sealing, drawings and GD&amp;T, and designing parts around how they will be made."
+nav: examples
+extra_css:
+  - examples
+  - examples-crops
+---
 
   <main class="examples-content">
 
@@ -50,7 +24,7 @@
             <img src="/images/examples/bikestow-cnc-gantry.jpg" alt="Bikestow gantry mechanism during assembly" loading="lazy">
           </a>
           <div class="project-card-body">
-            <p class="project-card-context">Personal project</p>
+            <p class="project-card-context">Client project</p>
             <h3 class="project-card-title"><a href="/examples/projects/bikestow/">Bikestow</a></h3>
             <p class="project-card-subtitle">Automated post-operation machining centre</p>
             <p class="project-card-summary">A compact lead-screw gantry, component buffer, and machining fixture developed as one integrated system.</p>
@@ -65,7 +39,7 @@
         </article>
         <article class="project-card">
           <a class="project-card-image" href="/examples/projects/strain-wave-demonstrator/" aria-label="View the strain-wave gear demonstrator project">
-            <img src="/images/examples/harmonic-drive-demonstrator.jpg" alt="Strain-wave gear demonstrator with reduction-ratio dial" loading="lazy">
+            <img class="crop-top" src="/images/examples/harmonic-drive-demonstrator.jpg" alt="Strain-wave gear demonstrator with reduction-ratio dial" loading="lazy">
           </a>
           <div class="project-card-body">
             <p class="project-card-context">University teaching project</p>
@@ -84,15 +58,48 @@
             <img src="/images/examples/functional-test-rig.jpg" alt="Functional test rig for a rotating assembly" loading="lazy">
           </a>
           <div class="project-card-body">
-            <p class="project-card-context">Test and validation</p>
+            <p class="project-card-context">Personal project</p>
             <h3 class="project-card-title"><a href="/examples/projects/rotating-assembly-test-rig/">Rotating assembly test rig</a></h3>
-            <p class="project-card-subtitle">Repeatable testing under load</p>
-            <p class="project-card-summary">A dedicated mechanical rig developed to replace inconsistent manual checks with controlled test conditions.</p>
+            <p class="project-card-subtitle">Stepper motor speed-torque characterisation</p>
+            <p class="project-card-summary">A load-cell rig built to measure stepper motor speed-torque curves across voltage, current, and microstepping configuration.</p>
             <div class="tag-list" aria-label="Disciplines">
               <span class="tag tag--current">Mechanical</span>
+              <a class="tag" href="/examples/electronics/">Electronics</a>
               <a class="tag" href="/examples/production/">Production</a>
             </div>
             <a class="project-card-link" href="/examples/projects/rotating-assembly-test-rig/">View case study</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <a class="project-card-image" href="/examples/projects/cycloidal-gearbox/" aria-label="View the cycloidal gearbox prototypes project">
+            <img src="/images/examples/3d-printed-drive-housing.jpg" alt="3D-printed cycloidal drive housing with a stepper motor" loading="lazy">
+          </a>
+          <div class="project-card-body">
+            <p class="project-card-context">Personal project</p>
+            <h3 class="project-card-title"><a href="/examples/projects/cycloidal-gearbox/">Cycloidal gearbox prototypes</a></h3>
+            <p class="project-card-subtitle">3D-printed and machined reduction drives</p>
+            <p class="project-card-summary">Compact cycloidal reduction drives prototyped in both 3D-printed and machined form, developed alongside a robotic arm project.</p>
+            <div class="tag-list" aria-label="Disciplines">
+              <span class="tag tag--current">Mechanical</span>
+            </div>
+            <a class="project-card-link" href="/examples/projects/cycloidal-gearbox/">View case study</a>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <a class="project-card-image" href="/examples/projects/vintage-motorcycle-cad/" aria-label="View the 1970s motorcycle CAD recreation project">
+            <img src="/images/examples/cnc-machined-components.jpg" alt="Machined engine casing components on a cutting mat" loading="lazy">
+          </a>
+          <div class="project-card-body">
+            <p class="project-card-context">Client project</p>
+            <h3 class="project-card-title"><a href="/examples/projects/vintage-motorcycle-cad/">1970s motorcycle CAD recreation</a></h3>
+            <p class="project-card-subtitle">Reverse-engineered from reference and measurement</p>
+            <p class="project-card-summary">A set of 1970s motorcycle components rebuilt in CAD from reference and physical measurement, with no original drawings to work from.</p>
+            <div class="tag-list" aria-label="Disciplines">
+              <span class="tag tag--current">Mechanical</span>
+            </div>
+            <a class="project-card-link" href="/examples/projects/vintage-motorcycle-cad/">View case study</a>
           </div>
         </article>
       </div>
@@ -171,14 +178,3 @@
     </div>
 
   </main>
-
-  <footer class="site-footer">
-    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
-    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
-    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
-  </footer>
-
-  <script src="/scripts/site.js"></script>
-
-</body>
-</html>

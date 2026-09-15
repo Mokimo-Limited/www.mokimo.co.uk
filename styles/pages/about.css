@@ -1,0 +1,50 @@
+/* === About page === */
+/* --- About page --- */
+
+.about-page .intro-lead {
+  margin-bottom: var(--space-lg);
+}
+
+.team-member {
+  margin-bottom: var(--space-lg);
+  padding-left: var(--space-md);
+}
+
+.team-heading {
+  margin-bottom: 0.2rem;
+}
+
+.team-name {
+  font-family: var(--font-heading);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.team-role {
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--color-warm-brown);
+}
+
+.team-links {
+  margin-top: var(--space-xs);
+  font-size: 0.8rem;
+}
+
+.team-links .text-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+}
+
+.team-link-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  flex: 0 0 auto;
+  background-color: currentColor;
+  -webkit-mask: url('https://static.licdn.com/scds/common/u/images/logos/linkedin/logo-in-win8-tile-144_v1.png') center / contain no-repeat;
+  mask: url('https://static.licdn.com/scds/common/u/images/logos/linkedin/logo-in-win8-tile-144_v1.png') center / contain no-repeat;
+}

@@ -1,37 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our approach — Mokimo</title>
-  <meta name="description" content="How Mokimo approaches design engineering projects: establish the brief, develop across disciplines, verify the result, and hand over useful engineering records.">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://www.mokimo.co.uk/approach/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/base.css">
-</head>
-<body>
-  <header class="site-header" role="banner">
-    <div class="wordmark-group">
-      <a href="/" class="wordmark">mokimo</a>
-      <span class="wordmark-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
-        </svg>
-      </span>
-    </div>
-    <nav aria-label="Primary navigation">
-      <ul class="site-nav" role="list">
-        <li><a href="/about/">About</a></li>
-        <li><a href="/approach/" aria-current="page">Approach</a></li>
-        <li><a href="/#services">Services</a></li>
-        <li><a href="/examples/">Examples</a></li>
-        <li><a href="/#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+---
+layout: default
+title: "Our approach — Mokimo"
+description: "How Mokimo approaches design engineering projects: establish the brief, develop across disciplines, verify the result, and hand over useful engineering records."
+nav: approach
+extra_css:
+  - legal
+  - approach
+---
 
   <main class="page-content page-content--wide">
     <header class="page-intro">
@@ -43,20 +18,20 @@
       <p class="section-label" id="principles-heading">Principles</p>
       <div class="principle-grid">
         <article class="principle-card">
-          <h2>Define the problem first</h2>
-          <p>We establish the intended outcome, constraints, assumptions, and acceptance criteria before committing significant effort to a specific solution.</p>
+          <h2>Understand the task</h2>
+          <p>We establish the intended outcome, constraints, assumptions, and acceptance criteria before committing to specific solutions.</p>
         </article>
         <article class="principle-card">
-          <h2>Work across interfaces</h2>
-          <p>Mechanical, electronic, firmware, and production decisions heavily influence one another. We review these interfaces explicitly rather than letting conflicts emerge during integration.</p>
+          <h2>Recognise interfaces</h2>
+          <p>Mechanical, electronic, firmware, and production decisions heavily influence one another. Wherever two parts meet, we review these interfaces explicitly to ensure smooth integration without conflicts.</p>
         </article>
         <article class="principle-card">
-          <h2>Make decisions traceable</h2>
-          <p>Key architectural choices and component selections are recorded with their underlying rationale, trade-offs, and evidence. That makes future design changes faster and safer.</p>
+          <h2>Document decisions</h2>
+          <p>We take care to record the decisions and details we make throughout our design process so that we can deliver quickly, safely and reliably. </p>
         </article>
         <article class="principle-card">
-          <h2>Design for the next stage</h2>
-          <p>A proof-of-concept, test rig, or high-volume production design each serves a distinct purpose. We tailor engineering outputs directly to what needs to happen next.</p>
+          <h2>Look forward</h2>
+          <p>A one-off proof-of-concept, or volume production run: we tailor our approach to consider not only the here-and-now, but to support the future needs of the development process.</p>
         </article>
       </div>
     </section>
@@ -68,28 +43,29 @@
           <span class="process-number">01</span>
           <div>
             <h2>Understand</h2>
-            <p>Discuss the problem, existing hardware or code, operational constraints, timeline, and the criteria required to verify success.</p>
+            <p>Discuss the challenge: what exists already, operational constraints, how we can help, and what defines success.</p>
           </div>
         </li>
         <li>
           <span class="process-number">02</span>
           <div>
             <h2>Define</h2>
-            <p>Agree on scope, deliverables, team responsibilities, and review milestones. Where technical risk is high, the initial phase may focus on targeted feasibility investigation.</p>
+            <p>Agree on scope, deliverables, team responsibilities, and review milestones.
+            Our work covers tightly-bounded scopes to open-ended research and feasibility investigations.</p>
           </div>
         </li>
         <li>
           <span class="process-number">03</span>
           <div>
             <h2>Develop</h2>
-            <p>Execute the engineering design with regular technical updates. Assumptions, risks, and changes are identified early while options remain open.</p>
+            <p>Conduct the iterative engineering design, building and testing process. We maintain regular conversations with our clients to report our progress, discuss challenges that arise, and ensure we remain aligned on the developmental direction.</p>
           </div>
         </li>
         <li>
           <span class="process-number">04</span>
           <div>
             <h2>Verify and hand over</h2>
-            <p>Validate results against agreed acceptance criteria and transfer CAD models, schematics, source code, test evidence, and supporting documentation.</p>
+            <p>Validate results against agreed acceptance criteria and transfer ownership of any CAD models, schematics, source code, test evidence, and supporting documentation.</p>
           </div>
         </li>
       </ol>
@@ -97,20 +73,10 @@
 
     <section class="content-section content-section--divided">
       <h2 class="section-heading">A practical first step</h2>
-      <p class="section-copy">A short introductory call is usually enough to establish whether a project aligns with our technical capabilities and what a constructive next step looks like. We will say plainly if it does not.</p>
+      <p class="section-copy">A short introductory call is usually enough to establish whether a project aligns with our technical capabilities, and what next steps might look like. We will always be transparent if a project is not a good fit for us.</p>
       <div class="action-row action-row--large">
         <a href="https://dash.mokimo.co.uk/book_appointment" class="button button--primary">Book a call</a>
         <a href="mailto:hello@mokimo.co.uk" class="button button--secondary">Email us</a>
       </div>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
-    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
-    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
-  </footer>
-
-  <script src="/scripts/site.js"></script>
-</body>
-</html>

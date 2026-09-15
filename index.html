@@ -1,63 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mokimo — Design Engineering Consultancy</title>
-  <meta name="description" content="Mechanical, electronic, and firmware engineering consultancy. We bring careful thinking to complex problems.">
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="canonical" href="https://www.mokimo.co.uk/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/styles/base.css">
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    "name": "Mokimo Ltd",
-    "alternateName": "Mokimo",
-    "url": "https://www.mokimo.co.uk",
-    "logo": "https://www.mokimo.co.uk/favicon.svg",
-    "description": "Mechanical, electronic, and firmware engineering consultancy. We bring careful thinking to complex problems.",
-    "email": "hello@mokimo.co.uk",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "The Workstation, 15 Paternoster Row",
-      "addressLocality": "Sheffield",
-      "postalCode": "S1 2BX",
-      "addressCountry": "GB"
-    },
-    "areaServed": "GB",
-    "sameAs": [
-      "https://www.linkedin.com/company/mokimo-ltd/"
-    ],
-    "foundingDate": "2026",
-    "priceRange": "$$"
-  }
-  </script>
-</head>
-<body class="home-page">
-
-  <header class="site-header" role="banner">
-    <div class="wordmark-group">
-      <a href="/" class="wordmark">mokimo</a>
-      <span class="wordmark-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
-        </svg>
-      </span>
-    </div>
-    <nav aria-label="Primary navigation">
-      <ul class="site-nav" role="list">
-        <li><a href="/about/">About</a></li>
-        <li><a href="/approach/">Approach</a></li>
-        <li><a href="#services">Services</a></li>
-        <li><a href="/examples/">Examples</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+---
+layout: default
+title: "Mokimo — Design Engineering Consultancy"
+description: "Mechanical, electronic, and firmware engineering consultancy. We bring careful thinking to complex problems."
+body_class: home-page
+extra_css:
+  - home
+---
 
   <main>
     <div class="content">
@@ -95,22 +43,22 @@
         <div class="services-list">
           <div class="service-item reveal">
             <h3 class="service-name">Mechanical Engineering</h3>
-            <p class="service-desc">Product design, mechanism development, and structural analysis — from concept sketches through to production-ready outputs. We work in CAD, FEA, and at the bench, and we know when each is the right tool.</p>
+            <p class="service-desc">Product design, mechanism development and structural analysis, from concept sketches through to production-ready outputs. We move between sketches, calculations, simulation and physical testing - understanding what each can, and cannot, tell us.</p>
             <p class="service-more"><a class="text-link" href="/examples/mechanical/">See examples <span class="link-arrow" aria-hidden="true">→</span></a></p>
           </div>
           <div class="service-item reveal">
             <h3 class="service-name">Electronics &amp; Embedded Systems</h3>
-            <p class="service-desc">Circuit design, PCB layout, and sensor integration for connected products and instrumentation. From proof-of-concept breadboards through to production assemblies.</p>
+            <p class="service-desc">From proof-of-concept breadboards to flexible PCBs and production assemblies, we handle circuit design, board layout and sensor integration for connected products and instrumentation. </p>
             <p class="service-more"><a class="text-link" href="/examples/electronics/">See examples <span class="link-arrow" aria-hidden="true">→</span></a></p>
           </div>
           <div class="service-item reveal">
             <h3 class="service-name">Firmware Development</h3>
-            <p class="service-desc">Firmware for microcontrollers and connected hardware, plus the supporting software; control interfaces, configuration tools, and dashboards. From the silicon, to the screen.</p>
+            <p class="service-desc">From microcontroller firmware through to interfaces, configurators and GUIs, we develop the software that supports modern hardware and connected systems.</p>
             <p class="service-more"><a class="text-link" href="/examples/firmware/">See examples <span class="link-arrow" aria-hidden="true">→</span></a></p>
           </div>
           <div class="service-item reveal">
-            <h3 class="service-name">Requirements, Systems &amp; Process Design</h3>
-            <p class="service-desc">Mapping workflows, identifying bottlenecks, and designing systems that let organisations work the way they actually need to — and, just as importantly, getting the requirements right at the start.</p>
+            <h3 class="service-name">Requirements &amp; Systems Engineering</h3>
+            <p class="service-desc">A deep understanding of system requirements, combined with up-front definitions of system interfaces and architecture, enables us to design efficiently and integrate smoothly. </p>
             <p class="service-more"><a class="text-link" href="/examples/process/">See examples <span class="link-arrow" aria-hidden="true">→</span></a></p>
           </div>
           <div class="service-item reveal">
@@ -119,6 +67,7 @@
             <p class="service-more"><a class="text-link" href="/examples/production/">See examples <span class="link-arrow" aria-hidden="true">→</span></a></p>
           </div>
         </div>
+        <p class="services-more reveal"><a class="text-link" href="/services/">Explore our services in more detail <span class="link-arrow" aria-hidden="true">→</span></a></p>
       </section>
 
       <section id="contact" class="contact" aria-label="Contact">
@@ -132,14 +81,3 @@
 
     </div>
   </main>
-
-  <footer class="site-footer">
-    <p class="footer-text">&copy; 2026 Mokimo Ltd &middot; Company No. 17139363 &middot; <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
-    <p class="footer-text footer-links"><span class="footer-address"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span class="sr-only">Registered office:</span> The Workstation, 15 Paternoster Row, Sheffield S1 2BX</span> &middot; Registered in England and Wales</p>
-    <p class="footer-text footer-links"><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/terms/">Terms</a></p>
-  </footer>
-
-  <script src="/scripts/site.js"></script>
-
-</body>
-</html>

@@ -1,0 +1,41 @@
+---
+layout: default
+title: "SendSpin speaker — Mokimo"
+description: "A HomeAssistant-synced Bluetooth speaker built around a custom PCB — class-D amp, ESP32, and SendSpinZero firmware — electronics design by Mokimo."
+nav: examples
+extra_css:
+  - examples
+  - examples-crops
+---
+
+  <main class="examples-content">
+
+    <p class="examples-breadcrumb"><a href="/examples/">Examples</a> / SendSpin speaker</p>
+    <div class="project-header">
+      <h1 class="page-title">SendSpin speaker</h1>
+      <p class="page-meta">Personal project &middot; In progress</p>
+      <p class="project-lead">A Bluetooth speaker built around a custom PCB — a class-D amp paired with an ESP32 running SendSpinZero, joining a set of HomeAssistant-synchronised, Sonos-style multi-room speakers. The schematic and layout are complete; assembly is the next stage.</p>
+      <div class="tag-list">
+        <a class="tag" href="/examples/electronics/">Electronics</a>
+      </div>
+    </div>
+
+    <div class="project-media">
+      <figure>
+        <img class="crop-pcb-detail" src="/images/examples/IMG_20260728_172002.jpg" alt="PCB layout and 3D board render for the SendSpin speaker on a monitor" width="4080" height="3060" loading="lazy">
+        <figcaption>Reviewing the PCB layout and 3D render before sending it for fabrication.</figcaption>
+      </figure>
+    </div>
+
+    <div class="project-narrative">
+      <p>The project supersedes an earlier ESP32-and-DAC prototype, which used software crossover and EQ alongside a modified Bluetooth stack but did not achieve reliable synchronised playback. The replacement design starts with a clean PCB layout and a simpler route to robust operation.</p>
+      <p>Component choices have been reviewed for real operating conditions, including MLCC DC-bias derating, while pi filters on the analogue rails help keep switching noise away from the audio path. The board and its supporting design decisions are documented so that assembly and bring-up can be verified systematically.</p>
+      <p>Assembly, bring-up, and audio validation are the next stages, followed by integration into the wider multi-room system.</p>
+    </div>
+
+    <div class="action-row action-row--large">
+      <a href="/examples/" class="button button--secondary">All examples</a>
+      <a href="mailto:hello@mokimo.co.uk" class="button button--secondary">Email us</a>
+    </div>
+
+  </main>
