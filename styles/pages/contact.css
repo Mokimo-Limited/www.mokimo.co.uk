@@ -1,0 +1,66 @@
+/* === Contact page === */
+
+.contact-details {
+  margin-top: var(--space-xl);
+}
+
+.contact-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border: 1px solid var(--color-sand);
+}
+
+.contact-cell {
+  padding: var(--space-sm) var(--space-md);
+}
+
+.contact-cell:nth-child(even) {
+  border-left: 1px solid var(--color-sand);
+}
+
+.contact-cell:nth-child(n + 3) {
+  border-top: 1px solid var(--color-sand);
+}
+
+.contact-cell-label {
+  margin-bottom: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.contact-cell-body {
+  font-size: 0.85rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.contact-cell-body a {
+  color: var(--color-accent-deep);
+  text-decoration: none;
+  border-bottom: 1px solid var(--color-sand);
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.contact-cell-body a:hover,
+.contact-cell-body a:focus-visible {
+  color: var(--color-text);
+  border-color: var(--color-accent);
+}
+
+@media (max-width: 640px) {
+  .contact-details-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-cell:nth-child(even) {
+    border-left: 0;
+  }
+
+  .contact-cell + .contact-cell {
+    border-top: 1px solid var(--color-sand);
+  }
+}
