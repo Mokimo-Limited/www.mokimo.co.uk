@@ -15,6 +15,17 @@
   margin-top: var(--space-sm);
 }
 
+.about-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+  gap: var(--space-md);
+  align-items: start;
+}
+
+.about-row--reverse {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+}
+
 .team-member {
   margin-bottom: var(--space-lg);
   padding-left: var(--space-md);
@@ -58,4 +69,16 @@
   background-color: currentColor;
   -webkit-mask: url('https://static.licdn.com/scds/common/u/images/logos/linkedin/logo-in-win8-tile-144_v1.png') center / contain no-repeat;
   mask: url('https://static.licdn.com/scds/common/u/images/logos/linkedin/logo-in-win8-tile-144_v1.png') center / contain no-repeat;
+}
+
+@media (max-width: 640px) {
+  .about-row,
+  .about-row--reverse {
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .about-row--reverse .fig {
+    order: 1;
+  }
 }
