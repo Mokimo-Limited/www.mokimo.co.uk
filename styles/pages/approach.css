@@ -14,42 +14,89 @@
 }
 
 /* --- Project flow diagram ---
-   Two entry modes (clear requirement / unclear route) converge into one
-   four-stage development cycle. Structure is real HTML; the connector
-   lines are absolutely positioned 1px elements keyed to the grid columns.
-   Below 700px everything collapses to a single vertical rail. */
+   Two entry points converge into a horizontal band of chevron stages.
+   Shapes are drawn with clip-path; the 1px outline is a sand-coloured
+   element with a base-coloured ::before inset by 1px. Below 900px the
+   diagram stacks: entry points first, then the stages as a vertical list. */
 
 .flow {
-  --flow-gap: 2rem;
-  --flow-line: var(--color-warm-brown);
+  --flow-notch: 14px;
+  --flow-line: var(--color-sand);
+  --flow-fill: var(--color-base);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 4fr);
   margin-bottom: var(--space-lg);
 }
 
-.flow-entries {
+/* Entry points: two stacked boxes whose right edges converge on the
+   band's vertical centre. */
+
+.flow-inputs {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--flow-gap);
+  grid-template-rows: 1fr 1fr;
 }
 
-.flow-entry {
+.flow-input {
   position: relative;
-  padding: var(--space-sm) 1.25rem;
-  border: 1px solid var(--color-sand);
-  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem 1.5rem 1rem 1.1rem;
+  background: var(--flow-line);
+  clip-path: polygon(0 0, calc(100% - var(--flow-notch)) 0, 100% 100%, 0 100%);
 }
 
-/* Stub dropping from each entry box towards the merge rail */
-.flow-entry::after {
+.flow-input:last-child {
+  clip-path: polygon(0 0, 100% 0, calc(100% - var(--flow-notch)) 100%, 0 100%);
+}
+
+.flow-input::before {
   content: '';
   position: absolute;
-  bottom: -30px;
-  left: 50%;
-  width: 1px;
-  height: 30px;
-  background: var(--flow-line);
+  inset: 1px;
+  background: var(--flow-fill);
+  clip-path: inherit;
 }
 
-.flow-entry h2,
+/* Chevron band: each stage is an arrow block. The point of one stage and
+   the notch of the next leave a chevron-shaped channel between them. */
+
+.flow-band {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.flow-stage {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.1rem 1.6rem 1.1rem 1.7rem;
+  background: var(--flow-line);
+  clip-path: polygon(0 0, calc(100% - var(--flow-notch)) 0, 100% 50%, calc(100% - var(--flow-notch)) 100%, 0 100%, var(--flow-notch) 50%);
+}
+
+.flow-stage:first-child {
+  clip-path: polygon(0 0, calc(100% - var(--flow-notch)) 0, 100% 50%, calc(100% - var(--flow-notch)) 100%, 0 100%);
+}
+
+.flow-stage::before {
+  content: '';
+  position: absolute;
+  inset: 1px;
+  background: var(--flow-fill);
+  clip-path: inherit;
+}
+
+.flow-input > *,
+.flow-stage > * {
+  position: relative;
+}
+
+.flow-input h2,
 .flow-stage h2 {
   margin-bottom: 0.4rem;
   font-family: var(--font-heading);
@@ -58,172 +105,59 @@
   color: var(--color-text);
 }
 
-.flow-entry p,
+.flow-input p,
 .flow-stage p {
-  font-size: 0.92rem;
-  line-height: 1.7;
+  font-size: 0.88rem;
+  line-height: 1.65;
   color: var(--color-text-muted);
 }
 
-/* Merge rail between the two stubs, then a centre drop into the cycle.
-   Stub x-positions are the entry column centres: 25% - gap/4. */
-.flow-connector {
-  position: relative;
-  height: 60px;
-}
-
-.flow-connector::before {
-  content: '';
-  position: absolute;
-  top: 30px;
-  left: calc(25% - var(--flow-gap) / 4);
-  right: calc(25% - var(--flow-gap) / 4);
-  height: 1px;
-  background: var(--flow-line);
-}
-
-.flow-connector::after {
-  content: '';
-  position: absolute;
-  top: 30px;
-  left: 50%;
-  width: 1px;
-  height: 27px;
-  background: var(--flow-line);
-}
-
-/* Arrowhead tip lands on the cycle rail (4px into .flow-cycle) */
-.flow-arrow {
-  position: absolute;
-  top: 57px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 7px solid var(--color-accent-deep);
-}
-
-/* The development cycle: a rail with a node per stage. Rail ends sit on
-   the first/last stage dots, i.e. one column-centre in from each edge. */
-.flow-cycle {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--flow-gap);
-  padding-top: 22px;
-  list-style: none;
-}
-
-.flow-cycle::before {
-  content: '';
-  position: absolute;
-  top: 4px;
-  left: calc((100% - 3 * var(--flow-gap)) / 8);
-  right: calc((100% - 3 * var(--flow-gap)) / 8);
-  height: 1px;
-  background: var(--flow-line);
-}
-
-.flow-stage {
-  position: relative;
-}
-
-/* Node dot on the rail (cycle padding-top is 22px, rail at 4px) */
-.flow-stage::before {
-  content: '';
-  position: absolute;
-  top: -22px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background: var(--color-accent-deep);
-}
-
-/* Direction chevrons in the gaps after stages 1 and 3 */
-.flow-stage:nth-child(1)::after,
-.flow-stage:nth-child(3)::after {
-  content: '';
-  position: absolute;
-  top: -21px;
-  right: calc(var(--flow-gap) / -2 - 4px);
-  width: 8px;
-  height: 8px;
-  border-top: 1.5px solid var(--flow-line);
-  border-right: 1.5px solid var(--flow-line);
-  transform: rotate(45deg);
-}
-
-@media (max-width: 700px) {
-  .flow-entries {
+@media (max-width: 900px) {
+  .flow {
     grid-template-columns: 1fr;
+    gap: var(--space-md);
+  }
+
+  .flow-inputs {
+    grid-template-rows: auto;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: var(--space-sm);
   }
 
-  .flow-entry::after {
-    display: none;
+  .flow-input,
+  .flow-input:last-child,
+  .flow-stage,
+  .flow-stage:first-child {
+    clip-path: none;
+    background: var(--flow-fill);
+    border: 1px solid var(--flow-line);
+    border-radius: 2px;
+    padding: 1rem 1.25rem;
   }
 
-  .flow-connector {
-    height: 44px;
-  }
-
-  .flow-connector::before {
-    display: none;
-  }
-
-  .flow-connector::after {
-    top: 0;
-    height: 37px;
-  }
-
-  .flow-arrow {
-    top: 37px;
-  }
-
-  /* Cycle becomes a vertical rail down the left edge */
-  .flow-cycle {
-    grid-template-columns: 1fr;
-    row-gap: var(--space-md);
-    padding-top: 0;
-  }
-
-  .flow-cycle::before {
-    top: 8px;
-    bottom: 8px;
-    left: 4px;
-    right: auto;
-    width: 1px;
-    height: auto;
-  }
-
-  .flow-stage {
-    padding-left: 1.75rem;
-  }
-
+  .flow-input::before,
   .flow-stage::before {
-    top: 0.3em;
-    left: 0;
-    transform: none;
+    display: none;
   }
 
-  .flow-stage:nth-child(1)::after,
-  .flow-stage:nth-child(3)::after {
-    display: none;
+  .flow-band {
+    grid-template-columns: 1fr;
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 640px) {
+  .flow-inputs {
+    grid-template-columns: 1fr;
+  }
+
+  .media-grid,
+  .media-grid--three {
+    grid-template-columns: 1fr;
   }
 }
 
 /* Band caption aligns with the wider inner-page column */
 .photo-band figcaption {
   max-width: 1080px;
-}
-
-@media (max-width: 640px) {
-  .media-grid,
-  .media-grid--three {
-    grid-template-columns: 1fr;
-  }
 }
