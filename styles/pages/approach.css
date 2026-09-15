@@ -1,5 +1,18 @@
 /* === Approach page === */
 
+/* --- Figure grids --- */
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+}
+
+.media-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 /* --- Project flow diagram ---
    Two entry modes (clear requirement / unclear route) converge into one
    four-stage development cycle. Structure is real HTML; the connector
@@ -206,4 +219,11 @@
 /* Band caption aligns with the wider inner-page column */
 .photo-band figcaption {
   max-width: 1080px;
+}
+
+@media (max-width: 640px) {
+  .media-grid,
+  .media-grid--three {
+    grid-template-columns: 1fr;
+  }
 }

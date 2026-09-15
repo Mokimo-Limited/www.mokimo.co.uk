@@ -1,4 +1,50 @@
 /* === Examples pages: hub pages, project cards, discipline tags, project detail pages === */
+
+/* --- Button-styled action links (discipline hub pages) --- */
+
+.contact-link {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-accent-deep);
+  text-decoration: none;
+  display: inline-block;
+  border: 1px solid var(--color-accent);
+  padding: 0.6em 1.35em;
+  transition: border-color 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+}
+
+.contact-link:hover,
+.contact-link:focus-visible {
+  border-color: var(--color-accent-deep);
+  color: var(--color-text);
+}
+
+/* --- Card links (same treatment as .text-link in core) --- */
+
+.examples-category-link,
+.project-card-link {
+  color: var(--color-accent-deep);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--color-sand);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+}
+
+.examples-category-link:visited,
+.project-card-link:visited {
+  color: var(--color-accent-deep);
+}
+
+.examples-category-link:hover,
+.examples-category-link:focus-visible,
+.project-card-link:hover,
+.project-card-link:focus-visible {
+  color: var(--color-text);
+  text-decoration-color: var(--color-accent);
+}
+
 /* --- Examples pages --- */
 
 .examples-content {

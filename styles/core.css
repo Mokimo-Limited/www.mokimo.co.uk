@@ -1,20 +1,7 @@
-/* === Mokimo — Core styles === */
-/* Reset, design tokens, base typography, footer, and shared layout (header/nav/buttons). Loaded on every page. */
-/* === Mokimo — Base Stylesheet ===
-   Shared across all pages.
-   Edit here to change fonts, colours, or spacing tokens site-wide. */
-
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border: 0;
-}
+/* === Mokimo — Core styles ===
+   Loaded on every page: reset, design tokens, base typography, header/nav,
+   buttons, footer, and shared media components (figures, photo bands).
+   Page-specific styles live in styles/pages/*.css. */
 
 /* --- Reset --- */
 
@@ -75,34 +62,26 @@ body {
 /* Shared inline and action links. Navigation, tags, buttons, and footer links
    intentionally use their own context-specific treatments. */
 main p a:not(.button):not(.text-link),
-.text-link,
-.examples-category-link,
-.project-card-link {
-	color: var(--color-accent-deep);
-	text-decoration: underline;
-	text-decoration-thickness: 1px;
-	text-decoration-color: var(--color-sand);
-	text-underline-offset: 3px;
-	transition: color 0.15s ease, text-decoration-color 0.15s ease;
+.text-link {
+  color: var(--color-accent-deep);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: var(--color-sand);
+  text-underline-offset: 3px;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
 
 main p a:not(.button):not(.text-link):visited,
-.text-link:visited,
-.examples-category-link:visited,
-.project-card-link:visited {
-	color: var(--color-accent-deep);
+.text-link:visited {
+  color: var(--color-accent-deep);
 }
 
 main p a:not(.button):not(.text-link):hover,
 main p a:not(.button):not(.text-link):focus-visible,
 .text-link:hover,
-.text-link:focus-visible,
-.examples-category-link:hover,
-.examples-category-link:focus-visible,
-.project-card-link:hover,
-.project-card-link:focus-visible {
-	color: var(--color-text);
-	text-decoration-color: var(--color-accent);
+.text-link:focus-visible {
+  color: var(--color-text);
+  text-decoration-color: var(--color-accent);
 }
 
 /* --- Footer (dark band to page end) --- */
@@ -269,14 +248,7 @@ main p a:not(.button):not(.text-link):focus-visible,
   border-bottom: 1px solid var(--color-accent);
 }
 
-.content {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 var(--side-padding);
-}
-
-.button,
-.contact-link {
+.button {
   font-family: var(--font-body);
   font-size: 0.9rem;
   font-weight: 500;
@@ -289,9 +261,7 @@ main p a:not(.button):not(.text-link):focus-visible,
 }
 
 .button:hover,
-.button:focus-visible,
-.contact-link:hover,
-.contact-link:focus-visible {
+.button:focus-visible {
   border-color: var(--color-accent-deep);
   color: var(--color-text);
 }
@@ -324,10 +294,6 @@ main p a:not(.button):not(.text-link):focus-visible,
 }
 
 .action-row--medium {
-  margin-top: var(--space-md);
-}
-
-.page-actions {
   margin-top: var(--space-md);
 }
 
@@ -389,17 +355,6 @@ main p a:not(.button):not(.text-link):focus-visible,
   color: var(--color-text-muted);
 }
 
-.media-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--space-md);
-  margin: var(--space-lg) 0;
-}
-
-.media-grid--three {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
 /* --- Photo band (full-bleed) --- */
 
 .photo-band {
@@ -445,41 +400,6 @@ main p a:not(.button):not(.text-link):focus-visible,
   letter-spacing: 0.03em;
   line-height: 1.6;
   color: var(--color-text-muted);
-}
-
-@media (max-width: 640px) {
-  .media-grid,
-  .media-grid--three {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 640px) {
-  .home-page main section {
-    padding-top: var(--space-lg);
-    padding-bottom: var(--space-lg);
-  }
-
-  .hero {
-    min-height: 60vh;
-    padding-top: calc(var(--space-xl) + 2rem);
-    padding-bottom: var(--space-xl);
-  }
-
-  .principle,
-  .service-item,
-  .approach-more,
-  .services-more,
-  .service-page-item,
-  .team-member {
-    padding-left: 0;
-  }
-
-  .principle-grid,
-  .service-page-list--disciplines,
-  .service-page-list--formats {
-    grid-template-columns: 1fr;
-  }
 }
 
 @media (max-width: 640px) {

@@ -1,5 +1,12 @@
 /* === Home page === */
 
+/* Page container (homepage's counterpart to .page-content on inner pages) */
+.content {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--side-padding);
+}
+
 .home-page [id] {
   scroll-margin-top: 6rem;
 }
@@ -288,6 +295,17 @@
 /* --- Responsive --- */
 
 @media (max-width: 640px) {
+  .home-page main section {
+    padding-top: var(--space-lg);
+    padding-bottom: var(--space-lg);
+  }
+
+  .hero {
+    min-height: 60vh;
+    padding-top: calc(var(--space-xl) + 2rem);
+    padding-bottom: var(--space-xl);
+  }
+
   .hero,
   .outcome-grid,
   .proof-grid {

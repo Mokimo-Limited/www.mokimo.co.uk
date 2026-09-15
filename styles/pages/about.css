@@ -72,4 +72,8 @@
   .about-row--reverse .fig {
     order: 1;
   }
+
+  .team-member {
+    padding-left: 0;
+  }
 }
