@@ -46,26 +46,9 @@
   color: var(--color-text-muted);
 }
 
-.hero-evidence {
-  margin: 0;
-  border: 1px solid var(--color-sand);
-  background-color: var(--color-base);
-}
-
+/* Hero figure builds on the shared .fig component (core.css); portrait crop */
 .hero-evidence img {
-  display: block;
-  width: 100%;
   aspect-ratio: 4 / 5;
-  object-fit: cover;
-}
-
-.hero-evidence figcaption {
-  padding: 0.85rem 1rem 1rem;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  line-height: 1.6;
-  letter-spacing: 0.03em;
-  color: var(--color-text-muted);
 }
 
 /* --- Section intros --- */
@@ -275,7 +258,7 @@
   padding-top: 0;
 }
 
-/* --- Shared --- */
+/* --- Text link arrows --- */
 
 .link-arrow {
   font-weight: 400;
