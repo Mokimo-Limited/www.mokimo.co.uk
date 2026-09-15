@@ -61,14 +61,6 @@
   color: var(--color-text-muted);
 }
 
-.hero-evidence figcaption span {
-  display: block;
-  margin-bottom: 0.25rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  color: var(--color-accent-deep);
-}
-
 /* --- Section intros --- */
 
 .section-intro {
