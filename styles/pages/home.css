@@ -146,60 +146,6 @@
   color: var(--color-text-muted);
 }
 
-/* --- Photo band (full-bleed) --- */
-
-.photo-band {
-  margin: 0;
-  position: relative;
-}
-
-.photo-band img {
-  display: block;
-  width: 100%;
-  height: clamp(300px, 42vw, 520px);
-  object-fit: cover;
-}
-
-.photo-band::before,
-.photo-band::after {
-  content: '';
-  position: absolute;
-  top: 14px;
-  width: 15px;
-  height: 15px;
-  background:
-    linear-gradient(var(--color-base), var(--color-base)) center / 1px 100% no-repeat,
-    linear-gradient(var(--color-base), var(--color-base)) center / 100% 1px no-repeat;
-  opacity: 0.8;
-  pointer-events: none;
-}
-
-.photo-band::before {
-  left: 14px;
-}
-
-.photo-band::after {
-  right: 14px;
-}
-
-.photo-band figcaption {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0.85rem var(--side-padding) 0;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.03em;
-  line-height: 1.6;
-  color: var(--color-text-muted);
-}
-
-.photo-band figcaption span {
-  margin-right: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  color: var(--color-accent-deep);
-}
-
 /* --- Approach / delivery flow --- */
 
 .delivery-flow {

@@ -51,3 +51,8 @@
   letter-spacing: 0.08em;
   color: var(--color-warm-brown);
 }
+
+/* Band caption aligns with the wider inner-page column */
+.photo-band figcaption {
+  max-width: 1080px;
+}

@@ -10,6 +10,15 @@
   max-width: 1080px;
 }
 
+/* Column split by a full-bleed photo band */
+.page-content--lead {
+  padding-bottom: 0;
+}
+
+.page-content--cont {
+  padding-top: 0;
+}
+
 .page-intro {
   max-width: 700px;
   margin-bottom: var(--space-xl);
