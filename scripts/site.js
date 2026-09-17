@@ -16,3 +16,24 @@ if (revealElements.length) {
     revealElements.forEach((element) => element.classList.add('visible'));
   }
 }
+
+const enquiryForm = document.querySelector('#enquiry-form');
+
+if (enquiryForm) {
+  enquiryForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const data = new FormData(enquiryForm);
+    const name = data.get('name');
+    const subject = `Website enquiry from ${name}`;
+    const body = [
+      data.get('enquiry'),
+      '',
+      '--',
+      `Name: ${name}`,
+      `Email: ${data.get('email')}`,
+    ].join('\n');
+
+    window.location.href = `mailto:hello@mokimo.co.uk?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+}

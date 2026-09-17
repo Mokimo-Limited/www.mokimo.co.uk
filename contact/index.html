@@ -20,6 +20,26 @@ extra_css:
       <a href="mailto:hello@mokimo.co.uk" class="button button--secondary">Email us</a>
     </div>
 
+    <section class="content-section content-section--divided" aria-label="Enquiry form">
+      <h2 class="section-heading">Send an enquiry</h2>
+      <form class="enquiry-form" id="enquiry-form">
+        <div class="form-field">
+          <label for="enquiry-name">Name</label>
+          <input type="text" id="enquiry-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="form-field">
+          <label for="enquiry-email">Email</label>
+          <input type="email" id="enquiry-email" name="email" autocomplete="email" required>
+        </div>
+        <div class="form-field">
+          <label for="enquiry-message">Enquiry</label>
+          <textarea id="enquiry-message" name="enquiry" rows="6" required></textarea>
+        </div>
+        <button type="submit" class="button button--primary">Send enquiry</button>
+        <p class="form-note">This opens an email to hello@mokimo.co.uk with your enquiry — nothing is submitted or stored on this website.</p>
+      </form>
+    </section>
+
     <section class="content-section content-section--divided">
       <h2 class="section-heading">What happens next</h2>
       <p class="section-copy">Send whatever you have — a brief, a specification, photos or a video of the hardware. Every enquiry is read by an engineer, and we reply personally, usually within a day or two.</p>
