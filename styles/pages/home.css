@@ -46,9 +46,31 @@
   color: var(--color-text-muted);
 }
 
-/* Hero figure builds on the shared .fig component (core.css); portrait crop */
+/* Hero figure builds on the shared .fig component (core.css); portrait crop.
+   Source is a wide flat-lay of machined parts, so the crop takes a vertical
+   slice down the right-hand side: brass lead nuts, the three threaded rods and
+   the linear rail.
+
+   Framing: object-position picks which part of the source stays in frame. The
+   source is far wider than the frame, so only ~45% of its width is visible, and
+   object-position slides that window across the full width (0% = far left,
+   100% = far right). Zoom: the figure clips and the img is scaled up inside it;
+   raise the scale to push in further. The figcaption is lifted above the scaled
+   img so the crop stops cleanly at the caption. */
+.hero-evidence {
+  overflow: hidden;
+}
+
 .hero-evidence img {
   aspect-ratio: 4 / 5;
+  object-position: 66% 20%;
+  transform: scale(1.05);
+  transform-origin: 50% 50%;
+}
+
+.hero-evidence figcaption {
+  position: relative;
+  background-color: var(--color-base);
 }
 
 /* --- Section intros --- */
@@ -148,18 +170,34 @@
 .delivery-flow {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  column-gap: 2.5rem; /* knob: width of gap chevrons sit in */
   list-style: none;
-  border-top: 1px solid var(--color-sand);
-  border-bottom: 1px solid var(--color-sand);
 }
 
 .delivery-flow li {
+  position: relative;
   min-width: 0;
-  padding: var(--space-md);
+  padding: 1.4rem 1.5rem 1.5rem; /* knob: card padding */
+  background-color: var(--color-base);
+  border: 1px solid var(--color-sand);
+  /*border-radius: 0.4rem; /* knob: card corner radius */
 }
 
-.delivery-flow li + li {
-  border-left: 1px solid var(--color-sand);
+.delivery-flow li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* knob: vertical-centre chevron on cards */
+  right: calc(-2.5rem / 2 - 0.4rem); /* knob: centred in column gap */
+  width: 0.8rem; /* knob: chevron size/aspect */
+  height: 1.2rem;
+  background-color: var(--color-accent);
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 4l6 8-6 8"/><path d="M9.5 4l6 8-6 8"/></svg>') center / contain no-repeat;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 4l6 8-6 8"/><path d="M9.5 4l6 8-6 8"/></svg>') center / contain no-repeat;
+}
+
+.philosophy .section-intro {
+  margin-bottom: var(--space-md); /* knob: gap between intro and flow cards */
 }
 
 .delivery-flow strong {
@@ -176,10 +214,23 @@
   color: var(--color-text-muted);
 }
 
-.approach-more,
+
 .services-more {
   margin-top: var(--space-md);
 }
+
+.approach-more {
+  margin-top: var(--space-md);
+  text-align: right; /* knob: right-align approach learn-more link */
+}
+
+.approach-contact {
+  margin-top: var(--space-sm); /* knob: gap under learn-more link */
+  font-size: 0.92rem;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+}
+
 
 /* --- Proof (selected projects) --- */
 

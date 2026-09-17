@@ -30,6 +30,7 @@
   --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
   --font-heading: 'IBM Plex Sans', -apple-system, sans-serif;
   --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Menlo, monospace;
+  --font-accent: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
 
   --space-xs: 0.5rem;
   --space-sm: 1rem;
