@@ -105,7 +105,8 @@
 
 .section-intro > p,
 .system-copy p,
-.delivery-model-copy p {
+.delivery-model-copy p,
+.approach-contact {
   max-width: 62ch;
   margin-top: 0.9rem;
   color: var(--color-text-muted);
@@ -116,13 +117,119 @@
   margin-top: var(--space-sm);
 }
 
+/* --- Delivery model: copy laid over a faded drawing ---
+
+   The scan floats behind the copy with no visible boundary: masks dissolve
+   every edge (diagonal fade clearing the copy, vertical fade softening top
+   and bottom), multiply drops the paper-white into the page ground, and a
+   brightness boost pushes the photo's paper to white first so only linework
+   and highlighter marks survive. A slight tilt keeps it feeling like a sheet
+   on a desk rather than a banner. The art is absolutely positioned, so the
+   panel's height comes from the copy alone, whatever the source image's size.
+
+   The panel bleeds past the text column (margin-right) so the linework
+   escapes the content grid; its own edge stays invisible because the mask
+   fades to transparent before it.
+
+   Knobs:
+   - mask stops      where each fade starts/ends (the middle diagonal stop
+                     keeps a little texture behind the text)
+   - opacity         overall strength of the linework
+   - brightness      how fully the paper disappears under multiply
+   - rotate/scale    tilt of the sheet; scale must cover the rotated corners
+   - object-position which part of the source stays in frame (the current scan
+                     is rotated ~40°, so a low-centre band shows the densest
+                     dimension stack; straighten for an upright reshoot)
+   - mobile: the drawing becomes a strip below the copy; the intro's bottom
+     padding reserves the strip and the mask fades the scan's top edge */
+.delivery-model-panel {
+  position: relative;
+  isolation: isolate; /* keep the multiply blend inside the panel */
+  overflow: hidden;
+  background-color: var(--color-base);
+  margin-right: calc(-1 * var(--side-padding));
+}
+
+.delivery-model-art {
+  position: absolute;
+  inset: 0% 0%;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 80%;
+  opacity: 0.55;
+  /*filter: brightness(1.12) contrast(1.05);*/
+  mix-blend-mode: multiply;
+  /*transform: rotate(5deg) scale(1);*/
+  /*-webkit-mask-image: linear-gradient(100deg, transparent 8%, rgba(0, 0, 0, 0.4) 38%, black 68%, black 86%, transparent 100%), linear-gradient(180deg, transparent 0%, black 20%, black 84%, transparent 100%);*/
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(100deg, transparent 8%, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.15) 50%,  rgba(0,0,0,0.4) 60%,  black 70%, black 95%, transparent 100%) /* linear-gradient(180deg, transparent 0%, black 10%, black 90%, transparent 100%) */;
+  mask-composite: intersect;
+}
+
+.delivery-model-intro {
+  position: relative;
+  z-index: 1;
+  max-width: 58%;
+  margin-bottom: 0;
+  /* Left padding is zeroed so the heading sits inline with the other
+     sections' headings; the mask keeps that area of the drawing clear. */
+  padding: clamp(2rem, 5vw, 4rem);
+  padding-left: 0;
+}
+
+/* The kicker catches the generic .section-intro > p styling (which out-ranks
+   a single class); re-set it as a small mono label in the accent. */
+.section-intro .delivery-model-kicker {
+  margin-top: 0;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent-deep);
+}
+
+/* Sit closer to the approach section above: the uniform section spacing was
+   adding to the page's list-like rhythm. */
+.home-page .delivery-model {
+  padding-top: var(--space-md);
+}
+
+.delivery-model-intro h2 {
+  margin-top: 0.7rem;
+}
+
+@media (max-width: 880px) {
+  /* Copy over the full panel width; the mask stays on so the text still sits
+     on the quieter left of the drawing. */
+  .delivery-model-intro {
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  /* Stack: copy above, drawing as a faded strip below it. */
+  .delivery-model-intro {
+    padding: 2rem 1.5rem 15rem 0; /* knob: bottom padding reserves the strip */
+  }
+
+  .delivery-model-art {
+    inset: auto 0 0 0;
+    height: 14rem; /* knob: strip height */
+    object-position: 60% 25%;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 55%);
+    mask-image: linear-gradient(180deg, transparent 0%, black 55%);
+  }
+}
+
 /* --- Outcomes --- */
 
 .outcomes,
 .philosophy,
 .proof,
-.services,
-.delivery-model {
+.services {
   border-top: 1px solid var(--color-sand-light);
 }
 
@@ -189,8 +296,8 @@
   top: 50%;
   transform: translateY(-50%); /* knob: vertical-centre chevron on cards */
   right: calc(-2.5rem / 2 - 0.4rem); /* knob: centred in column gap */
-  width: 0.8rem; /* knob: chevron size/aspect */
-  height: 1.2rem;
+  width: 1.1rem; /* knob: chevron size/aspect */
+  height: 2.2rem;
   background-color: var(--color-accent);
   -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 4l6 8-6 8"/><path d="M9.5 4l6 8-6 8"/></svg>') center / contain no-repeat;
   mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 4l6 8-6 8"/><path d="M9.5 4l6 8-6 8"/></svg>') center / contain no-repeat;
@@ -226,9 +333,6 @@
 
 .approach-contact {
   margin-top: var(--space-sm); /* knob: gap under learn-more link */
-  font-size: 0.92rem;
-  line-height: 1.65;
-  color: var(--color-text-muted);
 }
 
 
