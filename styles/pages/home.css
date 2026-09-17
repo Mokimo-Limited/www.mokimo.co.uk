@@ -274,10 +274,32 @@
 
 /* --- Approach / delivery flow --- */
 
+/* Two columns: the flow cards stack down the left, the intro copy and
+   learn-more link stack down the right. The copy stays first in the DOM so
+   the heading is read before the cards; grid placement puts it on the right. */
+.philosophy {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  column-gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center; /* knob: centre the copy against the flow cards */
+  text-align: left;
+
+}
+
+.philosophy-copy {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.philosophy .delivery-flow {
+  grid-column: 1;
+  grid-row: 1;
+}
+
 .delivery-flow {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  column-gap: 2.5rem; /* knob: width of gap chevrons sit in */
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 2.5rem; /* knob: height of gap chevrons sit in */
   list-style: none;
 }
 
@@ -293,18 +315,18 @@
 .delivery-flow li:not(:last-child)::after {
   content: "";
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%); /* knob: vertical-centre chevron on cards */
-  right: calc(-2.5rem / 2 - 0.4rem); /* knob: centred in column gap */
-  width: 1.1rem; /* knob: chevron size/aspect */
-  height: 2.2rem;
+  left: 50%;
+  top: calc(100% + 2.5rem / 2);
+  transform: translate(-50%, -50%); /* knob: vertical-centre chevron in row gap */
+  width: 2.2rem; /* knob: chevron size/aspect */
+  height: 1.1rem;
   background-color: var(--color-accent);
-  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 4l6 8-6 8"/><path d="M9.5 4l6 8-6 8"/></svg>') center / contain no-repeat;
-  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 4l6 8-6 8"/><path d="M9.5 4l6 8-6 8"/></svg>') center / contain no-repeat;
+  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3.5l8 6 8-6"/><path d="M4 9.5l8 6 8-6"/></svg>') center / contain no-repeat;
+  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3.5l8 6 8-6"/><path d="M4 9.5l8 6 8-6"/></svg>') center / contain no-repeat;
 }
 
 .philosophy .section-intro {
-  margin-bottom: var(--space-md); /* knob: gap between intro and flow cards */
+  margin-bottom: var(--space-md); /* knob: gap between intro and learn-more link */
 }
 
 .delivery-flow strong {
@@ -328,7 +350,7 @@
 
 .approach-more {
   margin-top: var(--space-md);
-  text-align: right; /* knob: right-align approach learn-more link */
+  /*text-align: left; /* knob: align learn-more link with the intro copy */
 }
 
 .approach-contact {
@@ -473,32 +495,22 @@
     border-left: 0;
     border-top: 1px solid var(--color-sand);
   }
-
-  .delivery-flow {
-    grid-template-columns: 1fr;
-  }
-
-  .delivery-flow li + li {
-    border-left: 0;
-    border-top: 1px solid var(--color-sand);
-  }
 }
 
-@media (min-width: 641px) and (max-width: 880px) {
-  .delivery-flow {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (max-width: 880px) {
+  /* Stack the approach section: copy first, then the flow cards. */
+  .philosophy {
+    grid-template-columns: minmax(0, 1fr);
   }
 
-  .delivery-flow li {
-    border-left: 0;
+  .philosophy-copy,
+  .philosophy .delivery-flow {
+    grid-column: 1;
+    grid-row: auto;
   }
 
-  .delivery-flow li:nth-child(even) {
-    border-left: 1px solid var(--color-sand);
-  }
-
-  .delivery-flow li:nth-child(n + 3) {
-    border-top: 1px solid var(--color-sand);
+  .philosophy .delivery-flow {
+    margin-top: var(--space-md);
   }
 }
 
