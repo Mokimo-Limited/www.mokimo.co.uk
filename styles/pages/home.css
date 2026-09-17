@@ -392,6 +392,13 @@
   padding: 0;
 }
 
+/* Keep the big numerals clear of the card headings inside the band (the global
+   rule overlaps them by design on the plain grid). Knob: raise/lower 0.35rem
+   for more/less air. */
+.outcomes .outcome-number {
+  margin-bottom: 0.35rem;
+}
+
 .outcomes .outcome-card + .outcome-card {
   border-left: 0;
   border-top: 1px solid rgba(250, 250, 249, 0.18);
