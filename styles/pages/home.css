@@ -351,10 +351,27 @@
 
 /* The band tilts slightly up to the right: both edges rise 36px across the
    full width (roughly 1.5 degrees). Knobs: change 36px to flatten/sharpen,
-   swap each "36px" with its "0" to tilt the other way. */
+   swap each "36px" with its "0" to tilt the other way.
+
+   The accent ground lives on a ::before so the section's drop-shadow follows
+   the clipped diagonal silhouette (a clip-path on the section itself would
+   clip its own shadow away). The filter makes the section a stacking context,
+   which keeps the z-index: -1 pseudo inside it; z-index: 1 lifts the shadow
+   above the photo band that follows in the DOM. Knobs: drop-shadow's x/y
+   offset, blur and alpha control the shadow weight. */
 .outcomes {
-  background-color: var(--color-accent);
+  position: relative;
+  z-index: 1;
   border-top: 0;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.18));
+}
+
+.outcomes::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--color-accent);
   clip-path: polygon(0 36px, 100% 0, 100% calc(100% - 36px), 0 100%);
 }
 
@@ -413,9 +430,48 @@
   color: var(--color-text-muted-invert);
 }
 
+/* The photo band meets the outcomes section flush; the drop-shadow is cast by
+   the blue band's slanted bottom edge (see .outcomes above) and falls onto the
+   photo. Knobs: 36px mirrors the .outcomes slope (16px on small screens). */
+.outcomes + .photo-band {
+  margin-top: -36px;
+}
+
+/* Hide the core.css registration crosshairs on the home photo band only; the
+   approach page keeps them. */
+.outcomes + .photo-band::before,
+.outcomes + .photo-band::after {
+  content: none;
+}
+
+/* Home-only zoom knobs (core.css keeps the generic band). The source photo is
+   2.16:1, so 46.2vw of height shows it full-width with no vertical crop;
+   lower the vw to zoom in. object-position shifts the crop window. */
+.outcomes + .photo-band img {
+  height: 25vw; /* knob: 46.2 = no vertical crop; lower = tighter */
+  object-position: 60% 0%;            /* knob: x% y% — e.g. 50% 30% biases the crop toward the top */
+}
+
 @media (max-width: 880px) {
-  .outcomes {
+  /* Clip the ::before ground, not the section: the section's own clip would
+     cut the drop-shadow AND intersect with the desktop 36px ::before clip,
+     leaving the blue edge on the 36px slope while the photo below sits on
+     the 16px one — a white wedge widening to the right. */
+  .outcomes::before {
     clip-path: polygon(0 16px, 100% 0, 100% calc(100% - 16px), 0 100%);
+  }
+
+  .outcomes + .photo-band {
+    margin-top: -17px;
+  }
+
+  .outcomes + .photo-band img {
+    clip-path: polygon(0 16px, 100% 0, 100% 100%, 0 100%);
+    height: clamp(320px, 32vw, 640px);
+  }
+
+  .outcomes + .photo-band::before {
+    top: calc(16px + 14px);
   }
 
   .outcomes .content {
