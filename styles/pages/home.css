@@ -60,10 +60,25 @@
 .section-intro h2 {
   font-family: var(--font-display);
   font-size: clamp(2rem, 4.4vw, 3.1rem);
-  font-weight: 500;
+  font-weight: 700;
   line-height: 1.12;
   letter-spacing: -0.012em;
   color: var(--color-text);
+}
+
+/* Editorial accent: "real world" set in an upright display serif in the brand
+   accent, so the heading reads as designed rather than as another line of UI
+   sans. Upright rather than italic keeps it confident/technical instead of
+   literary; the accent colour carries the emphasis. The serif runs optically
+   smaller than Plex at the same size, hence the slight bump. */
+.section-intro h2 .accent-serif {
+  font-family: var(--font-display);
+  font-style: normal;
+  /*font-weight: 450;*/
+  font-size: 1em;
+  letter-spacing: 0;
+  color: var(--color-accent);
+  padding-right: 0.02em;
 }
 
 .section-intro > p,
@@ -92,8 +107,8 @@
 .outcome-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  border-top: 1px solid var(--color-sand);
-  border-bottom: 1px solid var(--color-sand);
+  /*border-top: 1px solid var(--color-sand);*/
+  /*border-bottom: 1px solid var(--color-sand);*/
 }
 
 .outcome-card {
@@ -329,5 +344,75 @@
 
   .delivery-flow li:nth-child(n + 3) {
     border-top: 1px solid var(--color-sand);
+  }
+}
+
+/* --- Outcomes: full-bleed accent band, two columns, slanted edges --- */
+
+/* The band tilts slightly up to the right: both edges rise 36px across the
+   full width (roughly 1.5 degrees). Knobs: change 36px to flatten/sharpen,
+   swap each "36px" with its "0" to tilt the other way. */
+.outcomes {
+  background-color: var(--color-accent);
+  border-top: 0;
+  clip-path: polygon(0 36px, 100% 0, 100% calc(100% - 36px), 0 100%);
+}
+
+.outcomes .content {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+  column-gap: clamp(3rem, 7vw, 6rem);
+  align-items: center;
+}
+
+/* Intro column: light text on the accent ground */
+.outcomes .section-intro {
+  margin-bottom: 0;
+}
+
+.outcomes .section-intro h2 {
+  color: var(--color-base);
+}
+
+.outcomes .section-intro h2 .accent-serif {
+  color: var(--color-sand);
+}
+
+.outcomes .section-intro > p {
+  color: var(--color-text-muted-invert);
+}
+
+/* Cards stack vertically in the right half */
+.outcomes .outcome-grid {
+  grid-template-columns: 1fr;
+  row-gap: var(--space-md);
+}
+
+.outcomes .outcome-card {
+  padding: 0;
+}
+
+.outcomes .outcome-card + .outcome-card {
+  border-left: 0;
+  border-top: 1px solid rgba(250, 250, 249, 0.18);
+  padding-top: var(--space-md);
+}
+
+.outcomes .outcome-card h3 {
+  color: var(--color-base);
+}
+
+.outcomes .outcome-card > p:last-child {
+  color: var(--color-text-muted-invert);
+}
+
+@media (max-width: 880px) {
+  .outcomes {
+    clip-path: polygon(0 16px, 100% 0, 100% calc(100% - 16px), 0 100%);
+  }
+
+  .outcomes .content {
+    grid-template-columns: 1fr;
+    row-gap: var(--space-lg);
   }
 }
