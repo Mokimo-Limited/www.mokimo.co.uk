@@ -356,6 +356,100 @@
   margin-top: var(--space-sm); /* knob: gap under learn-more link */
 }
 
+/* --- Services: maxim quote, left of the intro copy ---
+   Mirrors .philosophy: the heading and copy sit in the right column so the
+   heading reads right-aligned like "Developing solutions", with the quote
+   in the left column. The copy stays first in the DOM. */
+
+.services {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  column-gap: clamp(2.5rem, 6vw, 5rem);
+  align-items: center;
+}
+
+.services .section-intro {
+  grid-column: 2;
+  grid-row: 1;
+  margin-bottom: 0; /* keep the copy vertically centred against the quote */
+}
+
+.services-quote {
+  position: relative;
+  isolation: isolate; /* keep the multiply blend self-contained, like .delivery-model-panel */
+  display: grid;
+  align-content: center; /* keep the quote centred within the stretched figure */
+  align-self: stretch; /* fill the row height so the art covers the whole column */
+  grid-column: 1;
+  grid-row: 1;
+  padding: var(--space-md) 0;
+  background-color: var(--color-base);
+}
+
+/* Handwritten derivation behind the quote, faded like the delivery-model
+   drawing: multiply drops the paper into the page ground, brightness lifts
+   the grid lines away, and masks dissolve every edge. */
+.services-quote-art {
+  position: absolute;
+  inset: 0%;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: rotate(-1.5deg);
+  object-position: 20% 20%; /* knob: which part of the sketch stays in frame (the vector diagram, left of the scan) */
+  opacity: 0.55; /* knob: overall strength — heavier fade than the delivery-model art */
+  filter: brightness(1.15);
+  filter:  grayscale(); /* knob: pushes the grid paper toward white under multiply */
+  mix-blend-mode: multiply;
+  -webkit-mask-image: linear-gradient(100deg, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(180deg, transparent 0%, black 25%, black 78%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(100deg, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(180deg, transparent 0%, black 25%, black 78%, transparent 100%);
+  mask-composite: intersect;
+}
+
+.services-quote blockquote {
+  padding-left: 1.4rem; /* knob: gap between rule and quote */
+  border-left: 2px solid var(--color-accent);
+}
+
+.services-quote blockquote p {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--color-accent-deep);
+}
+
+.services-quote-cite {
+  padding-left: 1.4rem; /* align with the quote text inside the rule */
+  margin-top: 0.9rem;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--color-warm-brown);
+}
+
+@media (max-width: 880px) {
+  .services {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: var(--space-md);
+  }
+
+  .services .section-intro {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .services-quote {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: var(--space-sm);
+  }
+}
+
 
 /* --- Proof band (selected projects, full-bleed) ---
 
