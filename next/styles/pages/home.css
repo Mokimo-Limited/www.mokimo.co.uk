@@ -129,27 +129,51 @@
 }
 
 /* --- 3. Selected Work --- */
-.work-filters {
+.case-carousel {
+  position: relative; /* containing block for the wide-screen breakout buttons */
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
+  flex-direction: column;
+}
+/* Nav row wraps underneath the cards: prev left, counter centre, next
+   right. The buttons reuse .btn/.btn--secondary for the standard look and
+   press-in hover; .case-nav only resizes them. */
+.case-nav-row {
+  order: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.case-nav { flex: none; width: 4.75rem; height: 2.75rem; padding: 0; }
+.case-counter {
   font-family: var(--font-mono);
   font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
 }
-.filter-btn {
-  padding: 0.25rem 0.75rem;
-  border: 1px solid var(--border-dark);
-  background-color: var(--parchment);
-  color: var(--ink);
-  cursor: pointer;
-  transition: background-color var(--transition), color var(--transition);
+
+/* Wide screens: the buttons break out into the page margin, flanking the
+   cards. Vertical centring uses margin rather than transform so .btn:hover's
+   press-in translate applies untouched. */
+@media (min-width: 1400px) {
+  .case-carousel { display: block; }
+  .case-nav-row { display: contents; }
+  .case-nav {
+    position: absolute;
+    top: 50%;
+    margin-top: -2.25rem; /* half the 4.5rem height set at the 768px block */
+  }
+  #case-prev { left: -4.5rem; }
+  #case-next { right: -4.5rem; }
 }
-.filter-btn:hover { background-color: var(--ink); color: var(--parchment); }
-.filter-btn.is-active {
-  background-color: var(--ink);
-  color: var(--parchment);
-  font-weight: 700;
-  box-shadow: var(--shadow-brutal-sm);
+.case-counter {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
 .case-grid {
@@ -162,24 +186,22 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* Size-query container so the footer can react to the card's own width,
+     independent of viewport or how many cards the carousel shows. */
+  container-type: inline-size;
 }
-.case-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 0.75rem;
-  margin-bottom: 1.25rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--muted);
+.case-client {
+  display: block;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
 }
-.case-client { font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
 .case-vis {
-  height: 12rem;
+  height: 17.25rem;
+  margin-bottom: 2rem;
   border: 1px solid var(--border-dark);
   background-color: var(--surface);
-  margin-bottom: 1.5rem;
   padding: 1rem;
   display: flex;
   align-items: center;
@@ -197,20 +219,6 @@
 }
 .case-title { font-size: 1.5rem; margin-bottom: 0.5rem; }
 .case-desc { font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.5rem; }
-.case-specs {
-  padding: 0.75rem;
-  background-color: var(--surface);
-  border: 1px solid var(--border-subtle);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  margin-bottom: 1.5rem;
-}
-.case-spec-row { display: flex; justify-content: space-between; }
-.case-spec-row .label { color: var(--muted); }
-.case-spec-row .val { font-weight: 700; }
 .case-footer {
   padding-top: 1rem;
   border-top: 1px solid var(--border-subtle);
@@ -235,6 +243,12 @@
   padding: 0.125rem 0.5rem;
 }
 .case-status { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; }
+/* Not enough room for tags + status on one line? Drop the status rather
+   than letting it wrap below the tags and eat vertical space. 430px covers
+   the widest tag set plus the longest status string. */
+@container (max-width: 430px) {
+  .case-status { display: none; }
+}
 
 /* --- 4. Approach Timeline --- */
 .approach-intro { max-width: 48rem; margin-bottom: 3.5rem; }
@@ -438,6 +452,7 @@
 @media (min-width: 768px) {
   .pillars-grid { grid-template-columns: repeat(3, 1fr); }
   .case-grid, .about-grid { grid-template-columns: repeat(2, 1fr); }
+  .case-nav { width: 3.25rem; height: 4.5rem; }
 }
 
 @media (min-width: 1024px) {

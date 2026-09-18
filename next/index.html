@@ -220,34 +220,30 @@ extra_css:
               From engineering decisions to working systems.
             </h2>
           </div>
-
-          <!-- Interactive Case Category Filters -->
-          <div class="work-filters">
-            <button onclick="filterWork('all', this)" class="filter-btn is-active">
-              All [4]
-            </button>
-            <button onclick="filterWork('automation', this)" class="filter-btn">
-              Automation
-            </button>
-            <button onclick="filterWork('kinematics', this)" class="filter-btn">
-              Kinematics
-            </button>
-            <button onclick="filterWork('test', this)" class="filter-btn">
-              Validation
-            </button>
-          </div>
         </div>
 
-        <!-- Case Cards Grid -->
-        <div class="case-grid" id="case-cards-container">
+        <!-- Case Evidence Carousel -->
+        <div class="case-carousel">
+          <div class="case-nav-row">
+            <button type="button" class="btn btn--secondary case-nav" id="case-prev" aria-label="Previous case examples">
+              <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M22 6H2M6 2L2 6l4 4"/>
+              </svg>
+            </button>
+            <span class="case-counter" id="case-counter" hidden>01 / 04</span>
+            <button type="button" class="btn btn--secondary case-nav" id="case-next" aria-label="Next case examples">
+              <svg width="24" height="12" viewBox="0 0 24 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <path d="M2 6h20M18 2l4 4-4 4"/>
+              </svg>
+            </button>
+          </div>
+
+          <div class="case-grid" id="case-cards-container">
 
           <!-- Case 1: BikeStow -->
-          <div class="card card--parchment case-card case-item" data-cat="automation">
+          <div class="card card--parchment case-card case-item">
             <div>
-              <div class="case-header">
-                <span class="case-client">CLIENT // BIKESTOW</span>
-                <span>COMMISSIONED RIG</span>
-              </div>
+              <span class="case-client">CLIENT // BIKESTOW</span>
 
               <!-- Technical Graphic Illustration -->
               <div class="case-vis">
@@ -272,16 +268,6 @@ extra_css:
                 Finishes CNC-routed timber components autonomously. Removes mousebite tabs and chamfers the reverse face across batches without manual operator intervention between cycles.
               </p>
 
-              <div class="case-specs">
-                <div class="case-spec-row">
-                  <span class="label">HOLD-DOWN:</span>
-                  <span class="val">Continuous vacuum platen &plus; pneumatic clamps</span>
-                </div>
-                <div class="case-spec-row">
-                  <span class="label">CONTROLS:</span>
-                  <span class="val">Custom industrial ESP32 controller</span>
-                </div>
-              </div>
             </div>
 
             <div class="case-footer">
@@ -295,12 +281,9 @@ extra_css:
           </div>
 
           <!-- Case 2: Strain-Wave -->
-          <div class="card card--parchment case-card case-item" data-cat="kinematics">
+          <div class="card card--parchment case-card case-item">
             <div>
-              <div class="case-header">
-                <span class="case-client">HIGHER EDUCATION // TEACHING</span>
-                <span>PHYSICAL DEMONSTRATOR</span>
-              </div>
+              <span class="case-client">HIGHER EDUCATION // TEACHING</span>
 
               <!-- Kinematic Gear Vector -->
               <div class="case-vis">
@@ -323,16 +306,6 @@ extra_css:
                 A motorized, self-contained teaching rig that makes normally hidden flex-spline kinematics and reduction teeth visible while running under real mechanical load.
               </p>
 
-              <div class="case-specs">
-                <div class="case-spec-row">
-                  <span class="label">MODELLING:</span>
-                  <span class="val">MATLAB flex-spline wall stress analysis</span>
-                </div>
-                <div class="case-spec-row">
-                  <span class="label">DISPLAY:</span>
-                  <span class="val">Coaxial direct reduction ratio dial</span>
-                </div>
-              </div>
             </div>
 
             <div class="case-footer">
@@ -346,12 +319,9 @@ extra_css:
           </div>
 
           <!-- Case 3: 72V Stepper Dynamo -->
-          <div class="card card--parchment case-card case-item" data-cat="test">
+          <div class="card card--parchment case-card case-item">
             <div>
-              <div class="case-header">
-                <span class="case-client">VALIDATION RIG // IN-HOUSE</span>
-                <span>MOTOR DYNAMOMETER</span>
-              </div>
+              <span class="case-client">VALIDATION RIG // IN-HOUSE</span>
 
               <!-- Dynamo Vector -->
               <div class="case-vis">
@@ -372,16 +342,6 @@ extra_css:
                 Characterizes small stepper motors on high-voltage supplies across the 300–1000 rpm envelope. Uses reaction torque measurement to eliminate slip-ring noise.
               </p>
 
-              <div class="case-specs">
-                <div class="case-spec-row">
-                  <span class="label">MEASUREMENT:</span>
-                  <span class="val">Direct load-cell reaction torque</span>
-                </div>
-                <div class="case-spec-row">
-                  <span class="label">BENEFIT:</span>
-                  <span class="val">High-torque direct drive mapping</span>
-                </div>
-              </div>
             </div>
 
             <div class="case-footer">
@@ -395,12 +355,9 @@ extra_css:
           </div>
 
           <!-- Case 4: Cycloidal Drive -->
-          <div class="card card--parchment case-card case-item" data-cat="kinematics">
+          <div class="card card--parchment case-card case-item">
             <div>
-              <div class="case-header">
-                <span class="case-client">ACTUATOR R&amp;D // IN-HOUSE</span>
-                <span>ROBOTIC REDUCTION</span>
-              </div>
+              <span class="case-client">ACTUATOR R&amp;D // IN-HOUSE</span>
 
               <!-- Cycloidal Drive Vector -->
               <div class="case-vis">
@@ -418,16 +375,6 @@ extra_css:
                 Explored the trade-offs between backlash, torsional stiffness, compact packaging, and CNC manufacturability for high-reliability robotic joints.
               </p>
 
-              <div class="case-specs">
-                <div class="case-spec-row">
-                  <span class="label">PACKAGING:</span>
-                  <span class="val">Integrated bearing &amp; eccentric cam</span>
-                </div>
-                <div class="case-spec-row">
-                  <span class="label">STUDY:</span>
-                  <span class="val">Bearing pre-loads &amp; pin clearances</span>
-                </div>
-              </div>
             </div>
 
             <div class="case-footer">
@@ -439,6 +386,7 @@ extra_css:
             </div>
           </div>
 
+          </div>
         </div>
 
       </div>
@@ -721,22 +669,80 @@ extra_css:
   </main>
 
   <script>
-    // Work Filter Logic
-    function filterWork(cat, buttonEl) {
-      document.querySelectorAll('.filter-btn').forEach(b => {
-        b.classList.remove('is-active');
-      });
-      buttonEl.classList.add('is-active');
+    // Case Evidence Carousel: shows a window of cards (two up where the
+    // grid allows, one below 768px), stepping one at a time through the
+    // full list. Wraps at both ends; works with any number of .case-item
+    // cards. No-JS fallback: all cards stay visible, stacked.
+    (function () {
+      const grid = document.getElementById('case-cards-container');
+      const prevBtn = document.getElementById('case-prev');
+      const nextBtn = document.getElementById('case-next');
+      const counter = document.getElementById('case-counter');
+      if (!grid || !prevBtn || !nextBtn) return;
 
-      const items = document.querySelectorAll('.case-item');
-      items.forEach(item => {
-        if (cat === 'all' || item.getAttribute('data-cat') === cat) {
-          item.style.display = 'flex';
-        } else {
-          item.style.display = 'none';
+      const items = Array.from(grid.querySelectorAll('.case-item'));
+      if (items.length === 0) return;
+
+      // Two cards side by side where the grid is two-column, one below 768px.
+      const perView = () => window.matchMedia('(min-width: 768px)').matches ? 2 : 1;
+      let start = 0;
+
+      function render() {
+        const per = perView();
+        // Reorder the visible cards to [lead, second] so every step looks the
+        // same: next pushes all cards one slot left (new card enters from the
+        // right), prev pushes one slot right. Without this, the grid renders
+        // visible cards in DOM order and the wrap step leaves the surviving
+        // card in place instead of shifting it.
+        const visibleCards = [];
+        for (let k = 0; k < Math.min(per, items.length); k++) {
+          visibleCards.push(items[(start + k) % items.length]);
         }
+        visibleCards.forEach(item => grid.appendChild(item));
+        items.forEach(item => {
+          if (!visibleCards.includes(item)) grid.appendChild(item);
+        });
+        items.forEach(item => item.classList.toggle('hidden', !visibleCards.includes(item)));
+        // The counter only makes sense when one card is shown at a time.
+        if (counter) {
+          counter.toggleAttribute('hidden', per > 1);
+          counter.textContent =
+            String(start + 1).padStart(2, '0') + ' / ' + String(items.length).padStart(2, '0');
+        }
+      }
+
+      prevBtn.addEventListener('click', () => {
+        start = (start - 1 + items.length) % items.length;
+        render();
       });
-    }
+      nextBtn.addEventListener('click', () => {
+        start = (start + 1) % items.length;
+        render();
+      });
+
+      // Uniform card heights: the visible pair sets the row height, so
+      // different combinations would otherwise make the section height jump.
+      // Measure every card at full width and pin them all to the tallest.
+      let resizeTimer;
+      function equalizeHeights() {
+        items.forEach(item => {
+          item.style.minHeight = '';
+          item.classList.remove('hidden');
+        });
+        const tallest = Math.max(...items.map(item => item.offsetHeight));
+        items.forEach(item => { item.style.minHeight = tallest + 'px'; });
+        render();
+      }
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(equalizeHeights, 120);
+      });
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(equalizeHeights);
+      }
+
+      equalizeHeights();
+    })();
 
     // Form Submission Handling
     function handleFormSubmit(e) {
