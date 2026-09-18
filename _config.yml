@@ -5,5 +5,8 @@ url: "https://www.mokimo.co.uk"
 # Plain HTML source pages already carry their own front matter; no Markdown
 # processing, permalink rewriting, or plugins are needed.
 markdown: kramdown
+# `next/` is a standalone concept site with its own _config.yml and layouts.
+# Exclude it so the live build neither processes nor publishes it.
 exclude:
   - README.md
+  - next

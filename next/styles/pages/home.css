@@ -1,0 +1,447 @@
+/* === Mokimo — Homepage Styles (styles/pages/home.css) ===
+   Homepage-only sections: hero, capabilities, case evidence, approach,
+   profile, and the interactive scoping brief form. Shared scaffolding
+   (sections, buttons, badges, cards) lives in core.css. */
+
+/* --- 1. Hero Section --- */
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.hero-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.hero-copy .badge { margin-bottom: 1.5rem; }
+.hero-title {
+  font-size: clamp(2.25rem, 6vw, 4.5rem);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+.hero-subtitle {
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  max-width: 42rem;
+  margin-bottom: 2rem;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+.hero-bullets {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.schematic-card { padding: 1rem; }
+.schematic-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+.schematic-viewport {
+  background-color: var(--parchment);
+  border: 1px solid var(--border-dark);
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+.schematic-viewport .halftone-subtle {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  pointer-events: none;
+}
+.schematic-caption {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* --- 2. Capabilities Pillars --- */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+.pillar-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.pillar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+.pillar-num { font-family: var(--font-mono); font-size: 1.5rem; }
+.pillar-cat {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.pillar-title { font-size: 1.25rem; margin-bottom: 0.75rem; }
+.pillar-desc { font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.5rem; }
+.pillar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  border-top: 1px solid var(--border-faint);
+  padding-top: 1rem;
+  margin-bottom: 1.5rem;
+}
+.pillar-output {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: var(--muted);
+}
+
+/* --- 3. Selected Work --- */
+.work-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+.filter-btn {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--border-dark);
+  background-color: var(--parchment);
+  color: var(--ink);
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition);
+}
+.filter-btn:hover { background-color: var(--ink); color: var(--parchment); }
+.filter-btn.is-active {
+  background-color: var(--ink);
+  color: var(--parchment);
+  font-weight: 700;
+  box-shadow: var(--shadow-brutal-sm);
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+.case-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.case-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.25rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+.case-client { font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; }
+.case-vis {
+  height: 12rem;
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface);
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.case-vis svg { width: 100%; height: 100%; }
+.case-vis__caption {
+  position: absolute;
+  bottom: 0.5rem;
+  left: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--muted);
+}
+.case-title { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.case-desc { font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.5rem; }
+.case-specs {
+  padding: 0.75rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+.case-spec-row { display: flex; justify-content: space-between; }
+.case-spec-row .label { color: var(--muted); }
+.case-spec-row .val { font-weight: 700; }
+.case-footer {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.75rem;
+}
+.case-tags {
+  display: flex;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--muted);
+}
+.case-tag {
+  background-color: var(--surface);
+  border: 1px solid var(--border-dark);
+  padding: 0.125rem 0.5rem;
+}
+.case-status { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; }
+
+/* --- 4. Approach Timeline --- */
+.approach-intro { max-width: 48rem; margin-bottom: 3.5rem; }
+.approach-intro p { font-size: clamp(1rem, 2vw, 1.125rem); line-height: 1.6; margin-top: 1rem; }
+.approach-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+.step-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.step-header {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.step-title { font-size: 1.125rem; margin-bottom: 0.5rem; }
+.step-desc { font-size: 0.8125rem; line-height: 1.6; }
+.step-output {
+  margin-top: 1.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+/* --- 5. About Foundry --- */
+.about-intro { max-width: 42rem; margin-bottom: 3rem; }
+.about-intro p { font-size: 1rem; line-height: 1.6; margin-top: 1rem; }
+.about-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+.profile-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+}
+.profile-name { font-size: 1.5rem; }
+.profile-role {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  font-weight: 700;
+  display: block;
+}
+.profile-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  border: 1px solid var(--border-dark);
+  padding: 0.125rem 0.5rem;
+  background-color: var(--surface);
+}
+.profile-bio { font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.5rem; }
+.profile-footer {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+.profile-focus { color: var(--muted); }
+.profile-link { font-weight: 700; }
+.profile-link:hover { text-decoration: underline; }
+
+/* --- 6. Contact & Project Scoping Brief --- */
+.contact-panel {
+  padding: 1.5rem;
+  box-shadow: var(--shadow-brutal-lg);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.contact-intro { font-size: clamp(0.875rem, 2vw, 1rem); line-height: 1.6; margin: 1rem 0 2rem; }
+.contact-blocks { display: flex; flex-direction: column; gap: 1rem; font-family: var(--font-mono); font-size: 0.75rem; }
+.contact-block {
+  border: 1px solid var(--border-dark);
+  background-color: var(--parchment);
+  padding: 0.875rem;
+  box-shadow: var(--shadow-brutal-sm);
+}
+.contact-block__label {
+  text-transform: uppercase;
+  font-size: 0.625rem;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.contact-block__val { font-weight: 700; font-size: 0.875rem; }
+.contact-block__val:hover { text-decoration: underline; }
+.contact-block__text { font-weight: 500; line-height: 1.4; }
+.contact-legal {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.contact-form-card { padding: 1.5rem; }
+.contact-form-header {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contact-form-header .stage { color: var(--muted); }
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.form-group label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.375rem;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface);
+  padding: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink);
+  transition: background-color var(--transition), border-color var(--transition);
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  background-color: var(--parchment);
+  border-color: var(--ink);
+}
+.form-footnote {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+  padding-top: 0.5rem;
+}
+.form-success {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+.form-success__title {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.form-success__dot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background-color: var(--ink); }
+
+/* --- 7. Responsive Layout Breakpoints --- */
+@media (min-width: 640px) {
+  .schematic-card, .pillar-card, .case-card, .profile-card, .contact-form-card { padding: 2rem; }
+  .contact-panel { padding: 3rem; }
+  .approach-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-row { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 768px) {
+  .pillars-grid { grid-template-columns: repeat(3, 1fr); }
+  .case-grid, .about-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: 7fr 5fr; gap: 2rem; }
+  .approach-grid { grid-template-columns: repeat(4, 1fr); }
+  .contact-grid { grid-template-columns: 5fr 7fr; }
+}
