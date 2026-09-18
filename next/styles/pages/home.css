@@ -250,6 +250,33 @@
   .case-status { display: none; }
 }
 
+/* Mechanical step: the frame lurches in the travel direction (with a
+   slight ratchet tilt), holds while the cards swap (see the JS timer),
+   then springs back with a damped reverb rather than a flat step.
+   Mirrored for prev/next. */
+@keyframes case-step-fwd {
+  0%   { transform: translateX(0) rotate(0); }
+  25%  { transform: translateX(-1px) rotate(-0.2deg); }
+  45%  { transform: translateX(-1px) rotate(-0.2deg); }
+  70%  { transform: translateX(0.5px) rotate(0.1deg); }
+  85%  { transform: translateX(-0.25px) rotate(-0.05deg); }
+  100% { transform: translateX(0) rotate(0); }
+}
+@keyframes case-step-back {
+  0%   { transform: translateX(0) rotate(0); }
+  25%  { transform: translateX(1px) rotate(0.2deg); }
+  45%  { transform: translateX(1px) rotate(0.2deg); }
+  70%  { transform: translateX(-0.5px) rotate(-0.1deg); }
+  85%  { transform: translateX(0.25px) rotate(0.05deg); }
+  100% { transform: translateX(0) rotate(0); }
+}
+.case-grid.is-stepping-fwd  { animation: case-step-fwd 0.1s; }
+.case-grid.is-stepping-back { animation: case-step-back 0.1s; }
+@media (prefers-reduced-motion: reduce) {
+  .case-grid.is-stepping-fwd,
+  .case-grid.is-stepping-back { animation: none; }
+}
+
 /* --- 4. Approach Timeline --- */
 .approach-intro { max-width: 48rem; margin-bottom: 3.5rem; }
 .approach-intro p { font-size: clamp(1rem, 2vw, 1.125rem); line-height: 1.6; margin-top: 1rem; }

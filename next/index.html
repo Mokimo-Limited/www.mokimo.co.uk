@@ -711,14 +711,36 @@ extra_css:
         }
       }
 
-      prevBtn.addEventListener('click', () => {
-        start = (start - 1 + items.length) % items.length;
-        render();
+      // The shake kicks to full displacement at 25% of its run; the card
+      // swap fires right then, so content changes on the kick rather than
+      // in the hold. The duration is read from the computed style so the
+      // swap point stays in sync with whatever timing is set in CSS.
+      let stepTimer = null;
+
+      function step(dir) {
+        if (stepTimer !== null) {
+          // Fast-forward an in-flight step so rapid clicks stay responsive.
+          clearTimeout(stepTimer);
+          stepTimer = null;
+          render();
+        }
+        start = (start + dir + items.length) % items.length;
+        grid.classList.remove('is-stepping-fwd', 'is-stepping-back');
+        void grid.offsetWidth; // flush styles so a same-direction shake restarts
+        grid.classList.add(dir > 0 ? 'is-stepping-fwd' : 'is-stepping-back');
+        const duration =
+          parseFloat(getComputedStyle(grid).animationDuration) * 1000 || 0;
+        stepTimer = setTimeout(() => {
+          stepTimer = null;
+          render();
+        }, duration * 0.25);
+      }
+
+      grid.addEventListener('animationend', () => {
+        grid.classList.remove('is-stepping-fwd', 'is-stepping-back');
       });
-      nextBtn.addEventListener('click', () => {
-        start = (start + 1) % items.length;
-        render();
-      });
+      prevBtn.addEventListener('click', () => step(-1));
+      nextBtn.addEventListener('click', () => step(1));
 
       // Uniform card heights: the visible pair sets the row height, so
       // different combinations would otherwise make the section height jump.
