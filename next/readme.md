@@ -27,6 +27,7 @@ _includes/footer.html  Shared footer
 index.html             Homepage (the only page for now)
 styles/core.css        Loaded on every page
 styles/pages/          Per-page stylesheets
+scripts/               Per-page JS, referenced at the end of <body>
 images/                Site images
 ```
 
