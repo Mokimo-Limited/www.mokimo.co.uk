@@ -332,6 +332,20 @@ main p a:not(.button):not(.text-link):focus-visible,
   margin-bottom: var(--space-sm);
 }
 
+/* Editorial accent: a word or phrase set in an upright display serif in the
+   brand accent, so the heading reads as designed rather than as another line
+   of UI sans. Upright rather than italic keeps it confident/technical instead
+   of literary; the accent colour carries the emphasis. Shared by the home and
+   about pages; dark bands re-set the colour (see home.css). */
+.accent-serif {
+  font-family: var(--font-accent);
+  font-style: normal;
+  font-size: 1em;
+  letter-spacing: 0;
+  color: var(--color-accent);
+  padding-right: 0.02em;
+}
+
 /* --- Shared figures (inner pages) --- */
 
 .fig {
