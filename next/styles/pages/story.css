@@ -1,8 +1,27 @@
 /* ==========================================================================
-   Story page — page-specific styles layered on top of core.css.
+   Story page — scrapbook style, layered on top of core.css.
    Reuses core primitives: .section, .container, .card, .btn, .badge,
    .section__header/.section__eyebrow/.section__title.
+
+   The page descends from chaos to order: section 1 is a scattered desk of
+   notebook scans, rendered blank pages and doodles; section 2 calms down;
+   section 3 is straight and gridded; the CTA is the organised destination.
+   Everything off-angle uses fixed transforms — no JS on this page.
    ========================================================================== */
+
+/* --- 0. One continuous sheet --- */
+/* The whole page is a single sheet of squared paper — no beige section
+   bands — slowly fading to pure white toward the CTA at the bottom. The
+   white gradient sits over the grid so the lines fade out with it. */
+.story-page main {
+  background-color: var(--parchment);
+  background-image:
+    linear-gradient(to bottom, rgba(255, 255, 255, 0) 55%, #ffffff 100%),
+    linear-gradient(to right, var(--ink-faint) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--ink-faint) 1px, transparent 1px);
+  background-size: 100% 100%, 24px 24px, 24px 24px;
+  background-repeat: no-repeat, repeat, repeat;
+}
 
 /* --- 1. Hero --- */
 .story-hero { max-width: 46rem; }
@@ -19,113 +38,238 @@
   max-width: 40rem;
 }
 
-/* --- 2. Notebook card --- */
-.story-notebook {
-  display: flex;
-  justify-content: center;
-  margin-top: 3rem;
-}
-.notebook-card {
-  width: 100%;
-  max-width: 34rem;
-  padding: 1rem;
-  box-shadow: var(--shadow-brutal-lg);
-}
-.notebook-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 0.75rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid var(--border-subtle);
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  color: var(--muted);
-}
-.notebook-frame { position: relative; }
-.notebook-viewport {
-  background-color: var(--parchment);
-  /*border: 1px solid var(--border-dark);*/
+/* --- 2. Scrap boards --- */
+/* Free-flowing boards: items wrap at their own widths, nothing is snapped
+   to a grid. Chaos comes from width variety, fixed tilts and drops. */
+.scrap-board {
   position: relative;
-  overflow: hidden;
-  /* Matches the current scan; object-fit: cover absorbs small changes when
-     the binder is cropped off the top of the photo. */
-  aspect-ratio: 3043 / 2130;
-  /* Gives the page flip its 3D depth. */
-  perspective: 1200px;
-  cursor: pointer;
-  /* Same soft paper shadow as the homepage case prints... */
-  box-shadow:
-    0 1px 2px rgba(12, 13, 14, 0.2),
-    0 6px 14px rgba(12, 13, 14, 0.16);
-  transform-origin: top center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 2.5rem 3rem;
+  padding: 2.5rem 0 1rem;
 }
-/* ...and the same hover bend (bottom edge lifts toward the viewer), minus
-   the pins, white border and JS-rolled tilt. */
+.scrap-board--chaos { gap: 3rem 3.5rem; padding-bottom: 7rem; }
+.scrap-board--settling { gap: 3rem 3.5rem; padding-bottom: 5rem; }
+
+/* Every scrap sits at a fixed off-angle and can sit lower in the flow. */
+.scrap {
+  position: relative;
+  transform: rotate(var(--tilt, 0deg)) translateY(var(--drop, 0rem));
+  transition: transform 0.25s ease;
+}
+/* Hover behaviour depends on how a scrap is attached:
+   - pinned scraps pivot around the pin itself (origin at the pin), so the
+     pin stays put while the card settles straight;
+   - binder- and tape-attached scraps do the small "bottom lift" bend from
+     the homepage case prints (bottom edge swings toward the viewer).
+   Undecorated scraps (the zone headings) get no hover effect at all. */
+.scrap:has(.scrap-pin) { transform-origin: 50% 0.05rem; }
+.scrap:has(.scrap-tape), .scrap:has(.scrap-rings) {
+  transform-origin: top center;
+  /* Base state carries a zeroed rotateX so the hover lift interpolates
+     per-function instead of falling back to matrix interpolation. */
+  transform: rotate(var(--tilt, 0deg)) translateY(var(--drop, 0rem)) perspective(600px) rotateX(0deg);
+}
 @media (hover: hover) {
-  .notebook-viewport:hover {
-    transform: perspective(600px) rotateX(1deg);
+  .scrap:has(.scrap-pin):hover {
+    transform: rotate(0deg) translateY(var(--drop, 0rem));
+    z-index: 6;
+  }
+  .scrap:has(.scrap-tape):hover,
+  .scrap:has(.scrap-rings):hover {
+    transform: rotate(var(--tilt, 0deg)) translateY(var(--drop, 0rem)) perspective(600px) rotateX(1.25deg);
+    z-index: 6;
+  }
+  /* The lift reads best with a slightly deeper paper shadow. */
+  .scrap-photo:has(.scrap-tape):hover,
+  .scrap-photo:has(.scrap-rings):hover,
+  .scrap-page:has(.scrap-rings):hover {
     box-shadow:
       0 1px 2px rgba(12, 13, 14, 0.2),
       0 14px 22px rgba(12, 13, 14, 0.2);
   }
 }
-.notebook-viewport:focus-visible {
-  outline: 2px solid var(--ink);
-  outline-offset: 3px;
-}
-/* Two stacked pages: the front one is visible and flips away around the
-   binder; the back one already shows the next scan. */
-.notebook-page {
+/* Fixed angle utilities */
+.tilt-l3 { --tilt: -2.5deg; }
+.tilt-l2 { --tilt: -1.75deg; }
+.tilt-l1 { --tilt: -1deg; }
+.tilt-r1 { --tilt: 1deg; }
+.tilt-r2 { --tilt: 1.75deg; }
+.tilt-r3 { --tilt: 2.5deg; }
+/* Vertical scatter utilities */
+.drop-1 { --drop: 0.5rem; }
+.drop-2 { --drop: 1.25rem; }
+.drop-3 { --drop: 2rem; }
+.drop-6 {--drop: 6rem; }
+
+/* --- 3. Attachments --- */
+/* Binder rings (rendered tile: images/binder-rings.svg) straddling the top
+   edge of a rendered page. */
+.scrap-rings {
   position: absolute;
-  inset: 0;
-  transform-origin: top center;
-  backface-visibility: hidden;
-}
-.notebook-page--back { z-index: 1; }
-.notebook-page--front { z-index: 2; }
-.notebook-page img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-/* Rendered spiral binder straddling the top edge: each tile is just the
-   visible part of the coil — an arc over the top edge whose ends dip into
-   the punched hole — so nothing that should be behind the page is drawn
-   over it. Sits above the pages so the flip passes underneath it. */
-.notebook-rings {
-  position: absolute;
-  top: -1rem;
-  left: 1.25rem;
-  right: 1.25rem;
-  height: 2rem;
-  z-index: 3;
+  top: -0.9rem;
+  left: 1rem;
+  right: 1rem;
+  height: 1.8rem;
+  background: url("/images/binder-rings.svg") center / 1.575rem 1.8rem repeat-x;
   pointer-events: none;
-  background: url("/images/binder-rings.svg") center / 1.75rem 2rem repeat-x;
+  z-index: 2;
 }
-@media (prefers-reduced-motion: reduce) {
-  .notebook-viewport { transition: none; }
-  .notebook-viewport:hover { transform: none; }
+/* Translucent sellotape across a corner or top edge. */
+.scrap-tape {
+  position: absolute;
+  width: 5.5rem;
+  height: 1.5rem;
+  background-color: rgba(252, 249, 235, 0.55);
+  border-left: 1px dashed rgba(12, 13, 14, 0.2);
+  border-right: 1px dashed rgba(12, 13, 14, 0.2);
+  box-shadow: 0 1px 3px rgba(12, 13, 14, 0.18);
+  -webkit-backdrop-filter: blur(1px);
+  backdrop-filter: blur(1px);
+  pointer-events: none;
+  z-index: 2;
 }
-.notebook-caption {
-  margin-top: 0.75rem;
+.tape-tl { top: -0.65rem; left: -1.6rem; transform: rotate(-45deg); }
+.tape-tr { top: -0.65rem; right: -1.6rem; transform: rotate(45deg); }
+.tape-tc { top: -0.75rem; left: 50%; margin-left: -2.75rem; transform: rotate(-2deg); }
+/* Drawing pin (same graphic as the homepage case pins), top centre. */
+.scrap-pin {
+  position: absolute;
+  top: -0.6rem;
+  left: 50%;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-left: -0.65rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%230c0d0e'/%3E%3Ccircle cx='16' cy='15.4' r='12.8' fill='%23fff'/%3E%3Ccircle cx='16' cy='14.2' r='12.8' fill='%230c0d0e'/%3E%3Cellipse cx='11.5' cy='10.5' rx='4.2' ry='2.6' fill='%23fff' transform='rotate(-24 11.5 10.5)'/%3E%3C/svg%3E") center / contain no-repeat;
+  filter: drop-shadow(0 2px 2px rgba(12, 13, 14, 0.45));
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* --- 4. Scrap items --- */
+/* Shared soft paper shadow */
+.scrap-photo, .scrap-page {
+  box-shadow:
+    0 1px 2px rgba(12, 13, 14, 0.2),
+    0 6px 14px rgba(12, 13, 14, 0.16);
+}
+
+/* A real scan, attached as a print (tape or pin). */
+.scrap-photo {
+  width: 20rem;
+  max-width: 100%;
+  background-color: var(--parchment);
+  border: 1px solid var(--border-dark);
+  padding: 0.75rem;
+}
+.scrap-photo img { width: 100%; display: block; }
+/* Portrait phone shots: crop to a 3:4 print rather than running full height. */
+.crop-34 img { aspect-ratio: 3 / 4; object-fit: cover; }
+
+.scrap-caption {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  gap: 1rem;
+  margin-top: 0.6rem;
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   color: var(--muted);
 }
 
-/* --- 3. Chapters --- */
-.story-chapters {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
+/* A rendered blank notebook page: rings, ruled paper, a doodle — waiting
+   for a real scan to replace it. */
+.scrap-page {
+  width: 19rem;
+  max-width: 100%;
+  background-color: var(--parchment);
+  border: 1px solid var(--border-dark);
+  padding: 1.9rem 1rem 1rem; /* headroom for the rings */
 }
-.chapter-card { padding: 2rem; }
+.scrap-blank {
+  min-height: 12.5rem;
+  border: 1px dashed var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  padding: 1rem;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent 0,
+    transparent calc(1.6rem - 1px),
+    var(--line-grey) calc(1.6rem - 1px),
+    var(--line-grey) 1.6rem
+  );
+}
+.scrap-blank svg { width: 4.5rem; color: var(--ink); opacity: 0.75; }
+.scrap-blank__label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  background-color: var(--parchment); /* keep the label readable over the rules */
+  padding: 0.15rem 0.4rem;
+}
+
+/* Textbox notes (the chapter cards), scattered. */
+.scrap-note { width: 19.5rem; max-width: 100%; padding: 1.5rem; }
+
+/* Chaos-zone scatter helpers: size variety, stronger angles, deeper drops
+   and negative-margin nudges so items overlap like papers piled on a desk.
+   Must come after the item widths above so they win the cascade. */
+.w-lg { width: 23rem; }
+.w-md { width: 18rem; }
+.w-sm { width: 16rem; }
+.tilt-l4 { --tilt: -3.5deg; }
+.tilt-r4 { --tilt: 3.5deg; }
+.drop-4 { --drop: 3rem; }
+.drop-5 { --drop: 4.5rem; }
+.nudge-l { margin-left: -2rem; }
+.nudge-r { margin-right: -2rem; }
+/* Lift pulls a scrap up above its own row so it tucks into the gap left
+   by a short heading; the negative margin also tightens the row below. */
+.lift-1 { margin-top: -4rem; }
+.lift-2 { margin-top: -8rem; }
+.lift-3 { margin-top: -12rem; }
+/* Sideways slide that is purely visual (position offset), so unlike the
+   margin nudges it moves nothing else in the flow. */
+.slide-l1 { left: -6rem; }
+.slide-l2 { left: -12rem; }
+.slide-l3 { left: -18rem; }
+/* Upright scatter: cards keep their dropped positions and attachments but
+   sit straight; pinned cards swing to a small angle on hover (around the
+   pin) so they don't feel dead. */
+.scrap-board--upright .scrap { --tilt: 0deg; }
+.scrap-board--upright .scrap:has(.scrap-pin):hover {
+  transform: rotate(var(--swing, 0deg)) translateY(var(--drop, 0rem));
+}
+.swing-l1 { --swing: -1deg; }
+.swing-r1 { --swing: 1deg; }
+.swing-r2 { --swing: 1.75deg; }
+/* Push a scrap to the right-hand side: it takes its own full-width row
+   with its content aligned right (auto margins barely move the first
+   item in a centred flex line). */
+@media (max-width: 899px) {
+  .scrap-board--chaos .scrap { margin: 0; left: 0; }
+}
+
+/* Doodles scattered absolutely around a board. */
+.scrap-doodle {
+  position: absolute;
+  color: var(--ink);
+  opacity: 0.5;
+  pointer-events: none;
+}
+.doodle-arrow { top: 1%; left: 2%; width: 4rem; transform: rotate(-12deg); }
+.doodle-star { top: 0; right: 4%; width: 1.5rem; transform: rotate(8deg); }
+.doodle-scribble { bottom: 1%; right: 2%; width: 2.5rem; transform: rotate(14deg); }
+.doodle-arrow-2 { bottom: 26%; left: 0; width: 3rem; transform: rotate(148deg); }
+.doodle-cross { top: 44%; right: 1%; width: 1.6rem; transform: rotate(6deg); }
+
+/* --- 5. Chapters (textbox note content) --- */
 .chapter-header {
   display: flex;
   justify-content: space-between;
@@ -150,11 +294,31 @@
 .chapter-title { font-size: 1.5rem; margin-bottom: 0.75rem; }
 .chapter-desc { font-size: 0.9375rem; line-height: 1.65; }
 
-/* --- 4. Principles --- */
+/* --- 6. The foundry (organised zone) --- */
+/* Zone headings are scraps too: they flow with the cards instead of
+   sitting aligned above them. Bare text on the desk — no card box. */
+.scrap-heading {
+  width: auto;
+  max-width: 20rem;
+}
+.scrap-heading .section__title { font-size: clamp(1.75rem, 3vw, 2.4rem); }
+.foundry-heading {
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+.foundry-note {
+  width: 100%;
+  max-width: 42rem;
+  margin: 0 auto;
+}
+
+/* --- 7. Principles --- */
 .story-principles {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+  margin-top: 3rem;
 }
 .principle-card { padding: 2rem; }
 .principle-num {
@@ -168,8 +332,8 @@
 .principle-title { font-size: 1.25rem; margin-bottom: 0.5rem; }
 .principle-desc { font-size: 0.9375rem; line-height: 1.6; }
 
-/* --- 5. CTA --- */
-.story-cta { max-width: 46rem; }
+/* --- 8. CTA --- */
+.story-cta { max-width: 46rem; margin-top: 5rem; }
 .story-cta p { margin-top: 1rem; line-height: 1.6; }
 .story-cta__actions {
   display: flex;
@@ -178,11 +342,15 @@
   margin-top: 2rem;
 }
 
-/* --- 6. Responsive --- */
+/* --- 9. Responsive --- */
 @media (min-width: 768px) {
-  .story-chapters { grid-template-columns: repeat(3, 1fr); }
   .story-principles { grid-template-columns: repeat(3, 1fr); }
 }
 @media (max-width: 767px) {
-  .chapter-card, .principle-card { padding: 1.5rem; }
+  .scrap-board { gap: 2rem; }
+  .scrap-note, .principle-card { padding: 1.5rem; }
+  .scrap-doodle { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scrap { transition: none; }
 }

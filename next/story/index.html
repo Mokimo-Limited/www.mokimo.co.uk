@@ -9,8 +9,9 @@ extra_css:
 
   <main>
 
-    <!-- SECTION 1: STORY HERO -->
-    <section class="section section--parchment bg-grid-paper">
+    <!-- SECTION 1: THE NOTEBOOK — chaos zone. Scattered scans, rendered
+         blank pages, doodles. Everything slightly off-angle. -->
+    <section class="section">
       <div class="container">
 
         <div class="story-hero">
@@ -28,60 +29,67 @@ extra_css:
           </p>
         </div>
 
-        <!-- The Notebook: schematic-style illustration -->
-        <div class="story-notebook">
-          <div class="card notebook-card">
-            <div class="notebook-meta">
-              <!-- REFINE: decade / age of the notebook -->
-              <span>FIG 00.0 // THE NOTEBOOK</span>
-              <strong>[SPIRAL NOTEBOOK]</strong>
-            </div>
+        <!-- Scrap board: nothing on a grid, everything attached by whatever
+             was to hand — tape, pins, the binder itself. -->
+        <div class="scrap-board scrap-board--chaos">
 
-            <div class="notebook-frame">
-              <div class="notebook-viewport" id="notebook-flip" role="button" tabindex="0" aria-label="Flip to the next notebook page">
-                <!-- REFINE: crop the spiral binder out of the photo (the rings are rendered by CSS now);
-                     keep the same filename when swapping in the reworked scan -->
-                <div class="notebook-page notebook-page--back">
-                  <img src="/images/notebook/tea-machine.jpg"
-                       alt="Child's notebook drawing of a steam-powered tea machine, annotated with labels for the cold water tank, ratchet gear, weights, paddle and milk pump"
-                       loading="lazy">
-                </div>
-                <div class="notebook-page notebook-page--front">
-                  <img src="/images/notebook/tea-machine.jpg"
-                       alt="Child's notebook drawing of a steam-powered tea machine, annotated with labels for the cold water tank, ratchet gear, weights, paddle and milk pump"
-                       loading="lazy">
-                </div>
-              </div>
-              <div class="notebook-rings" aria-hidden="true"></div>
-            </div>
+          <!-- Doodles scattered around the board -->
+          <svg class="scrap-doodle doodle-arrow" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 32 C 18 12, 38 10, 52 20"/>
+            <path d="M45 15 L 53 21 L 44 25"/>
+          </svg>
+          <svg class="scrap-doodle doodle-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <path d="M12 3 L13.8 9.2 L20 9.2 L15 13 L17 20 L12 15.8 L7 20 L9 13 L4 9.2 L10.2 9.2 Z"/>
+          </svg>
+          <svg class="scrap-doodle doodle-scribble" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M20 6 C 30 4 36 12 34 20 C 32 30 22 36 14 32 C 6 28 4 18 10 12 C 15 7 24 8 27 14 C 30 19 27 26 21 27 C 16 28 12 24 14 20"/>
+          </svg>
+          <svg class="scrap-doodle doodle-arrow-2" viewBox="0 0 60 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M4 32 C 18 12, 38 10, 52 20"/>
+            <path d="M45 15 L 53 21 L 44 25"/>
+          </svg>
+          <svg class="scrap-doodle doodle-cross" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <path d="M12 4 V20 M4 12 H20"/>
+          </svg>
 
-            <div class="notebook-caption">
-              <span>DRAWING: THE TEA MACHINE</span>
-              <strong>STATUS: NEVER BUILT (YET)</strong>
-            </div>
-          </div>
-        </div>
+          <!-- Real scan: the tea machine, taped in -->
+          <figure class="scrap scrap-photo w-lg tilt-l3">
+            <span class="scrap-tape tape-tl" aria-hidden="true"></span>
+            <span class="scrap-tape tape-tr" aria-hidden="true"></span>
+            <!-- REFINE: crop the notebook's own spiral binder out of the scan when reworking -->
+            <img src="/images/notebook/tea-machine.jpg"
+                 alt="Child's notebook drawing of a steam-powered tea machine, annotated with labels for the cold water tank, ratchet gear, weights, paddle and milk pump"
+                 loading="lazy">
+            <figcaption class="scrap-caption">
+              <span>THE TEA MACHINE</span>
+            </figcaption>
+          </figure>
 
-      </div>
-    </section>
+          <!-- Real scan: the remote-controlled elephant, held in the binder -->
+          <figure class="scrap scrap-photo w-sm tilt-r4 drop-4 nudge-l">
+            <div class="scrap-rings" aria-hidden="true"></div>
+            <img src="/images/notebook/remote-elephant.jpg"
+                 alt="Child's drawing titled 'Remote-controlled Elephant': a green elephant packed with gears, pulleys and wiring, with a small handheld remote drawn below"
+                 loading="lazy">
+            <figcaption class="scrap-caption">
+              <span>THE ELEPHANT</span>
+            </figcaption>
+          </figure>
 
-    <!-- SECTION 2: CHAPTERS -->
-    <section class="section section--surface">
-      <div class="container">
+          <!-- Real scan: the croissant machine, pinned -->
+          <figure class="scrap scrap-photo w-md tilt-l2 drop-2 nudge-l">
+            <span class="scrap-pin" aria-hidden="true"></span>
+            <img src="/images/notebook/croissant-machine.jpg"
+                 alt="Child's pencil drawing titled 'quasant-making machine': a croissant factory with a pastry roller, blades, chocolate rods, a fridge, burner and pump"
+                 loading="lazy">
+            <figcaption class="scrap-caption">
+              <span>THE CROISSANT MACHINE</span>
+            </figcaption>
+          </figure>
 
-        <div class="section__header">
-          <div>
-            <span class="section__eyebrow">Chapters</span>
-            <h2 class="section__title">
-              From exercise book to engineering company.
-            </h2>
-          </div>
-        </div>
-
-        <div class="story-chapters">
-
-          <!-- Chapter 01 -->
-          <article class="card card--parchment chapter-card">
+          <!-- Chapter 01 note, taped down -->
+          <article class="card card--parchment scrap scrap-note w-md tilt-r3 drop-3">
+            <span class="scrap-tape tape-tc" aria-hidden="true"></span>
             <div class="chapter-header">
               <span class="chapter-num">01</span>
               <!-- REFINE: decade / age when the notebook dates from -->
@@ -93,22 +101,285 @@ extra_css:
             </p>
           </article>
 
-          <!-- Chapter 02 -->
-          <article class="card card--parchment chapter-card">
+          <!-- Real scan: the smoothie machine, pinned -->
+          <figure class="scrap scrap-photo w-sm tilt-l4 drop-1 nudge-r">
+            <span class="scrap-pin" aria-hidden="true"></span>
+            <img src="/images/notebook/smoothie-maker.jpg"
+                 alt="Child's ballpoint drawing labelled 'Smoothey': a chute of fruit feeding blades driven by two motors, with a vacuum line delivering the drink into a cup"
+                 loading="lazy">
+            <figcaption class="scrap-caption">
+              <span>SMOOTHIE MACHINE</span>
+            </figcaption>
+          </figure>
+
+        </div>
+
+      </div>
+
+      <!-- School years — the bench moves home. Still scattered like the
+           notebook, but the projects are real now. -->
+      <div class="container">
+
+        <div class="scrap-board scrap-board--chaos">
+
+          <!-- One doodle, carried over from the notebook -->
+          <svg class="scrap-doodle doodle-scribble" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+            <path d="M20 6 C 30 4 36 12 34 20 C 32 30 22 36 14 32 C 6 28 4 18 10 12 C 15 7 24 8 27 14 C 30 19 27 26 21 27 C 16 28 12 24 14 20"/>
+          </svg>
+
+          <!-- Zone heading, in the flow -->
+          <div class="scrap scrap-heading tilt-l2">
+            <span class="section__eyebrow">School years</span>
+            <h2 class="section__title">
+              The bench moves home.
+            </h2>
+          </div>
+
+          <!-- Chapter 02 note, pinned -->
+          <article class="card card--parchment scrap scrap-note tilt-r1 drop-1">
+            <span class="scrap-pin" aria-hidden="true"></span>
             <div class="chapter-header">
               <span class="chapter-num">02</span>
-              <span class="chapter-cat">The training</span>
+              <!-- REFINE: confirm school subjects / workshop access story -->
+              <span class="chapter-cat">The school years</span>
             </div>
-            <h3 class="chapter-title">Learning the trade</h3>
+            <h3 class="chapter-title">The workshop years</h3>
             <p class="chapter-desc">
-              Mechanical Engineering at Loughborough, picking up electronics and firmware along the way&mdash;because real problems don't respect discipline boundaries. Then three years designing scientific instruments, medical devices, and precision consumer products: places where a drawing error becomes an expensive lesson, and the assembled system always reveals what the parts hid.
+              School workshops, then a bench at home: PCBs etched by hand, stripboard and an Arduino, a 3D printer that mostly printed parts for the next machine. The notebook's question, now with power tools.
             </p>
           </article>
 
-          <!-- Chapter 03 -->
-          <article class="card card--parchment chapter-card">
+          <!-- Real photo: the first PCB, soldered at 16 -->
+          <figure class="scrap scrap-photo w-lg tilt-r1 drop-6">
+            <span class="scrap-tape tape-tc" aria-hidden="true"></span>
+            <!-- REFINE: confirm the story — school project or home bench? -->
+            <img src="/images/notebook/16y-soldering.jpg"
+                 alt="Teenage hands soldering a hand-etched circuit board at a workbench: soldering iron in one hand, a component lead in the other, side cutters and a solder reel on the bench"
+                 loading="lazy">
+            <figcaption class="scrap-caption">
+              <span>THE FIRST PCB</span>
+              <span>C. AGE 16</span>
+            </figcaption>
+          </figure>
+
+
+
+          <!-- Real photo: 3D-printed SCARA arm, 19 (lifted to tuck under the heading) -->
+          <figure class="scrap scrap-photo w-sm tilt-l3 drop-2 lift-3 slide-l1">
+            <span class="scrap-tape tape-tr" aria-hidden="true"></span>
+            <img src="/images/notebook/scara-2019.jpg"
+                 alt="DIY SCARA-style robot arm of lavender 3D-printed parts, steel rods and a stepper motor, mounted on an OSB panel"
+                 loading="lazy">
+            <figcaption class="scrap-caption">
+              <span>SCARA, MK. I</span>
+              <span>C. AGE 19</span>
+            </figcaption>
+          </figure>
+
+          <!-- Real photo: stripboard electronics, 18 (slid left to keep
+               the heading's spot at the end of the row clear) -->
+          <figure class="scrap scrap-photo w-md tilt-r2 drop-1 slide-l1">
+            <span class="scrap-tape tape-tl" aria-hidden="true"></span>
+            <img src="/images/notebook/electronics-2018.jpg"
+                 alt="Stripboard circuit with four 74HC595 shift registers, rows of tactile buttons and an Arduino Nano, built on a cutting mat"
+                 loading="lazy">
+            <figcaption class="scrap-caption">
+              <span>STRIPBOARD ELECTRONICS</span>
+              <span>C. AGE 18</span>
+            </figcaption>
+          </figure>
+
+
+          <!-- Real photo: the oscilloscope, 21 -->
+          <figure class="scrap scrap-photo w-md tilt-l2 drop-2 slide-l1">
+            <span class="scrap-pin" aria-hidden="true"></span>
+            <img src="/images/notebook/oscope-2021.jpg"
+                 alt="Siglent oscilloscope displaying a sine wave on a cluttered desk beside a calculator, lamp and monitor"
+                 loading="lazy">
+            <figcaption class="scrap-caption">
+              <span>THE OSCILLOSCOPE</span>
+              <span>C. AGE 21</span>
+            </figcaption>
+          </figure>
+
+
+        </div>
+
+      </div>
+
+      <!-- Getting serious — transition zone. Still hand-attached, but the
+           angles are calming down and things are finding rows. -->
+      <div class="container">
+
+        <div class="scrap-board scrap-board--settling">
+
+          <!-- Chapter 03 note, pinned -->
+          <article class="card card--parchment scrap scrap-note tilt-r1">
+            <span class="scrap-pin" aria-hidden="true"></span>
             <div class="chapter-header">
               <span class="chapter-num">03</span>
+              <span class="chapter-cat">The training</span>
+            </div>
+            <h3 class="chapter-title">The degree</h3>
+            <p class="chapter-desc">
+              Mechanical Engineering at Loughborough, picking up electronics and firmware along the way&mdash;because real problems don't respect discipline boundaries.
+            </p>
+          </article>
+
+          <!-- Real photo: the first PCB, designed properly this time -->
+          <figure class="scrap scrap-photo  drop-1">
+            <span class="scrap-tape tape-tr" aria-hidden="true"></span>
+            <img src="/images/notebook/PCB-2019.png"
+                 alt="Computer render of a green printed circuit board design: battery terminal, switches, ICs and copper traces"
+                 loading="lazy">
+            <figcaption class="scrap-caption">
+              <span>THE FIRST PCB, DESIGNED</span>
+              <span>C. AGE 19</span>
+            </figcaption>
+          </figure>
+
+          <!-- Zone heading, in the flow (took the oscilloscope's old spot) -->
+          <div class="scrap scrap-heading tilt-l2">
+            <span class="section__eyebrow">Getting serious</span>
+            <h2 class="section__title">
+              Learning the trade.
+            </h2>
+          </div>
+
+          <!-- Real photo: the oscilloscope, 21 -->
+          <figure class="scrap scrap-photo w-md tilt-l2 drop-2">
+            <span class="scrap-pin" aria-hidden="true"></span>
+            <img src="/images/notebook/oscope-2021.jpg"
+                 alt="Siglent oscilloscope displaying a sine wave on a cluttered desk beside a calculator, lamp and monitor"
+                 loading="lazy">
+            <figcaption class="scrap-caption">
+              <span>THE OSCILLOSCOPE</span>
+              <span>C. AGE 21</span>
+            </figcaption>
+          </figure>
+
+
+
+          <!-- Real photo: machined cycloidal discs, 21 -->
+          <figure class="scrap scrap-photo w-lg tilt-r1 drop-2">
+            <span class="scrap-tape tape-tl" aria-hidden="true"></span>
+            <img src="/images/notebook/machined-cycloids-2021.jpg"
+                 alt="Freshly machined aluminium cycloidal discs, ring gear and eccentric hubs laid out on a desk beside a keyboard"
+                 loading="lazy">
+            <figcaption class="scrap-caption">
+              <span>MACHINED CYCLOIDS</span>
+              <span>C. AGE 21</span>
+            </figcaption>
+          </figure>
+
+          <!-- Real photo: the light panel, one LED in -->
+          <figure class="scrap scrap-photo w-md tilt-l1 lift-2">
+            <span class="scrap-tape tape-tc" aria-hidden="true"></span>
+            <!-- REFINE: what was the light panel for? -->
+            <img src="/images/notebook/lightpanel-2021.jpg"
+                 alt="Blue printed circuit board with forty labelled LEDs and resistors, one LED soldered, lying on Loughborough University letterhead beside an LED reel"
+                 loading="lazy">
+            <figcaption class="scrap-caption">
+              <span>THE LIGHT PANEL</span>
+              <span>POPULATION: 1 OF 40</span>
+            </figcaption>
+          </figure>
+
+          <!-- Small artefact: transcript excerpt, pinned -->
+
+
+        </div>
+
+      </div>
+
+      <!-- The day job — professional work between education and Mokimo.
+           Loosely defined: still hand-attached, still slightly off-angle. -->
+      <div class="container">
+
+        <div class="scrap-board scrap-board--settling scrap-board--upright">
+
+          <!-- Zone heading, slight angle -->
+          <div class="scrap scrap-heading drop-2">
+            <span class="section__eyebrow">The day job</span>
+            <h2 class="section__title">
+              Three years, other people's problems.
+            </h2>
+          </div>
+
+          <!-- Chapter 04 note, pinned (swings on hover) -->
+          <article class="card card--parchment scrap scrap-note swing-l1">
+            <span class="scrap-pin" aria-hidden="true"></span>
+            <div class="chapter-header">
+              <span class="chapter-num">04</span>
+              <span class="chapter-cat">The day job</span>
+            </div>
+            <h3 class="chapter-title">Instruments &amp; devices</h3>
+            <p class="chapter-desc">
+              Three years designing scientific instruments, medical devices, and precision consumer products: places where a drawing error becomes an expensive lesson.
+            </p>
+          </article>
+
+          <!-- Lessons note, taped -->
+          <article class="card card--parchment scrap scrap-note drop-1">
+            <span class="scrap-tape tape-tc" aria-hidden="true"></span>
+            <div class="chapter-header">
+              <span class="chapter-num">N.B.</span>
+              <span class="chapter-cat">What stuck</span>
+            </div>
+            <h3 class="chapter-title">Professional habits</h3>
+            <p class="chapter-desc">
+              Drawings that other people have to build from. Test plans written before the hardware exists. Requirements treated as promises someone will check. And the assembled system always reveals what the parts hid&mdash;so test the assembly, not just the parts.
+            </p>
+          </article>
+
+          <!-- Real photo: the first work project -->
+          <figure class="scrap scrap-photo lift-1 w-lvh swing-r1">
+            <span class="scrap-pin" aria-hidden="true"></span>
+            <!-- REFINE: EXIF dates this July 2021 — placement year or grad role? -->
+            <img src="/images/notebook/first-work-project.jpg"
+                 alt="Hand holding a blue force gauge pressing on machined aluminium and white plastic parts clamped in a test fixture, workshop bench behind"
+                 loading="lazy">
+            <figcaption class="scrap-caption">
+              <span>THE FIRST WORK PROJECT</span>
+              <span>DATE TBC</span>
+            </figcaption>
+          </figure>
+
+          <!-- Photo placeholder, taped -->
+          <figure class="scrap scrap-photo scrap-photo--blank w-sm drop-2">
+            <span class="scrap-tape tape-tc" aria-hidden="true"></span>
+            <!-- REFINE: EXIF dates this July 2021 — placement year or grad role? -->
+            <img src="/images/notebook/silicone-mould.jpg"
+                 alt="Hand holding a blue force gauge pressing on machined aluminium and white plastic parts clamped in a test fixture, workshop bench behind"
+                 loading="lazy">
+            <figcaption class="scrap-caption">
+              <span>THE FIRST WORK PROJECT</span>
+              <span>DATE TBC</span>
+            </figcaption>
+          </figure>
+
+        </div>
+
+      </div>
+      <!-- The foundry — organised zone. Straight cards, neat attachments:
+           the notebook habit, grown up. -->
+      <div class="container">
+
+        <div class="scrap-board scrap-board--orderly">
+
+          <!-- Zone heading: straight — order has arrived -->
+          <div class="scrap scrap-heading foundry-heading">
+            <span class="section__eyebrow">Where we are today</span>
+            <h2 class="section__title">
+              Mokimo, Sheffield.
+            </h2>
+          </div>
+
+          <!-- Chapter 05 note: straight, neatly taped -->
+          <article class="card card--parchment scrap scrap-note foundry-note">
+            <span class="scrap" aria-hidden="true"></span>
+            <div class="chapter-header">
+              <span class="chapter-num">05</span>
               <span class="chapter-cat">The foundry</span>
             </div>
             <h3 class="chapter-title">Mokimo, Sheffield</h3>
@@ -117,22 +388,6 @@ extra_css:
             </p>
           </article>
 
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 3: WHAT CARRIED THROUGH -->
-    <section class="section section--parchment">
-      <div class="container">
-
-        <div class="section__header">
-          <div>
-            <span class="section__eyebrow">Principles</span>
-            <h2 class="section__title">
-              What carried through.
-            </h2>
-          </div>
         </div>
 
         <div class="story-principles">
@@ -164,10 +419,7 @@ extra_css:
         </div>
 
       </div>
-    </section>
-
-    <!-- SECTION 4: CTA -->
-    <section class="section section--surface">
+      <!-- CTA — the organised destination point -->
       <div class="container story-cta">
         <h2 class="section__title">
           The drawings got better. The habit didn't change.
@@ -187,5 +439,3 @@ extra_css:
     </section>
 
   </main>
-
-  <script src="/scripts/story.js"></script>
