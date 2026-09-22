@@ -77,13 +77,15 @@
     transform: rotate(0deg) translateY(var(--drop, 0rem));
     z-index: 6;
   }
-  .scrap:has(.scrap-tape):hover,
+  /* Bottom-taped scraps are excluded: bending the card would swing it out
+     from under the tape holding its bottom edge, so they stay put. */
+  .scrap:has(.scrap-tape):not(:has(.tape-bl, .tape-br, .tape-bc)):hover,
   .scrap:has(.scrap-rings):hover {
     transform: rotate(var(--tilt, 0deg)) translateY(var(--drop, 0rem)) perspective(600px) rotateX(1.25deg);
     z-index: 6;
   }
   /* The lift reads best with a slightly deeper paper shadow. */
-  .scrap-photo:has(.scrap-tape):hover,
+  .scrap-photo:has(.scrap-tape):not(:has(.tape-bl, .tape-br, .tape-bc)):hover,
   .scrap-photo:has(.scrap-rings):hover,
   .scrap-page:has(.scrap-rings):hover {
     box-shadow:
@@ -134,6 +136,9 @@
 .tape-tl { top: -0.65rem; left: -1.6rem; transform: rotate(-45deg); }
 .tape-tr { top: -0.65rem; right: -1.6rem; transform: rotate(45deg); }
 .tape-tc { top: -0.75rem; left: 50%; margin-left: -2.75rem; transform: rotate(-2deg); }
+.tape-bl { bottom: -0.65rem; left: -1.6rem; transform: rotate(45deg); }
+.tape-br { bottom: -0.65rem; right: -1.6rem; transform: rotate(-45deg); }
+.tape-bc { bottom: -0.75rem; left: 50%; margin-left: -2.75rem; transform: rotate(2deg); }
 /* Drawing pin (same graphic as the homepage case pins), top centre. */
 .scrap-pin {
   position: absolute;
