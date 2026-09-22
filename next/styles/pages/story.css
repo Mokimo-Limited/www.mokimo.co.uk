@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Story page (about) — page-specific styles layered on top of core.css.
+   Story page — page-specific styles layered on top of core.css.
    Reuses core primitives: .section, .container, .card, .btn, .badge,
    .section__header/.section__eyebrow/.section__title.
    ========================================================================== */
@@ -42,23 +42,72 @@
   font-size: 0.6875rem;
   color: var(--muted);
 }
+.notebook-frame { position: relative; }
 .notebook-viewport {
   background-color: var(--parchment);
-  border: 1px solid var(--border-dark);
-  padding: 1rem;
+  /*border: 1px solid var(--border-dark);*/
   position: relative;
   overflow: hidden;
+  /* Matches the current scan; object-fit: cover absorbs small changes when
+     the binder is cropped off the top of the photo. */
+  aspect-ratio: 3043 / 2130;
+  /* Gives the page flip its 3D depth. */
+  perspective: 1200px;
+  cursor: pointer;
+  /* Same soft paper shadow as the homepage case prints... */
+  box-shadow:
+    0 1px 2px rgba(12, 13, 14, 0.2),
+    0 6px 14px rgba(12, 13, 14, 0.16);
+  transform-origin: top center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.notebook-viewport .halftone-subtle {
+/* ...and the same hover bend (bottom edge lifts toward the viewer), minus
+   the pins, white border and JS-rolled tilt. */
+@media (hover: hover) {
+  .notebook-viewport:hover {
+    transform: perspective(600px) rotateX(1deg);
+    box-shadow:
+      0 1px 2px rgba(12, 13, 14, 0.2),
+      0 14px 22px rgba(12, 13, 14, 0.2);
+  }
+}
+.notebook-viewport:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+/* Two stacked pages: the front one is visible and flips away around the
+   binder; the back one already shows the next scan. */
+.notebook-page {
   position: absolute;
   inset: 0;
-  opacity: 0.1;
-  pointer-events: none;
+  transform-origin: top center;
+  backface-visibility: hidden;
 }
-.notebook-svg {
+.notebook-page--back { z-index: 1; }
+.notebook-page--front { z-index: 2; }
+.notebook-page img {
   width: 100%;
-  height: auto;
-  position: relative;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* Rendered spiral binder straddling the top edge: each tile is just the
+   visible part of the coil — an arc over the top edge whose ends dip into
+   the punched hole — so nothing that should be behind the page is drawn
+   over it. Sits above the pages so the flip passes underneath it. */
+.notebook-rings {
+  position: absolute;
+  top: -1rem;
+  left: 1.25rem;
+  right: 1.25rem;
+  height: 2rem;
+  z-index: 3;
+  pointer-events: none;
+  background: url("/images/binder-rings.svg") center / 1.75rem 2rem repeat-x;
+}
+@media (prefers-reduced-motion: reduce) {
+  .notebook-viewport { transition: none; }
+  .notebook-viewport:hover { transform: none; }
 }
 .notebook-caption {
   margin-top: 0.75rem;

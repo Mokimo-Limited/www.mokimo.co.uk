@@ -4,7 +4,7 @@ title: "Our Story — Mokimo"
 description: "Mokimo started with a childhood notebook full of engineering drawings. We still work the same way: draw it, build it, test it."
 body_class: story-page
 extra_css:
-  - about
+  - story
 ---
 
   <main>
@@ -24,7 +24,7 @@ extra_css:
           </h1>
 
           <p class="story-lede">
-            Before Mokimo there was an exercise book, filled with machines that hadn't been built yet. The drawings were wrong in every proportion&mdash;but the habit was right: decide what the thing must do, draw how it will do it, then go and build it.
+            Before Mokimo there was a spiral notebook, filled with machines that hadn't been built yet. The drawings were wrong in every proportion&mdash;but the habit was right: decide what the thing must do, draw how it will do it, then go and build it.
           </p>
         </div>
 
@@ -32,81 +32,31 @@ extra_css:
         <div class="story-notebook">
           <div class="card notebook-card">
             <div class="notebook-meta">
-              <!-- REFINE: confirm what the notebook actually contains (rockets? cranes? something else) -->
+              <!-- REFINE: decade / age of the notebook -->
               <span>FIG 00.0 // THE NOTEBOOK</span>
-              <strong>[EXERCISE BOOK, A4]</strong>
+              <strong>[SPIRAL NOTEBOOK]</strong>
             </div>
 
-            <div class="notebook-viewport">
-              <div class="halftone-subtle"></div>
-
-              <!-- Child's notebook page: ruled paper, spiral binding, a rocket that never flew -->
-              <svg viewBox="0 0 380 260" class="notebook-svg" fill="none" stroke="#0c0d0e" stroke-width="1.5" aria-label="Child's engineering drawing of a rocket in a school notebook">
-                <!-- Ruled paper -->
-                <g stroke="#e2dfd5" stroke-width="1">
-                  <line x1="60" y1="40" x2="360" y2="40"/>
-                  <line x1="60" y1="60" x2="360" y2="60"/>
-                  <line x1="60" y1="80" x2="360" y2="80"/>
-                  <line x1="60" y1="100" x2="360" y2="100"/>
-                  <line x1="60" y1="120" x2="360" y2="120"/>
-                  <line x1="60" y1="140" x2="360" y2="140"/>
-                  <line x1="60" y1="160" x2="360" y2="160"/>
-                  <line x1="60" y1="180" x2="360" y2="180"/>
-                  <line x1="60" y1="200" x2="360" y2="200"/>
-                  <line x1="60" y1="220" x2="360" y2="220"/>
-                </g>
-
-                <!-- Spiral binding -->
-                <g stroke="#5e636e" stroke-width="1.5">
-                  <circle cx="42" cy="36" r="5"/>
-                  <circle cx="42" cy="62" r="5"/>
-                  <circle cx="42" cy="88" r="5"/>
-                  <circle cx="42" cy="114" r="5"/>
-                  <circle cx="42" cy="140" r="5"/>
-                  <circle cx="42" cy="166" r="5"/>
-                  <circle cx="42" cy="192" r="5"/>
-                  <circle cx="42" cy="218" r="5"/>
-                </g>
-
-                <!-- The rocket, Mk. I -->
-                <g stroke-width="2">
-                  <!-- Nose cone -->
-                  <path d="M 196 78 L 224 42 L 252 78"/>
-                  <!-- Body -->
-                  <path d="M 196 78 C 190 100 190 130 200 152 L 248 152 C 258 130 258 100 252 78"/>
-                  <!-- Window -->
-                  <circle cx="224" cy="104" r="12"/>
-                  <circle cx="224" cy="104" r="6"/>
-                  <!-- Fins -->
-                  <path d="M 200 152 L 178 190 L 202 176"/>
-                  <path d="M 248 152 L 270 190 L 246 176"/>
-                  <!-- Flame -->
-                  <path d="M 214 158 L 219 176 L 224 160 L 229 178 L 234 158" stroke-width="1.5"/>
-                </g>
-
-                <!-- Dimension callout, child-style -->
-                <g stroke-width="1">
-                  <line x1="178" y1="206" x2="270" y2="206"/>
-                  <line x1="178" y1="200" x2="178" y2="212"/>
-                  <line x1="270" y1="200" x2="270" y2="212"/>
-                </g>
-                <text x="196" y="222" font-family="'Space Mono'" font-size="9" fill="#5e636e" stroke="none">120 MM (ISH)</text>
-
-                <!-- Annotations -->
-                <g font-family="'Space Mono'" font-size="9" fill="#5e636e" stroke="none">
-                  <text x="66" y="52">THE ROCKET</text>
-                  <text x="66" y="72">MK. I</text>
-                  <text x="66" y="92">GOES UP</text>
-                  <line x1="108" y1="96" x2="150" y2="96" stroke-width="1"/>
-                  <line x1="150" y1="96" x2="144" y2="90" stroke-width="1"/>
-                  <line x1="150" y1="96" x2="144" y2="102" stroke-width="1"/>
-                  <text x="66" y="230">DRAWN BY: TOM</text>
-                </g>
-              </svg>
+            <div class="notebook-frame">
+              <div class="notebook-viewport" id="notebook-flip" role="button" tabindex="0" aria-label="Flip to the next notebook page">
+                <!-- REFINE: crop the spiral binder out of the photo (the rings are rendered by CSS now);
+                     keep the same filename when swapping in the reworked scan -->
+                <div class="notebook-page notebook-page--back">
+                  <img src="/images/notebook/tea-machine.jpg"
+                       alt="Child's notebook drawing of a steam-powered tea machine, annotated with labels for the cold water tank, ratchet gear, weights, paddle and milk pump"
+                       loading="lazy">
+                </div>
+                <div class="notebook-page notebook-page--front">
+                  <img src="/images/notebook/tea-machine.jpg"
+                       alt="Child's notebook drawing of a steam-powered tea machine, annotated with labels for the cold water tank, ratchet gear, weights, paddle and milk pump"
+                       loading="lazy">
+                </div>
+              </div>
+              <div class="notebook-rings" aria-hidden="true"></div>
             </div>
 
             <div class="notebook-caption">
-              <span>DRAWING: THE ROCKET, MK. I</span>
+              <span>DRAWING: THE TEA MACHINE</span>
               <strong>STATUS: NEVER BUILT (YET)</strong>
             </div>
           </div>
@@ -139,7 +89,7 @@ extra_css:
             </div>
             <h3 class="chapter-title">The notebook</h3>
             <p class="chapter-desc">
-              Rockets, cranes, contraptions with far too many moving parts. Nothing in it would have worked&mdash;the fins were in the wrong place and the materials didn't exist. But every page asked the same question a real brief asks: what should this do, and how? That question never went away.
+              A steam-powered tea machine, drawn in biro: steam pressure pushes hot water through the pipe into the cup, the cup's growing weight releases a ratchet, a weight drops and swings an arm to add the tea and sugar, a pump tops up the milk. The physics was optimistic and nothing in it would have worked&mdash;but every page asked the same question a real brief asks: what should this do, and how? That question never went away.
             </p>
           </article>
 
@@ -237,3 +187,5 @@ extra_css:
     </section>
 
   </main>
+
+  <script src="/scripts/story.js"></script>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="280" height="320" viewBox="0 0 28 32">
+  <defs>
+    <!-- Masks define what is HIDDEN, not what is shown: white = visible,
+         black = hidden. The black rect hides everything below the paper
+         edge (y = 16), so the coil's swept end is truncated flat there
+         while keeping its arc. -->
+    <mask id="hide-below-paper-edge" maskUnits="userSpaceOnUse" x="0" y="0" width="28" height="32">
+      <rect x="0" y="0" width="28" height="32" fill="#ffffff"/>
+      <rect x="14" y="16" width="28" height="16" fill="#000000"/>
+    </mask>
+  </defs>
+
+  <!-- One tile of the notebook binder pattern (tiled by CSS, 1.75rem x 2rem).
+       The paper edge runs through the middle of the tile (y = 16): everything
+       above it is the coil in front of / above the page, everything below it
+       sits on the page. Keep the tile geometry if you rework the shapes. -->
+
+  <!-- Punched hole in the paper -->
+  <circle cx="11" cy="19.5" r="3.2" fill="#0c0d0e" stroke="#F3F1EA" stroke-width="1.5"/>
+
+  <!-- Visible part of the coil: arcs over the top edge, truncated at the paper edge -->
+  <path d="M11 19.5 C 10.2 12 11.5 4.5 14 4.5 C 16.5 4.5 17.8 12 17 19.5"
+        fill="none" stroke="#0c0d0e" stroke-width="3" stroke-linecap="round"
+        mask="url(#hide-below-paper-edge)"/>
+
+  <!-- Highlight along the coil -->
+  <path d="M11.4 8 C 11.7 6.4 11.9 4.9 13.8 4.5"
+        fill="none" stroke="#ffffff" stroke-width="1.2" stroke-linecap="round"
+        mask="url(#hide-below-paper-edge)"/>
+</svg>
