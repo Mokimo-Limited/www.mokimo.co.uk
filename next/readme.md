@@ -28,6 +28,7 @@ index.html             Homepage (the only page for now)
 styles/core.css        Loaded on every page
 styles/pages/          Per-page stylesheets
 scripts/               Per-page JS, referenced at the end of <body>
+_data/cases/           Case-study content, one JSON file per card
 images/                Site images
 ```
 
@@ -51,6 +52,26 @@ images/                Site images
   `core.css`. If a pattern starts being used by more than one page (a new
   card variant, a form style, a shared layout), move it up into `core.css`
   rather than duplicating it.
+
+## Adding a case study
+
+Case cards are generated from `_data/cases/*.json` — one file per case,
+looped over (sorted by filename, hence the numeric prefixes) by the
+homepage template. To add one, copy an existing file, bump the numeric
+prefix, and edit the fields:
+
+| Field          | Purpose                                        |
+|----------------|------------------------------------------------|
+| `client`       | Label line above the image                     |
+| `image`        | Photo path, shown full-frame in the card       |
+| `image_alt`    | Alt text for the photo                         |
+| `caption`      | Mono caption overlaid on the photo             |
+| `title`        | Card heading                                   |
+| `description`  | Card body text                                 |
+| `tags`         | Array of footer tag labels (any length)        |
+| `status`       | Footer status text (the arrow is added by CSS) |
+
+The carousel adapts to the number of files automatically.
 
 ## Adding a page (e.g. project case studies)
 

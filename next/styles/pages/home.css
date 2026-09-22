@@ -209,12 +209,83 @@
   position: relative;
 }
 .case-vis svg { width: 100%; height: 100%; }
+/* Photo variant: the photo is presented as a printed postcard pinned to the
+   card — white paper frame with a typed caption strip and a soft paper
+   shadow. The hand-pinned tilt is rolled by scripts/home.js on every
+   carousel render (capped at ±1.2deg); no-JS fallback is a straight print. */
+.case-vis--photo { padding: 0; border: 0; background: none; }
+.case-print {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  /* No overflow clipping here: the pins must be able to overhang the paper
+     edge. The zoomed photo is clipped by its own .case-print__window. */
+  background-color: #fff;
+  border: 3px solid whitesmoke;
+  /* Extra bottom padding forms the white caption strip, like a photo label. */
+  padding: 0.45rem 0.45rem 1.9rem;
+  box-shadow:
+    0 1px 2px rgba(12, 13, 14, 0.2),
+    0 6px 14px rgba(12, 13, 14, 0.16);
+  /* The hover bend pivots around the pinned top edge. */
+  transform-origin: top center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+/* Clipping window for the zoomed photo, so the print itself can let the
+   pins (and their shadows) spill past the paper edge. */
+.case-print__window {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+/* Hover: the paper bends as if the bottom edge is lifted while the pinned
+   top stays put — rotateX around the top edge swings the bottom toward the
+   viewer. The JS-rolled tilt (rotate) composes with this transform. Fires
+   on the print itself, not the whole surrounding card. */
+@media (hover: hover) {
+  .case-print:hover {
+    transform: perspective(600px) rotateX(1deg);
+    box-shadow:
+      0 1px 2px rgba(12, 13, 14, 0.2),
+      0 14px 22px rgba(12, 13, 14, 0.2);
+  }
+}
+.case-print img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.43);
+  transform-origin: center;
+}
+/* Drawing pins: hard black and white, one through each top corner of the
+   print. The head is a small SVG (inlined as a data URI so the template
+   stays clean): flat ink-black head, a crisp white highlight, and a hard
+   white crescent along the bottom edge — graphic, no soft gradients, to
+   match the site's brutalist print styling. */
+.case-pin {
+  position: absolute;
+  top: 0rem;
+  width: 1.3rem;
+  height: 1.3rem;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%230c0d0e'/%3E%3Ccircle cx='16' cy='15.4' r='12.8' fill='%23fff'/%3E%3Ccircle cx='16' cy='14.2' r='12.8' fill='%230c0d0e'/%3E%3Cellipse cx='11.5' cy='10.5' rx='4.2' ry='2.6' fill='%23fff' transform='rotate(-24 11.5 10.5)'/%3E%3C/svg%3E") center / contain no-repeat;
+  filter: drop-shadow(0 2px 2px rgba(12, 13, 14, 0.45));
+}
+.case-pin--l { left: -0.35rem; }
+.case-pin--r { right: -0.35rem; }
+
+/* Hand-pinned randomness: the jitter and 3D tilt are applied per pin by
+   scripts/home.js each time the carousel renders, so the pins are re-set
+   with fresh (continuous, not palette-based) randomness on every step.
+   No-JS fallback: pins sit straight. */
 .case-vis__caption {
   position: absolute;
-  bottom: 0.5rem;
-  left: 0.75rem;
+  /* Sits in the print's white bottom strip (see .case-print padding). */
+  bottom: 0.4rem;
+  left: 0.65rem;
   font-family: var(--font-mono);
   font-size: 0.625rem;
+  letter-spacing: 0.06em;
   color: var(--muted);
 }
 .case-title { font-size: 1.5rem; margin-bottom: 0.5rem; }
@@ -255,23 +326,19 @@
    then springs back with a damped reverb rather than a flat step.
    Mirrored for prev/next. */
 @keyframes case-step-fwd {
-  0%   { transform: translateX(0) rotate(0); }
-  25%  { transform: translateX(1px) rotate(-0.2deg); }
-  45%  { transform: translateX(1px) rotate(-0.2deg); }
-  70%  { transform: translateX(-0.05px) rotate(0.1deg); }
-  85%  { transform: translateX(-0.25px) rotate(-0.05deg); }
-  100% { transform: translateX(0) rotate(0); }
+  0%   { transform: translateX(1px);}
+  100%   { transform: translateX(0px);}
+
+
 }
 @keyframes case-step-back {
-  0%   { transform: translateX(0) rotate(0); }
-  25%  { transform: translateX(-1px) rotate(0.2deg); }
-  45%  { transform: translateX(-1px) rotate(0.2deg); }
-  70%  { transform: translateX(0.5px) rotate(-0.1deg); }
-  85%  { transform: translateX(0.25px) rotate(0.05deg); }
-  100% { transform: translateX(0) rotate(0); }
+	0%   { transform: translateX(0px);}
+  	100%   { transform: translateX(0px);}
 }
-.case-grid.is-stepping-fwd  { animation: case-step-fwd 0.1s; }
-.case-grid.is-stepping-back { animation: case-step-back 0.1s; }
+
+
+.case-grid.is-stepping-fwd  { animation: case-step-fwd 0.25s; }
+.case-grid.is-stepping-back { animation: case-step-back 0.25s; }
 @media (prefers-reduced-motion: reduce) {
   .case-grid.is-stepping-fwd,
   .case-grid.is-stepping-back { animation: none; }
@@ -318,15 +385,6 @@
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-}
-.profile-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  border-bottom: 1px solid var(--border-subtle);
-  padding-bottom: 0.75rem;
-  margin-bottom: 1rem;
 }
 .profile-name { font-size: 1.5rem; }
 .profile-role {
@@ -337,16 +395,10 @@
   color: var(--muted);
   font-weight: 700;
   display: block;
+  margin-top: 0.25rem;
 }
-.profile-badge {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  border: 1px solid var(--border-dark);
-  padding: 0.125rem 0.5rem;
-  background-color: var(--surface);
-}
-.profile-bio { font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.5rem; }
 .profile-footer {
+  margin-top: 1.25rem;
   padding-top: 1rem;
   border-top: 1px solid var(--border-subtle);
   display: flex;
@@ -355,9 +407,9 @@
   font-family: var(--font-mono);
   font-size: 0.75rem;
 }
-.profile-focus { color: var(--muted); }
 .profile-link { font-weight: 700; }
 .profile-link:hover { text-decoration: underline; }
+.about-story { margin-top: 2.5rem; }
 
 /* --- 6. Contact & Project Scoping Brief --- */
 .contact-panel {

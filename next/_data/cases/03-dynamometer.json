@@ -1,0 +1,10 @@
+{
+  "client": "VALIDATION RIG // IN-HOUSE",
+  "image": "/images/examples/machined-bracket-coupling.jpg",
+  "image_alt": "Case study photograph",
+  "caption": "72V RAIL • REACTION TORQUE LOAD CELL",
+  "title": "High-voltage stepper dynamometer",
+  "description": "Characterizes small stepper motors on high-voltage supplies across the 300–1000 rpm envelope. Uses reaction torque measurement to eliminate slip-ring noise.",
+  "tags": ["Test Rigs", "Power Drives", "Sensors"],
+  "status": "Bench verified"
+}

@@ -240,151 +240,39 @@ extra_css:
 
           <div class="case-grid" id="case-cards-container">
 
-          <!-- Case 1: BikeStow -->
+          {% assign cases = site.data.cases | sort %}
+          {% for entry in cases %}
+          {% assign case = entry[1] %}
           <div class="card card--parchment case-card case-item">
             <div>
-              <span class="case-client">CLIENT // BIKESTOW</span>
+              <span class="case-client">{{ case.client }}</span>
 
-              <!-- Technical Graphic Illustration -->
-              <div class="case-vis">
-                <svg viewBox="0 0 300 140" fill="none" stroke="#0c0d0e" stroke-width="1.5">
-                  <rect x="20" y="20" width="260" height="100"/>
-                  <line x1="20" y1="60" x2="280" y2="60" stroke-dasharray="4 4"/>
-                  <!-- Toolhead with chamfer bit -->
-                  <rect x="135" y="30" width="30" height="40" fill="#0c0d0e"/>
-                  <polygon points="145,70 155,70 150,80" fill="#0c0d0e"/>
-                  <!-- Timber Part profile on Vacuum table -->
-                  <rect x="70" y="85" width="160" height="25" fill="#e2dfd5" stroke-width="2"/>
-                  <!-- Airflow vector arrows -->
-                  <line x1="100" y1="110" x2="100" y2="125" stroke-dasharray="2 2"/>
-                  <line x1="150" y1="110" x2="150" y2="125" stroke-dasharray="2 2"/>
-                  <line x1="200" y1="110" x2="200" y2="125" stroke-dasharray="2 2"/>
-                </svg>
-                <span class="case-vis__caption">VACUUM BED &bull; MAGNETIC SENSOR ARRAY</span>
+              <div class="case-vis case-vis--photo">
+                <figure class="case-print">
+                  <span class="case-print__window">
+                    <img src="{{ case.image }}" alt="{{ case.image_alt }}" loading="lazy">
+                  </span>
+                  <span class="case-vis__caption">{{ case.caption }}</span>
+                  <span class="case-pin case-pin--l" aria-hidden="true"></span>
+                  <span class="case-pin case-pin--r" aria-hidden="true"></span>
+                </figure>
               </div>
 
-              <h3 class="case-title">Automated post-operation machining cell</h3>
+              <h3 class="case-title">{{ case.title }}</h3>
               <p class="case-desc">
-                Finishes CNC-routed timber components autonomously. Removes mousebite tabs and chamfers the reverse face across batches without manual operator intervention between cycles.
+                {{ case.description }}
               </p>
 
             </div>
 
             <div class="case-footer">
               <div class="case-tags">
-                <span class="case-tag">Mechanical</span>
-                <span class="case-tag">Firmware</span>
-                <span class="case-tag">Integration</span>
+                {% for tag in case.tags %}<span class="case-tag">{{ tag }}</span> {% endfor %}
               </div>
-              <span class="case-status">In active production &rarr;</span>
+              <span class="case-status">{{ case.status }} &rarr;</span>
             </div>
           </div>
-
-          <!-- Case 2: Strain-Wave -->
-          <div class="card card--parchment case-card case-item">
-            <div>
-              <span class="case-client">HIGHER EDUCATION // TEACHING</span>
-
-              <!-- Kinematic Gear Vector -->
-              <div class="case-vis">
-                <svg viewBox="0 0 300 140" fill="none" stroke="#0c0d0e" stroke-width="1.5">
-                  <circle cx="150" cy="70" r="52" stroke-dasharray="4 2"/>
-                  <!-- Elliptical flex-spline profile -->
-                  <ellipse cx="150" cy="70" rx="52" ry="40" stroke-width="2.5" fill="#fcfbf8"/>
-                  <circle cx="150" cy="70" r="8" fill="#0c0d0e"/>
-                  <line x1="150" y1="70" x2="150" y2="35" stroke-width="3"/>
-                  <!-- Dial calibration ticks -->
-                  <line x1="150" y1="12" x2="150" y2="18"/>
-                  <line x1="100" y1="70" x2="94" y2="70"/>
-                  <line x1="200" y1="70" x2="206" y2="70"/>
-                </svg>
-                <span class="case-vis__caption">MATLAB DEFLECTION MODEL &bull; 53.5:1 RATIO</span>
-              </div>
-
-              <h3 class="case-title">Strain-wave gear physical demonstrator</h3>
-              <p class="case-desc">
-                A motorized, self-contained teaching rig that makes normally hidden flex-spline kinematics and reduction teeth visible while running under real mechanical load.
-              </p>
-
-            </div>
-
-            <div class="case-footer">
-              <div class="case-tags">
-                <span class="case-tag">Kinematics</span>
-                <span class="case-tag">Additive</span>
-                <span class="case-tag">Electronics</span>
-              </div>
-              <span class="case-status">Delivered for lab &rarr;</span>
-            </div>
-          </div>
-
-          <!-- Case 3: 72V Stepper Dynamo -->
-          <div class="card card--parchment case-card case-item">
-            <div>
-              <span class="case-client">VALIDATION RIG // IN-HOUSE</span>
-
-              <!-- Dynamo Vector -->
-              <div class="case-vis">
-                <svg viewBox="0 0 300 140" fill="none" stroke="#0c0d0e" stroke-width="1.5">
-                  <circle cx="140" cy="70" r="48" stroke-width="2"/>
-                  <circle cx="140" cy="70" r="30" stroke-dasharray="3 3"/>
-                  <!-- Brake Caliper & Reaction load cell arm -->
-                  <rect x="80" y="35" width="24" height="40" fill="#0c0d0e"/>
-                  <line x1="80" y1="55" x2="45" y2="55" stroke-width="3"/>
-                  <circle cx="45" cy="55" r="5" fill="#0c0d0e"/>
-                  <line x1="45" y1="60" x2="45" y2="85" stroke-width="2"/>
-                </svg>
-                <span class="case-vis__caption">72V RAIL &bull; REACTION TORQUE LOAD CELL</span>
-              </div>
-
-              <h3 class="case-title">High-voltage stepper dynamometer</h3>
-              <p class="case-desc">
-                Characterizes small stepper motors on high-voltage supplies across the 300–1000 rpm envelope. Uses reaction torque measurement to eliminate slip-ring noise.
-              </p>
-
-            </div>
-
-            <div class="case-footer">
-              <div class="case-tags">
-                <span class="case-tag">Test Rigs</span>
-                <span class="case-tag">Power Drives</span>
-                <span class="case-tag">Sensors</span>
-              </div>
-              <span class="case-status">Bench verified &rarr;</span>
-            </div>
-          </div>
-
-          <!-- Case 4: Cycloidal Drive -->
-          <div class="card card--parchment case-card case-item">
-            <div>
-              <span class="case-client">ACTUATOR R&amp;D // IN-HOUSE</span>
-
-              <!-- Cycloidal Drive Vector -->
-              <div class="case-vis">
-                <svg viewBox="0 0 300 140" fill="none" stroke="#0c0d0e" stroke-width="1.5">
-                  <circle cx="150" cy="70" r="50"/>
-                  <!-- Precision lobed cam profile -->
-                  <path d="M 150 25 C 160 25 165 35 175 35 C 185 35 190 45 195 55 C 200 65 195 75 195 85 C 195 95 185 105 175 105 C 165 105 160 115 150 115 C 140 115 135 105 125 105 C 115 105 105 95 105 85 C 105 75 100 65 105 55 C 110 45 115 35 125 35 C 135 35 140 25 150 25 Z" fill="#fcfbf8" stroke-width="2"/>
-                  <circle cx="150" cy="70" r="16" fill="#0c0d0e"/>
-                </svg>
-                <span class="case-vis__caption">COMPACT REDUCTION &bull; LOW BACKLASH</span>
-              </div>
-
-              <h3 class="case-title">Cycloidal robotic reduction drives</h3>
-              <p class="case-desc">
-                Explored the trade-offs between backlash, torsional stiffness, compact packaging, and CNC manufacturability for high-reliability robotic joints.
-              </p>
-
-            </div>
-
-            <div class="case-footer">
-              <div class="case-tags">
-                <span class="case-tag">Precision Machining</span>
-                <span class="case-tag">Robotics</span>
-              </div>
-              <span class="case-status">Evaluation complete &rarr;</span>
-            </div>
-          </div>
+          {% endfor %}
 
           </div>
         </div>
@@ -501,22 +389,9 @@ extra_css:
 
           <!-- Tom Green Profile Card -->
           <div class="card card--parchment profile-card">
-            <div>
-              <div class="profile-header">
-                <div>
-                  <h3 class="profile-name">Tom Green</h3>
-                  <span class="profile-role">Co-Founder // Engineering</span>
-                </div>
-                <span class="profile-badge">Loughborough MEng</span>
-              </div>
-
-              <p class="profile-bio">
-                Tom studied Mechanical Engineering at Loughborough University, picking up electronics and firmware along the way. After three years designing scientific instruments, medical devices, and precision consumer products, he co-founded Mokimo. His work spans mechanics, circuits, and firmware&mdash;particularly where problems cross discipline boundaries and only reveal themselves in the assembled system.
-              </p>
-            </div>
-
+            <h3 class="profile-name">Tom Green</h3>
+            <span class="profile-role">Co-Founder // Engineering</span>
             <div class="profile-footer">
-              <span class="profile-focus">FOCUS: HARDWARE &amp; FIRMWARE</span>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="profile-link">
                 LinkedIn &rarr;
               </a>
@@ -525,28 +400,21 @@ extra_css:
 
           <!-- Luke Foster Profile Card -->
           <div class="card card--parchment profile-card">
-            <div>
-              <div class="profile-header">
-                <div>
-                  <h3 class="profile-name">Luke Foster</h3>
-                  <span class="profile-role">Co-Founder // Commercial &amp; Operations</span>
-                </div>
-                <span class="profile-badge">Operations Lead</span>
-              </div>
-
-              <p class="profile-bio">
-                Luke runs commercial scoping and operational delivery. With an extensive background in medical device delivery where he scaled the UK branch of an international company, Luke ensures technical work is aligned with client milestones, clear budgets, and strict delivery timelines. He is usually the first point of contact, turning complex technical inquiries into properly scoped, risk-managed projects.
-              </p>
-            </div>
-
+            <h3 class="profile-name">Luke Foster</h3>
+            <span class="profile-role">Co-Founder</span>
             <div class="profile-footer">
-              <span class="profile-focus">FOCUS: SCOPING &amp; DELIVERY</span>
               <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="profile-link">
                 LinkedIn &rarr;
               </a>
             </div>
           </div>
 
+        </div>
+
+        <div class="about-story">
+          <a href="/about/" class="btn btn--secondary">
+            View our story &rarr;
+          </a>
         </div>
 
       </div>

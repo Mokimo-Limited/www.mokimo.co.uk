@@ -1,0 +1,10 @@
+{
+  "client": "CLIENT // BIKESTOW",
+  "image": "/images/examples/sensor-readhead-assembly.jpg",
+  "image_alt": "Case study photograph",
+  "caption": "VACUUM BED • MAGNETIC SENSOR ARRAY",
+  "title": "Automated post-operation machining cell",
+  "description": "Finishes CNC-routed timber components autonomously. Removes mousebite tabs and chamfers the reverse face across batches without manual operator intervention between cycles.",
+  "tags": ["Mechanical", "Firmware", "Integration"],
+  "status": "In active production"
+}

@@ -20,6 +20,49 @@
   const perView = () => window.matchMedia('(min-width: 768px)').matches ? 2 : 1;
   let start = 0;
 
+  // Hand-pinned randomness: every render, each visible print gets a fresh
+  // tilt — capped at ±1.2deg, the maximum the old fixed alternation used —
+  // and each of its pins gets a small position jitter plus a slight 3D tilt
+  // (tight perspective, so the heads read as pushed in at slightly
+  // different angles). Applied as inline styles — continuous values, not a
+  // fixed variant palette — and re-rolled on every step, so no two views
+  // look identical.
+  const rand = (min, max) => min + Math.random() * (max - min);
+
+  // Human-random, not true-random: true randomness regularly produces
+  // near-identical neighbours (both prints at ~-1deg reads as a machine-set
+  // row). So angles are rolled freely, then any that land within
+  // MIN_SEPARATION of an already-shown angle are re-rolled — the pair
+  // always reads as distinctly, separately placed.
+
+	const MAX_ANGLE = 0.8; //deg
+  const MIN_SEPARATION = 0.6; // % of MAX_ANGLE
+
+  function scatterPins(cards) {
+    const angles = cards.map(() => rand(-MAX_ANGLE, MAX_ANGLE));
+    for (let i = 1; i < angles.length; i++) {
+      let tries = 0;
+      while (
+        angles.slice(0, i).some(a => Math.abs(a - angles[i]) < (MAX_ANGLE*MIN_SEPARATION)) &&
+        tries < 20
+      ) {
+        angles[i] = rand(-1.2, 1.2);
+        tries++;
+      }
+    }
+    cards.forEach((card, i) => {
+      const print = card.querySelector('.case-print');
+      if (print) print.style.rotate = `${angles[i].toFixed(2)}deg`;
+      card.querySelectorAll('.case-pin').forEach(pin => {
+        pin.style.translate =
+          `${rand(-4, 4).toFixed(1)}px ${rand(-3, 2).toFixed(1)}px`;
+        pin.style.transform =
+          `perspective(24px) rotateX(${rand(-12, 12).toFixed(1)}deg)` +
+          ` rotateY(${rand(-12, 12).toFixed(1)}deg) rotate(${rand(-8, 8).toFixed(1)}deg)`;
+      });
+    });
+  }
+
   function render() {
     const per = perView();
     // Reorder the visible cards to [lead, second] so every step looks the
@@ -36,6 +79,7 @@
       if (!visibleCards.includes(item)) grid.appendChild(item);
     });
     items.forEach(item => item.classList.toggle('hidden', !visibleCards.includes(item)));
+    scatterPins(visibleCards);
     // The counter only makes sense when one card is shown at a time.
     if (counter) {
       counter.toggleAttribute('hidden', per > 1);

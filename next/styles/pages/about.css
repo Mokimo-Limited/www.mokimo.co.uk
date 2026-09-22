@@ -1,0 +1,139 @@
+/* ==========================================================================
+   Story page (about) — page-specific styles layered on top of core.css.
+   Reuses core primitives: .section, .container, .card, .btn, .badge,
+   .section__header/.section__eyebrow/.section__title.
+   ========================================================================== */
+
+/* --- 1. Hero --- */
+.story-hero { max-width: 46rem; }
+.story-hero .badge { margin-bottom: 1.5rem; }
+.story-title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  letter-spacing: -0.03em;
+  margin-top: 1rem;
+}
+.story-lede {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-top: 1.5rem;
+  max-width: 40rem;
+}
+
+/* --- 2. Notebook card --- */
+.story-notebook {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+.notebook-card {
+  width: 100%;
+  max-width: 34rem;
+  padding: 1rem;
+  box-shadow: var(--shadow-brutal-lg);
+}
+.notebook-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+.notebook-viewport {
+  background-color: var(--parchment);
+  border: 1px solid var(--border-dark);
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+.notebook-viewport .halftone-subtle {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  pointer-events: none;
+}
+.notebook-svg {
+  width: 100%;
+  height: auto;
+  position: relative;
+}
+.notebook-caption {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+/* --- 3. Chapters --- */
+.story-chapters {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+.chapter-card { padding: 2rem; }
+.chapter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.chapter-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.chapter-cat {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  font-weight: 700;
+}
+.chapter-title { font-size: 1.5rem; margin-bottom: 0.75rem; }
+.chapter-desc { font-size: 0.9375rem; line-height: 1.65; }
+
+/* --- 4. Principles --- */
+.story-principles {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+.principle-card { padding: 2rem; }
+.principle-num {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 1rem;
+}
+.principle-title { font-size: 1.25rem; margin-bottom: 0.5rem; }
+.principle-desc { font-size: 0.9375rem; line-height: 1.6; }
+
+/* --- 5. CTA --- */
+.story-cta { max-width: 46rem; }
+.story-cta p { margin-top: 1rem; line-height: 1.6; }
+.story-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* --- 6. Responsive --- */
+@media (min-width: 768px) {
+  .story-chapters { grid-template-columns: repeat(3, 1fr); }
+  .story-principles { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 767px) {
+  .chapter-card, .principle-card { padding: 1.5rem; }
+}
