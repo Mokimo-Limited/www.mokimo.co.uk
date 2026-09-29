@@ -41,39 +41,30 @@
   color: var(--muted);
 }
 
-.schematic-card { padding: 1rem; }
-.schematic-meta {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-bottom: 0.75rem;
-  margin-bottom: 1rem;
-  border-bottom: 1px solid var(--border-subtle);
-  font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  color: var(--muted);
+/* Hero lead photo: the case-card postcard treatment (white paper, typed
+   caption strip, drawing pins) reused via the .case-print classes, at full
+   hero-column scale. Deliberately straight — no JS tilt scatter and no
+   hover bend — and without the case cards' 1.43 zoom.
+   The box is layout-defined: the figure's 6:5 aspect (border-box, strip
+   included) fixes the footprint from the column width alone, so candidate
+   images can be swapped in freely — any intrinsic size/aspect fills the
+   same box via object-fit and cannot shift the layout. */
+.case-print.hero-print {
+  height: auto;
+  aspect-ratio: 6 / 6;
 }
-.schematic-viewport {
-  background-color: var(--parchment);
-  border: 1px solid var(--border-dark);
-  padding: 1rem;
-  position: relative;
-  overflow: hidden;
+.case-print.hero-print img {
+  transform: scale(1.1);
+
+  object-position: 30% 90%;
 }
-.schematic-viewport .halftone-subtle {
-  position: absolute;
-  inset: 0;
-  opacity: 0.1;
-  pointer-events: none;
-}
-.schematic-caption {
-  margin-top: 0.75rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--muted);
+/* Opt the hero print out of the case-card hover bend; keep the resting
+   shadow (same values as .case-print) so nothing lifts on hover. */
+.case-print.hero-print:hover {
+  transform: none;
+  box-shadow:
+    0 1px 2px rgba(12, 13, 14, 0.2),
+    0 6px 14px rgba(12, 13, 14, 0.16);
 }
 
 /* --- 2. Capabilities Pillars --- */
@@ -105,27 +96,33 @@
   color: var(--muted);
 }
 .pillar-title { font-size: 1.25rem; margin-bottom: 0.75rem; }
-.pillar-desc { font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.5rem; }
+.pillar-desc { font-size: 0.875rem; line-height: 1.6; margin-bottom: 0.5rem; }
+/* List set in the sans (matching .pillar-desc) for readability; mono stays
+   reserved for labels like the OUTPUT strip. Markers are drawn in CSS so
+   wrapped lines hang under the text, not under the bullet. */
 .pillar-list {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  color: var(--ink-muted);
-  border-top: 1px solid var(--border-faint);
-  padding-top: 1rem;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
   margin-bottom: 1.5rem;
 }
+.pillar-list li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+.pillar-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+}
+/* Card footer: an empty rule near the card bottom, as a visual finish only.
+   The flex space-between on .pillar-card pins it to the bottom, so the rule
+   sits at a consistent height across the row. */
 .pillar-output {
-  padding-top: 1rem;
+  padding-top: 0.75rem;
   border-top: 1px solid var(--border-subtle);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: var(--muted);
 }
 
 /* --- 3. Selected Work --- */
@@ -265,14 +262,16 @@
    match the site's brutalist print styling. */
 .case-pin {
   position: absolute;
-  top: 0rem;
+  /*top: 0rem;*/
   width: 1.3rem;
   height: 1.3rem;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%230c0d0e'/%3E%3Ccircle cx='16' cy='15.4' r='12.8' fill='%23fff'/%3E%3Ccircle cx='16' cy='14.2' r='12.8' fill='%230c0d0e'/%3E%3Cellipse cx='11.5' cy='10.5' rx='4.2' ry='2.6' fill='%23fff' transform='rotate(-24 11.5 10.5)'/%3E%3C/svg%3E") center / contain no-repeat;
   filter: drop-shadow(0 2px 2px rgba(12, 13, 14, 0.45));
 }
-.case-pin--l { left: -0.35rem; }
-.case-pin--r { right: -0.35rem; }
+.case-pin--l { top: 0rem; left: -0.35rem; }
+.case-pin--r { top: 0rem; right: -0.35rem; }
+.case-pin--bl { bottom: 0rem; left: -0.35rem; }
+.case-pin--br { bottom: 0rem; right: -0.35rem; }
 
 /* Hand-pinned randomness: the jitter and 3D tilt are applied per pin by
    scripts/home.js each time the carousel renders, so the pins are re-set
@@ -493,6 +492,21 @@
   background-color: var(--parchment);
   border-color: var(--ink);
 }
+/* Chrome/Edge/Safari paint autofilled inputs a fixed light blue and ignore
+   plain background-color on :-webkit-autofill; an inset shadow repaints
+   them in the site's own surface colour instead. */
+.form-input:-webkit-autofill,
+.form-select:-webkit-autofill,
+.form-textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--ink);
+  caret-color: var(--ink);
+  -webkit-box-shadow: 0 0 0 1000px var(--surface) inset;
+}
+.form-input:focus:-webkit-autofill,
+.form-select:focus:-webkit-autofill,
+.form-textarea:focus:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--parchment) inset;
+}
 .form-footnote {
   display: flex;
   justify-content: space-between;
@@ -519,10 +533,45 @@
   gap: 0.5rem;
 }
 .form-success__dot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background-color: var(--ink); }
+.form-error {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+.form-error__title {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+/* Hollow dot distinguishes the error banner from the solid success dot
+   without breaking the monochrome palette. */
+.form-error__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  border: 2px solid var(--ink);
+}
+.form-error__detail { margin-top: 0.5rem; color: var(--muted); }
+/* Honeypot: off-screen rather than display:none, so naive spam scripts that
+   skip display:none fields still trip over it; real users can't reach it. */
+.form-hp {
+  position: absolute;
+  left: -5000px;
+  top: -5000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
 
 /* --- 7. Responsive Layout Breakpoints --- */
 @media (min-width: 640px) {
-  .schematic-card, .pillar-card, .case-card, .profile-card, .contact-form-card { padding: 2rem; }
+  .pillar-card, .case-card, .profile-card, .contact-form-card { padding: 2rem; }
   .contact-panel { padding: 3rem; }
   .approach-grid { grid-template-columns: repeat(2, 1fr); }
   .form-row { grid-template-columns: 1fr 1fr; }

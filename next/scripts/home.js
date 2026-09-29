@@ -143,13 +143,89 @@
   equalizeHeights();
 })();
 
-// Form Submission Handling
-function handleFormSubmit(e) {
-  e.preventDefault();
-  const banner = document.getElementById('form-success-banner');
-  const form = document.getElementById('project-form');
+// Scoping Brief Form: POSTs to the guest inquiry endpoint on the ERPNext
+// stack, which rate-limits by IP and synchronously sends the confirmation
+// and internal emails. The success banner only replaces the form when the
+// API reports that both emails actually went out; any failure restores the
+// form with an error note so the visitor can retry.
 
-  banner.classList.remove('hidden');
-  form.reset();
-  banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+const INQUIRY_ENDPOINT =
+  'https://dash.mokimo.co.uk/api/method/mokimo.api_web_enquiry.guest_submit_enquiry';
+
+function inquiryServerError(reply) {
+  // Frappe error payloads carry the human-readable message in
+  // _server_messages (a JSON string of JSON strings); rate limiting
+  // arrives as exc_type: 'RateLimitExceeded'.
+  if (!reply) return null;
+  if (typeof reply.exc_type === 'string' && reply.exc_type.startsWith('RateLimitExceeded')) {
+    return 'Too many submissions from this connection recently.';
+  }
+  try {
+    const messages = JSON.parse(reply._server_messages || '[]');
+    const text = messages
+      .map((m) => {
+        const item = typeof m === 'string' ? JSON.parse(m) : m;
+        return item && item.message;
+      })
+      .filter(Boolean)
+      .join(' ');
+    return text || null;
+  } catch (err) {
+    return null;
+  }
+}
+
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('project-form');
+  const successBanner = document.getElementById('form-success-banner');
+  const errorBanner = document.getElementById('form-error-banner');
+  const errorDetail = errorBanner.querySelector('.form-error__detail');
+  const button = form.querySelector('button[type="submit"]');
+  const idleLabel = button.textContent;
+
+  const payload = {
+    name: document.getElementById('name').value,
+    company: document.getElementById('company').value,
+    email: document.getElementById('email').value,
+    discipline: document.getElementById('discipline').value,
+    message: document.getElementById('message').value,
+    website: document.getElementById('website-hp').value, // honeypot
+  };
+
+  errorBanner.classList.add('hidden');
+  button.disabled = true;
+  button.textContent = 'Sending\u2026';
+
+  let reply = null;
+  try {
+    const response = await fetch(INQUIRY_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'omit',
+      body: JSON.stringify(payload),
+    });
+    reply = await response.json().catch(() => null);
+    const result = reply && reply.message;
+    if (response.ok && result && result.ok) {
+      form.classList.add('hidden');
+      successBanner.classList.remove('hidden');
+      successBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      return;
+    }
+  } catch (err) {
+    reply = null; // network or CORS failure — fall through to the error path
+  }
+
+  const serverDetail = inquiryServerError(reply);
+  if (serverDetail) {
+    errorDetail.textContent = serverDetail;
+    errorDetail.classList.remove('hidden');
+  } else {
+    errorDetail.classList.add('hidden');
+  }
+  errorBanner.classList.remove('hidden');
+  button.disabled = false;
+  button.textContent = idleLabel;
+  errorBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
