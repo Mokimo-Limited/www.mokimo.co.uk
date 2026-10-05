@@ -1,0 +1,135 @@
+/* Policy pages (privacy, terms) — shared article layout on top of core.css.
+   Loaded via extra_css: policy on both pages. */
+
+/* --- Hero --- */
+
+.policy-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.policy-title {
+  font-size: clamp(1.875rem, 4vw, 3rem);
+  letter-spacing: -0.03em;
+}
+
+.policy-lede {
+  font-size: 1.05rem;
+  max-width: 34rem;
+  line-height: 1.6;
+}
+
+.policy-meta {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+/* --- Body --- */
+
+.policy-body {
+  max-width: 46rem;
+}
+
+.policy-section {
+  margin-bottom: 2.5rem;
+}
+
+.policy-section:last-child {
+  margin-bottom: 0;
+}
+
+.policy-section h2 {
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+
+.policy-section p,
+.policy-section li {
+  line-height: 1.7;
+}
+
+.policy-section p + p,
+.policy-section ul + p {
+  margin-top: 0.75rem;
+}
+
+.policy-section ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.policy-section li {
+  padding-left: 1.1rem;
+  position: relative;
+}
+
+.policy-section li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 0.4rem;
+  height: 0.4rem;
+  background-color: var(--ink);
+}
+
+.policy-section a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.policy-section a:hover {
+  color: var(--muted);
+}
+
+/* --- Data table --- */
+
+.policy-table {
+  width: 100%;
+  margin-top: 1.25rem;
+  border: 1px solid var(--line-grey);
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.policy-table th,
+.policy-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--line-grey);
+  line-height: 1.6;
+}
+
+.policy-table thead th {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  background-color: var(--surface);
+}
+
+.policy-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.policy-table strong {
+  color: var(--ink);
+}
+
+@media (max-width: 640px) {
+  .policy-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
