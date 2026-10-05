@@ -1,0 +1,13 @@
+{
+  "slug": "audio-player",
+  "featured": true,
+  "client": "ELECTRONICS DESIGN",
+  "image": "/images/examples/IMG_20260810_150933-EDIT-3.jpg",
+  "image_alt": "Case study photograph",
+  "caption": "COMPONENT LAYOUT VERIFICATION",
+  "title": "Synchronised audio player",
+  "description": "Custom electronics for integration into smart speakers, with Sonos-style synchronous playback across multiple devices.",
+  "tags": ["Electronics", "Software", "Signal Processing"],
+  "image_position": "60% 10%",
+  "image_zoom": 1
+}

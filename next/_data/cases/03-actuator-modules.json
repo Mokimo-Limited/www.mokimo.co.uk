@@ -1,0 +1,11 @@
+{
+  "type": "photo",
+  "client": "FROM THE WORKSHOP",
+  "title": "Actuator module teardown",
+  "image": "/images/examples/disassembled-actuator-modules.jpg",
+  "image_alt": "Disassembled actuator modules laid flat: geared discs, a bolted housing with a red seal ring and an aluminium rail",
+  "caption": "ACTUATOR MODULES, STRIPPED DOWN",
+  "tags": ["Mechanisms", "Teardown"],
+  "image_position": "50% 50%",
+  "image_zoom": 1.2
+}

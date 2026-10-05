@@ -1,0 +1,11 @@
+{
+  "type": "photo",
+  "client": "FROM THE WORKSHOP",
+  "title": "Motor driver bring-up",
+  "image": "/images/examples/motor-driver-test-setup.jpg",
+  "image_alt": "A motor driver shield wired to a JGB37-520 gearmotor in a 3D-printed cradle on the bench",
+  "caption": "DRIVER BRING-UP • JGB37-520",
+  "tags": ["Electronics", "Bench testing"],
+  "image_position": "50% 45%",
+  "image_zoom": 1.25
+}

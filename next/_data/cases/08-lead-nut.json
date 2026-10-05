@@ -1,0 +1,13 @@
+{
+  "slug": "lift-platform",
+  "featured": true,
+  "client": "MECHANICAL DESIGN",
+  "image": "/images/examples/machined-bracket-coupling.jpg",
+  "image_alt": "Case study photograph",
+  "caption": "LEAD-NUT ASSEMBLY",
+  "title": "High-force lift platform",
+  "description": "Manually-actuated, high force lift platform with synchronised leadscrews, anti-bind compliance and self-locking backdrive prevention.",
+  "tags": ["Mechanical", "Machine Design"],
+  "image_position": "30% 50%",
+  "image_zoom": 1.43
+}

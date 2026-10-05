@@ -1,0 +1,13 @@
+{
+  "slug": "strain-wave-demonstrator",
+  "featured": true,
+  "client": "MECHANISM DESIGN",
+  "image": "/images/examples/harmonic-drive-demonstrator.jpg",
+  "image_alt": "3D-printed strain-wave drive demonstrator with an orange pointer on a printed reduction-ratio dial",
+  "caption": "REDUCTION-RATIO DIAL \u2022 53.5:1",
+  "title": "Strain-wave gear demonstrator",
+  "description": "A working 53.5:1 strain-wave gear with the flex-spline motion on open display and a live reduction dial \u2014 from MATLAB modelling through several generations of physical prototype.",
+  "tags": ["Mechanical", "Electronics", "Additive Manufacturing"],
+  "image_position": "50% 30%",
+  "image_zoom": 1.43
+}

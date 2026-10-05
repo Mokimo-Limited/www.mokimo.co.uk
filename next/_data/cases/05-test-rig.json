@@ -1,0 +1,13 @@
+{
+  "slug": "rotating-assembly-test-rig",
+  "featured": true,
+  "client": "TEST & MEASUREMENT",
+  "image": "/images/examples/functional-test-rig.jpg",
+  "image_alt": "A brake disc spinning in a blur on the motor characterisation rig, with a caliper load and bench instruments behind",
+  "caption": "BRAKE-DISC LOAD \u2022 REACTION TORQUE",
+  "title": "Rotating assembly test rig",
+  "description": "A rig that characterises stepper speed\u2013torque behaviour properly \u2014 voltage, current and microstepping move the curve far more than the datasheet's single reference plot suggests.",
+  "tags": ["Mechanical", "Electronics", "Production"],
+  "image_position": "50% 45%",
+  "image_zoom": 1.25
+}
