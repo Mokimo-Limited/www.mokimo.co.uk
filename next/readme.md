@@ -63,16 +63,45 @@ prefix, and edit the fields:
 
 | Field          | Purpose                                        |
 |----------------|------------------------------------------------|
-| `client`       | Label line above the image                     |
+| `type`         | `case` (default), `article`, or `photo` — sets the type marker and link text; `photo` cards link to the image itself |
+| `slug`         | URL slug — makes the card a link to `/work/<slug>/` (not used by `photo`) |
+| `featured`     | `true` = shown in the homepage carousel (cases only; the work hub always lists everything) |
+| `title`        | Card heading (all types, photos included)      |
 | `image`        | Photo path, shown full-frame in the card       |
 | `image_alt`    | Alt text for the photo                         |
-| `caption`      | Mono caption overlaid on the photo             |
-| `title`        | Card heading                                   |
-| `description`  | Card body text                                 |
-| `tags`         | Array of footer tag labels (any length)        |
-| `status`       | Footer status text (the arrow is added by CSS) |
+| `caption`      | Mono caption on the print's white strip — keep it short, it renders on one line |
+| `tags`         | Footer tag labels — homepage carousel only (decoration); the hub omits them |
+
+The include renders three variants: the **full card** on the homepage
+carousel (kicker, print, title, description, tags, link), **compact cards**
+on the hub (type marker, print, title, link), and hub photo entries as
+**solo prints** — the pinned postcard straight on the page, no wrapper
+card, title or link. The numeric filename prefix sets the hub's card
+order: interleave types when adding entries so the wall stays mixed.
 
 The carousel adapts to the number of files automatically.
+
+### Work hub
+
+`work/index.html` lists everything in `_data/cases/` as one mixed grid of
+the same cards (via `_includes/case-card.html`, shared with the homepage
+carousel — edit the card in one place). Cards are typed (`case`, `article`,
+`photo`) so short notes and standalone photos can sit alongside full case
+studies without each needing a write-up. The homepage carousel only shows
+featured cases; the hub always shows all of them. Nav links for "Selected
+Work" point at the hub.
+
+### Case-study pages
+
+Each case with a `slug` links to a page at `work/<slug>/index.html`, built
+with `layout: case` (see `_layouts/case.html` and `work/bikestow/` for the
+pattern). The layout renders the shared template — breadcrumb, badge,
+heading, lede, tags and a pinned hero print — from front matter fields
+(`client`, `lede`, `image`, `image_alt`, `caption`, `tags`), and the page
+body holds the story-like narrative. Page styles live in
+`styles/pages/case.css` (shared by all case pages); the `.case-print` /
+`.case-pin` / `.case-tag` component styles live in `core.css` because both
+the homepage and the case pages use them.
 
 ## Adding a page (e.g. project case studies)
 

@@ -1,0 +1,111 @@
+---
+layout: case
+title: "Bikestow automation cell — Mokimo"
+heading: "Bikestow automation cell"
+description: "An automated post-operation machining centre that finishes CNC-routed bike rack components — vacuum hold-down, automatic tray identification and pneumatic actuation, engineered by Mokimo."
+body_class: case-page
+extra_css:
+  - case
+client: "Manufacturing automation"
+lede: "An automated machining centre that finishes CNC-routed bike rack components — chamfering the reverse face and clearing the tabs left by the primary cut, with no operator between parts."
+image: "/images/examples/bikestow-automation-cell-cad.png"
+image_alt: "CAD render of the full Bikestow automation cell, showing enclosure, gantry and control panel"
+caption: "THE FULL CELL — ENCLOSURE, GANTRY, CONTROL PANEL"
+tags:
+  - Mechanical
+  - Electronics
+  - Firmware
+  - Pneumatics
+---
+
+  <h2>A router table, all shift long</h2>
+
+  <p>
+    Bikestow's bike rack components are CNC-routed from sheet stock. That
+    process can only chamfer one face of each part — the cutter approaches
+    from above — and it leaves small uncut "mousebite" tabs holding every
+    part inside the surrounding sheet until it's broken free. Finishing the
+    reverse face and clearing those tabs was being done by hand, on a router
+    table: slow, repetitive work that keeps an operator's hands close to a
+    spinning cutter for the length of a shift.
+  </p>
+  <p>
+    Mokimo was commissioned to remove that step from the manufacturing
+    process entirely. At its core, the cell is a wood router riding an
+    aluminium-extrusion gantry, driven by stepper motors and leadscrews,
+    running the finishing operation autonomously. The more significant
+    engineering is in what surrounds it: how parts are held, how the machine
+    identifies what it's holding, and how it keeps itself fed.
+  </p>
+
+  <div class="case-figures">
+    <figure class="case-figure">
+      <img src="/images/examples/bikestow-cnc-gantry.jpg" alt="Custom CNC gantry mechanism during assembly" loading="lazy">
+      <figcaption>THE GANTRY DURING ASSEMBLY</figcaption>
+    </figure>
+    <figure class="case-figure">
+      <img src="/images/examples/bikestow-lead-nuts.jpg" alt="Machined aluminium brackets with lead-screw nut inserts" loading="lazy">
+      <figcaption>MACHINED BRACKETS, LEAD-SCREW NUTS</figcaption>
+    </figure>
+  </div>
+
+  <h2>Held down by a Henry</h2>
+
+  <p>
+    Hold-down is provided by a domestic vacuum cleaner rather than a
+    dedicated vacuum pump — a deliberately pragmatic choice, selected after
+    comparing hold-down pressure across several off-the-shelf units. It
+    clamps each part flat during machining, leaving the entire top perimeter
+    clear for the router where mechanical clamps would obstruct it, and it
+    counteracts warping in the plywood stock that would otherwise produce
+    inconsistent chamfer depth along longer parts. The same airflow clears
+    the sawdust the on-toolhead dust shoe misses.
+  </p>
+
+  <h2>Fifteen toolpaths, no operator</h2>
+
+  <p>
+    Parts are fed through a six-tray magazine, each tray identified by a
+    hall-effect sensor reading a simple magnet array — chosen over optical or
+    mechanical switches, which don't tolerate a dust-heavy environment well.
+    The machine automatically selects the correct toolpath from a library of
+    fifteen, matching whatever's loaded without operator input, which makes
+    it effectively impossible to run the wrong programme against a tray.
+    Trays can be swapped as they complete, letting the cell run close to
+    continuously across a full production batch.
+  </p>
+
+  <div class="case-figures">
+    <figure class="case-figure">
+      <img src="/images/examples/sensor-readhead-assembly.jpg" alt="Hall-effect sensor read-head assembly for tray identification" loading="lazy">
+      <figcaption>TRAY ID SENSOR READ-HEAD</figcaption>
+    </figure>
+    <figure class="case-figure">
+      <img src="/images/examples/bikestow-soldering.jpg" alt="Hand-soldering a custom controller PCB" loading="lazy">
+      <figcaption>SOLDERING THE CONTROLLER BOARD</figcaption>
+    </figure>
+  </div>
+
+  <p>
+    Latches, the movable vacuum bed and tray alignment are all pneumatically
+    actuated, drawing on the workshop's existing compressed-air supply — more
+    robust and faster-acting than the linear steppers or solenoids otherwise
+    required, and more compact.
+  </p>
+
+  <h2>Delivered, and running</h2>
+
+  <p>
+    The cell has been delivered and commissioned in the client's workshop,
+    where it is already producing strong preliminary results. Further
+    integration work is planned to bring it to full production readiness.
+  </p>
+
+  <div class="card card--parchment case-facts">
+    <dl>
+      <dt>Client</dt><dd>Bikestow</dd>
+      <dt>Sector</dt><dd>Manufacturing automation</dd>
+      <dt>Disciplines</dt><dd>Mechanical, electronics, firmware, pneumatics</dd>
+      <dt>Status</dt><dd>Delivered &amp; commissioned</dd>
+    </dl>
+  </div>

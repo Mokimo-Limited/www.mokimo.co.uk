@@ -1,0 +1,144 @@
+---
+layout: case
+title: "Strain-wave gear demonstrator — Mokimo"
+heading: "Strain-wave gear demonstrator"
+description: "A working 53.5:1 strain-wave gear demonstrator with an exposed flex-spline and live reduction dial — from MATLAB flexspline modelling through several generations of physical prototype."
+body_class: case-page
+extra_css:
+  - case
+client: "Mechanism design"
+lede: "A working 53.5:1 strain-wave gear demonstrator with an exposed flex-spline and a live reduction dial — one output of a longer-running exploration into strain-wave gearing, from early MATLAB modelling through several generations of physical prototype."
+image: "/images/examples/harmonic-drive-demonstrator.jpg"
+image_alt: "3D-printed strain-wave drive demonstrator with an orange pointer on a printed reduction-ratio dial"
+caption: "REDUCTION-RATIO DIAL • 53.5:1"
+tags:
+  - Mechanical
+  - Electronics
+  - Additive Manufacturing
+---
+
+  <h2>The mechanism you never see</h2>
+
+  <p>
+    Strain-wave gearing is compact and high-ratio, which makes it a good
+    teaching example — but the mechanism that makes it work, a flexible
+    spline deforming continuously as it meshes with a rigid ring gear, is
+    normally sealed inside a housing where nobody can watch it happen. This
+    demonstrator puts it on display: an open housing and high-contrast
+    components make the flex-spline's motion visible while it runs, and a
+    coaxial dial shows the output rotation against the input shaft in real
+    time. Students watch strain-wave mechanics happen under power rather
+    than working it out from a diagram.
+  </p>
+  <p>
+    The finished unit is self-contained — motor drive electronics
+    integrated, running a 53.5:1 reduction — and it is one output of a
+    longer-running exploration into strain-wave gearing itself.
+  </p>
+
+  <h2>Modelled before it was printed</h2>
+
+  <p>
+    Before committing to a physical prototype, flex-spline deformation was
+    modelled in MATLAB — working through how the wave generator drives
+    continuous elliptical deflection through the spline wall, and how that
+    deflection carries into the meshing behaviour with the circular spline.
+    That modelling shaped decisions on wall thickness and tooth profile well
+    before any material was cut or printed.
+  </p>
+
+  <figure class="case-diagram">
+    <img src="/images/examples/harmonic-drive-matlab-simulation.png" alt="MATLAB plot of overlapping gear-tooth profile curves simulating harmonic-drive meshing kinematics, with one profile highlighted in red" loading="lazy">
+    <figcaption>FIG. 1 — FLEXSPLINE DEFLECTION &amp; MESH KINEMATICS, MATLAB</figcaption>
+  </figure>
+
+  <h2>Two rollers, then a proper ellipse</h2>
+
+  <p>
+    The first physical iteration used a simple two-roller wave generator —
+    the approach most hobbyist strain-wave projects reach for. It
+    overstressed the flex-spline and failed almost immediately. Its
+    replacement, a true elliptical generator with thin-section bearings
+    pressed directly onto the ellipse, did much better: the bearing shields
+    fatigued quickly, but the races have held up well since.
+  </p>
+  <p>
+    From there the work moved to proper strain-wave tooth geometry — simple
+    involute teeth aren't strictly correct for how a flex-spline meshes.
+    That is roughly where the project pushed against FDM's limits:
+    anisotropy and inhomogeneity in printed parts become real problems at
+    fine tooth pitches, and the obvious next step, SLA-printed Iglidur
+    resin, was more than the project's budget could justify at the time.
+  </p>
+
+  <figure class="case-figure">
+    <img src="/images/examples/gear-train-components.jpg" alt="Disassembled gear-train components on graph paper: a large 3D-printed spur gear, flanged bearings, screws and a bevel gear" loading="lazy">
+    <figcaption>GEAR-TRAIN COMPONENTS, PRE-ASSEMBLY</figcaption>
+  </figure>
+
+  <h2>Where 53.5:1 comes from</h2>
+
+  <p>
+    The ratio is not a design choice so much as an arithmetic consequence of
+    the geometry. The circular spline has 107 teeth; the flex-spline has two
+    fewer — 105. The wave generator keeps the mesh point travelling around
+    the ring, and each full revolution of the generator advances the mesh by
+    exactly two teeth:
+  </p>
+
+  <figure class="case-diagram">
+    <svg viewBox="0 0 560 300" role="img" aria-label="Unwrapped tooth strips showing why the reduction ratio is half the spline tooth count: the 105-tooth flexspline advances two teeth against the fixed 107-tooth circular spline per revolution of the wave generator, giving 53.5 to 1">
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#0c0d0e"/>
+        </marker>
+      </defs>
+      <text x="70" y="52" class="dg-muted dg-small">CIRCULAR SPLINE — 107 TEETH (FIXED)</text>
+      <rect x="70" y="60" width="420" height="26" fill="#f3f1ea" stroke="#0c0d0e" stroke-width="1.2"/>
+      <g stroke="#0c0d0e" stroke-width="1">
+        <line x1="70" y1="60" x2="70" y2="86"/><line x1="90" y1="60" x2="90" y2="86"/><line x1="110" y1="60" x2="110" y2="86"/><line x1="130" y1="60" x2="130" y2="86"/><line x1="150" y1="60" x2="150" y2="86"/><line x1="170" y1="60" x2="170" y2="86"/><line x1="190" y1="60" x2="190" y2="86"/><line x1="210" y1="60" x2="210" y2="86"/><line x1="230" y1="60" x2="230" y2="86"/><line x1="250" y1="60" x2="250" y2="86"/><line x1="270" y1="60" x2="270" y2="86"/><line x1="290" y1="60" x2="290" y2="86"/><line x1="310" y1="60" x2="310" y2="86"/><line x1="330" y1="60" x2="330" y2="86"/><line x1="350" y1="60" x2="350" y2="86"/><line x1="370" y1="60" x2="370" y2="86"/><line x1="390" y1="60" x2="390" y2="86"/><line x1="410" y1="60" x2="410" y2="86"/><line x1="430" y1="60" x2="430" y2="86"/><line x1="450" y1="60" x2="450" y2="86"/><line x1="470" y1="60" x2="470" y2="86"/>
+      </g>
+      <text x="70" y="132" class="dg-muted dg-small">FLEXSPLINE — 105 TEETH</text>
+      <rect x="70" y="140" width="420" height="26" fill="#ffffff" stroke="#0c0d0e" stroke-width="1.2"/>
+      <g stroke="#0c0d0e" stroke-width="1">
+        <line x1="70" y1="140" x2="70" y2="166"/><line x1="90" y1="140" x2="90" y2="166"/><line x1="110" y1="140" x2="110" y2="166"/><line x1="130" y1="140" x2="130" y2="166"/><line x1="150" y1="140" x2="150" y2="166"/><line x1="170" y1="140" x2="170" y2="166"/><line x1="190" y1="140" x2="190" y2="166"/><line x1="210" y1="140" x2="210" y2="166"/><line x1="230" y1="140" x2="230" y2="166"/><line x1="250" y1="140" x2="250" y2="166"/><line x1="270" y1="140" x2="270" y2="166"/><line x1="290" y1="140" x2="290" y2="166"/><line x1="310" y1="140" x2="310" y2="166"/><line x1="330" y1="140" x2="330" y2="166"/><line x1="350" y1="140" x2="350" y2="166"/><line x1="370" y1="140" x2="370" y2="166"/><line x1="390" y1="140" x2="390" y2="166"/><line x1="410" y1="140" x2="410" y2="166"/><line x1="430" y1="140" x2="430" y2="166"/><line x1="450" y1="140" x2="450" y2="166"/><line x1="470" y1="140" x2="470" y2="166"/>
+      </g>
+      <text x="70" y="212" class="dg-muted dg-small">AFTER ONE REVOLUTION OF THE WAVE GENERATOR</text>
+      <rect x="30" y="220" width="400" height="26" fill="#ffffff" stroke="#0c0d0e" stroke-width="1.2"/>
+      <g stroke="#0c0d0e" stroke-width="1">
+        <line x1="30" y1="220" x2="30" y2="246"/><line x1="50" y1="220" x2="50" y2="246"/><line x1="70" y1="220" x2="70" y2="246"/><line x1="90" y1="220" x2="90" y2="246"/><line x1="110" y1="220" x2="110" y2="246"/><line x1="130" y1="220" x2="130" y2="246"/><line x1="150" y1="220" x2="150" y2="246"/><line x1="170" y1="220" x2="170" y2="246"/><line x1="190" y1="220" x2="190" y2="246"/><line x1="210" y1="220" x2="210" y2="246"/><line x1="230" y1="220" x2="230" y2="246"/><line x1="250" y1="220" x2="250" y2="246"/><line x1="270" y1="220" x2="270" y2="246"/><line x1="290" y1="220" x2="290" y2="246"/><line x1="310" y1="220" x2="310" y2="246"/><line x1="330" y1="220" x2="330" y2="246"/><line x1="350" y1="220" x2="350" y2="246"/><line x1="370" y1="220" x2="370" y2="246"/><line x1="390" y1="220" x2="390" y2="246"/><line x1="410" y1="220" x2="410" y2="246"/><line x1="430" y1="220" x2="430" y2="246"/>
+      </g>
+      <g stroke="#5e636e" stroke-width="1" stroke-dasharray="4 3">
+        <line x1="70" y1="166" x2="70" y2="262"/>
+        <line x1="30" y1="246" x2="30" y2="262"/>
+      </g>
+      <line x1="70" y1="262" x2="30" y2="262" stroke="#0c0d0e" stroke-width="1.2" marker-end="url(#arr)"/>
+      <text x="50" y="280" text-anchor="middle" class="dg-small">2 teeth</text>
+      <text x="70" y="296">2 teeth per revolution &#8594; 2/107 rev per rev &#8594; 53.5 : 1</text>
+    </svg>
+    <figcaption>FIG. 2 — WHY THE RATIO IS TOOTH COUNT / 2 &#183; TOOTH PITCH EXAGGERATED, 20 OF 107 TEETH SHOWN</figcaption>
+  </figure>
+
+  <p>
+    Two teeth on 107 is 2/107 of a revolution per input revolution — 53.5:1,
+    in the opposite direction to the input. The same arithmetic explains why
+    strain-wave ratios come in such odd steps: the ratio is always half the
+    rigid spline's tooth count, so a useful ratio forces an odd number of
+    teeth.
+  </p>
+  <p>
+    The work also considered whether the flex-spline could be injection
+    moulded in a high-performance polymer such as PEEK. The projected cost
+    and development effort made commercialisation impractical at the time,
+    but the exploration led to university interest — and ultimately to this
+    teaching demonstrator.
+  </p>
+
+  <div class="card card--parchment case-facts">
+    <dl>
+      <dt>Product</dt><dd>53.5:1 teaching demonstrator</dd>
+      <dt>Sector</dt><dd>Engineering education</dd>
+      <dt>Disciplines</dt><dd>Mechanical, electronics, simulation</dd>
+      <dt>Status</dt><dd>In service as a teaching model</dd>
+    </dl>
+  </div>

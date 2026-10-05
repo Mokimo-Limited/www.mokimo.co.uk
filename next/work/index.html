@@ -1,0 +1,41 @@
+---
+layout: default
+title: "Selected work — Mokimo"
+description: "Case studies from Mokimo: automation cells, electronics, machine design and surface engineering — the engineering behind working systems, from design through build, integration and test."
+body_class: work-page
+extra_css:
+  - work
+---
+
+  <main>
+
+    <section class="section section--parchment bg-grid-paper">
+      <div class="container">
+
+        <div class="work-hero">
+          <div class="badge badge--surface">
+            <span class="badge__dot"></span>
+            <span>Selected work</span>
+          </div>
+          <h1 class="work-title">
+            From engineering decisions to working systems
+          </h1>
+          <p class="work-lede">
+            Case studies, technical notes and workshop photos &mdash; the engineering behind working systems, from design through build, integration and test.
+          </p>
+        </div>
+
+        <div class="work-grid">
+
+          {% assign cases = site.data.cases | sort %}
+          {% for entry in cases %}
+          {% assign case = entry[1] %}
+          {% include case-card.html case=case compact=true %}
+          {% endfor %}
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>

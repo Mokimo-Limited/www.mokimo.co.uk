@@ -1,0 +1,64 @@
+---
+layout: default
+---
+
+<main class="case-page">
+
+  <!-- Hero: breadcrumb, title block, pinned lead print -->
+  <section class="section section--parchment bg-grid-paper">
+    <div class="container">
+
+      <p class="case-breadcrumb">
+        <a href="/work/">&larr; Back to selected work</a>
+      </p>
+
+      <div class="case-header">
+        <div class="badge badge--surface">
+          <span class="badge__dot"></span>
+          <span>{{ page.client }}</span>
+        </div>
+        <h1 class="case-heading">{{ page.heading | default: page.title }}</h1>
+        <p class="case-lede">{{ page.lede }}</p>
+        <div class="case-tags">
+          {% for tag in page.tags %}<span class="case-tag">{{ tag }}</span> {% endfor %}
+        </div>
+      </div>
+
+      <figure class="case-print case-hero-print">
+        <span class="case-print__window">
+          <img src="{{ page.image }}" alt="{{ page.image_alt }}">
+        </span>
+        <span class="case-vis__caption">{{ page.caption }}</span>
+        <span class="case-pin case-pin--l" aria-hidden="true"></span>
+        <span class="case-pin case-pin--r" aria-hidden="true"></span>
+      </figure>
+
+    </div>
+  </section>
+
+  <!-- The story -->
+  <section class="section section--parchment">
+    <div class="container case-body">
+      {{ content }}
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section section--surface">
+    <div class="container case-cta">
+      <span class="section__eyebrow">Next step</span>
+      <h2 class="section__title">Something similar in mind?</h2>
+      <p>
+        We build what we design and test what we build &mdash; carrying work
+        through design, build, integration and test. If you have a product, a
+        piece of equipment, or a production step that needs to work, we'd like
+        to hear about it.
+      </p>
+      <div class="case-cta__actions">
+        <a href="/#contact" class="btn btn--primary">Discuss a project</a>
+        <a href="/work/" class="btn btn--secondary">Back to our work &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+</main>

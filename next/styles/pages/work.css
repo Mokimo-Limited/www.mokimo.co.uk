@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Work hub — index of all case studies, on top of core.css.
+   Reuses the case-card component (.case-card/.case-print/.case-tag, core.css)
+   in a static grid — no carousel JS. Cards are whole-card links, pins sit
+   straight (the JS tilt scatter is homepage-only).
+   ========================================================================== */
+
+/* --- 1. Hero --- */
+.work-hero { max-width: 46rem; margin-bottom: 3.5rem; }
+.work-hero .badge { margin-bottom: 1.5rem; }
+.work-title {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  letter-spacing: -0.03em;
+  margin-top: 1rem;
+}
+.work-lede {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-top: 1.25rem;
+}
+
+/* --- 2. Card grid --- */
+/* Uniform heights via a shared aspect ratio: compact cards and solo prints
+   are both 1:1, so mixed rows stay level at any width. Inside the compact
+   cards the print area flexes to fill the space left by the text, and the
+   photo crops to fill (object-fit cover) rather than distorting. Titles wrap
+   naturally — a one-line title just yields a slightly taller photo. */
+.work-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  /* Start alignment: grid stretch would override the cards' aspect-ratio
+     (and let a tall photo's natural height set the row size). With start,
+     every item keeps its 1:1 height and the rows stay level. */
+  align-items: start;
+}
+.work-grid .case-card {
+  aspect-ratio: 1 / 1;
+  /* Zero the content-based minimum: otherwise the fixed-height print and
+     text set the card's height and the ratio never applies. */
+  min-height: 0;
+}
+.work-grid .case-card > div:not(.case-footer) {
+  /* The footer is a plain <div> too — a bare `> div` would hand it the same
+     flex-grow, letting it split the card's free space with the body and
+     squeezing the photo down to a sliver. */
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+.work-grid .case-card .case-vis {
+  flex: 1;
+  min-height: 0;
+  /* Tighter than the homepage's 2rem: on the hub the link sits right under
+     the print, so a smaller gap keeps the card from trailing off. */
+  margin-bottom: 1rem;
+}
+.work-grid .case-card .case-footer { padding-top: 0.5rem; }
+.work-grid .case-print--solo {
+  aspect-ratio: 1 / 1;
+  /* Zero the image's intrinsic minimums: without this, the photo's natural
+     width inflates its grid track and its natural height overrides the
+     aspect ratio. */
+  min-width: 0;
+  min-height: 0;
+}
+
+/* --- 3. Responsive --- */
+@media (min-width: 640px) {
+  .work-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1024px) {
+  .work-grid { grid-template-columns: 1fr 1fr 1fr; }
+}

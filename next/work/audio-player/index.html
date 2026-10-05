@@ -1,0 +1,181 @@
+---
+layout: case
+title: "Synchronised audio player — Mokimo"
+heading: "Synchronised audio player"
+description: "Custom electronics for integration into smart speakers — Sonos-style synchronised playback across multiple devices, engineered for reliable operation from a clean PCB up."
+body_class: case-page
+extra_css:
+  - case
+client: "Electronics design"
+lede: "Custom electronics for integration into smart speakers: a class-D amplifier paired with an ESP32, designed for Sonos-style synchronised playback across multiple devices."
+image: "/images/examples/IMG_20260810_150933-EDIT-3.jpg"
+image_alt: "Component placement on the audio player PCB, reviewed against the layout on screen"
+caption: "COMPONENT LAYOUT VERIFICATION"
+tags:
+  - Electronics
+  - Software
+  - Signal Processing
+---
+
+  <h2>Learning from the first attempt</h2>
+
+  <p>
+    Synchronised playback is a demanding brief for a small speaker: several
+    devices must render the same audio at the same instant, or the room
+    hears it. An earlier ESP32-and-DAC prototype ran a software crossover
+    and EQ alongside a modified Bluetooth stack, but never achieved
+    reliably synchronised playback. That prototype taught the important
+    lesson: the sync problem is not solved in software alone — it has to be
+    designed into the hardware from the start.
+  </p>
+  <p>
+    The replacement design starts with a clean PCB layout and a simpler route
+    to robust operation, superseding the first board entirely rather than
+    patching it.
+  </p>
+
+  <div class="case-figures">
+    <figure class="case-figure">
+      <img src="/images/examples/IMG_20260728_172002.jpg" alt="PCB layout and 3D board render for the audio player on a monitor" loading="lazy">
+      <figcaption>PCB LAYOUT &amp; 3D RENDER, PRE-FAB</figcaption>
+    </figure>
+  </div>
+
+  <h2>Designed for real operating conditions</h2>
+
+  <p>
+    Component choices have been reviewed against the conditions the board
+    will actually see, not just the nominal ones: MLCC DC-bias derating is
+    accounted for where capacitors sit across significant voltage, and pi
+    filters on the analogue rails keep switching noise away from the audio
+    path. Small decisions like these are the difference between a board that
+    works on the bench and one that works in a product.
+  </p>
+
+  <p>
+    The derating is worth following through, because in the signal path it
+    stops being a footnote and becomes distortion. As a concrete check,
+    model a 10&nbsp;&micro;F X7R rated 25&nbsp;V with the signal itself
+    providing the bias &mdash; 12&nbsp;V peak across the part:
+  </p>
+
+  <figure class="case-diagram">
+    <svg viewBox="0 0 560 300" role="img" aria-label="Graph of capacitance against DC bias for a modelled 10 microfarad, 25 volt X7R capacitor: the curve falls from 100 percent at zero volts to 71 percent at 12 volts and 36 percent at the 25 volt rating">
+      <g stroke="#e2dfd5" stroke-width="1">
+        <line x1="156" y1="36" x2="156" y2="248"/>
+        <line x1="248" y1="36" x2="248" y2="248"/>
+        <line x1="340" y1="36" x2="340" y2="248"/>
+        <line x1="432" y1="36" x2="432" y2="248"/>
+        <line x1="64" y1="195" x2="524" y2="195"/>
+        <line x1="64" y1="142" x2="524" y2="142"/>
+        <line x1="64" y1="89" x2="524" y2="89"/>
+      </g>
+      <g stroke="#0c0d0e" stroke-width="1.5">
+        <line x1="64" y1="36" x2="64" y2="248"/>
+        <line x1="64" y1="248" x2="524" y2="248"/>
+      </g>
+      <g class="dg-muted" text-anchor="middle">
+        <text x="64" y="266">0</text>
+        <text x="156" y="266">5</text>
+        <text x="248" y="266">10</text>
+        <text x="340" y="266">15</text>
+        <text x="432" y="266">20</text>
+        <text x="524" y="266">25</text>
+      </g>
+      <g class="dg-muted" text-anchor="end">
+        <text x="56" y="252">0</text>
+        <text x="56" y="199">25</text>
+        <text x="56" y="146">50</text>
+        <text x="56" y="93">75</text>
+        <text x="56" y="40">100</text>
+      </g>
+      <text x="294" y="288" text-anchor="middle" class="dg-muted">DC bias across the part (V)</text>
+      <text x="64" y="24" class="dg-muted">C / C0 (%)</text>
+      <polyline fill="none" stroke="#0c0d0e" stroke-width="2" points="64.0,36.0 82.4,36.6 100.8,38.4 119.2,41.3 137.6,45.2 156.0,50.1 174.4,55.7 192.8,61.9 211.2,68.6 229.6,75.7 248.0,82.9 266.4,90.3 284.8,97.6 303.2,104.8 321.6,111.9 340.0,118.7 358.4,125.3 376.8,131.6 395.2,137.7 413.6,143.4 432.0,148.8 450.4,154.0 468.8,158.8 487.2,163.4 505.6,167.6 524.0,171.7"/>
+      <g stroke="#5e636e" stroke-width="1" stroke-dasharray="4 3">
+        <line x1="284.8" y1="248" x2="284.8" y2="97.6"/>
+        <line x1="64" y1="97.6" x2="284.8" y2="97.6"/>
+      </g>
+      <circle cx="284.8" cy="97.6" r="4" fill="#0c0d0e"/>
+      <text x="296" y="94">12 V bias &#8594; 71% C</text>
+      <text x="518" y="192" text-anchor="end" class="dg-muted">36% at rating</text>
+    </svg>
+    <figcaption>FIG. 1 &#8212; DC-BIAS DERATING, 10 &#181;F X7R RATED 25 V &#183; MODEL: C/C0 = 1/(1+(V/18.75)&#178;)</figcaption>
+  </figure>
+
+  <p>
+    At the zero crossings the part holds all of its nominal capacitance; at
+    the polarity peaks, about 71%. In a filter position that capacitance
+    sets the corner frequency, so the corner frequency &mdash; and with it
+    the gain &mdash; now depends on the instantaneous signal. With the
+    signal at five times the nominal corner frequency (a first-order
+    filter, ~14&nbsp;dB down), the gain swings from 0.20 at the zero
+    crossings to 0.27 at the peaks &mdash; a ~40% gain rise coinciding with
+    every polarity peak:
+  </p>
+
+  <figure class="case-diagram">
+    <svg viewBox="0 0 560 300" role="img" aria-label="One cycle of the input sine wave against the output that results from the capacitance derating: the output has fuller peaks and thinner mid-slopes than the reference sine, the signature of third-harmonic distortion">
+      <g stroke="#e2dfd5" stroke-width="1">
+        <line x1="179" y1="36" x2="179" y2="248"/>
+        <line x1="409" y1="36" x2="409" y2="248"/>
+        <line x1="64" y1="42" x2="524" y2="42"/>
+        <line x1="64" y1="242" x2="524" y2="242"/>
+      </g>
+      <line x1="64" y1="142" x2="524" y2="142" stroke="#e2dfd5" stroke-width="1"/>
+      <g stroke="#0c0d0e" stroke-width="1.5">
+        <line x1="64" y1="36" x2="64" y2="248"/>
+        <line x1="64" y1="248" x2="524" y2="248"/>
+      </g>
+      <g class="dg-muted" text-anchor="middle">
+        <text x="64" y="266">0&#176;</text>
+        <text x="179" y="266">90&#176;</text>
+        <text x="294" y="266">180&#176;</text>
+        <text x="409" y="266">270&#176;</text>
+        <text x="524" y="266">360&#176;</text>
+      </g>
+      <text x="294" y="288" text-anchor="middle" class="dg-muted">one cycle of the signal</text>
+      <polyline fill="none" stroke="#5e636e" stroke-width="1.5" stroke-dasharray="5 4" points="64.0,142.0 70.4,133.3 76.8,124.6 83.2,116.1 89.6,107.8 95.9,99.7 102.3,92.0 108.7,84.6 115.1,77.7 121.5,71.3 127.9,65.4 134.3,60.1 140.7,55.4 147.1,51.4 153.4,48.0 159.8,45.4 166.2,43.5 172.6,42.4 179.0,42.0 185.4,42.4 191.8,43.5 198.2,45.4 204.6,48.0 210.9,51.4 217.3,55.4 223.7,60.1 230.1,65.4 236.5,71.3 242.9,77.7 249.3,84.6 255.7,92.0 262.1,99.7 268.4,107.8 274.8,116.1 281.2,124.6 287.6,133.3 294.0,142.0 300.4,150.7 306.8,159.4 313.2,167.9 319.6,176.2 325.9,184.3 332.3,192.0 338.7,199.4 345.1,206.3 351.5,212.7 357.9,218.6 364.3,223.9 370.7,228.6 377.1,232.6 383.4,236.0 389.8,238.6 396.2,240.5 402.6,241.6 409.0,242.0 415.4,241.6 421.8,240.5 428.2,238.6 434.6,236.0 440.9,232.6 447.3,228.6 453.7,223.9 460.1,218.6 466.5,212.7 472.9,206.3 479.3,199.4 485.7,192.0 492.1,184.3 498.4,176.2 504.8,167.9 511.2,159.4 517.6,150.7 524.0,142.0"/>
+      <polyline fill="none" stroke="#0c0d0e" stroke-width="2" points="64.0,142.0 70.4,135.7 76.8,129.3 83.2,122.8 89.6,116.1 95.9,109.3 102.3,102.3 108.7,95.2 115.1,88.1 121.5,81.0 127.9,74.0 134.3,67.4 140.7,61.3 147.1,55.8 153.4,51.0 159.8,47.2 166.2,44.3 172.6,42.6 179.0,42.0 185.4,42.6 191.8,44.3 198.2,47.2 204.6,51.0 210.9,55.8 217.3,61.3 223.7,67.4 230.1,74.0 236.5,81.0 242.9,88.1 249.3,95.2 255.7,102.3 262.1,109.3 268.4,116.1 274.8,122.8 281.2,129.3 287.6,135.7 294.0,142.0 300.4,148.3 306.8,154.7 313.2,161.2 319.6,167.9 325.9,174.7 332.3,181.7 338.7,188.8 345.1,195.9 351.5,203.0 357.9,210.0 364.3,216.6 370.7,222.7 377.1,228.2 383.4,233.0 389.8,236.8 396.2,239.7 402.6,241.4 409.0,242.0 415.4,241.4 421.8,239.7 428.2,236.8 434.6,233.0 440.9,228.2 447.3,222.7 453.7,216.6 460.1,210.0 466.5,203.0 472.9,195.9 479.3,188.8 485.7,181.7 492.1,174.7 498.4,167.9 504.8,161.2 511.2,154.7 517.6,148.3 524.0,142.0"/>
+      <g class="dg-muted">
+        <line x1="330" y1="50" x2="362" y2="50" stroke="#5e636e" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text x="370" y="54">constant C (reference)</text>
+        <line x1="330" y1="70" x2="362" y2="70" stroke="#0c0d0e" stroke-width="2"/>
+        <text x="370" y="74">with DC-bias derating</text>
+      </g>
+    </svg>
+    <figcaption>FIG. 2 &#8212; THE SAME 12 V-PEAK SIGNAL AT 5&#215;FC0 (&#8722;14 DB, FIRST-ORDER) &#183; BOTH NORMALISED TO THEIR PEAK &#183; SIMPLIFICATION: NODE VOLTAGE &#8776; INPUT</figcaption>
+  </figure>
+
+  <p>
+    Because the capacitance dips identically on both polarity peaks, the
+    distortion is odd-order &mdash; third harmonic dominant, the
+    &ldquo;hardened peaks&rdquo; signature rather than a lopsided waveform.
+    The remedies are mundane but have to be chosen deliberately: a larger
+    package for the same value, a more stable dielectric (C0G/NP0 where the
+    values allow), or film where they don't &mdash; selected against the
+    bias the part actually sees, not its rated voltage.
+  </p>
+  <p>
+    The board and its supporting design decisions are documented so that
+    assembly and bring-up can be verified systematically — every assumption
+    written down somewhere checkable before the hardware exists.
+  </p>
+
+  <h2>Where it stands</h2>
+
+  <p>
+    The schematic and layout are complete. Assembly, bring-up and audio
+    validation are the next stages, followed by integration into the wider
+    multi-room system — each stage measured against the synchronisation
+    performance the finished product needs.
+  </p>
+
+  <div class="card card--parchment case-facts">
+    <dl>
+      <dt>Product</dt><dd>Smart-speaker electronics</dd>
+      <dt>Sector</dt><dd>Consumer audio</dd>
+      <dt>Disciplines</dt><dd>Electronics, software, signal processing</dd>
+      <dt>Status</dt><dd>Design complete; assembly next</dd>
+    </dl>
+  </div>

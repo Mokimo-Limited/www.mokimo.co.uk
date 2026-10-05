@@ -1,0 +1,146 @@
+/* ==========================================================================
+   Case-study pages — article layout on top of core.css.
+   Reuses: .section, .container, .badge, .btn, .case-print family and
+   .case-tag(s) from core.css.
+   ========================================================================== */
+
+/* --- 1. Hero --- */
+.case-breadcrumb {
+  margin-bottom: 2.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.case-breadcrumb a { transition: color var(--transition); }
+.case-breadcrumb a:hover { color: var(--muted); }
+
+.case-header { max-width: 46rem; margin-bottom: 3rem; }
+.case-header .badge { margin-bottom: 1.5rem; }
+.case-heading {
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  letter-spacing: -0.03em;
+  margin-top: 1rem;
+}
+.case-lede {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin-top: 1.25rem;
+  max-width: 40rem;
+}
+.case-header .case-tags { justify-content: flex-start; margin-top: 1.5rem; }
+
+/* Lead print: full container width, no zoom, natural image aspect — the
+   frame wraps whatever is dropped in. */
+.case-hero-print { height: auto; margin-top: 1rem; }
+.case-hero-print .case-print__window { height: auto; }
+.case-hero-print img { height: auto; transform: none; }
+
+/* --- 2. Body prose --- */
+.case-body { max-width: 46rem; }
+.case-body h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: -0.02em;
+  margin: 3.5rem 0 1.25rem;
+}
+.case-body h2:first-child { margin-top: 0; }
+.case-body p {
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
+}
+
+/* --- 3. Figures: straight postcard prints (no pins) --- */
+.case-figures {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  margin: 2.5rem 0;
+}
+.case-figure {
+  margin: 0;
+  position: relative;
+  background-color: #fff;
+  border: 3px solid whitesmoke;
+  padding: 0.45rem 0.45rem 1.9rem;
+  box-shadow:
+    0 1px 2px rgba(12, 13, 14, 0.2),
+    0 6px 14px rgba(12, 13, 14, 0.16);
+}
+.case-figure img { display: block; width: 100%; height: auto; }
+.case-figure figcaption {
+  position: absolute;
+  bottom: 0.4rem;
+  left: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+/* --- 3b. Engineering diagrams (inline SVG figures) --- */
+.case-diagram {
+  margin: 2.5rem 0;
+  position: relative;
+  background-color: #fff;
+  border: 3px solid whitesmoke;
+  padding: 1.5rem 1.5rem 2.1rem;
+  box-shadow:
+    0 1px 2px rgba(12, 13, 14, 0.2),
+    0 6px 14px rgba(12, 13, 14, 0.16);
+}
+.case-diagram svg { display: block; width: 100%; height: auto; }
+.case-diagram svg text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--ink);
+}
+.case-diagram svg text.dg-muted,
+.case-diagram svg g.dg-muted text { fill: var(--muted); }
+.case-diagram svg text.dg-small { font-size: 10px; }
+.case-diagram svg text.dg-invert { fill: #fcfbf8; }
+.case-diagram svg text.dg-sub { fill: #3a3f47; }
+.case-diagram figcaption {
+  position: absolute;
+  bottom: 0.4rem;
+  left: 0.65rem;
+  right: 0.65rem;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+
+/* --- 4. Facts card --- */
+.case-facts { margin: 3rem 0 0; padding: 1.5rem; }
+.case-facts dl {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.75rem 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+.case-facts dt {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* --- 5. CTA --- */
+.case-cta { max-width: 46rem; }
+.case-cta p { margin-top: 1rem; line-height: 1.6; }
+.case-cta__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* --- 6. Responsive --- */
+@media (min-width: 640px) {
+  .case-figures { grid-template-columns: 1fr 1fr; }
+}

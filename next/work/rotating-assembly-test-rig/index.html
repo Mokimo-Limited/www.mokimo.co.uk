@@ -1,0 +1,128 @@
+---
+layout: case
+title: "Rotating assembly test rig — Mokimo"
+heading: "Rotating assembly test rig"
+description: "A stepper motor speed–torque characterisation rig, built to explore how small steppers behave at higher-than-normal supply voltages — reaction-torque measurement by Mokimo."
+body_class: case-page
+extra_css:
+  - case
+client: "Test & measurement"
+lede: "A rig built to characterise stepper motor speed–torque behaviour — voltage, current and microstepping all move the curve far more than the single reference plot in a typical datasheet suggests."
+image: "/images/examples/functional-test-rig.jpg"
+image_alt: "A brake disc spinning in a blur on the motor characterisation rig, with a caliper load and bench instruments behind"
+caption: "BRAKE-DISC LOAD • REACTION TORQUE"
+tags:
+  - Mechanical
+  - Electronics
+  - Production
+---
+
+  <h2>One curve is not enough</h2>
+
+  <p>
+    Motor datasheets tend to give, at best, a single reference speed&ndash;torque
+    curve. It is drawn for one supply voltage, one current setpoint, one
+    microstepping configuration — and once any of those move, the real curve
+    moves with them, sometimes far. Designing a drive from the reference
+    plot alone means designing against data that no longer describes the
+    motor you are actually running.
+  </p>
+
+  <h2>Measure the reaction, not the shaft</h2>
+
+  <p>
+    The rig's useful idea is to avoid measuring in the rotating frame
+    altogether. A NEMA17 motor sits on a pivoting mount constrained by a
+    load cell, with a bicycle brake disc and caliper providing a
+    controllable load. Torque on the rotor is balanced by an equal reaction
+    on the stator, so measuring the reaction force at a known lever arm
+    gives shaft torque directly — no slip rings, no wireless telemetry, none
+    of the instrumentation that measuring in the rotating frame would
+    otherwise need.
+  </p>
+
+  <figure class="case-diagram">
+    <svg viewBox="0 0 560 300" role="img" aria-label="Schematic of reaction-torque measurement: the motor sits in a pivoting cradle constrained by a load cell at lever arm L below the shaft axis, so shaft torque equals force times L; a caliper clamps the brake disc providing the load">
+      <defs>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+          <path d="M0 0 L10 5 L0 10 z" fill="#0c0d0e"/>
+        </marker>
+      </defs>
+      <line x1="70" y1="140" x2="480" y2="140" stroke="#0c0d0e" stroke-width="1.5"/>
+      <rect x="90" y="110" width="120" height="60" fill="#f3f1ea" stroke="#0c0d0e" stroke-width="1.5"/>
+      <text x="150" y="144" text-anchor="middle">NEMA17</text>
+      <path d="M 95 170 L 135 225 L 185 170" fill="none" stroke="#0c0d0e" stroke-width="1.5"/>
+      <circle cx="135" cy="225" r="4" fill="#0c0d0e"/>
+      <text x="135" y="243" text-anchor="middle" class="dg-muted dg-small">pivot</text>
+      <line x1="40" y1="120" x2="40" y2="215" stroke="#0c0d0e" stroke-width="2"/>
+      <g stroke="#5e636e" stroke-width="1">
+        <line x1="40" y1="125" x2="30" y2="135"/>
+        <line x1="40" y1="145" x2="30" y2="155"/>
+        <line x1="40" y1="165" x2="30" y2="175"/>
+        <line x1="40" y1="185" x2="30" y2="195"/>
+      </g>
+      <rect x="52" y="186" width="50" height="12" fill="#ffffff" stroke="#0c0d0e" stroke-width="1.2"/>
+      <text x="77" y="214" text-anchor="middle" class="dg-muted dg-small">LOAD CELL</text>
+      <line x1="102" y1="192" x2="111" y2="192" stroke="#0c0d0e" stroke-width="1.2"/>
+      <line x1="40" y1="192" x2="16" y2="192" stroke="#0c0d0e" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="20" y="182">F</text>
+      <line x1="70" y1="140" x2="70" y2="192" stroke="#5e636e" stroke-width="1" marker-start="url(#arr)" marker-end="url(#arr)"/>
+      <text x="60" y="170">L</text>
+      <rect x="430" y="75" width="12" height="130" fill="#2d3139"/>
+      <text x="436" y="224" text-anchor="middle" class="dg-muted dg-small">BRAKE DISC</text>
+      <rect x="408" y="85" width="56" height="22" fill="#f3f1ea" stroke="#0c0d0e" stroke-width="1.2"/>
+      <text x="400" y="80" text-anchor="end" class="dg-muted dg-small">CALIPER</text>
+      <path d="M 100 248 A 40 40 0 0 0 170 248" fill="none" stroke="#0c0d0e" stroke-width="1.5" marker-end="url(#arr)"/>
+      <text x="135" y="288" text-anchor="middle">T = F &#215; L</text>
+    </svg>
+    <figcaption>FIG. 1 — REACTION-TORQUE MEASUREMENT &#183; THE STATOR PUSHES ON THE LOAD CELL; NO SLIP RINGS, NO TELEMETRY</figcaption>
+  </figure>
+
+  <h2>Honest enough to reproduce the datasheet</h2>
+
+  <p>
+    Built from FDM-printed parts, a hobby-grade strain gauge and an Arduino
+    Nano, the rig reproduced the motor's datasheet curve almost exactly
+    under the same reference conditions — the best evidence that the
+    measurement approach itself is sound. The brake caliper turned out to
+    be a fairly blunt instrument, closer to on/off than proportional —
+    arguably what you'd expect trying to modulate bicycle braking hardware
+    against a NEMA17's torque — but it was enough to deliver useful
+    preliminary results. Motorising the braking system, to run automated
+    sweeps across supply voltage, current and driver, is the planned next
+    step.
+  </p>
+
+  <h2>The region nobody tests</h2>
+
+  <p>
+    The real interest behind the rig is a gap most people don't test: how
+    small steppers behave at higher-than-normal supply voltages — a NEMA17
+    on a 72&nbsp;V rail, say. Steppers have a reputation for being a poor
+    choice at high speed and on efficiency, but the reputation softens
+    considerably in applications like small robotics, where low duty cycle
+    and low absolute power draw make a modest efficiency hit easy to live
+    with.
+  </p>
+  <p>
+    Driven by a good sine-wave driver, a stepper isn't so different in
+    principle from a very high pole-count BLDC or AC servo — and the
+    300&ndash;1000&nbsp;rpm region between the two motor types' classical
+    operating ranges is genuinely useful for robotics: low enough reduction
+    to keep efficiency high, backlash low and noise down, without needing a
+    direct-drive stepper large enough to deliver the torque outright. Almost
+    nobody runs small steppers up there — partly because low-current,
+    high-voltage drivers at that scale are hard to find, and the lack of
+    demand probably doesn't help supply. The rig exists to characterise that
+    region and find out whether there's a good reason nobody uses it, or
+    whether it has simply been overlooked.
+  </p>
+
+  <div class="card card--parchment case-facts">
+    <dl>
+      <dt>Product</dt><dd>Speed&#8211;torque characterisation rig</dd>
+      <dt>Sector</dt><dd>Test &amp; measurement</dd>
+      <dt>Disciplines</dt><dd>Mechanical, electronics, production</dd>
+      <dt>Status</dt><dd>Preliminary results; motorised sweeps next</dd>
+    </dl>
+  </div>
