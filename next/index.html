@@ -49,13 +49,13 @@ extra_css:
         <figure class="case-print hero-print">
           <span class="case-print__window">
             <img
-              src="images/examples/IMG_20231018_144233.jpg"
+              src="images/examples/IMG_20231018_144233-hero.jpg"
               alt="BikeStow CNC gantry assembly with vacuum clamp ring, linear rails and spindle drive on the workbench"
-              width="2730"
-              height="1536"
+              width="2045"
+              height="1150"
             >
           </span>
-          <span class="case-vis__caption">IMAGE &bull; REPLICA PARTS PROJECT</span>
+          <span class="case-vis__caption">ORIGINAL CAST-PART REPLICAS</span>
           <span class="case-pin case-pin--l" aria-hidden="true"></span>
           <span class="case-pin case-pin--r" aria-hidden="true"></span>
 
@@ -72,7 +72,7 @@ extra_css:
           <div>
             <span class="section__eyebrow">What we do</span>
             <h2 class="section__title">
-              Engineering that reaches the real world.
+              Engineering that reaches the real world
             </h2>
           </div>
           <!--<p class="section__desc">
@@ -171,7 +171,7 @@ extra_css:
           <div>
             <span class="section__eyebrow">Our Work</span>
             <h2 class="section__title">
-              From engineering decisions to working systems.
+              From engineering decisions to working systems
             </h2>
           </div>
         </div>
@@ -197,35 +197,9 @@ extra_css:
           {% assign cases = site.data.cases | sort %}
           {% for entry in cases %}
           {% assign case = entry[1] %}
-          <div class="card card--parchment case-card case-item">
-            <div>
-              <span class="case-client">{{ case.client }}</span>
-
-              <div class="case-vis case-vis--photo">
-                <figure class="case-print">
-                  <span class="case-print__window">
-                    <img src="{{ case.image }}" alt="{{ case.image_alt }}" loading="lazy">
-                  </span>
-                  <span class="case-vis__caption">{{ case.caption }}</span>
-                  <span class="case-pin case-pin--l" aria-hidden="true"></span>
-                  <span class="case-pin case-pin--r" aria-hidden="true"></span>
-                </figure>
-              </div>
-
-              <h3 class="case-title">{{ case.title }}</h3>
-              <p class="case-desc">
-                {{ case.description }}
-              </p>
-
-            </div>
-
-            <div class="case-footer">
-              <div class="case-tags">
-                {% for tag in case.tags %}<span class="case-tag">{{ tag }}</span> {% endfor %}
-              </div>
-              <span class="case-status">{{ case.status }} &rarr;</span>
-            </div>
-          </div>
+          {% assign type = case.type | default: 'case' %}
+          {% unless case.featured and type == 'case' %}{% continue %}{% endunless %}
+          {% include case-card.html case=case show_tags=true %}
           {% endfor %}
 
           </div>
@@ -234,14 +208,66 @@ extra_css:
       </div>
     </section>
 
+
+    <!-- SECTION 5: ABOUT -->
+    <section id="about" class="section section--parchment">
+      <div class="container">
+
+        <div class="about-intro">
+          <span class="section__eyebrow">Our team</span>
+          <h2 class="section__title">
+            Who we are
+          </h2>
+          <p>
+            A focused engineering company in Sheffield developing complex hardware, specialist equipment, and production systems. We build what we design, and we test what we build. Being small keeps decisions close to the hardware&mdash;and close to you.
+          </p>
+        </div>
+
+        <!-- 2-Column Balanced Team Profile Cards -->
+        <div class="about-grid">
+
+          <!-- Tom Green Profile Card -->
+          <div class="card card--parchment profile-card">
+            <h3 class="profile-name">Tom Green</h3>
+            <span class="profile-role">Co-Founder // Engineering</span>
+            <div class="profile-footer">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="profile-link">
+                LinkedIn &rarr;
+              </a>
+            </div>
+          </div>
+
+          <!-- Luke Foster Profile Card -->
+          <div class="card card--parchment profile-card">
+            <h3 class="profile-name">Luke Foster</h3>
+            <span class="profile-role">Co-Founder</span>
+            <div class="profile-footer">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="profile-link">
+                LinkedIn &rarr;
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="about-story">
+          <a href="/story/" class="btn btn--secondary">
+            View our story &rarr;
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+
     <!-- SECTION 4: APPROACH -->
-    <section id="approach" class="section section--parchment">
+    <section id="approach" class="section section--surface">
       <div class="container">
 
         <div class="approach-intro">
           <span class="section__eyebrow">Our approach</span>
           <h2 class="section__title">
-            Develop, build, prove.
+            How we work
           </h2>
           <p>
             We bring engineering decisions into contact with real parts and real tests early. That keeps the work practical, exposes problems while they are still fast to solve, and creates a dependable route to production.
@@ -319,56 +345,6 @@ extra_css:
             </div>
           </div>
 
-        </div>
-
-      </div>
-    </section>
-
-    <!-- SECTION 5: ABOUT -->
-    <section id="about" class="section section--surface">
-      <div class="container">
-
-        <div class="about-intro">
-          <span class="section__eyebrow">Our team</span>
-          <h2 class="section__title">
-            Who we are.
-          </h2>
-          <p>
-            A focused engineering company in Sheffield developing complex hardware, specialist equipment, and production systems. We build what we design, and we test what we build. Being small keeps decisions close to the hardware&mdash;and close to you.
-          </p>
-        </div>
-
-        <!-- 2-Column Balanced Team Profile Cards -->
-        <div class="about-grid">
-
-          <!-- Tom Green Profile Card -->
-          <div class="card card--parchment profile-card">
-            <h3 class="profile-name">Tom Green</h3>
-            <span class="profile-role">Co-Founder // Engineering</span>
-            <div class="profile-footer">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="profile-link">
-                LinkedIn &rarr;
-              </a>
-            </div>
-          </div>
-
-          <!-- Luke Foster Profile Card -->
-          <div class="card card--parchment profile-card">
-            <h3 class="profile-name">Luke Foster</h3>
-            <span class="profile-role">Co-Founder</span>
-            <div class="profile-footer">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="profile-link">
-                LinkedIn &rarr;
-              </a>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="about-story">
-          <a href="/story/" class="btn btn--secondary">
-            View our story &rarr;
-          </a>
         </div>
 
       </div>
@@ -468,6 +444,7 @@ extra_css:
                 <div class="form-footnote">
                   <span>&bull; Full NDA available prior to call</span>
                   <span>&bull; Confidential handling</span>
+                  <a href="/privacy/">&bull; How we handle your data</a>
                 </div>
               </form>
 

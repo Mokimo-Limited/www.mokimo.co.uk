@@ -1,0 +1,99 @@
+{% assign case = include.case %}
+{% assign type = case.type | default: 'case' %}
+
+{% if type == 'photo' %}
+  {% capture card_href %}{{ case.image }}{% endcapture %}
+  {% capture card_label %}View photo: {{ case.title }}{% endcapture %}
+  {% capture card_more %}View photo{% endcapture %}
+{% elsif type == 'article' %}
+  {% capture card_href %}/work/{{ case.slug }}/{% endcapture %}
+  {% capture card_label %}Read the full article: {{ case.title }}{% endcapture %}
+  {% capture card_more %}Read the article{% endcapture %}
+{% else %}
+  {% capture card_href %}/work/{{ case.slug }}/{% endcapture %}
+  {% capture card_label %}Read the full case study: {{ case.title }}{% endcapture %}
+  {% capture card_more %}Read case study{% endcapture %}
+{% endif %}
+
+{% if include.compact and type == 'photo' %}
+{% comment %} Solo print: pinned straight to the page — white postcard frame,
+   caption strip and pins, no wrapper card, title or link. {% endcomment %}
+<a class="case-print case-print--solo" href="{{ card_href }}" aria-label="{{ card_label }}">
+  <span class="case-print__window">
+    <img
+      src="{{ case.image }}"
+      alt="{{ case.image_alt }}"
+      loading="lazy"
+      style="object-position: {{ case.image_position | default: '50% 50%' }}; transform: scale({{ case.image_zoom | default: 1.43 }});"
+    >
+  </span>
+  <span class="case-vis__caption">{{ case.caption }}</span>
+  <span class="case-pin case-pin--l" aria-hidden="true"></span>
+  <span class="case-pin case-pin--r" aria-hidden="true"></span>
+</a>
+{% elsif include.compact %}
+{% comment %} Compact card (work hub): title + print + link. {% endcomment %}
+{% if case.slug %}<a class="card card--parchment case-card case-item" href="{{ card_href }}" aria-label="{{ card_label }}">{% else %}<div class="card card--parchment case-card case-item">{% endif %}
+  <div>
+    <h3 class="case-title">{{ case.title }}</h3>
+
+    <div class="case-vis case-vis--photo">
+      <figure class="case-print">
+        <span class="case-print__window">
+          <img
+            src="{{ case.image }}"
+            alt="{{ case.image_alt }}"
+            loading="lazy"
+            style="object-position: {{ case.image_position | default: '50% 50%' }}; transform: scale({{ case.image_zoom | default: 1.43 }});"
+          >
+        </span>
+        <span class="case-vis__caption">{{ case.caption }}</span>
+        <span class="case-pin case-pin--l" aria-hidden="true"></span>
+        <span class="case-pin case-pin--r" aria-hidden="true"></span>
+      </figure>
+    </div>
+  </div>
+
+  <div class="case-footer">
+    {% if case.slug %}<span class="case-more">{{ card_more }} &rarr;</span>{% endif %}
+  </div>
+{% if case.slug %}</a>{% else %}</div>{% endif %}
+{% else %}
+{% comment %} Full card (homepage carousel): kicker + print + title +
+   description + tags + link. {% endcomment %}
+{% if case.slug %}<a class="card card--parchment case-card case-item" href="{{ card_href }}" aria-label="{{ card_label }}">{% else %}<div class="card card--parchment case-card case-item">{% endif %}
+  <div>
+    <span class="case-client">{{ case.client }}</span>
+
+    <div class="case-vis case-vis--photo">
+      <figure class="case-print">
+        <span class="case-print__window">
+          <img
+            src="{{ case.image }}"
+            alt="{{ case.image_alt }}"
+            loading="lazy"
+            style="object-position: {{ case.image_position | default: '50% 50%' }}; transform: scale({{ case.image_zoom | default: 1.43 }});"
+          >
+        </span>
+        <span class="case-vis__caption">{{ case.caption }}</span>
+        <span class="case-pin case-pin--l" aria-hidden="true"></span>
+        <span class="case-pin case-pin--r" aria-hidden="true"></span>
+      </figure>
+    </div>
+
+    <h3 class="case-title">{{ case.title }}</h3>
+    <p class="case-desc">
+      {{ case.description }}
+    </p>
+  </div>
+
+  <div class="case-footer">
+    {% if include.show_tags %}
+    <div class="case-tags">
+      {% for tag in case.tags %}<span class="case-tag">{{ tag }}</span> {% endfor %}
+    </div>
+    {% endif %}
+    {% if case.slug %}<span class="case-more">{{ card_more }} &rarr;</span>{% endif %}
+  </div>
+{% if case.slug %}</a>{% else %}</div>{% endif %}
+{% endif %}

@@ -54,8 +54,16 @@
   aspect-ratio: 6 / 6;
 }
 .case-print.hero-print img {
-  transform: scale(1.1);
-
+  /* Zoom via layout size (a 110% box clipped by the window) rather than
+     transform: scale() — composited transform scaling resamples the
+     already-rasterized photo with bilinear filtering, which shimmers/
+     aliases on fine detail (the cutting-mat grid). Layout-size zoom keeps
+     the browser's high-quality image resampling. */
+  position: absolute;
+  inset: -5%;
+  width: 110%;
+  height: 110%;
+  transform: none;
   object-position: 30% 90%;
 }
 /* Opt the hero print out of the case-card hover bend; keep the resting
@@ -178,147 +186,9 @@
   grid-template-columns: 1fr;
   gap: 2rem;
 }
-.case-card {
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  /* Size-query container so the footer can react to the card's own width,
-     independent of viewport or how many cards the carousel shows. */
-  container-type: inline-size;
-}
-.case-client {
-  display: block;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.75rem;
-}
-.case-vis {
-  height: 17.25rem;
-  margin-bottom: 2rem;
-  border: 1px solid var(--border-dark);
-  background-color: var(--surface);
-  padding: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.case-vis svg { width: 100%; height: 100%; }
-/* Photo variant: the photo is presented as a printed postcard pinned to the
-   card — white paper frame with a typed caption strip and a soft paper
-   shadow. The hand-pinned tilt is rolled by scripts/home.js on every
-   carousel render (capped at ±1.2deg); no-JS fallback is a straight print. */
-.case-vis--photo { padding: 0; border: 0; background: none; }
-.case-print {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  /* No overflow clipping here: the pins must be able to overhang the paper
-     edge. The zoomed photo is clipped by its own .case-print__window. */
-  background-color: #fff;
-  border: 3px solid whitesmoke;
-  /* Extra bottom padding forms the white caption strip, like a photo label. */
-  padding: 0.45rem 0.45rem 1.9rem;
-  box-shadow:
-    0 1px 2px rgba(12, 13, 14, 0.2),
-    0 6px 14px rgba(12, 13, 14, 0.16);
-  /* The hover bend pivots around the pinned top edge. */
-  transform-origin: top center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-/* Clipping window for the zoomed photo, so the print itself can let the
-   pins (and their shadows) spill past the paper edge. */
-.case-print__window {
-  display: block;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
-/* Hover: the paper bends as if the bottom edge is lifted while the pinned
-   top stays put — rotateX around the top edge swings the bottom toward the
-   viewer. The JS-rolled tilt (rotate) composes with this transform. Fires
-   on the print itself, not the whole surrounding card. */
-@media (hover: hover) {
-  .case-print:hover {
-    transform: perspective(600px) rotateX(1deg);
-    box-shadow:
-      0 1px 2px rgba(12, 13, 14, 0.2),
-      0 14px 22px rgba(12, 13, 14, 0.2);
-  }
-}
-.case-print img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: scale(1.43);
-  transform-origin: center;
-}
-/* Drawing pins: hard black and white, one through each top corner of the
-   print. The head is a small SVG (inlined as a data URI so the template
-   stays clean): flat ink-black head, a crisp white highlight, and a hard
-   white crescent along the bottom edge — graphic, no soft gradients, to
-   match the site's brutalist print styling. */
-.case-pin {
-  position: absolute;
-  /*top: 0rem;*/
-  width: 1.3rem;
-  height: 1.3rem;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%230c0d0e'/%3E%3Ccircle cx='16' cy='15.4' r='12.8' fill='%23fff'/%3E%3Ccircle cx='16' cy='14.2' r='12.8' fill='%230c0d0e'/%3E%3Cellipse cx='11.5' cy='10.5' rx='4.2' ry='2.6' fill='%23fff' transform='rotate(-24 11.5 10.5)'/%3E%3C/svg%3E") center / contain no-repeat;
-  filter: drop-shadow(0 2px 2px rgba(12, 13, 14, 0.45));
-}
-.case-pin--l { top: 0rem; left: -0.35rem; }
-.case-pin--r { top: 0rem; right: -0.35rem; }
-.case-pin--bl { bottom: 0rem; left: -0.35rem; }
-.case-pin--br { bottom: 0rem; right: -0.35rem; }
-
-/* Hand-pinned randomness: the jitter and 3D tilt are applied per pin by
-   scripts/home.js each time the carousel renders, so the pins are re-set
-   with fresh (continuous, not palette-based) randomness on every step.
-   No-JS fallback: pins sit straight. */
-.case-vis__caption {
-  position: absolute;
-  /* Sits in the print's white bottom strip (see .case-print padding). */
-  bottom: 0.4rem;
-  left: 0.65rem;
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  letter-spacing: 0.06em;
-  color: var(--muted);
-}
-.case-title { font-size: 1.5rem; margin-bottom: 0.5rem; }
-.case-desc { font-size: 0.875rem; line-height: 1.6; margin-bottom: 1.5rem; }
-.case-footer {
-  padding-top: 1rem;
-  border-top: 1px solid var(--border-subtle);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0.75rem;
-}
-.case-tags {
-  display: flex;
-  gap: 0.5rem;
-  font-family: var(--font-mono);
-  font-size: 0.625rem;
-  text-transform: uppercase;
-  font-weight: 700;
-  color: var(--muted);
-}
-.case-tag {
-  background-color: var(--surface);
-  border: 1px solid var(--border-dark);
-  padding: 0.125rem 0.5rem;
-}
-.case-status { font-family: var(--font-mono); font-size: 0.75rem; font-weight: 700; }
-/* Not enough room for tags + status on one line? Drop the status rather
-   than letting it wrap below the tags and eat vertical space. 430px covers
-   the widest tag set plus the longest status string. */
-@container (max-width: 430px) {
-  .case-status { display: none; }
-}
+/* The case-card component itself (card, print, tags, footer, whole-card
+   link) lives in core.css — shared with the work hub. What follows is
+   carousel-only. */
 
 /* Mechanical step: the frame lurches in the travel direction (with a
    slight ratchet tilt), holds while the cards swap (see the JS timer),
