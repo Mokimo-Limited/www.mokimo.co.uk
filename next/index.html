@@ -219,12 +219,20 @@ extra_css:
             Who we are
           </h2>
           <p>
-            A focused engineering company in Sheffield developing complex hardware, specialist equipment, and production systems. We build what we design, and we test what we build. Being small keeps decisions close to the hardware&mdash;and close to you.
+            A Sheffield-based engineering company developing complex hardware, specialist equipment, and production systems. We build what we design, and we test what we build. Being small keeps decisions close to the hardware, and close to you.
           </p>
         </div>
 
-        <!-- 2-Column Balanced Team Profile Cards -->
+        <!-- Story + team row: the /story/ page keeps a permanent, equal-height
+             slot leading the row, with the profile cards narrowed alongside. -->
         <div class="about-grid">
+
+          <!-- Our story tile (the whole card links to /story/) -->
+          <a href="/story/" class="card card--parchment story-card">
+            <span class="story-card__eyebrow">Our story</span>
+            <span class="story-card__title">It started with a notebook.</span>
+            <span class="story-card__cta">View our story &rarr;</span>
+          </a>
 
           <!-- Tom Green Profile Card -->
           <div class="card card--parchment profile-card">
@@ -249,13 +257,6 @@ extra_css:
           </div>
 
         </div>
-
-        <div class="about-story">
-          <a href="/story/" class="btn btn--secondary">
-            View our story &rarr;
-          </a>
-        </div>
-
       </div>
     </section>
 
@@ -281,12 +282,12 @@ extra_css:
           <div class="card step-card">
             <div>
               <div class="step-header">
-                <span>Phase 01</span>
+                <!--<span>Phase 01</span>-->
                 <span>Scope</span>
               </div>
               <h3 class="step-title">Requirements &amp; Architecture</h3>
               <p class="step-desc">
-                We learn the operating system: current tech, usage conditions, and failures. We agree on unambiguous deliverables and measurable success criteria.
+                We work to understand your project: current tech, usage conditions, and challenges. We agree on deliverables, scope, and what defines success - and a strategy to work with, not against, your team.
               </p>
             </div>
             <div class="step-output">
@@ -298,12 +299,12 @@ extra_css:
           <div class="card step-card">
             <div>
               <div class="step-header">
-                <span>Phase 02</span>
+                <!--<span>Phase 02</span>-->
                 <span>Detail</span>
               </div>
               <h3 class="step-title">Cross-Discipline Design</h3>
               <p class="step-desc">
-                Mechanics, electronics, and software are engineered together around the behavior of the complete system, preventing integration traps.
+                Mechanics, electronics, and software are engineered together around the behavior of the complete system, preventing integration traps. We maintain regular communication, keeping us on track and adapting to changing knowledge and needs.
               </p>
             </div>
             <div class="step-output">
@@ -315,12 +316,12 @@ extra_css:
           <div class="card step-card">
             <div>
               <div class="step-header">
-                <span>Phase 03</span>
-                <span>Build</span>
+                <!--<span>Phase 03</span>-->
+                <span>Prototype</span>
               </div>
-              <h3 class="step-title">Fabrication &amp; Assembly</h3>
+              <h3 class="step-title">Build, Test &amp; Iterate</h3>
               <p class="step-desc">
-                Parts are machined, 3D-printed, sourced, and bench-assembled using specialist partners where required. Every incoming part is inspected by the engineer who specified it.
+              	We use a mix of prototype and production processes to create parts, assemble units and test every part together. Adjustments are made, designs are refined, and better iterations are built until everything works smoothly.
               </p>
             </div>
             <div class="step-output">
@@ -332,16 +333,17 @@ extra_css:
           <div class="card step-card">
             <div>
               <div class="step-header">
-                <span>Phase 04</span>
+                <!--<span>Phase 04</span>-->
                 <span>Prove</span>
               </div>
               <h3 class="step-title">Test &amp; Handover</h3>
               <p class="step-desc">
-                Verification against agreed metrics, plus the complete design packages, operating documentation, and manufacturing drawings needed for the next stage.
+                We verify device performance against the agreed requirements, regulations and standards.
+                We produce complete design packages, operating documentation and production drawings, and support you through scale-up to production.
               </p>
             </div>
             <div class="step-output">
-              &rarr; VALIDATED EVIDENCE &amp; REPO
+              &rarr; DESIGN DOCUMENTATION &AMP; SUPPLIERS
             </div>
           </div>
 

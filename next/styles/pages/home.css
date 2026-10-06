@@ -249,7 +249,57 @@
 /* --- 5. About Foundry --- */
 .about-intro { max-width: 42rem; margin-bottom: 3rem; }
 .about-intro p { font-size: 1rem; line-height: 1.6; margin-top: 1rem; }
+/* Team row: story tile first, then the profile cards. Grid stretch keeps
+   every cell the same height; the profile cards are deliberately narrow so
+   the story page keeps the visual weight (story | Tom | Luke). */
 .about-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+/* Story tile: the whole card is the link to /story/. Same parchment card as
+   the profile cards — its larger footprint is what sets it apart. Hover
+   presses the card into its shadow, matching the .btn press-in treatment. */
+.story-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+/* Press-in mirrors .btn:hover/:active — translate toward the shadow and
+   collapse it. :active covers touch feedback; hover-only styles stay gated
+   behind (hover: hover). */
+.story-card:active { transform: translate(2px, 2px); box-shadow: none; }
+@media (hover: hover) {
+  .story-card:hover { transform: translate(2px, 2px); box-shadow: none; }
+}
+.story-card__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-weight: 700;
+}
+.story-card__title { font-size: 1.5rem; font-weight: 700; line-height: 1.15; margin-top: 0.5rem; }
+.story-card__cta {
+  align-self: stretch;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+@media (hover: hover) {
+  .story-card:hover .story-card__cta { text-decoration: underline; }
+}
+a.story-card:focus-visible {
+  outline: 2px solid var(--border-dark);
+  outline-offset: 3px;
+}
+/* Card--interactive's lift is intentionally not used here: the press-in
+   above replaces it, so the tile behaves like a button, not a hoverable card. */
 .profile-card {
   padding: 1.5rem;
   display: flex;
@@ -278,7 +328,6 @@
 }
 .profile-link { font-weight: 700; }
 .profile-link:hover { text-decoration: underline; }
-.about-story { margin-top: 2.5rem; }
 
 /* --- 6. Contact & Project Scoping Brief --- */
 .contact-panel {
@@ -441,7 +490,7 @@
 
 /* --- 7. Responsive Layout Breakpoints --- */
 @media (min-width: 640px) {
-  .pillar-card, .case-card, .profile-card, .contact-form-card { padding: 2rem; }
+  .pillar-card, .case-card, .profile-card, .story-card, .contact-form-card { padding: 2rem; }
   .contact-panel { padding: 3rem; }
   .approach-grid { grid-template-columns: repeat(2, 1fr); }
   .form-row { grid-template-columns: 1fr 1fr; }
@@ -449,7 +498,8 @@
 
 @media (min-width: 768px) {
   .pillars-grid { grid-template-columns: repeat(3, 1fr); }
-  .case-grid, .about-grid { grid-template-columns: repeat(2, 1fr); }
+  .case-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1.5fr 1fr 1fr; }
   .case-nav { width: 3.25rem; height: 4.5rem; }
 }
 
@@ -457,4 +507,5 @@
   .hero-grid { grid-template-columns: 7fr 5fr; gap: 2rem; }
   .approach-grid { grid-template-columns: repeat(4, 1fr); }
   .contact-grid { grid-template-columns: 5fr 7fr; }
+  .about-grid { grid-template-columns: 2fr 1fr 1fr; }
 }
