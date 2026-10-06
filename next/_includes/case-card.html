@@ -16,8 +16,11 @@
 {% endif %}
 
 {% if include.compact and type == 'photo' %}
-{% comment %} Solo print: pinned straight to the page — white postcard frame,
-   caption strip and pins, no wrapper card, title or link. {% endcomment %}
+{% comment %} Solo print: pinned straight to the page — white postcard frame
+   and caption strip, no wrapper card, title, link or pushpins.
+   (Pins are omitted: bare photo cards read cleaner without them.)
+   The anchor targets the raw .jpg as a no-JS fallback; on the work hub
+   scripts/work.js upgrades the click to an in-page lightbox viewer. {% endcomment %}
 <a class="case-print case-print--solo" href="{{ card_href }}" aria-label="{{ card_label }}">
   <span class="case-print__window">
     <img
@@ -28,8 +31,6 @@
     >
   </span>
   <span class="case-vis__caption">{{ case.caption }}</span>
-  <span class="case-pin case-pin--l" aria-hidden="true"></span>
-  <span class="case-pin case-pin--r" aria-hidden="true"></span>
 </a>
 {% elsif include.compact %}
 {% comment %} Compact card (work hub): title + print + link. {% endcomment %}
