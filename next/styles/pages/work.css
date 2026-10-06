@@ -83,3 +83,74 @@
 @media (min-width: 1024px) {
   .work-grid { grid-template-columns: 1fr 1fr 1fr; }
 }
+
+/* --- 4. Photo lightbox --- */
+/* Solo prints are real anchors to the raw .jpg (no-JS fallback); work.js
+   swaps their default for this in-page viewer. The frame reuses the shared
+   postcard classes (.case-print) at viewer size, so the overrides below
+   undo the card-specific sizing/cropping from core.css. */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+.lightbox[hidden] { display: none; }
+.lightbox:not([hidden]) { animation: lightbox-in 0.15s ease; }
+@keyframes lightbox-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lightbox:not([hidden]) { animation: none; }
+}
+.lightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(12, 13, 14, 0.82);
+}
+.lightbox__frame {
+  position: relative;
+  z-index: 1;
+  width: auto;
+  height: auto;
+  max-width: min(72rem, 92vw);
+}
+.lightbox__frame .case-print__window {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* Show the whole photo (contain, no card crop): the 1.43 zoom and cover
+   fit exist for the small grid frame, not the viewer. */
+.lightbox__frame .case-print__window img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: calc(88vh - 4rem);
+  object-fit: contain;
+  transform: none;
+}
+/* The viewer must not inherit the postcard's paper-bend hover. */
+.lightbox__frame.case-print:hover {
+  transform: none;
+  box-shadow:
+    0 1px 2px rgba(12, 13, 14, 0.2),
+    0 6px 14px rgba(12, 13, 14, 0.16);
+}
+/* Close button overhangs the frame's top-right corner, like a badge —
+   the overlay's 2rem padding keeps the overhang on-screen. */
+.lightbox__close {
+  position: absolute;
+  top: -1rem;
+  right: -1rem;
+  z-index: 2;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+}
