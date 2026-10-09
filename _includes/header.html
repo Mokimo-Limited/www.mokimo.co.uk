@@ -1,19 +1,27 @@
-  <header class="site-header" role="banner">
-    <div class="wordmark-group">
-      <a href="/" class="wordmark">mokimo</a>
-      <span class="wordmark-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none">
-          <path d="M12 2.5c5.2 0 9.5 4.3 9.5 9.5s-4.3 9.5-9.5 9.5S2.5 17.2 2.5 12" stroke="currentColor" stroke-width="0.8" stroke-linecap="round"/>
-        </svg>
-      </span>
+  <header class="site-header">
+    <div class="site-header__inner container">
+
+      <!-- Brand Logo -->
+      <a href="/" class="brand">
+        <span class="brand__dot"></span>
+        <span class="brand__name">mokimo</span>
+        <span class="brand__location">Sheffield, UK</span>
+      </a>
+
+      <!-- Navigation links -->
+      <nav class="site-nav" aria-label="Primary navigation">
+        <a href="/#about">About</a>
+        <a href="/#approach">Approach</a>
+        <a href="/#services">Services</a>
+        <a href="/work/">Selected Work</a>
+        <a href="/contact/">Contact</a>
+      </nav>
+
+      <!-- Action Controls -->
+      <div class="site-header__actions">
+        <a href="/contact/" class="btn btn--primary btn--sm">
+          Discuss a project
+        </a>
+      </div>
     </div>
-    <nav aria-label="Primary navigation">
-      <ul class="site-nav" role="list">
-        <li><a href="/about/"{% if page.nav == "about" %} aria-current="page"{% endif %}>About</a></li>
-        <li><a href="/approach/"{% if page.nav == "approach" %} aria-current="page"{% endif %}>Approach</a></li>
-        <li><a href="/services/"{% if page.nav == "services" %} aria-current="page"{% endif %}>Services</a></li>
-        <li><a href="/examples/"{% if page.nav == "examples" %} aria-current="page"{% endif %}>Examples</a></li>
-        <li><a href="/contact/"{% if page.nav == "contact" %} aria-current="page"{% endif %}>Contact</a></li>
-      </ul>
-    </nav>
   </header>

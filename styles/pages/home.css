@@ -1,843 +1,511 @@
-/* === Home page === */
+/* === Mokimo — Homepage Styles (styles/pages/home.css) ===
+   Homepage-only sections: hero, capabilities, case evidence, approach,
+   profile, and the interactive scoping brief form. Shared scaffolding
+   (sections, buttons, badges, cards) lives in core.css. */
 
-/* Page container (homepage's counterpart to .page-content on inner pages) */
-.content {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 var(--side-padding);
-}
-
-.home-page [id] {
-  scroll-margin-top: 6rem;
-}
-
-.home-page main section {
-  padding-top: var(--space-xl);
-  padding-bottom: var(--space-xl);
-}
-
-/* --- Hero --- */
-
-.hero {
-  min-height: 70vh;
-  padding-top: calc(var(--space-2xl) + 3.5rem);
-  padding-bottom: var(--space-2xl);
+/* --- 1. Hero Section --- */
+.hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(300px, 0.85fr);
-  align-items: center;
-  gap: clamp(2.5rem, 6vw, 5rem);
-}
-
-.hero-title {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 6.2vw, 5.25rem);
-  font-weight: 500;
-  line-height: 1.04;
-  letter-spacing: -0.015em;
-  color: var(--color-text);
-  margin-bottom: var(--space-md);
-}
-
-.hero-subtitle {
-  max-width: 560px;
-  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
-  font-weight: 400;
-  line-height: 1.65;
-  color: var(--color-text-muted);
-}
-
-/* Hero figure builds on the shared .fig component (core.css); portrait crop.
-   Source is a wide flat-lay of machined parts, so the crop takes a vertical
-   slice down the right-hand side: brass lead nuts, the three threaded rods and
-   the linear rail.
-
-   Framing: object-position picks which part of the source stays in frame. The
-   source is far wider than the frame, so only ~45% of its width is visible, and
-   object-position slides that window across the full width (0% = far left,
-   100% = far right). Zoom: the figure clips and the img is scaled up inside it;
-   raise the scale to push in further. The figcaption is lifted above the scaled
-   img so the crop stops cleanly at the caption. */
-.hero-evidence {
-  overflow: hidden;
-}
-
-.hero-evidence img {
-  aspect-ratio: 4 / 5;
-  /*object-position: 66% 20%;*/
-  /*transform: scale(1.05);*/
-  /*filter: g;*/
-  mask-image: linear-gradient(100deg, transparent 8%, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.15) 50%,  rgba(0,0,0,0.4) 60%,  black 70%, black 95%, transparent 100%) /* linear-gradient(180deg, transparent 0%, black 10%, black 90%, transparent 100%) */;
-  transform-origin: 50% 50%;
-}
-
-.hero-evidence figcaption {
-  position: relative;
-  background-color: var(--color-base);
-}
-
-/* --- Section intros --- */
-
-.section-intro {
-  margin-bottom: var(--space-lg);
-}
-
-.section-intro h2 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4.4vw, 3.1rem);
-  font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.012em;
-  color: var(--color-text);
-}
-
-/* The accent-serif treatment is defined in core.css (shared with the about
-   page); the dark bands below re-set its colour. */
-
-.section-intro > p,
-.system-copy p,
-.delivery-model-copy p,
-.approach-contact {
-  max-width: 62ch;
-  margin-top: 0.9rem;
-  color: var(--color-text-muted);
-}
-
-.system-copy p + p,
-.delivery-model-copy p + p {
-  margin-top: var(--space-sm);
-}
-
-/* --- Delivery model: copy laid over a faded drawing ---
-
-   The scan floats behind the copy with no visible boundary: masks dissolve
-   every edge (diagonal fade clearing the copy, vertical fade softening top
-   and bottom), multiply drops the paper-white into the page ground, and a
-   brightness boost pushes the photo's paper to white first so only linework
-   and highlighter marks survive. A slight tilt keeps it feeling like a sheet
-   on a desk rather than a banner. The art is absolutely positioned, so the
-   panel's height comes from the copy alone, whatever the source image's size.
-
-   The panel bleeds past the text column (margin-right) so the linework
-   escapes the content grid; its own edge stays invisible because the mask
-   fades to transparent before it.
-
-   Knobs:
-   - mask stops      where each fade starts/ends (the middle diagonal stop
-                     keeps a little texture behind the text)
-   - opacity         overall strength of the linework
-   - brightness      how fully the paper disappears under multiply
-   - rotate/scale    tilt of the sheet; scale must cover the rotated corners
-   - object-position which part of the source stays in frame (the current scan
-                     is rotated ~40°, so a low-centre band shows the densest
-                     dimension stack; straighten for an upright reshoot)
-   - mobile: the drawing becomes a strip below the copy; the intro's bottom
-     padding reserves the strip and the mask fades the scan's top edge */
-.delivery-model-panel {
-  position: relative;
-  isolation: isolate; /* keep the multiply blend inside the panel */
-  overflow: hidden;
-  background-color: var(--color-base);
-  margin-right: calc(-1 * var(--side-padding));
-}
-
-.delivery-model-art {
-  position: absolute;
-  inset: 0% 0%;
-  z-index: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: 50% 80%;
-  opacity: 0.55;
-  /*filter: brightness(1.12) contrast(1.05);*/
-  mix-blend-mode: multiply;
-  /*transform: rotate(5deg) scale(1);*/
-  /*-webkit-mask-image: linear-gradient(100deg, transparent 8%, rgba(0, 0, 0, 0.4) 38%, black 68%, black 86%, transparent 100%), linear-gradient(180deg, transparent 0%, black 20%, black 84%, transparent 100%);*/
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(100deg, transparent 8%, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.15) 50%,  rgba(0,0,0,0.4) 60%,  black 70%, black 95%, transparent 100%) /* linear-gradient(180deg, transparent 0%, black 10%, black 90%, transparent 100%) */;
-  mask-composite: intersect;
-}
-
-.delivery-model-intro {
-  position: relative;
-  z-index: 1;
-  max-width: 58%;
-  margin-bottom: 0;
-  /* Left padding is zeroed so the heading sits inline with the other
-     sections' headings; the mask keeps that area of the drawing clear. */
-  padding: clamp(2rem, 5vw, 4rem);
-  padding-left: 0;
-}
-
-/* The kicker catches the generic .section-intro > p styling (which out-ranks
-   a single class); re-set it as a small mono label in the accent. */
-.section-intro .delivery-model-kicker {
-  margin-top: 0;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--color-accent-deep);
-}
-
-/* Sit closer to the approach section above: the uniform section spacing was
-   adding to the page's list-like rhythm. */
-.home-page .delivery-model {
-  padding-top: var(--space-md);
-}
-
-.delivery-model-intro h2 {
-  margin-top: 0.7rem;
-}
-
-@media (max-width: 880px) {
-  /* Copy over the full panel width; the mask stays on so the text still sits
-     on the quieter left of the drawing. */
-  .delivery-model-intro {
-    max-width: none;
-  }
-}
-
-@media (max-width: 640px) {
-  /* Stack: copy above, drawing as a faded strip below it. */
-  .delivery-model-intro {
-    padding: 2rem 1.5rem 15rem 0; /* knob: bottom padding reserves the strip */
-  }
-
-  .delivery-model-art {
-    inset: auto 0 0 0;
-    height: 14rem; /* knob: strip height */
-    object-position: 60% 25%;
-    -webkit-mask-image: linear-gradient(180deg, transparent 0%, black 55%);
-    mask-image: linear-gradient(180deg, transparent 0%, black 55%);
-  }
-}
-
-/* --- Outcomes --- */
-
-.outcomes,
-.philosophy,
-.services {
-  border-top: 1px solid var(--color-sand-light);
-}
-
-.outcome-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  /*border-top: 1px solid var(--color-sand);*/
-  /*border-bottom: 1px solid var(--color-sand);*/
-}
-
-.outcome-card {
-  padding: var(--space-md) var(--space-md) var(--space-lg);
-}
-
-.outcome-card + .outcome-card {
-  border-left: 1px solid var(--color-sand);
-}
-
-.outcome-number {
-  margin-bottom: -1.6rem;
-  font-family: var(--font-mono);
-  font-size: clamp(3.5rem, 5vw, 4.75rem);
-  font-weight: 500;
-  line-height: 1;
-  color: var(--color-sand);
-}
-
-.outcome-card h3 {
-  position: relative;
-  margin-bottom: 0.65rem;
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-.outcome-card > p:last-child {
-  position: relative;
-  font-size: 0.94rem;
-  line-height: 1.65;
-  color: var(--color-text-muted);
-}
-
-/* --- Approach / delivery flow --- */
-
-/* Two columns: the flow cards stack down the left, the intro copy and
-   learn-more link stack down the right. The copy stays first in the DOM so
-   the heading is read before the cards; grid placement puts it on the right. */
-.philosophy {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  column-gap: clamp(2.5rem, 6vw, 5rem);
-  align-items: center; /* knob: centre the copy against the flow cards */
-  text-align: left;
-
-}
-
-.philosophy-copy {
-  grid-column: 2;
-  grid-row: 1;
-}
-
-.philosophy .delivery-flow {
-  grid-column: 1;
-  grid-row: 1;
-}
-
-.delivery-flow {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  row-gap: 2.5rem; /* knob: height of gap chevrons sit in */
-  list-style: none;
-}
-
-.delivery-flow li {
-  position: relative;
-  min-width: 0;
-  padding: 1.4rem 1.5rem 1.5rem; /* knob: card padding */
-  background-color: var(--color-base);
-  border: 1px solid var(--color-sand);
-  /*border-radius: 0.4rem; /* knob: card corner radius */
-}
-
-.delivery-flow li:not(:last-child)::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: calc(100% + 2.5rem / 2);
-  transform: translate(-50%, -50%); /* knob: vertical-centre chevron in row gap */
-  width: 2.2rem; /* knob: chevron size/aspect */
-  height: 1.1rem;
-  background-color: var(--color-accent);
-  -webkit-mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3.5l8 6 8-6"/><path d="M4 9.5l8 6 8-6"/></svg>') center / contain no-repeat;
-  mask: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3.5l8 6 8-6"/><path d="M4 9.5l8 6 8-6"/></svg>') center / contain no-repeat;
-}
-
-.philosophy .section-intro {
-  margin-bottom: var(--space-md); /* knob: gap between intro and learn-more link */
-}
-
-.delivery-flow strong {
-  display: block;
-  margin-bottom: 0.55rem;
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  font-weight: 600;
-}
-
-.delivery-flow p {
-  font-size: 0.92rem;
-  line-height: 1.65;
-  color: var(--color-text-muted);
-}
-
-
-.services-more {
-  margin-top: var(--space-md);
-}
-
-.approach-more {
-  margin-top: var(--space-md);
-  /*text-align: left; /* knob: align learn-more link with the intro copy */
-}
-
-.approach-contact {
-  margin-top: var(--space-sm); /* knob: gap under learn-more link */
-}
-
-/* --- Services: maxim quote, left of the intro copy ---
-   Mirrors .philosophy: the heading and copy sit in the right column so the
-   heading reads right-aligned like "Developing solutions", with the quote
-   in the left column. The copy stays first in the DOM. */
-
-.services {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
-  column-gap: clamp(2.5rem, 6vw, 5rem);
+  grid-template-columns: 1fr;
+  gap: 3rem;
   align-items: center;
 }
-
-.services .section-intro {
-  grid-column: 2;
-  grid-row: 1;
-  margin-bottom: 0; /* keep the copy vertically centred against the quote */
-}
-
-.services-quote {
-  position: relative;
-  isolation: isolate; /* keep the multiply blend self-contained, like .delivery-model-panel */
-  display: grid;
-  align-content: center; /* keep the quote centred within the stretched figure */
-  align-self: stretch; /* fill the row height so the art covers the whole column */
-  grid-column: 1;
-  grid-row: 1;
-  padding: var(--space-md) 0;
-  background-color: var(--color-base);
-}
-
-/* Handwritten derivation behind the quote, faded like the delivery-model
-   drawing: multiply drops the paper into the page ground, brightness lifts
-   the grid lines away, and masks dissolve every edge. */
-.services-quote-art {
-  position: absolute;
-  inset: 0%;
-  z-index: -1;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transform: rotate(-1.5deg);
-  object-position: 20% 20%; /* knob: which part of the sketch stays in frame (the vector diagram, left of the scan) */
-  opacity: 0.55; /* knob: overall strength — heavier fade than the delivery-model art */
-  filter: brightness(1.15);
-  filter:  grayscale(); /* knob: pushes the grid paper toward white under multiply */
-  mix-blend-mode: multiply;
-  -webkit-mask-image: linear-gradient(100deg, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(180deg, transparent 0%, black 25%, black 78%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-image: linear-gradient(100deg, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(180deg, transparent 0%, black 25%, black 78%, transparent 100%);
-  mask-composite: intersect;
-}
-
-.services-quote blockquote {
-  padding-left: 1.4rem; /* knob: gap between rule and quote */
-  border-left: 2px solid var(--color-accent);
-}
-
-.services-quote blockquote p {
-  font-family: var(--font-display);
-  font-size: clamp(1.5rem, 2.6vw, 2.1rem);
-  font-weight: 500;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  color: var(--color-accent-deep);
-}
-
-.services-quote-cite {
-  padding-left: 1.4rem; /* align with the quote text inside the rule */
-  margin-top: 0.9rem;
-  font-family: var(--font-heading);
-  font-size: 0.8rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
-  color: var(--color-warm-brown);
-}
-
-@media (max-width: 880px) {
-  .services {
-    grid-template-columns: minmax(0, 1fr);
-    row-gap: var(--space-md);
-  }
-
-  .services .section-intro {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .services-quote {
-    grid-column: 1;
-    grid-row: auto;
-    margin-top: var(--space-sm);
-  }
-}
-
-
-/* --- Proof band (selected projects, full-bleed) ---
-
-   Mid-tone ground with a single slanted top edge — the blue band's slope
-   mirrored and applied to the top only. The clip sits on the grid itself, so
-   the slope cuts through the intro cell AND the images: grey text and photos
-   form one contiguous slanted shape with no band colour above the tiles. The
-   drop-shadow stays on the section (a clip-path on the same element would
-   clip its own shadow away — see .outcomes). Knobs: band colour, slope depth
-   (36px desktop / 16px mobile, mirroring .outcomes), band height via the
-   grid's min-height, hairline alpha. */
-.proof-band {
-  position: relative;
-  z-index: 1;
-  filter: drop-shadow(0 -6px 12px rgba(0, 0, 0, 0.15));
-}
-
-/* Outrank the generic .home-page main section paddings: a shallow gap above
-   (the slant is the band's top edge) and none below (the tiles end the
-   section). */
-.home-page .proof-band {
-  padding-top: var(--space-md);
-  padding-bottom: 0;
-}
-
-.proof-band .section-intro {
-  margin-bottom: 0;
-}
-
-.proof-band .section-intro h2 {
-  color: var(--color-base);
-  /* Slightly smaller than the standalone intros: the heading now shares a row
-     with the tiles, so it must fit the first cell without stretching the band. */
-  font-size: clamp(1.7rem, 2.8vw, 3.1rem);
-}
-
-.proof-band .section-intro h2 .accent-serif {
-  color: var(--color-sand);
-}
-
-.proof-band .section-intro > p {
-  color: rgba(250, 250, 249, 0.82);
-}
-
-.proof-band-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  /* Floor for the image row: the panes' images are absolutely positioned (see
-     .proof-tile img) so they contribute nothing to row sizing — the row is
-     driven by the text cell, floored by this. Knob: raise/lower for a
-     taller/shorter band. */
-  min-height: clamp(300px, 26vw, 460px);
-  background-color: var(--color-warm-brown);
-  clip-path: polygon(0 0, 100% 36px, 100% 100%, 0 100%);
-}
-
-/* Image panes: each pane pairs its two projects side by side. Tiles fill
-   their track and crop; the row height comes from the text cell and the
-   grid's min-height. */
-.proof-pane {
-  display: grid;
-  min-height: 0;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-/* Hairline between each pane's pair of images */
-.proof-pane .proof-tile:first-child {
-  border-right: 1px solid rgba(250, 250, 249, 0.35);
-}
-
-.proof-band-intro {
-  /* Stretch + centered: the copy sits at the vertical middle of the tile row.
-     The intro is the middle column, so it carries the hairline on both edges
-     (the tiles are no longer adjacent siblings). */
-  align-self: stretch;
+.hero-copy {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: var(--space-md);
-  border-left: 1px solid rgba(250, 250, 249, 0.35);
-  border-right: 1px solid rgba(250, 250, 249, 0.35);
+  align-items: flex-start;
+}
+.hero-copy .badge { margin-bottom: 1.5rem; }
+.hero-title {
+  font-size: clamp(2.25rem, 6vw, 4.5rem);
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+.hero-subtitle {
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  line-height: 1.6;
+  max-width: 42rem;
+  margin-bottom: 2rem;
+}
+.hero-actions { display: flex; flex-wrap: wrap; gap: 1rem; }
+.hero-bullets {
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
 }
 
-.proof-tile {
-  position: relative;
-  display: block;
-  color: inherit;
-  text-decoration: none;
+/* Hero lead photo: the case-card postcard treatment (white paper, typed
+   caption strip, drawing pins) reused via the .case-print classes, at full
+   hero-column scale. Deliberately straight — no JS tilt scatter and no
+   hover bend — and without the case cards' 1.43 zoom.
+   The box is layout-defined: the figure's 6:5 aspect (border-box, strip
+   included) fixes the footprint from the column width alone, so candidate
+   images can be swapped in freely — any intrinsic size/aspect fills the
+   same box via object-fit and cannot shift the layout. */
+.case-print.hero-print {
+  height: auto;
+  aspect-ratio: 6 / 6;
 }
-
-.proof-tile img {
-  /* Absolutely positioned, so the photos never drive the band's height (their
-     natural sizes are far larger than the band should ever be) — the row is
-     sized by the text cell and the grid's min-height, and the images fill
-     whatever tile they're given. */
+.case-print.hero-print img {
+  /* Zoom via layout size (a 110% box clipped by the window) rather than
+     transform: scale() — composited transform scaling resamples the
+     already-rasterized photo with bilinear filtering, which shimmers/
+     aliases on fine detail (the cutting-mat grid). Layout-size zoom keeps
+     the browser's high-quality image resampling. */
   position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: saturate(0.82);
-  transition: filter 0.3s ease;
+  inset: -5%;
+  width: 110%;
+  height: 110%;
+  transform: none;
+  object-position: 30% 90%;
+}
+/* Opt the hero print out of the case-card hover bend; keep the resting
+   shadow (same values as .case-print) so nothing lifts on hover. */
+.case-print.hero-print:hover {
+  transform: none;
+  box-shadow:
+    0 1px 2px rgba(12, 13, 14, 0.2),
+    0 6px 14px rgba(12, 13, 14, 0.16);
 }
 
-.proof-tile:hover img,
-.proof-tile:focus-visible img {
-  filter: saturate(1);
-}
-
-.proof-tile-label {
-  position: absolute;
-  inset: auto 0 0 0;
-  padding: 3rem var(--space-md) var(--space-md);
-  background: linear-gradient(rgba(24, 27, 31, 0) 0%, rgba(24, 27, 31, 0.72) 100%);
-  font-family: var(--font-heading);
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--color-base);
-  pointer-events: none;
-}
-
-.proof-tile-label span {
-  display: block;
-  margin-bottom: 0.35rem;
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-sand);
-}
-
-.proof-band .text-link {
-  color: var(--color-base);
-  text-decoration-color: rgba(250, 250, 249, 0.4);
-}
-
-.proof-band .text-link:hover,
-.proof-band .text-link:focus-visible {
-  text-decoration-color: var(--color-base);
-}
-
-/* --- Contact (dark close) --- */
-
-.contact {
-  background-color: var(--color-text);
-}
-
-.contact-heading {
-  font-family: var(--font-display);
-  font-size: clamp(2.2rem, 4.6vw, 3.5rem);
-  font-weight: 500;
-  line-height: 1.1;
-  letter-spacing: -0.012em;
-  color: var(--color-base);
-  margin-bottom: var(--space-sm);
-}
-
-.contact-sub {
-  max-width: 56ch;
-  color: var(--color-text-muted-invert);
-  font-weight: 400;
-}
-
-.contact .button--primary {
-  background-color: var(--color-accent);
-  border-color: var(--color-accent);
-}
-
-.contact .button--primary:hover,
-.contact .button--primary:focus-visible {
-  background-color: var(--color-accent-deep);
-  border-color: var(--color-accent-deep);
-}
-
-/* The dark contact band continues into the footer. */
-.home-page .site-footer {
-  padding-top: 0;
-}
-
-/* --- Text link arrows --- */
-
-.link-arrow {
-  font-weight: 400;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .js .reveal {
-    opacity: 0;
-    transition: opacity 0.4s ease;
-  }
-
-  .js .reveal.visible {
-    opacity: 1;
-  }
-}
-
-/* --- Responsive --- */
-
-@media (max-width: 640px) {
-  .home-page main section {
-    padding-top: var(--space-lg);
-    padding-bottom: var(--space-lg);
-  }
-
-  .hero {
-    min-height: 60vh;
-    padding-top: calc(var(--space-xl) + 2rem);
-    padding-bottom: var(--space-xl);
-  }
-
-  .hero,
-  .outcome-grid {
-    grid-template-columns: 1fr;
-  }
-
-  /* Slope mirrors .outcomes' 16px mobile value */
-  .proof-band-grid {
-    clip-path: polygon(0 0, 100% 16px, 100% 100%, 0 100%);
-  }
-
-  .hero-evidence img {
-    aspect-ratio: 4 / 3;
-  }
-
-  .outcome-card + .outcome-card {
-    border-left: 0;
-    border-top: 1px solid var(--color-sand);
-  }
-}
-
-@media (max-width: 880px) {
-  /* Stack the approach section: copy first, then the flow cards. */
-  .philosophy {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .philosophy-copy,
-  .philosophy .delivery-flow {
-    grid-column: 1;
-    grid-row: auto;
-  }
-
-  .philosophy .delivery-flow {
-    margin-top: var(--space-md);
-  }
-
-  /* Proof band: stack pane | intro | pane; each pane keeps its internal
-     split at full width, and the intro's top/bottom hairlines separate the
-     three rows. The panes need their own heights here — the outer grid's
-     min-height is a single floor for all three rows, and the absolute
-     images contribute nothing. */
-  .proof-band-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .proof-pane {
-    min-height: clamp(260px, 45vw, 360px);
-  }
-
-  .proof-band-intro {
-    align-self: auto;
-    padding: var(--space-md) var(--side-padding);
-    border-left: 0;
-    border-right: 0;
-    border-top: 1px solid rgba(250, 250, 249, 0.35);
-    border-bottom: 1px solid rgba(250, 250, 249, 0.35);
-  }
-}
-
-/* --- Outcomes: full-bleed accent band, two columns, slanted edges --- */
-
-/* The band tilts slightly up to the right: both edges rise 36px across the
-   full width (roughly 1.5 degrees). Knobs: change 36px to flatten/sharpen,
-   swap each "36px" with its "0" to tilt the other way.
-
-   The accent ground lives on a ::before so the section's drop-shadow follows
-   the clipped diagonal silhouette (a clip-path on the section itself would
-   clip its own shadow away). The filter makes the section a stacking context,
-   which keeps the z-index: -1 pseudo inside it; z-index: 1 lifts the shadow
-   above the photo band that follows in the DOM. Knobs: drop-shadow's x/y
-   offset, blur and alpha control the shadow weight. */
-.outcomes {
-  position: relative;
-  z-index: 1;
-  border-top: 0;
-  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.18));
-}
-
-.outcomes::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background-color: var(--color-accent);
-  clip-path: polygon(0 36px, 100% 0, 100% calc(100% - 36px), 0 100%);
-}
-
-.outcomes .content {
+/* --- 2. Capabilities Pillars --- */
+.pillars-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
-  column-gap: clamp(3rem, 7vw, 6rem);
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+.pillar-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.pillar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+}
+.pillar-num { font-family: var(--font-mono); font-size: 1.5rem; }
+.pillar-cat {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.pillar-title { font-size: 1.25rem; margin-bottom: 0.75rem; }
+.pillar-desc { font-size: 0.875rem; line-height: 1.6; margin-bottom: 0.5rem; }
+/* List set in the sans (matching .pillar-desc) for readability; mono stays
+   reserved for labels like the OUTPUT strip. Markers are drawn in CSS so
+   wrapped lines hang under the text, not under the bullet. */
+.pillar-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+}
+.pillar-list li {
+  position: relative;
+  padding-left: 1.1rem;
+}
+.pillar-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+}
+/* Card footer: an empty rule near the card bottom, as a visual finish only.
+   The flex space-between on .pillar-card pins it to the bottom, so the rule
+   sits at a consistent height across the row. */
+.pillar-output {
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* --- 3. Selected Work --- */
+.case-carousel {
+  position: relative; /* containing block for the wide-screen breakout buttons */
+  display: flex;
+  flex-direction: column;
+}
+/* Nav row wraps underneath the cards: prev left, counter centre, next
+   right. The buttons reuse .btn/.btn--secondary for the standard look and
+   press-in hover; .case-nav only resizes them. */
+.case-nav-row {
+  order: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.case-nav { flex: none; width: 4.75rem; height: 2.75rem; padding: 0; }
+.case-counter {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+/* Wide screens: the buttons break out into the page margin, flanking the
+   cards. Vertical centring uses margin rather than transform so .btn:hover's
+   press-in translate applies untouched. */
+@media (min-width: 1400px) {
+  .case-carousel { display: block; }
+  .case-nav-row { display: contents; }
+  .case-nav {
+    position: absolute;
+    top: 50%;
+    margin-top: -2.25rem; /* half the 4.5rem height set at the 768px block */
+  }
+  #case-prev { left: -4.5rem; }
+  #case-next { right: -4.5rem; }
+}
+.case-counter {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+.case-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+/* The case-card component itself (card, print, tags, footer, whole-card
+   link) lives in core.css — shared with the work hub. What follows is
+   carousel-only. */
+
+/* Mechanical step: the frame lurches in the travel direction (with a
+   slight ratchet tilt), holds while the cards swap (see the JS timer),
+   then springs back with a damped reverb rather than a flat step.
+   Mirrored for prev/next. */
+@keyframes case-step-fwd {
+  0%   { transform: translateX(1px);}
+  100%   { transform: translateX(0px);}
+
+
+}
+@keyframes case-step-back {
+	0%   { transform: translateX(0px);}
+  	100%   { transform: translateX(0px);}
+}
+
+
+.case-grid.is-stepping-fwd  { animation: case-step-fwd 0.25s; }
+.case-grid.is-stepping-back { animation: case-step-back 0.25s; }
+@media (prefers-reduced-motion: reduce) {
+  .case-grid.is-stepping-fwd,
+  .case-grid.is-stepping-back { animation: none; }
+}
+
+/* --- 4. Approach Timeline --- */
+.approach-intro { max-width: 48rem; margin-bottom: 3.5rem; }
+.approach-intro p { font-size: clamp(1rem, 2vw, 1.125rem); line-height: 1.6; margin-top: 1rem; }
+.approach-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+.step-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.step-header {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.step-title { font-size: 1.125rem; margin-bottom: 0.5rem; }
+.step-desc { font-size: 0.8125rem; line-height: 1.6; }
+.step-output {
+  margin-top: 1.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+/* --- 5. About Foundry --- */
+.about-intro { max-width: 42rem; margin-bottom: 3rem; }
+.about-intro p { font-size: 1rem; line-height: 1.6; margin-top: 1rem; }
+/* Team row: story tile first, then the profile cards. Grid stretch keeps
+   every cell the same height; the profile cards are deliberately narrow so
+   the story page keeps the visual weight (story | Tom | Luke). */
+.about-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
+/* Story tile: the whole card is the link to /story/. Same parchment card as
+   the profile cards — its larger footprint is what sets it apart. Hover
+   presses the card into its shadow, matching the .btn press-in treatment. */
+.story-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+/* Press-in mirrors .btn:hover/:active — translate toward the shadow and
+   collapse it. :active covers touch feedback; hover-only styles stay gated
+   behind (hover: hover). */
+.story-card:active { transform: translate(2px, 2px); box-shadow: none; }
+@media (hover: hover) {
+  .story-card:hover { transform: translate(2px, 2px); box-shadow: none; }
+}
+.story-card__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-weight: 700;
+}
+.story-card__title { font-size: 1.5rem; font-weight: 700; line-height: 1.15; margin-top: 0.5rem; }
+.story-card__cta {
+  align-self: stretch;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+@media (hover: hover) {
+  .story-card:hover .story-card__cta { text-decoration: underline; }
+}
+a.story-card:focus-visible {
+  outline: 2px solid var(--border-dark);
+  outline-offset: 3px;
+}
+/* Card--interactive's lift is intentionally not used here: the press-in
+   above replaces it, so the tile behaves like a button, not a hoverable card. */
+.profile-card {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+.profile-name { font-size: 1.5rem; }
+.profile-role {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--muted);
+  font-weight: 700;
+  display: block;
+  margin-top: 0.25rem;
+}
+.profile-footer {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+.profile-link { font-weight: 700; }
+.profile-link:hover { text-decoration: underline; }
+
+/* --- 6. Contact & Project Scoping Brief --- */
+.contact-panel {
+  padding: 1.5rem;
+  box-shadow: var(--shadow-brutal-lg);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.contact-intro { font-size: clamp(0.875rem, 2vw, 1rem); line-height: 1.6; margin: 1rem 0 2rem; }
+.contact-blocks { display: flex; flex-direction: column; gap: 1rem; font-family: var(--font-mono); font-size: 0.75rem; }
+.contact-block {
+  border: 1px solid var(--border-dark);
+  background-color: var(--parchment);
+  padding: 0.875rem;
+  box-shadow: var(--shadow-brutal-sm);
+}
+.contact-block__label {
+  text-transform: uppercase;
+  font-size: 0.625rem;
+  color: var(--muted);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.contact-block__val { font-weight: 700; font-size: 0.875rem; }
+.contact-block__val:hover { text-decoration: underline; }
+.contact-block__text { font-weight: 500; line-height: 1.4; }
+.contact-legal {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.contact-form-card { padding: 1.5rem; }
+.contact-form-header {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border-subtle);
+  padding-bottom: 0.75rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
-
-/* Intro column: light text on the accent ground */
-.outcomes .section-intro {
-  margin-bottom: 0;
+.contact-form-header .stage { color: var(--muted); }
+.contact-form { display: flex; flex-direction: column; gap: 1rem; }
+.form-row { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+.form-group label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 0.375rem;
+}
+.form-input, .form-select, .form-textarea {
+  width: 100%;
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface);
+  padding: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--ink);
+  transition: background-color var(--transition), border-color var(--transition);
+}
+.form-input:focus, .form-select:focus, .form-textarea:focus {
+  outline: none;
+  background-color: var(--parchment);
+  border-color: var(--ink);
+}
+/* Chrome/Edge/Safari paint autofilled inputs a fixed light blue and ignore
+   plain background-color on :-webkit-autofill; an inset shadow repaints
+   them in the site's own surface colour instead. */
+.form-input:-webkit-autofill,
+.form-select:-webkit-autofill,
+.form-textarea:-webkit-autofill {
+  -webkit-text-fill-color: var(--ink);
+  caret-color: var(--ink);
+  -webkit-box-shadow: 0 0 0 1000px var(--surface) inset;
+}
+.form-input:focus:-webkit-autofill,
+.form-select:focus:-webkit-autofill,
+.form-textarea:focus:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--parchment) inset;
+}
+.form-footnote {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+  padding-top: 0.5rem;
+}
+.form-success {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+.form-success__title {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.form-success__dot { width: 0.5rem; height: 0.5rem; border-radius: 9999px; background-color: var(--ink); }
+.form-error {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid var(--border-dark);
+  background-color: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+.form-error__title {
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+/* Hollow dot distinguishes the error banner from the solid success dot
+   without breaking the monochrome palette. */
+.form-error__dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 9999px;
+  border: 2px solid var(--ink);
+}
+.form-error__detail { margin-top: 0.5rem; color: var(--muted); }
+/* Honeypot: off-screen rather than display:none, so naive spam scripts that
+   skip display:none fields still trip over it; real users can't reach it. */
+.form-hp {
+  position: absolute;
+  left: -5000px;
+  top: -5000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
-.outcomes .section-intro h2 {
-  color: var(--color-base);
+/* --- 7. Responsive Layout Breakpoints --- */
+@media (min-width: 640px) {
+  .pillar-card, .case-card, .profile-card, .story-card, .contact-form-card { padding: 2rem; }
+  .contact-panel { padding: 3rem; }
+  .approach-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-row { grid-template-columns: 1fr 1fr; }
 }
 
-.outcomes .section-intro h2 .accent-serif {
-  color: var(--color-sand);
+@media (min-width: 768px) {
+  .pillars-grid { grid-template-columns: repeat(3, 1fr); }
+  .case-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+  .case-nav { width: 3.25rem; height: 4.5rem; }
 }
 
-.outcomes .section-intro > p {
-  color: var(--color-text-muted-invert);
-}
-
-/* Cards stack vertically in the right half */
-.outcomes .outcome-grid {
-  grid-template-columns: 1fr;
-  row-gap: var(--space-md);
-}
-
-.outcomes .outcome-card {
-  padding: 0;
-}
-
-/* Keep the big numerals clear of the card headings inside the band (the global
-   rule overlaps them by design on the plain grid). Knob: raise/lower 0.35rem
-   for more/less air. */
-.outcomes .outcome-number {
-  margin-bottom: 0.35rem;
-}
-
-.outcomes .outcome-card + .outcome-card {
-  border-left: 0;
-  border-top: 1px solid rgba(250, 250, 249, 0.18);
-  padding-top: var(--space-md);
-}
-
-.outcomes .outcome-card h3 {
-  color: var(--color-base);
-}
-
-.outcomes .outcome-card > p:last-child {
-  color: var(--color-text-muted-invert);
-}
-
-/* The photo band meets the outcomes section flush; the drop-shadow is cast by
-   the blue band's slanted bottom edge (see .outcomes above) and falls onto the
-   photo. Knobs: 36px mirrors the .outcomes slope (16px on small screens). */
-.outcomes + .photo-band {
-  margin-top: -36px;
-}
-
-/* Hide the core.css registration crosshairs on the home photo band only; the
-   approach page keeps them. */
-.outcomes + .photo-band::before,
-.outcomes + .photo-band::after {
-  content: none;
-}
-
-/* Home-only zoom knobs (core.css keeps the generic band). The source photo is
-   2.16:1, so 46.2vw of height shows it full-width with no vertical crop;
-   lower the vw to zoom in. object-position shifts the crop window. */
-.outcomes + .photo-band img {
-  height: 25vw; /* knob: 46.2 = no vertical crop; lower = tighter */
-  object-position: 60% 0%;            /* knob: x% y% — e.g. 50% 30% biases the crop toward the top */
-}
-
-@media (max-width: 880px) {
-  /* Clip the ::before ground, not the section: the section's own clip would
-     cut the drop-shadow AND intersect with the desktop 36px ::before clip,
-     leaving the blue edge on the 36px slope while the photo below sits on
-     the 16px one — a white wedge widening to the right. */
-  .outcomes::before {
-    clip-path: polygon(0 16px, 100% 0, 100% calc(100% - 16px), 0 100%);
-  }
-
-  .outcomes + .photo-band {
-    margin-top: -17px;
-  }
-
-  .outcomes + .photo-band img {
-    clip-path: polygon(0 16px, 100% 0, 100% 100%, 0 100%);
-    height: clamp(320px, 32vw, 640px);
-  }
-
-  .outcomes + .photo-band::before {
-    top: calc(16px + 14px);
-  }
-
-  .outcomes .content {
-    grid-template-columns: 1fr;
-    row-gap: var(--space-lg);
-  }
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: 7fr 5fr; gap: 2rem; }
+  .approach-grid { grid-template-columns: repeat(4, 1fr); }
+  .contact-grid { grid-template-columns: 5fr 7fr; }
+  .about-grid { grid-template-columns: 2fr 1fr 1fr; }
 }

@@ -1,69 +1,145 @@
 ---
 layout: default
 title: "Contact — Mokimo"
-description: "Talk to Mokimo about a product, equipment or production challenge — email hello@mokimo.co.uk or book a call."
-nav: contact
+description: "Tell us what needs to work. Every enquiry is read directly by an engineer — test equipment, product development, and production systems in Sheffield."
+body_class: contact-page
 extra_css:
-  - pages
-  - contact
+  - home
 ---
 
-  <main class="page-content page-content--wide">
+  <main>
 
-    <header class="page-intro">
-      <h1 class="page-title">Contact</h1>
-      <p class="page-lead">Tell us about the product, equipment or production challenge — what exists today, and what needs to happen next. We'll come back with a practical view of what we'd do first.</p>
-    </header>
+    <!-- CONTACT: the scoping brief panel, duplicated from the homepage so
+         site-wide links land on a dedicated page instead of jump-and-scroll.
+         The homepage keeps its own copy; both post through the same handler
+         in scripts/home.js. -->
+    <section id="contact" class="section section--parchment">
+      <div class="container">
 
-    <div class="action-row action-row--medium">
-      <a href="https://dash.mokimo.co.uk/book_appointment" class="button button--primary">Book a call</a>
-      <a href="mailto:hello@mokimo.co.uk" class="button button--secondary">Email us</a>
-    </div>
+        <div class="contact-panel card">
+          <div class="contact-grid">
 
-    <section class="content-section content-section--divided" aria-label="Enquiry form">
-      <h2 class="section-heading">Send an enquiry</h2>
-      <form class="enquiry-form" id="enquiry-form">
-        <div class="form-field">
-          <label for="enquiry-name">Name</label>
-          <input type="text" id="enquiry-name" name="name" autocomplete="name" required>
+            <!-- Left: Direct Info & Sheffield Context -->
+            <div class="contact-info">
+              <div>
+                <span class="section__eyebrow">Direct Scoping</span>
+                <h2 class="section__title">
+                  Tell us what needs to work.
+                </h2>
+                <p class="contact-intro">
+                  Tell us about the product, equipment, or production challenge. What exists today and what needs to happen next? Every enquiry is read directly by an engineer.
+                </p>
+
+                <div class="contact-blocks">
+                  <div class="contact-block">
+                    <span class="contact-block__label">SEND US AN EMAIL</span>
+                    <a href="mailto:hello@mokimo.co.uk" class="contact-block__val">hello@mokimo.co.uk</a>
+                  </div>
+
+                  <div class="contact-block">
+                    <span class="contact-block__label">WRITE TO US</span>
+                    <p class="contact-block__text">
+                      The Workstation, 15 Paternoster Row<br>
+                      Sheffield S1 2BX, United Kingdom
+                    </p>
+                  </div>
+
+                  <div class="contact-block">
+                    <span class="contact-block__label">GIVE US A CALL</span>
+                    <p class="contact-block__val">+44 000 000 0000</p>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="contact-legal">
+                <span>Company No. 17139363 &bull; Registered in England and Wales</span>
+              </div>
+            </div>
+
+            <!-- Right: Interactive Brief Intake Form -->
+            <div class="contact-form-card card card--parchment">
+
+              <form id="project-form" onsubmit="handleFormSubmit(event)" class="contact-form">
+                <!-- Honeypot: real users never see this; bots that fill it are dropped server-side. -->
+                <div class="form-hp" aria-hidden="true">
+                  <label for="website-hp">Website</label>
+                  <input id="website-hp" name="website" type="text" tabindex="-1" autocomplete="off">
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input id="name" required type="text" placeholder="e.g. Dr. Alex Vance" class="form-input">
+                  </div>
+                  <div class="form-group">
+                    <label for="company">Company / Organisation</label>
+                    <input id="company" type="text" placeholder="e.g. Apex Hardware Ltd" class="form-input">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="email">Work Email *</label>
+                  <input id="email" required type="email" placeholder="alex@apexhardware.co.uk" class="form-input">
+                </div>
+
+                <div class="form-group">
+                  <label for="discipline">Primary Engineering Need</label>
+                  <select id="discipline" class="form-select">
+                    <option value="test-rig">Test &amp; Production Equipment / Rig</option>
+                    <option value="subsystem">New Hardware Subsystem / Rev-A</option>
+                    <option value="pilot">DFM &amp; Pilot Manufacturing Preparation</option>
+                    <option value="failure">Failure Investigation &amp; Root-Cause Audit</option>
+                    <option value="other">General Engineering Advisory</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Project Description &amp; Requirements *</label>
+                  <textarea id="message" required rows="4" placeholder="Describe the physical requirements, current hardware state, cycle time, or known failure modes..." class="form-textarea"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn--primary btn--full">
+                  Submit project inquiry &rarr;
+                </button>
+
+                <div class="form-footnote">
+                  <span>&bull; Full NDA available prior to call</span>
+                  <span>&bull; Confidential handling</span>
+                  <a href="/privacy/">&bull; How we handle your data</a>
+                </div>
+              </form>
+
+              <!-- Success Notification Container -->
+              <div id="form-success-banner" class="hidden form-success">
+                <div class="form-success__title">
+                  <span class="form-success__dot"></span>
+                  <span>Inquiry received successfully</span>
+                </div>
+                <p class="form-success__body">
+                  Thank you. A confirmation email is on its way to your inbox. An engineer will review your technical requirements and contact you within 24 business hours to arrange an initial scoping call.
+                </p>
+              </div>
+
+              <!-- Error Notification Container -->
+              <div id="form-error-banner" class="hidden form-error">
+                <div class="form-error__title">
+                  <span class="form-error__dot"></span>
+                  <span>Inquiry could not be sent</span>
+                </div>
+                <p class="form-error__body">
+                  Your inquiry could not be sent. Please try again in a moment, or email us directly at <a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a>.
+                </p>
+                <p class="form-error__detail hidden"></p>
+              </div>
+            </div>
+
+          </div>
         </div>
-        <div class="form-field">
-          <label for="enquiry-email">Email</label>
-          <input type="email" id="enquiry-email" name="email" autocomplete="email" required>
-        </div>
-        <div class="form-field">
-          <label for="enquiry-message">Enquiry</label>
-          <textarea id="enquiry-message" name="enquiry" rows="6" required></textarea>
-        </div>
-        <button type="submit" class="button button--primary">Send enquiry</button>
-        <p class="form-note">This opens an email to hello@mokimo.co.uk with your enquiry — nothing is submitted or stored on this website.</p>
-      </form>
-    </section>
 
-    <section class="content-section content-section--divided">
-      <h2 class="section-heading">What happens next</h2>
-      <p class="section-copy">Send whatever you have — a brief, a specification, photos or a video of the hardware. Every enquiry is read by an engineer, and we reply personally, usually within a day or two.</p>
-      <p class="section-copy">A first call scopes the work: the technical route, a meaningful first milestone, and what it will take to hit it. If we're not the right team for the job, we'll say so.</p>
-    </section>
-
-    <section class="contact-details" aria-label="Contact details">
-      <h2 class="section-heading">Details</h2>
-      <div class="contact-row">
-        <p class="contact-row-label">Email</p>
-        <p class="contact-row-body"><a href="mailto:hello@mokimo.co.uk">hello@mokimo.co.uk</a></p>
-      </div>
-      <div class="contact-row">
-        <p class="contact-row-label">Online</p>
-        <p class="contact-row-body"><a href="https://dash.mokimo.co.uk/book_appointment">Book a call</a><br><a href="https://www.linkedin.com/company/mokimo-ltd/" rel="noopener">LinkedIn</a></p>
-      </div>
-      <div class="contact-row">
-        <p class="contact-row-label">Registered office</p>
-        <p class="contact-row-body">The Workstation, 15 Paternoster Row<br>Sheffield S1 2BX, United Kingdom</p>
-      </div>
-      <div class="contact-row">
-        <p class="contact-row-label">Company</p>
-        <p class="contact-row-body">Mokimo Ltd<br>Registered in England and Wales<br>Company No. 17139363</p>
       </div>
     </section>
 
   </main>
+
+  <script src="/scripts/home.js"></script>
