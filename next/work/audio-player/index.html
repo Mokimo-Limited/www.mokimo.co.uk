@@ -157,18 +157,113 @@ tags:
     bias the part actually sees, not its rated voltage.
   </p>
   <p>
-    The board and its supporting design decisions are documented so that
-    assembly and bring-up can be verified systematically — every assumption
-    written down somewhere checkable before the hardware exists.
+    The board and its supporting design decisions were documented so that
+    assembly and bring-up could be verified systematically — every assumption
+    written down somewhere checkable before the hardware was built.
   </p>
+
+  <h2>The acoustic half of the system</h2>
+
+  <p>
+    A Sendspin node also has to sound right on its own, and the driver
+    response is where that starts. The Dayton Audio DSA90-8 was chosen as
+    the full-range driver, and was modelled in its sealed enclosure — the
+    manufacturer's recommended 1.1 litres — from its published
+    Thiele&ndash;Small parameters before any hardware was built: the same
+    modelling-first habit as the capacitor derating above, applied to the
+    acoustics.
+  </p>
+
+  <figure class="case-diagram">
+    <svg viewBox="0 0 560 300" role="img" aria-label="Graph of modelled driver output in decibels against frequency from 20 hertz to 20 kilohertz for the Dayton Audio DSA90-8 full-range driver in a 1.1 litre sealed enclosure: the response is minus 3 decibels around 130 hertz, flat through the midband, and falls at 12 decibels per octave below the corner, against a dashed flat target realised by DSP equalisation">
+      <g stroke="#e2dfd5" stroke-width="1">
+        <line x1="125.0" y1="36" x2="125.0" y2="248"/>
+        <line x1="171.2" y1="36" x2="171.2" y2="248"/>
+        <line x1="217.3" y1="36" x2="217.3" y2="248"/>
+        <line x1="278.4" y1="36" x2="278.4" y2="248"/>
+        <line x1="324.5" y1="36" x2="324.5" y2="248"/>
+        <line x1="370.7" y1="36" x2="370.7" y2="248"/>
+        <line x1="431.7" y1="36" x2="431.7" y2="248"/>
+        <line x1="477.8" y1="36" x2="477.8" y2="248"/>
+        <line x1="64" y1="106.7" x2="524" y2="106.7"/>
+        <line x1="64" y1="142" x2="524" y2="142"/>
+        <line x1="64" y1="177.3" x2="524" y2="177.3"/>
+        <line x1="64" y1="212.7" x2="524" y2="212.7"/>
+      </g>
+      <g stroke="#0c0d0e" stroke-width="1.5">
+        <line x1="64" y1="36" x2="64" y2="248"/>
+        <line x1="64" y1="248" x2="524" y2="248"/>
+      </g>
+      <g class="dg-muted" text-anchor="middle">
+        <text x="64" y="266">20</text>
+        <text x="125" y="266">50</text>
+        <text x="171.2" y="266">100</text>
+        <text x="217.3" y="266">200</text>
+        <text x="278.4" y="266">500</text>
+        <text x="324.5" y="266">1k</text>
+        <text x="370.7" y="266">2k</text>
+        <text x="431.7" y="266">5k</text>
+        <text x="477.8" y="266">10k</text>
+        <text x="524" y="266">20k</text>
+      </g>
+      <g class="dg-muted" text-anchor="end">
+        <text x="56" y="75.3">0</text>
+        <text x="56" y="110.7">&#8722;6</text>
+        <text x="56" y="146">&#8722;12</text>
+        <text x="56" y="181.3">&#8722;18</text>
+        <text x="56" y="216.7">&#8722;24</text>
+        <text x="56" y="252">&#8722;30</text>
+      </g>
+      <text x="294" y="288" text-anchor="middle" class="dg-muted">frequency (Hz)</text>
+      <text x="64" y="24" class="dg-muted">response (dB)</text>
+      <line x1="64" y1="71.3" x2="524" y2="71.3" stroke="#5e636e" stroke-width="1.5" stroke-dasharray="5 4"/>
+      <polyline fill="none" stroke="#0c0d0e" stroke-width="2" points="64.0,248.0 71.7,239.4 79.3,227.8 87.0,216.1 94.7,204.6 102.3,193.1 110.0,181.7 117.7,170.4 125.3,159.3 133.0,148.5 140.7,138.0 148.3,128.0 156.0,118.5 163.7,109.9 171.3,102.1 179.0,95.4 186.7,89.8 194.3,85.3 202.0,81.8 209.7,79.1 217.3,77.1 225.0,75.6 232.7,74.6 240.3,73.8 248.0,73.2 255.7,72.7 263.3,72.4 271.0,72.2 278.7,72.0 286.3,71.8 294.0,71.7 301.7,71.6 309.3,71.6 317.0,71.5 324.7,71.5 332.3,71.5 340.0,71.4 347.7,71.4 355.3,71.4 363.0,71.4 370.7,71.4 378.3,71.4 386.0,71.4 393.7,71.4 401.3,71.3 409.0,71.3 416.7,71.3 424.3,71.3 432.0,71.3 439.7,71.3 447.3,71.3 455.0,71.3 462.7,71.3 470.3,71.3 478.0,71.3 485.7,71.3 493.3,71.3 501.0,71.3 508.7,71.3 516.3,71.3 524.0,71.3"/>
+      <g stroke="#5e636e" stroke-width="1" stroke-dasharray="4 3">
+        <line x1="187.8" y1="248" x2="187.8" y2="89.0"/>
+        <line x1="64" y1="89.0" x2="187.8" y2="89.0"/>
+      </g>
+      <circle cx="187.8" cy="89.0" r="4" fill="#0c0d0e"/>
+      <text x="198" y="102">&#8722;3 dB at 128 Hz &#183; 12 dB/oct below</text>
+      <g class="dg-muted">
+        <line x1="300" y1="44" x2="332" y2="44" stroke="#5e636e" stroke-width="1.5" stroke-dasharray="5 4"/>
+        <text x="340" y="48">flat target &#8212; EQ in DSP</text>
+        <line x1="300" y1="62" x2="332" y2="62" stroke="#0c0d0e" stroke-width="2"/>
+        <text x="340" y="66">sealed box, modelled</text>
+      </g>
+    </svg>
+    <figcaption>FIG. 3 &#8212; MODELLED SEALED-BOX RESPONSE, DAYTON DSA90-8 &#183; 1.1 L SEALED &#183; FC = 115 HZ, QTC = 0.64 &#183; FROM PUBLISHED T&#8211;S PARAMETERS</figcaption>
+  </figure>
+
+  <p>
+    The alignment comes out just under maximally flat (Qtc &#8776; 0.64):
+    &#8722;3&nbsp;dB around 130&nbsp;Hz, falling at 12&nbsp;dB/octave below,
+    with no port to tune and no port-induced one-note bass. That is a high
+    corner for a room-bound speaker, and here the DSP earns its keep: a low
+    shelf below the corner buys the bottom octaves back, sized against the
+    DSA90-8's 2.5&nbsp;mm of linear excursion at the output the room will
+    actually see. Above the midband the model stays deliberately silent
+    &mdash; a T&ndash;S model does not predict cone breakup &mdash; so the
+    treble handling is set from in-enclosure measurement now the hardware
+    exists. Model first, then measure: the EQ is designed against the plot,
+    and verified against the driver.
+  </p>
+
+  <div class="case-figures">
+    <figure class="case-figure">
+      <span class="case-figure__window">
+        <img src="/images/examples/IMG_20260806_192446-web.jpg" alt="The assembled audio player PCB held in a hand: USB-C, phono and speaker connectors populated, with the ESP32 module and mokimo silkscreen visible" loading="lazy" style="transform: scale(1.35); transform-origin: 40% 85%;">
+      </span>
+      <figcaption>ASSEMBLED BOARD, IN HAND</figcaption>
+    </figure>
+  </div>
 
   <h2>Where it stands</h2>
 
   <p>
-    The schematic and layout are complete. Assembly, bring-up and audio
-    validation are the next stages, followed by integration into the wider
-    multi-room system — each stage measured against the synchronisation
-    performance the finished product needs.
+    The boards are built, assembled into the speaker housings, and working.
+    With the hardware proven in the enclosure, the next stage is integration
+    into the wider multi-room system — measured, as ever, against the
+    synchronisation performance the finished product needs.
   </p>
 
   <div class="card card--parchment case-facts">
@@ -176,6 +271,6 @@ tags:
       <dt>Product</dt><dd>Smart-speaker electronics</dd>
       <dt>Sector</dt><dd>Consumer audio</dd>
       <dt>Disciplines</dt><dd>Electronics, software, signal processing</dd>
-      <dt>Status</dt><dd>Design complete; assembly next</dd>
+      <dt>Status</dt><dd>Built, assembled and working — multi-room integration next</dd>
     </dl>
   </div>

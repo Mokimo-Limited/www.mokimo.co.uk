@@ -78,6 +78,11 @@
   letter-spacing: 0.06em;
   color: var(--muted);
 }
+/* Crop variant: photos with generous empty space are shown through a
+   clipping window with a scale transform (the .case-print idiom). The
+   inline scale/transform-origin on the img does the cropping; the window
+   hides the overflow so the paper frame stays clean. */
+.case-figure__window { display: block; overflow: hidden; }
 
 /* --- 3b. Engineering diagrams (inline SVG figures) --- */
 .case-diagram {
