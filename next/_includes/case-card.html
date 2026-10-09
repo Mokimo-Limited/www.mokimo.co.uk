@@ -33,8 +33,10 @@
   <span class="case-vis__caption">{{ case.caption }}</span>
 </a>
 {% elsif include.compact %}
-{% comment %} Compact card (work hub): title + print + link. {% endcomment %}
-{% if case.slug %}<a class="card card--parchment case-card case-item" href="{{ card_href }}" aria-label="{{ card_label }}">{% else %}<div class="card card--parchment case-card case-item">{% endif %}
+{% comment %} Compact card (work hub): title + print + link. Draft cases
+   ("draft": true) render as a plain card with a Coming soon footer —
+   the page content stays in place, it just isn't linked yet. {% endcomment %}
+{% if case.slug and case.draft != true %}<a class="card card--parchment case-card case-item" href="{{ card_href }}" aria-label="{{ card_label }}">{% else %}<div class="card card--parchment case-card case-item">{% endif %}
   <div>
     <h3 class="case-title">{{ case.title }}</h3>
 
@@ -56,13 +58,17 @@
   </div>
 
   <div class="case-footer">
-    {% if case.slug %}<span class="case-more">{{ card_more }} &rarr;</span>{% endif %}
+    {% if case.slug and case.draft != true %}
+    <span class="case-more">{{ card_more }} &rarr;</span>
+    {% elsif case.slug %}
+    <span class="case-more">Coming soon</span>
+    {% endif %}
   </div>
-{% if case.slug %}</a>{% else %}</div>{% endif %}
+{% if case.slug and case.draft != true %}</a>{% else %}</div>{% endif %}
 {% else %}
 {% comment %} Full card (homepage carousel): kicker + print + title +
-   description + tags + link. {% endcomment %}
-{% if case.slug %}<a class="card card--parchment case-card case-item" href="{{ card_href }}" aria-label="{{ card_label }}">{% else %}<div class="card card--parchment case-card case-item">{% endif %}
+   description + tags + link. Draft cases render unlinked, as on the hub. {% endcomment %}
+{% if case.slug and case.draft != true %}<a class="card card--parchment case-card case-item" href="{{ card_href }}" aria-label="{{ card_label }}">{% else %}<div class="card card--parchment case-card case-item">{% endif %}
   <div>
     <span class="case-client">{{ case.client }}</span>
 
@@ -94,7 +100,11 @@
       {% for tag in case.tags %}<span class="case-tag">{{ tag }}</span> {% endfor %}
     </div>
     {% endif %}
-    {% if case.slug %}<span class="case-more">{{ card_more }} &rarr;</span>{% endif %}
+    {% if case.slug and case.draft != true %}
+    <span class="case-more">{{ card_more }} &rarr;</span>
+    {% elsif case.slug %}
+    <span class="case-more">Coming soon</span>
+    {% endif %}
   </div>
-{% if case.slug %}</a>{% else %}</div>{% endif %}
+{% if case.slug and case.draft != true %}</a>{% else %}</div>{% endif %}
 {% endif %}
