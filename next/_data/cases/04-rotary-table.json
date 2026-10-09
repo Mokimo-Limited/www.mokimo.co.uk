@@ -1,0 +1,11 @@
+{
+  "type": "photo",
+  "client": "FROM THE WORKSHOP",
+  "title": "Rotary table engraving fixture",
+  "image": "/images/examples/rotary-table-engraving.jpg",
+  "image_alt": "A mill spindle with an engraving tool touching a small white disc held in a red 3D-printed fixture on a rotary table",
+  "caption": "ROTARY TABLE • ENGRAVING FIXTURE",
+  "tags": ["CNC machining", "Workshop"],
+  "image_position": "30% 30%",
+  "image_zoom": 1.25
+}

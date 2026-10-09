@@ -53,10 +53,10 @@
   flex: 1;
   min-height: 0;
   /* Tighter than the homepage's 2rem: on the hub the link sits right under
-     the print, so a smaller gap keeps the card from trailing off. */
-  margin-bottom: 1rem;
+     the print. With the footer's 0.25rem padding-top the gap is 0.75rem. */
+  margin-bottom: 0.5rem;
 }
-.work-grid .case-card .case-footer { padding-top: 0.5rem; }
+.work-grid .case-card .case-footer { padding-top: 0.25rem; }
 .work-grid .case-print--solo {
   aspect-ratio: 1 / 1;
   /* Zero the image's intrinsic minimums: without this, the photo's natural
