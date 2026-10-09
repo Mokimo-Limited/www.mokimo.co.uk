@@ -37,7 +37,21 @@ Then open <http://localhost:8000>. Both commands put generated files in
 A second long-running preview, `jekyll-preview-concept`, serves the same
 repository on port **8002** and is routed publicly through Caddy at
 `webpreview.mokimo.co.uk` (see `/home/tom/network/reverse-proxy/`) — a
-convenient way to check the site on a phone or share a draft.
+convenient way to check the site on a phone or share a draft. It runs
+with resource limits so a runaway rebuild cannot starve the other
+services on this host:
+
+```sh
+docker run -d --rm --name jekyll-preview-concept \
+  --publish 8002:4000 \
+  --volume "$PWD:/srv/jekyll" \
+  --workdir /srv/jekyll \
+  --memory 512m --memory-swap 512m \
+  --cpus 1 --pids-limit 256 \
+  --log-opt max-size=10m --log-opt max-file=3 \
+  jekyll/jekyll:latest \
+  jekyll serve --host 0.0.0.0 --disable-disk-cache --destination /tmp/_site
+```
 
 ## Structure
 
@@ -86,17 +100,21 @@ homepage carousel and the work hub via `_includes/case-card.html` (edit
 the card in one place). To add one, copy an existing file, bump the
 numeric prefix, and edit the fields:
 
-| Field       | Purpose |
-|-------------|---------|
-| `type`      | `case` (default), `article`, or `photo` — sets the card variant and link text; `photo` cards open the image in an in-page lightbox |
-| `slug`      | URL slug — makes the card a link to `/work/<slug>/` (not used by `photo`) |
-| `draft`     | `true` = card renders unlinked with a "Coming soon" footer |
-| `featured`  | `true` = shown in the homepage carousel (cases only; the hub always lists everything) |
-| `title`     | Card heading (all types, photos included) |
-| `image`     | Photo path, shown in the pinned-postcard print |
-| `image_alt` | Alt text for the photo |
-| `caption`   | Mono caption on the print's white strip — keep it short, it renders on one line |
-| `tags`      | Footer tag labels — homepage carousel only (decoration); the hub omits them |
+| Field            | Purpose |
+|------------------|---------|
+| `type`           | `case` (default), `article`, or `photo` — sets the card variant and link text; `photo` cards open the image in an in-page lightbox |
+| `slug`           | URL slug — makes the card a link to `/work/<slug>/` (not used by `photo`) |
+| `draft`          | `true` = card renders unlinked with a "Coming soon" footer |
+| `featured`       | `true` = shown in the homepage carousel (cases only; the hub always lists everything) |
+| `client`         | Kicker line at the top of full carousel cards (e.g. `TEST & MEASUREMENT`) |
+| `title`          | Card heading (all types, photos included) |
+| `description`    | Card body text — full carousel cards only |
+| `image`          | Photo path, shown in the pinned-postcard print |
+| `image_alt`      | Alt text for the photo |
+| `caption`        | Mono caption on the print's white strip — keep it short, it renders on one line |
+| `tags`           | Footer tag labels — homepage carousel only (decoration); the hub omits them |
+| `image_position` | CSS `object-position` for the print's crop (default `50% 50%`) |
+| `image_zoom`     | Scale applied inside the print's clipping window (default `1.43`) |
 
 The numeric filename prefix sets the hub's card order: interleave types
 when adding entries so the wall stays mixed.
