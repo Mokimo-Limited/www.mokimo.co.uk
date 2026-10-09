@@ -21,6 +21,10 @@
     linear-gradient(to bottom, var(--ink-faint) 1px, transparent 1px);
   background-size: 100% 100%, 24px 24px, 24px 24px;
   background-repeat: no-repeat, repeat, repeat;
+  /* Tilted scraps and overhanging tape can poke past the viewport on
+     narrow screens; clip horizontally rather than let the page scroll
+     sideways. clip (not hidden) so this never becomes a scroll container. */
+  overflow-x: clip;
 }
 
 /* --- 1. Hero --- */
@@ -254,11 +258,14 @@
 .swing-l1 { --swing: -1deg; }
 .swing-r1 { --swing: 1deg; }
 .swing-r2 { --swing: 1.75deg; }
-/* Push a scrap to the right-hand side: it takes its own full-width row
-   with its content aligned right (auto margins barely move the first
-   item in a centred flex line). */
+/* Below desktop, the sideways slides and negative-margin nudges rely on
+   scatter room that only exists in multi-column rows; on narrower screens
+   they just push scraps past the container edge, so they come out.
+   (Vertical offsets are re-based for phones in the responsive section.) */
 @media (max-width: 899px) {
-  .scrap-board--chaos .scrap { margin: 0; left: 0; }
+  .scrap-board .scrap { left: 0; }
+  .nudge-l { margin-left: 0; }
+  .nudge-r { margin-right: 0; }
 }
 
 /* Doodles scattered absolutely around a board. */
@@ -355,6 +362,33 @@
   .scrap-board { gap: 2rem; }
   .scrap-note, .principle-card { padding: 1.5rem; }
   .scrap-doodle { display: none; }
+
+  /* Single column: a scrap has nothing to tuck into, so the vertical
+     offsets are re-based to consume real flow space instead of floating
+     over the row below. Drops become small top margins (the stagger
+     survives, the overlap doesn't); lifts come out entirely. Tilts, tape,
+     pins, rings and width variety keep the board off the grid. */
+  .scrap {
+    transform: rotate(var(--tilt, 0deg));
+    margin-top: var(--drop, 0rem);
+  }
+  /* Tape/ring scraps restate the transform with translateY(var(--drop));
+     drop that part or the offset is applied twice (margin + transform). */
+  .scrap:has(.scrap-tape),
+  .scrap:has(.scrap-rings) {
+    transform: rotate(var(--tilt, 0deg));
+  }
+  .drop-1 { --drop: 0.25rem; }
+  .drop-2 { --drop: 0.5rem; }
+  .drop-3 { --drop: 0.75rem; }
+  .drop-4 { --drop: 1rem; }
+  .drop-5 { --drop: 1.25rem; }
+  .drop-6 { --drop: 1.5rem; }
+  .lift-1, .lift-2, .lift-3 { margin-top: 0; }
+
+  /* The deep bottom padding reserves room for dropped scraps overhanging
+     their row; with drops living in the flow now, most of it is spare. */
+  .scrap-board--chaos, .scrap-board--settling { padding-bottom: 3rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .scrap { transition: none; }
