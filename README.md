@@ -139,7 +139,48 @@ body holds the narrative. Page styles live in `styles/pages/case.css`
 4. Add the page to the nav links in `_includes/header.html` and
    `_includes/footer.html` as appropriate.
 
+## Branching and releases
+
+`main` is production and is protected: it only accepts changes through a
+pull request, and merging to it publishes the live site immediately.
+
+`development` is the integration branch. All day-to-day work lands here
+first.
+
+Work on short-lived branches cut from `development`:
+
+```sh
+git switch development
+git pull
+git switch -c feat/<short-description>
+```
+
+Merge `feat/*` back into `development` via a pull request, then delete the
+branch. When `development` is ready to ship, open a pull request from
+`development` into `main`; merging it publishes the site.
+
+```
+main (production, protected)
+  └── development (integration)
+        └── feat/<short-description>
+```
+
+Rules:
+
+- Never commit or push directly to `main` — it is protected and deploys
+  instantly to the public site.
+- Cut `feat/*` branches from `development`, not from `main`.
+- Keep feature branches small and merge `development` into them regularly
+  to avoid drift.
+- Delete feature branches once merged.
+
+Every merge to `main` also creates a tagged GitHub Release
+(`vYYYY.MM.DD-<short-sha>`) via `.github/workflows/release.yml`, so each
+live update has a matching release on the repository's Releases page.
+
 ## Deployment
 
-Hosted on GitHub Pages at [www.mokimo.co.uk](https://www.mokimo.co.uk).
-Pushing `main` publishes the site.
+Hosted on GitHub Pages at [www.mokimo.co.uk](https://www.mokimo.co.uk),
+built from `main`. Because `main` is protected, the site updates when a
+pull request from `development` is merged. Each merge also creates a
+GitHub Release (see [Branching and releases](#branching-and-releases)).
