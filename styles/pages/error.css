@@ -1,0 +1,21 @@
+/* 404 page. Stretch the single section so the footer sits at the bottom
+   of the window on short pages. */
+
+.error-main {
+  display: flex;
+  flex-direction: column;
+}
+
+.error-main > .section {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  border-bottom: 0; /* the footer already draws this line */
+}
+
+.error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
