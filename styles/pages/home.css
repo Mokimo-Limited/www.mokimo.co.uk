@@ -249,9 +249,9 @@
 /* --- 5. About Foundry --- */
 .about-intro { max-width: 42rem; margin-bottom: 3rem; }
 .about-intro p { font-size: 1rem; line-height: 1.6; margin-top: 1rem; }
-/* Team row: story tile first, then the profile cards. Grid stretch keeps
-   every cell the same height; the profile cards are deliberately narrow so
-   the story page keeps the visual weight (story | Tom | Luke). */
+/* Story tile first, then the profile card. Grid stretch keeps both cells
+   the same height; the profile card is narrower so the story page keeps
+   the visual weight (story | Tom). */
 .about-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; }
 /* Story tile: the whole card is the link to /story/. Same parchment card as
    the profile cards — its larger footprint is what sets it apart. Hover
@@ -499,7 +499,7 @@ a.story-card:focus-visible {
 @media (min-width: 768px) {
   .pillars-grid { grid-template-columns: repeat(3, 1fr); }
   .case-grid { grid-template-columns: repeat(2, 1fr); }
-  .about-grid { grid-template-columns: 1.5fr 1fr 1fr; }
+  .about-grid { grid-template-columns: 1.5fr 1fr; }
   .case-nav { width: 3.25rem; height: 4.5rem; }
 }
 
@@ -507,5 +507,5 @@ a.story-card:focus-visible {
   .hero-grid { grid-template-columns: 7fr 5fr; gap: 2rem; }
   .approach-grid { grid-template-columns: repeat(4, 1fr); }
   .contact-grid { grid-template-columns: 5fr 7fr; }
-  .about-grid { grid-template-columns: 2fr 1fr 1fr; }
+  .about-grid { grid-template-columns: 2fr 1fr; }
 }
